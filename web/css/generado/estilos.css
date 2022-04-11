@@ -1,0 +1,19 @@
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+body {  
+    background-color: #EAEAEA;    
+}
+
+.dropdown-menu>.active>a{
+    color:#333 !important;
+    background-color:white !important;
+}
+
+.selected{
+    background-color: #A9D0F5 !important;
+}
