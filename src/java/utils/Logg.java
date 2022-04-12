@@ -5,12 +5,16 @@
  */
 package utils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
  */
 public class Logg {
 
+    public static String loggReset = "\033[30m";
     public static String loggGris = "\033[1m";
     public static String loggNegro = "\033[2m";
     public static String loggRojo = "\033[31m";
@@ -29,30 +33,51 @@ public class Logg {
     public static String loggSubrayadoAzulTurquesa = "\033[46m";
     public static String loggSubrayadoGris = "\033[47m";
 
+      public static void exito(String message) {
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println(Logg.loggVerdeLimon + "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+    }
+      
     public static void debug(String message) {
-        java.util.Date date = new java.util.Date();
-        System.out.println("DEBUG [" + date.getTime() + "] :" + message);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println("DEBUG [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
     }
 
     public static void info(String message) {
-        java.util.Date date = new java.util.Date();
-        System.out.println(Logg.loggAzulRey + "INFO [" + date.getTime() + "] :" + message);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println(Logg.loggAzulRey + "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
     }
 
     public static void advertencia(String message) {
-        java.util.Date date = new java.util.Date();
-        System.out.println(Logg.loggAmarilloLima + "ADVERTENCIA [" + date.getTime() + "] :" + message);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println(Logg.loggRosa + "ADVERTENCIA [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
     }
 
     public static void error(String message) {
-        java.util.Date date = new java.util.Date();
-        System.out.println(Logg.loggRojo + "ERROR [" + date.getTime() + "] :" + message);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println(Logg.loggRojo + "ERROR [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
     }
 
     public static void fatal(String message) {
-        java.util.Date date = new java.util.Date();
-        System.out.println(Logg.loggNegro + "FATAL [" + date.getTime() + "] :" + message);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        System.out.println(Logg.loggNegro + "FATAL [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
         System.exit(0);
     }
 
+    /*
+    
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        System.out.println("yyyy/MM/dd HH:mm:ss-> "+dtf.format(LocalDateTime.now()));
+
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss");
+        System.out.println("yy/MM/dd HH:mm:ss-> "+dtf2.format(LocalDateTime.now()));
+
+       
+
+        DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        System.out.println("yyyy/MM/dd HH:mm-> "+dtf4.format(LocalDateTime.now()));
+
+        DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm");
+        System.out.println("yyyy/MM/dd hh:mm:ss-> "+dtf5.format(LocalDateTime.now()));
+     */
 }

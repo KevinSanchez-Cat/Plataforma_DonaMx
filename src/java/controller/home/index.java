@@ -5,6 +5,8 @@
  */
 package controller.home;
 
+import config.conexion.ConexionFactory;
+import config.conexion.IConexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,17 +33,23 @@ public class index extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            ConexionFactory conexion = new ConexionFactory();
+            IConexion conx = conexion.getConexion("MYSQL");
+            int c=conx.conectar();
+            int d=conx.desconectar();
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet index</title>");            
+            out.println("<title>Servlet index</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet index at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet index at " + request.getContextPath()+" "+ c+" "+d +" "+ "</h1>");
+            
             out.println("</body>");
             out.println("</html>");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
