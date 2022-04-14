@@ -6,20 +6,19 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<footer style="background:#154360">
-    <div class="container-fluid">
-        <div>
-
-            <img src="content/imagenes/nombDonaMx.svg" width="147" height="81" alt="...">
-            <div class="row">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-            </div>
+<footer id="footer">
+    <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
         </div>
-        <hr>
-
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <strong>Siguenos en nuestras redes sociales</strong>
+            <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="container-fluid" style="background:#154360">
         <div class="row">
             <div class="col-4 col-md">
                 <h5 style="color:#fcfcfc">¡Dona!</h5>
@@ -48,8 +47,5 @@
             </div>
         </div>
         <hr>
-        <div class="col-12 col-md">
-            <small class="d-block mb-3 " style="color:rgb(161, 161, 161);">DonaMx Corporation &copy; 2022</small>
-        </div>
     </div>
-</footer>
+</footer><!-- End Footer -->
