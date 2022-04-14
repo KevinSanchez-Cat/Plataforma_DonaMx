@@ -20,8 +20,9 @@ public class ConexionMySQL extends IConexion {
         init();
     }
 //CREAR EL USUARIO EN phpMyAdmin
+
     @Override
-    public void init() {
+    public final void init() {
         super.init();
         setHost("localhost");
         setPort("3306");
@@ -34,16 +35,22 @@ public class ConexionMySQL extends IConexion {
     @Override
     public int conectar() {
         super.conectar();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            setConexion(DriverManager.getConnection(getUrl() + "://" + getHost() + ":" + getPort() + "/" + getBd(), getUser(), getPassword()));
-            if (getConexion()!= null) {
-                Logg.exito("Conexion a la base de datos: " + getBd() + " exitosa...");
-                return 1;
+        if (getConexion() != null) {
+            Logg.info("Conexion ya establecida a la base de datos: " + getBd() + "");
+            return 1;
+        } else {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                setConexion(DriverManager.getConnection(getUrl() + "://" + getHost() + ":" + getPort() + "/" + getBd(), getUser(), getPassword()));
+                if (getConexion() != null) {
+                    Logg.exito("Conexion a la base de datos: " + getBd() + " exitosa...");
+                    return 1;
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logg.error("Error al abrir base de datos: " + getBd() + "\nCause:" + ex.getMessage());
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logg.error("Error al abrir base de datos " + getBd() + "\nCause:" + ex.getMessage());
         }
+
         return 0;
     }
 
@@ -53,13 +60,13 @@ public class ConexionMySQL extends IConexion {
         if (getConexion() != null) {
             try {
                 getConexion().close();
-                Logg.exito("Desconexion exitosa de la base de datos" + getBd());
+                Logg.exito("Desconexion exitosa de la base de datos: " + getBd());
                 return 1;
             } catch (SQLException ex) {
-                Logg.error("Error al cerrar la base de datos " + getBd());
+                Logg.error("Error al cerrar la base de datos: " + getBd());
             }
-        }else{
-                Logg.advertencia("Sin conexion a la base de datos " + getBd());
+        } else {
+            Logg.advertencia("Sin conexion a la base de datos: " + getBd());
         }
         return 0;
     }

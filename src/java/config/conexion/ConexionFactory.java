@@ -12,18 +12,17 @@ package config.conexion;
 public class ConexionFactory {
 
     public IConexion getConexion(String motor) {
-        if (motor != null) {
+        if (motor == null) {
             return new ConexionMySQL();
+        } else if (motor.equalsIgnoreCase("MYSQL")) {
+            return new ConexionMySQL();
+        } else if (motor.equalsIgnoreCase("ORACLE")) {
+            return new ConexionOracle();
+        } else if (motor.equalsIgnoreCase("POSTGRES")) {
+            return new ConexionPostgreSQL();
         } else {
-            if (motor.equalsIgnoreCase("MYSQL")) {
-                return new ConexionMySQL();
-            } else if (motor.equalsIgnoreCase("ORACLE")) {
-                return new ConexionOracle();
-            } else if (motor.equalsIgnoreCase("POSTGRES")) {
-                return new ConexionPostgreSQL();
-            } else {
-                return new ConexionMySQL();
-            }
+            return new ConexionMySQL();
+
         }
     }
 }

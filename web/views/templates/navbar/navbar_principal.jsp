@@ -1,27 +1,12 @@
 <%-- 
-    Document   : index
+    Document   : navbar
     Created on : 11/04/2022, 01:34:08 AM
     Author     : por_s
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Plataforma DonaMx</title>
-        <!--    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-                <link href="css/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
-         <link href="css/generado/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-       <!--include file="views/templates/navbar/navbar_principal.jsp" %>-->
-       <header>
+<header>
     <!--width="120" height="80" -->
     <nav class="navbar navbar-light" style="background:#154360">
         <div class="container-fluid">
@@ -29,7 +14,7 @@
                 <img src="content/imagenes/donamx.svg" alt="" width="180px" height="90px">
             </a>
             <div class="d-flex">
-                <a id="loginLink" class="btn btn-primary" href="views/templates/errores/page404.jsp" >
+                <a id="loginLink" class="btn btn-primary" href="" >
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -121,18 +106,3 @@
         </li>
     </ul>
 </header>
-
-        <%@include  file="views/templates/footer/footer_principal.jsp" %>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-        <!--    <script src="js/lib/jquery-1.12.4.js" type="text/javascript"></script>
-                <script src="js/lib/bootstrap.min.js" type="text/javascript"></script>
-                <script src="js/lib/bootbox.min.js" type="text/javascript"></script>
-                <script src="js/lib/bootstrap-datepicker.js" type="text/javascript"></script>
-                <script src="js/generado/bootboxActions.js" type="text/javascript"></script>
-                <script src="js/generado/funciones.js" type="text/javascript"></script>
-                <script src="js/generado/validations.js" type="text/javascript"></script>-->
-        
-    </body>
-</html>

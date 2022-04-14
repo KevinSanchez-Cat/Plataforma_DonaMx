@@ -13,11 +13,11 @@ public class ConexionPostgreSQL extends IConexion {
 
     public ConexionPostgreSQL() {
         super();
-
+        init();
     }
 
     @Override
-    public void init() {
+    public final void init() {
         super.init();
         setHost("localhost");
         setPort("5433");

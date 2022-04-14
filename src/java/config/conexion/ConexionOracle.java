@@ -13,10 +13,11 @@ public class ConexionOracle extends IConexion {
 
     public ConexionOracle() {
         super();
+        init();
     }
 
     @Override
-    public void init() {
+    public final void init() {
         super.init();
         setHost("localhost");
         setPort("1521");
