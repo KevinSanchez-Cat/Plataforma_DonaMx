@@ -5,10 +5,63 @@
  */
 package manipula;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Categoria;
+import utils.GenericResponse;
+
 /**
  *
  * @author por_s
  */
-public class ManipulaCategoria {
-    
+public class ManipulaCategoria implements Manipula<Categoria> {
+
+    @Override
+    public GenericResponse<Categoria> registrar(Categoria obj) {
+        GenericResponse<Categoria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Categoria> actualizar(String id) {
+        GenericResponse<Categoria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Categoria> editar(String id, Categoria obj) {
+        GenericResponse<Categoria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Categoria> eliminar(String id) {
+        GenericResponse<Categoria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Categoria> getData() {
+        List<Categoria> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Categoria> consultar(String... filtros) {
+        List<Categoria> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public Categoria encontrarId(String id) {
+        Categoria response = new Categoria();
+
+        return response;
+    }
 }

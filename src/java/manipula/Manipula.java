@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package manipula;
+
+import java.util.List;
+import utils.GenericResponse;
+
+/**
+ *
+ * @author por_s
+ * @param <T>
+ */
+public interface Manipula<T> {
+
+    public GenericResponse<T> registrar(T obj);
+
+    public GenericResponse<T> actualizar(String id);
+
+    public GenericResponse<T> editar(String id, T obj);
+
+    public GenericResponse<T> eliminar(String id);
+
+    public List<T> getData();
+
+    public List<T> consultar(String... filtros);
+
+    public T encontrarId(String id);
+
+    default GenericResponse<T> msjError(GenericResponse<T> obj) {
+        obj.setMensaje("Error de comunicación con la BD");
+        obj.setStatus(utils.Constantes.LOGIC_ERROR);
+        return obj;
+    }
+
+    default GenericResponse<T> msjAdvertencia(GenericResponse<T> obj) {
+        obj.setMensaje("Error de comunicación con la BD");
+        obj.setStatus(utils.Constantes.LOGIC_WARNING);
+        return obj;
+    }
+
+    default GenericResponse<T> msjExito(GenericResponse<T> obj) {
+        obj.setMensaje("Error de comunicación con la BD");
+        obj.setStatus(utils.Constantes.LOGIC_SUCCESS);
+        return obj;
+    }
+
+     default GenericResponse<T> msjInfo(GenericResponse<T> obj) {
+        obj.setMensaje("Error de comunicación con la BD");
+        obj.setStatus(utils.Constantes.LOGIC_DEFAULT);
+        return obj;
+    }
+
+    default GenericResponse<T> msjNoData(GenericResponse<T> obj) {
+        obj.setMensaje("Error de comunicación con la BD");
+        obj.setStatus(utils.Constantes.LOGIC_NO_DATA);
+        return obj;
+    }
+
+}

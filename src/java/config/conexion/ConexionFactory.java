@@ -11,7 +11,7 @@ package config.conexion;
  */
 public class ConexionFactory {
 
-    public IConexion getConexion(String motor) {
+    public static final IConexion getConexion(String motor) {
         if (motor == null) {
             return new ConexionMySQL();
         } else if (motor.equalsIgnoreCase("MYSQL")) {
@@ -22,7 +22,6 @@ public class ConexionFactory {
             return new ConexionPostgreSQL();
         } else {
             return new ConexionMySQL();
-
         }
     }
 }

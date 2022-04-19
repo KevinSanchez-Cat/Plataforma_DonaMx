@@ -5,10 +5,64 @@
  */
 package manipula;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Galeria;
+import utils.GenericResponse;
+
 /**
  *
  * @author por_s
  */
-public class ManipulaGaleria {
-    
+public class ManipulaGaleria implements Manipula<Galeria> {
+
+    @Override
+    public GenericResponse<Galeria> registrar(Galeria obj) {
+        GenericResponse<Galeria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Galeria> actualizar(String id) {
+        GenericResponse<Galeria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Galeria> editar(String id, Galeria obj) {
+        GenericResponse<Galeria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Galeria> eliminar(String id) {
+        GenericResponse<Galeria> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Galeria> getData() {
+        List<Galeria> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Galeria> consultar(String... filtros) {
+        List<Galeria> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public Galeria encontrarId(String id) {
+        Galeria response = new Galeria();
+
+        return response;
+    }
+
 }

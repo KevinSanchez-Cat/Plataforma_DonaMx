@@ -5,6 +5,8 @@
  */
 package utils;
 
+import static utils.Constantes.STATUS_EXITO;
+
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
@@ -15,10 +17,6 @@ public class GenericResponse<T> {
     private int status;
     private String mensaje;
     private T responseObject;
-
-    //Constantes para controlar el estatus.
-    public static final int STATUS_EXITO = 0;
-    public static final int STATUS_ERROR_GENERAL = -300;
 
     public GenericResponse() {
         this.status = STATUS_EXITO;

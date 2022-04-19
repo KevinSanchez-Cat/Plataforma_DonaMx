@@ -8,11 +8,11 @@
 <!DOCTYPE html>
 <header id="header" class="fixed-top">
     <div class="container-fluid d-flex align-items-lg-start">
-        <a href="index.html" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
+        <a href="index.jsp" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
                 <li>
-                    <a class="nav-link scrollto active" href="#hero">
+                    <a class="nav-link scrollto active" href="index.jsp">
                         <i>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
                         </i>Inicio
                     </a>
                 </li>
-                <li><a class="nav-link scrollto" href="#about">
+                <li><a class="nav-link scrollto active" href="dona.jsp">
                         <i>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-heading"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link scrollto" href="#services"> 
+                    <a class="nav-link scrollto" href="comoFunciona.jsp"> 
                         <i>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-3x3-gap"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link scrollto" href="#departments">
+                    <a class="nav-link scrollto" href="conocenos.jsp">
                         <i>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link scrollto" href="#doctors">
+                    <a class="nav-link scrollto" href="contacto.jsp">
                         <i>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -76,9 +76,9 @@
                 </li>
             </ul>
         </nav
-        <a href="#appointment" class="appointment-btn scrollto"></a>
+        <a class="appointment-btn scrollto" href="#appointment" ></a>
 
-        <a href="#appointment" class="appointment-btn scrollto">
+        <a class="appointment-btn scrollto" href="iniciarSesion.jsp" >
             <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -87,7 +87,7 @@
             Iniciar sesión
         </a>
 
-        <a href="#appointment" class="appointment-btn scrollto">
+        <a class="appointment-btn scrollto"  href="registrarse.jsp" >
             <i>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">

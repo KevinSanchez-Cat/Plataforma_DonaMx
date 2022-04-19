@@ -18,18 +18,18 @@
             <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
         </div>
     </div>
-    <div class="container-fluid" style="background:#154360">
+    <div class="container-fluid " style="background:#999999">
         <div class="row">
-            <div class="col-4 col-md">
-                <h5 style="color:#fcfcfc">¡Dona!</h5>
+            <div class="col-4">
+                <h5 style="color:#fcfcfc"><strong>¡Dona!</strong></h5>
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="">Dona equipos computacionales</a></li>
                     <li><a class="text-muted" href="", null)">Apoya nuestra causa</a></li>
                     <li><a class="text-muted" href="", null)">Crea una cuenta</a></li>
                 </ul>
             </div>
-            <div class="col-4 col-md">
-                <h5 style="color:#fcfcfc">Nosotros</h5>
+            <div class="col-4">
+                <h5 style="color:#fcfcfc"><strong>Nosotros</strong></h5>
                 <ul class="list-unstyled text-small">
 
                     <li><a class="text-muted" href="#">Conocenos</a></li>
@@ -37,8 +37,8 @@
                     <li><a class="text-muted" href="#">Nuestro equipo</a></li>
                 </ul>
             </div>
-            <div class="col-64 col-md">
-                <h5 style="color:#fcfcfc">Legalidad</h5>
+            <div class="col-4">
+                <h5 style="color:#fcfcfc"><strong>Legalidad</strong></h5>
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="", null)">Transparencia</a></li>
                     <li><a class="text-muted" href="", null)">Terminos y condiones</a></li>

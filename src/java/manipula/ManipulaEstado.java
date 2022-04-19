@@ -5,10 +5,64 @@
  */
 package manipula;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Estado;
+import utils.GenericResponse;
+
 /**
  *
  * @author por_s
  */
-public class ManipulaEstado {
-    
+public class ManipulaEstado implements Manipula<Estado> {
+
+    @Override
+    public GenericResponse<Estado> registrar(Estado obj) {
+        GenericResponse<Estado> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Estado> actualizar(String id) {
+        GenericResponse<Estado> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Estado> editar(String id, Estado obj) {
+        GenericResponse<Estado> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Estado> eliminar(String id) {
+        GenericResponse<Estado> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Estado> getData() {
+        List<Estado> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Estado> consultar(String... filtros) {
+        List<Estado> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public Estado encontrarId(String id) {
+        Estado response = new Estado();
+
+        return response;
+    }
+
 }

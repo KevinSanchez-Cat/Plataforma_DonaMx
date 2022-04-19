@@ -5,10 +5,64 @@
  */
 package manipula;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Localidad;
+import utils.GenericResponse;
+
 /**
  *
  * @author por_s
  */
-public class ManipulaLocalidad {
-    
+public class ManipulaLocalidad implements Manipula<Localidad> {
+
+    @Override
+    public GenericResponse<Localidad> registrar(Localidad obj) {
+        GenericResponse<Localidad> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Localidad> actualizar(String id) {
+        GenericResponse<Localidad> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Localidad> editar(String id, Localidad obj) {
+        GenericResponse<Localidad> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public GenericResponse<Localidad> eliminar(String id) {
+        GenericResponse<Localidad> response = new GenericResponse<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Localidad> getData() {
+        List<Localidad> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public List<Localidad> consultar(String... filtros) {
+        List<Localidad> response = new ArrayList<>();
+
+        return response;
+    }
+
+    @Override
+    public Localidad encontrarId(String id) {
+        Localidad response = new Localidad();
+
+        return response;
+    }
+
 }
