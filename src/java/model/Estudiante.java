@@ -30,7 +30,7 @@ public class Estudiante extends UsuarioGeneral {
     private String tipoEscuela; //OTRA TABLA DE LAS ESCUELAS Y TIPOS DE ESCUELAS
     private String gradoEscolar;
     private double promedioAnterior;
-    private char estatusEscolar;
+    private String estatusEscolar;
     private String intereses;
     private String habilidades;
 
@@ -38,7 +38,7 @@ public class Estudiante extends UsuarioGeneral {
         super();
     }
 
-    public Estudiante(int idEstudiante, Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, char estatusEscolar, String intereses, String habilidades) {
+    public Estudiante(int idEstudiante, Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, String estatusEscolar, String intereses, String habilidades) {
         super();
         this.idEstudiante = idEstudiante;
         this.usuario = usuario;
@@ -61,7 +61,6 @@ public class Estudiante extends UsuarioGeneral {
         this.intereses = intereses;
         this.habilidades = habilidades;
     }
-
 
     /**
      * Get the value of habilidades
@@ -104,7 +103,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @return the value of estatusEscolar
      */
-    public char getEstatusEscolar() {
+    public String getEstatusEscolar() {
         return estatusEscolar;
     }
 
@@ -113,7 +112,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @param estatusEscolar new value of estatusEscolar
      */
-    public void setEstatusEscolar(char estatusEscolar) {
+    public void setEstatusEscolar(String estatusEscolar) {
         this.estatusEscolar = estatusEscolar;
     }
 

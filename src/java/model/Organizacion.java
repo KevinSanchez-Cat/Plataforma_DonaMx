@@ -15,7 +15,7 @@ public class Organizacion extends UsuarioGeneral {
 
     private int idOrganizacion;
     private Usuario usuario;
-    private char reciboDeducible;
+    private String reciboDeducible;
     private String razonSocial;
     private String rfc;
     private int numeroTelFijo;
@@ -29,8 +29,8 @@ public class Organizacion extends UsuarioGeneral {
         super();
     }
 
-    public Organizacion(int idOrganizacion, Usuario usuario, char reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, boolean autorizada) {
-       super();
+    public Organizacion(int idOrganizacion, Usuario usuario, String reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, boolean autorizada) {
+        super();
         this.idOrganizacion = idOrganizacion;
         this.usuario = usuario;
         this.reciboDeducible = reciboDeducible;
@@ -193,7 +193,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @return the value of reciboDeducible
      */
-    public char getReciboDeducible() {
+    public String getReciboDeducible() {
         return reciboDeducible;
     }
 
@@ -202,7 +202,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @param reciboDeducible new value of reciboDeducible
      */
-    public void setReciboDeducible(char reciboDeducible) {
+    public void setReciboDeducible(String reciboDeducible) {
         this.reciboDeducible = reciboDeducible;
     }
 

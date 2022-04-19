@@ -21,12 +21,12 @@ public class Donacion {
     private String fechaDonacion;//DATE TIME    
     private String estadoDonacion;
     private String noConfirmacion;
-    private char remunerado;
+    private String remunerado;
 
     public Donacion() {
     }
 
-    public Donacion(int idDonacion, Usuario donatario, Object donador, List<Archivo> lstArchivos, RecursoTecnologico recursoTecnologico, String fechaDonacion, String estadoDonacion, String noConfirmacion, char remunerado) {
+    public Donacion(int idDonacion, Usuario donatario, Object donador, List<Archivo> lstArchivos, RecursoTecnologico recursoTecnologico, String fechaDonacion, String estadoDonacion, String noConfirmacion, String remunerado) {
         this.idDonacion = idDonacion;
         this.donatario = donatario;
         this.donador = donador;
@@ -43,7 +43,7 @@ public class Donacion {
      *
      * @return the value of remunerado
      */
-    public char getRemunerado() {
+    public String getRemunerado() {
         return remunerado;
     }
 
@@ -52,7 +52,7 @@ public class Donacion {
      *
      * @param remunerado new value of remunerado
      */
-    public void setRemunerado(char remunerado) {
+    public void setRemunerado(String remunerado) {
         this.remunerado = remunerado;
     }
 

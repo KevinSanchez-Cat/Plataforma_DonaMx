@@ -17,14 +17,14 @@ public class Solicitud {
     private Usuario usuario;
     private RecursoTecnologico recursoTecnologico;
     private List<Archivo> lstArchivos;
-    private char estadoSolicitud;
+    private String estadoSolicitud;
     private String fechaSolicitud;//DATE TIME
     private String fechaRespuesta;//DATE TIME
 
     public Solicitud() {
     }
 
-    public Solicitud(int idSolicitud, Usuario usuario, RecursoTecnologico recursoTecnologico, char estadoSolicitud, String fechaSolicitud, String fechaRespuesta) {
+    public Solicitud(int idSolicitud, Usuario usuario, RecursoTecnologico recursoTecnologico, String estadoSolicitud, String fechaSolicitud, String fechaRespuesta) {
         this.idSolicitud = idSolicitud;
         this.usuario = usuario;
         this.recursoTecnologico = recursoTecnologico;
@@ -74,7 +74,7 @@ public class Solicitud {
      *
      * @return the value of estadoSolicitud
      */
-    public char getEstadoSolicitud() {
+    public String getEstadoSolicitud() {
         return estadoSolicitud;
     }
 
@@ -83,7 +83,7 @@ public class Solicitud {
      *
      * @param estadoSolicitud new value of estadoSolicitud
      */
-    public void setEstadoSolicitud(char estadoSolicitud) {
+    public void setEstadoSolicitud(String estadoSolicitud) {
         this.estadoSolicitud = estadoSolicitud;
     }
 

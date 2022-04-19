@@ -15,13 +15,13 @@ public class Notificacion {
     private String idUsuarioOrigen;
     private String idUsuarioDestino;
     private String fechaNotificacion;//DATE TIME
-    private char estadoVisualizacion;
-    private char prioridad;
+    private String estadoVisualizacion;
+    private String prioridad;
 
     public Notificacion() {
     }
 
-    public Notificacion(int idNotificacion, String idUsuarioOrigen, String idUsuarioDestino, String fechaNotificacion, char estadoVisualizacion, char prioridad) {
+    public Notificacion(int idNotificacion, String idUsuarioOrigen, String idUsuarioDestino, String fechaNotificacion, String estadoVisualizacion, String prioridad) {
         this.idNotificacion = idNotificacion;
         this.idUsuarioOrigen = idUsuarioOrigen;
         this.idUsuarioDestino = idUsuarioDestino;
@@ -35,7 +35,7 @@ public class Notificacion {
      *
      * @return the value of prioridad
      */
-    public char getPrioridad() {
+    public String getPrioridad() {
         return prioridad;
     }
 
@@ -44,7 +44,7 @@ public class Notificacion {
      *
      * @param prioridad new value of prioridad
      */
-    public void setPrioridad(char prioridad) {
+    public void setPrioridad(String prioridad) {
         this.prioridad = prioridad;
     }
 
@@ -53,7 +53,7 @@ public class Notificacion {
      *
      * @return the value of estadoVisualizacion
      */
-    public char getEstadoVisualizacion() {
+    public String getEstadoVisualizacion() {
         return estadoVisualizacion;
     }
 
@@ -62,7 +62,7 @@ public class Notificacion {
      *
      * @param estadoVisualizacion new value of estadoVisualizacion
      */
-    public void setEstadoVisualizacion(char estadoVisualizacion) {
+    public void setEstadoVisualizacion(String estadoVisualizacion) {
         this.estadoVisualizacion = estadoVisualizacion;
     }
 

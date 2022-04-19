@@ -13,27 +13,27 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
 
     private int idRecursoTecnologico;
     private Categoria categoria;
-    private char organizacionOCivil;
+    private String organizacionOCivil;
     private Organizacion donador; //EN CASO DE QUE SEA UNA ORGANIZACION
     private Usuario usuario; //CONTACTO QUE DA DE ALTA EL RECURSO.
     private int cantidadStock;
     private Object recurso; //PUEDE SER EQUIPO COMPUTACIONAL, IMPRESORA, CAMARA, LICENCIA ...
-    private char autorizado; //Pendiente, Autorizado, No autorizado
-    private char estadoPublicacion;
+    private String autorizado; //Pendiente, Autorizado, No autorizado
+    private String estadoPublicacion;
     private boolean estadoLogico;
     private String fechaPublicacion;//DATE TIME
     private String fechaAutorizacion;//DATE TIME    
-    private char remunerado;
-    private char estadoCondicion;
+    private String remunerado;
+    private String estadoCondicion;
     private double precioOriginal;
     private double precioEstimado;
     private double precioOfertado;
-    private char tipoSoftwarOHardware;
+    private String tipoSoftwarOHardware;
 
     public RecursoTecnologico() {
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, Categoria categoria, char organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, char autorizado, char estadoPublicacion, boolean estadoLogico, String fechaPublicacion, String fechaAutorizacion, char remunerado, char estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, char tipoSoftwarOHardware) {
+    public RecursoTecnologico(int idRecursoTecnologico, Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, String fechaPublicacion, String fechaAutorizacion, String remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.categoria = categoria;
         this.organizacionOCivil = organizacionOCivil;
@@ -59,7 +59,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of tipoSoftwarOHardware
      */
-    public char getTipoSoftwarOHardware() {
+    public String getTipoSoftwarOHardware() {
         return tipoSoftwarOHardware;
     }
 
@@ -68,7 +68,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param tipoSoftwarOHardware new value of tipoSoftwarOHardware
      */
-    public void setTipoSoftwarOHardware(char tipoSoftwarOHardware) {
+    public void setTipoSoftwarOHardware(String tipoSoftwarOHardware) {
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
     }
 
@@ -131,7 +131,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of estadoCondicion
      */
-    public char getEstadoCondicion() {
+    public String getEstadoCondicion() {
         return estadoCondicion;
     }
 
@@ -140,7 +140,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param estadoCondicion new value of estadoCondicion
      */
-    public void setEstadoCondicion(char estadoCondicion) {
+    public void setEstadoCondicion(String estadoCondicion) {
         this.estadoCondicion = estadoCondicion;
     }
 
@@ -149,7 +149,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of remunerado
      */
-    public char getRemunerado() {
+    public String getRemunerado() {
         return remunerado;
     }
 
@@ -158,7 +158,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param remunerado new value of remunerado
      */
-    public void setRemunerado(char remunerado) {
+    public void setRemunerado(String remunerado) {
         this.remunerado = remunerado;
     }
 
@@ -221,7 +221,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of estadoPublicacion
      */
-    public char getEstadoPublicacion() {
+    public String getEstadoPublicacion() {
         return estadoPublicacion;
     }
 
@@ -230,7 +230,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param estadoPublicacion new value of estadoPublicacion
      */
-    public void setEstadoPublicacion(char estadoPublicacion) {
+    public void setEstadoPublicacion(String estadoPublicacion) {
         this.estadoPublicacion = estadoPublicacion;
     }
 
@@ -239,7 +239,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of autorizado
      */
-    public char getAutorizado() {
+    public String getAutorizado() {
         return autorizado;
     }
 
@@ -248,7 +248,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param autorizado new value of autorizado
      */
-    public void setAutorizado(char autorizado) {
+    public void setAutorizado(String autorizado) {
         this.autorizado = autorizado;
     }
 
@@ -293,7 +293,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of organizacionOCivil
      */
-    public char getOrganizacionOCivil() {
+    public String getOrganizacionOCivil() {
         return organizacionOCivil;
     }
 
@@ -302,7 +302,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param organizacionOCivil new value of organizacionOCivil
      */
-    public void setOrganizacionOCivil(char organizacionOCivil) {
+    public void setOrganizacionOCivil(String organizacionOCivil) {
         this.organizacionOCivil = organizacionOCivil;
     }
 

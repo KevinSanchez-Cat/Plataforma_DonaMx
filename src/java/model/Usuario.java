@@ -17,7 +17,7 @@ public class Usuario {
     private String nombreUsuario;
     private String contraseniia;
     private String ultimaConexion;//DATE TIME
-    private char estadoCuenta;
+    private String estadoCuenta;
     private boolean conectado;
     private String correoElectronico;
     private boolean correoConfirmado;
@@ -30,7 +30,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, String fechaCreacion, String ultimaConexion, char estadoCuenta, boolean estadoLogico, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, String fotoUsuario, Rol rol, List<Notificacion> lstNotificaciones, boolean celularConfirmado) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, String fechaCreacion, String ultimaConexion, String estadoCuenta, boolean estadoLogico, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, String fotoUsuario, Rol rol, List<Notificacion> lstNotificaciones, boolean celularConfirmado) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -197,7 +197,7 @@ public class Usuario {
      *
      * @return the value of estadoCuenta
      */
-    public char getEstadoCuenta() {
+    public String getEstadoCuenta() {
         return estadoCuenta;
     }
 
@@ -206,7 +206,7 @@ public class Usuario {
      *
      * @param estadoCuenta new value of estadoCuenta
      */
-    public void setEstadoCuenta(char estadoCuenta) {
+    public void setEstadoCuenta(String estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 

@@ -26,8 +26,8 @@ public class UsuarioGeneral {
         this.lstDonaciones = new ArrayList<>();
         this.lstSolicitudes = new ArrayList<>();
         this.lstNotificaciones = new ArrayList<>();
-        this.estadoLogico=true;
-        this.direccion=new Direccion();
+        this.estadoLogico = true;
+        this.direccion = new Direccion();
     }
 
     public UsuarioGeneral(Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
