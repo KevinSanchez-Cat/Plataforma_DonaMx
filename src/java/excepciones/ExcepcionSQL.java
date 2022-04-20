@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package excepciones;
-
-import java.util.List;
-import manipula.Manipula;
-import utils.GenericResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class ExcepcionSQL extends Exception {
 
@@ -36,5 +27,4 @@ public class ExcepcionSQL extends Exception {
     }
     
      */
-
 }

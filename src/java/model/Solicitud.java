@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.Date;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Solicitud {
 
@@ -31,8 +26,6 @@ public class Solicitud {
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
     }
-
-   
 
     /**
      * Get the value of fechaRespuesta
@@ -164,7 +157,5 @@ public class Solicitud {
     public String toString() {
         return "Solicitud{" + "idSolicitud=" + idSolicitud + ", usuario=" + usuario + ", recursoTecnologico=" + recursoTecnologico + ", archivo=" + archivo + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
     }
-
-   
 
 }

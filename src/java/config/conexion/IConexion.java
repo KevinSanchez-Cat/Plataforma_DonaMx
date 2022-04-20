@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package config.conexion;
 
 import java.sql.Connection;
 import utils.Logg;
 
-
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class IConexion {
 
@@ -25,8 +19,6 @@ public class IConexion {
 
     public IConexion() {
     }
-
-   
 
     public IConexion(String host, String port, String user, String password) {
         this.host = host;
@@ -92,16 +84,16 @@ public class IConexion {
     }
 
     public void init() {
-        Logg.info("Inicializar parametros... " );
+        Logg.info("Inicializar parametros... ");
     }
 
     public int conectar() {
-        Logg.info("Conectando a la base de datos " + getBd()+"...");
+        Logg.info("Conectando a la base de datos " + getBd() + "...");
         return 0;
     }
 
     public int desconectar() {
-        Logg.info("Desconectando de la base de datos " + getBd()+"...");
+        Logg.info("Desconectando de la base de datos " + getBd() + "...");
         return 0;
     }
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.ArrayList;
@@ -10,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Municipio {
 
@@ -19,12 +14,12 @@ public class Municipio {
     private List<Localidad> lstLocalidades;
 
     public Municipio() {
-        lstLocalidades=new ArrayList<>();
+        lstLocalidades = new ArrayList<>();
     }
 
     public Municipio(String municipio) {
         this.municipio = municipio;
-        lstLocalidades=new ArrayList<>();
+        lstLocalidades = new ArrayList<>();
     }
 
     /**

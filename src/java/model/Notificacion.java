@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.Date;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Notificacion {
 
@@ -28,7 +23,6 @@ public class Notificacion {
         this.estadoVisualizacion = estadoVisualizacion;
         this.prioridad = prioridad;
     }
-
 
     /**
      * Get the value of prioridad
@@ -122,7 +116,7 @@ public class Notificacion {
 
     @Override
     public String toString() {
-        return "Notificacion{" + "idNotificacion=" + idNotificacion +  ", idUsuarioDestino=" + idUsuarioDestino + ", fechaNotificacion=" + fechaNotificacion + ", estadoVisualizacion=" + estadoVisualizacion + ", prioridad=" + prioridad + '}';
+        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", idUsuarioDestino=" + idUsuarioDestino + ", fechaNotificacion=" + fechaNotificacion + ", estadoVisualizacion=" + estadoVisualizacion + ", prioridad=" + prioridad + '}';
     }
 
 }

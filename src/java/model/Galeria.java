@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Galeria {
 
@@ -28,7 +23,6 @@ public class Galeria {
         this.extension = extension;
         this.urlDestino = urlDestino;
     }
-
 
     /**
      * Get the value of urlDestino

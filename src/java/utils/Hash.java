@@ -1,7 +1,10 @@
 package utils;
 
 import java.security.NoSuchAlgorithmException;
-
+/**
+ *
+ * @author Kevin Ivan Sanchez Valdin
+ */
 public class Hash {
 
     /**

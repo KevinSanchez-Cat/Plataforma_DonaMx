@@ -1,4 +1,3 @@
-
 package controller.solicitud;
 
 import java.io.IOException;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Srv_solicitud extends HttpServlet {
 
@@ -31,7 +30,7 @@ public class Srv_solicitud extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Srv_solicitud</title>");            
+            out.println("<title>Servlet Srv_solicitud</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Srv_solicitud at " + request.getContextPath() + "</h1>");

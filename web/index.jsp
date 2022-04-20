@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 11/04/2022, 01:34:08 AM
-    Author     : por_s
+    Author     : Kevin Ivan Sanchez Valdin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package manipula;
 
 import config.conexion.*;
@@ -16,7 +12,7 @@ import utils.GenericResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaUsuario implements Manipula<Usuario> {
 

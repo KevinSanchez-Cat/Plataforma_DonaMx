@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller.home;
 
 import config.conexion.ConexionFactory;
@@ -16,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class index extends HttpServlet {
 
@@ -35,8 +30,8 @@ public class index extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             ConexionFactory conexion = new ConexionFactory();
             IConexion conx = conexion.getConexion("MYSQL");
-            int c=conx.conectar();
-            int d=conx.desconectar();
+            int c = conx.conectar();
+            int d = conx.desconectar();
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -44,8 +39,8 @@ public class index extends HttpServlet {
             out.println("<title>Servlet index</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet index at " + request.getContextPath()+" "+ c+" "+d +" "+ "</h1>");
-            
+            out.println("<h1>Servlet index at " + request.getContextPath() + " " + c + " " + d + " " + "</h1>");
+
             out.println("</body>");
             out.println("</html>");
         }

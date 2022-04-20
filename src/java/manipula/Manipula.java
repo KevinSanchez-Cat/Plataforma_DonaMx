@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package manipula;
 
 import java.util.List;
@@ -10,7 +5,7 @@ import utils.GenericResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  * @param <T> objeto general
  */
 public interface Manipula<T> {
@@ -47,7 +42,7 @@ public interface Manipula<T> {
         return obj;
     }
 
-     default GenericResponse<T> msjInfo(GenericResponse<T> obj) {
+    default GenericResponse<T> msjInfo(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_DEFAULT);
         return obj;

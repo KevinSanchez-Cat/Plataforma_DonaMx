@@ -1,7 +1,7 @@
 <%-- 
     Document   : iniciarSesion
     Created on : 14/04/2022, 01:51:33 AM
-    Author     : por_s
+    Author     : Kevin Ivan Sanchez Valdin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

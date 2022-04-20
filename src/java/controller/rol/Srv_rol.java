@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller.rol;
 
 import java.io.IOException;
@@ -14,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author por_s
+ * @author Kevin Ivan Sanchez Valdin
  */
 public class Srv_rol extends HttpServlet {
 
@@ -35,7 +30,7 @@ public class Srv_rol extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Srv_rol</title>");            
+            out.println("<title>Servlet Srv_rol</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Srv_rol at " + request.getContextPath() + "</h1>");
