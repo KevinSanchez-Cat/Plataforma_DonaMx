@@ -21,7 +21,7 @@ public class Usuario {
     private int conteoAccesosFallidos;
     private boolean estadoLogico;
     private Date fechaCreacion;
-    private Rol rol;
+    private int idRol;
     private String foto;
     private boolean numeroCelularConfirmado;
 
@@ -29,7 +29,7 @@ public class Usuario {
     }
 
     //para crear en la bd
-    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Date fechaCreacion, Rol rol) {
+    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Date fechaCreacion, int idRol) {
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
         this.estadoCuenta = estadoCuenta;
@@ -38,10 +38,10 @@ public class Usuario {
         this.conteoAccesosFallidos = 0;
         this.estadoLogico = estadoLogico;
         this.fechaCreacion = fechaCreacion;
-        this.rol = rol;
+        this.idRol = idRol;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, Rol rol, String foto, boolean numeroCelularConfirmado) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -55,7 +55,7 @@ public class Usuario {
         this.conteoAccesosFallidos = conteoAccesosFallidos;
         this.estadoLogico = estadoLogico;
         this.fechaCreacion = fechaCreacion;
-        this.rol = rol;
+        this.idRol = idRol;
         this.foto = foto;
         this.numeroCelularConfirmado = numeroCelularConfirmado;
     }
@@ -133,21 +133,21 @@ public class Usuario {
     }
 
     /**
-     * Get the value of rol
+     * Get the value of idRol
      *
-     * @return the value of rol
+     * @return the value of idRol
      */
-    public Rol getRol() {
-        return rol;
+    public int getRol() {
+        return idRol;
     }
 
     /**
-     * Set the value of rol
+     * Set the value of idRol
      *
-     * @param rol new value of rol
+     * @param idRol new value of idRol
      */
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRol(int idRol) {
+        this.idRol = idRol;
     }
 
     /**

@@ -10,18 +10,42 @@ public class Localidad {
     private String localidad;
     private int codigoPostal;
 
+    private int idMunicipio;
+
+    
     public Localidad() {
     }
 
-    public Localidad(String localidad, int codigoPostal) {
+    public Localidad(String localidad, int codigoPostal, int idMunicipio) {
         this.localidad = localidad;
         this.codigoPostal = codigoPostal;
+        this.idMunicipio = idMunicipio;
     }
 
-    public Localidad(int idLocalidad, String localidad, int codigoPostal) {
+    public Localidad(int idLocalidad, String localidad, int codigoPostal, int idMunicipio) {
         this.idLocalidad = idLocalidad;
         this.localidad = localidad;
         this.codigoPostal = codigoPostal;
+        this.idMunicipio = idMunicipio;
+    }
+
+
+    /**
+     * Get the value of idMunicipio
+     *
+     * @return the value of idMunicipio
+     */
+    public int getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    /**
+     * Set the value of idMunicipio
+     *
+     * @param idMunicipio new value of idMunicipio
+     */
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
 
     /**

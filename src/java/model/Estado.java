@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,40 +10,19 @@ public class Estado {
 
     private int idEstado;
     private String estado;
-    private List<Municipio> lstMunicipios;
 
     public Estado() {
-        lstMunicipios = new ArrayList<>();
     }
 
     public Estado(String estado) {
         this.estado = estado;
-        lstMunicipios = new ArrayList<>();
     }
 
-    public Estado(int idEstado, String estado, List<Municipio> lstMunicipios) {
+    public Estado(int idEstado, String estado) {
         this.idEstado = idEstado;
         this.estado = estado;
-        this.lstMunicipios = lstMunicipios;
     }
 
-    /**
-     * Get the value of lstMunicipios
-     *
-     * @return the value of lstMunicipios
-     */
-    public List<Municipio> getLstMunicipios() {
-        return lstMunicipios;
-    }
-
-    /**
-     * Set the value of lstMunicipios
-     *
-     * @param lstMunicipios new value of lstMunicipios
-     */
-    public void setLstMunicipios(List<Municipio> lstMunicipios) {
-        this.lstMunicipios = lstMunicipios;
-    }
 
     /**
      * Get the value of estado
@@ -84,7 +62,7 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" + "idEstado=" + idEstado + ", estado=" + estado + ", lstMunicipios=" + lstMunicipios + '}';
+        return "Estado{" + "idEstado=" + idEstado + ", estado=" + estado + '}';
     }
 
 }

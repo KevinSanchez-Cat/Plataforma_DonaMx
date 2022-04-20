@@ -7,7 +7,7 @@ package model;
 public class Galeria {
 
     private int idGaleria;
-    private Usuario usuario;
+    private int idUsuario;
     private String nombreImagen;
     private double tamanio;
     private String extension;
@@ -16,17 +16,17 @@ public class Galeria {
     public Galeria() {
     }
 
-    public Galeria(Usuario usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
-        this.usuario = usuario;
+    public Galeria(int usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
+        this.idUsuario = usuario;
         this.nombreImagen = nombreImagen;
         this.tamanio = tamanio;
         this.extension = extension;
         this.urlDestino = urlDestino;
     }
 
-    public Galeria(int idGaleria, Usuario usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
+    public Galeria(int idGaleria, int usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
         this.idGaleria = idGaleria;
-        this.usuario = usuario;
+        this.idUsuario = usuario;
         this.nombreImagen = nombreImagen;
         this.tamanio = tamanio;
         this.extension = extension;
@@ -106,21 +106,21 @@ public class Galeria {
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
@@ -143,7 +143,7 @@ public class Galeria {
 
     @Override
     public String toString() {
-        return "Galeria{" + "idGaleria=" + idGaleria + ", usuario=" + usuario + ", nombreImagen=" + nombreImagen + ", tamanio=" + tamanio + ", extension=" + extension + ", urlDestino=" + urlDestino + '}';
+        return "Galeria{" + "idGaleria=" + idGaleria + ", usuario=" + idUsuario + ", nombreImagen=" + nombreImagen + ", tamanio=" + tamanio + ", extension=" + extension + ", urlDestino=" + urlDestino + '}';
     }
 
 }

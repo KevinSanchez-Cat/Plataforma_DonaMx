@@ -9,9 +9,9 @@ import java.util.Date;
 public class Solicitud {
 
     private int idSolicitud;
-    private Usuario usuario;
-    private RecursoTecnologico recursoTecnologico;
-    private Archivo archivo;
+    private int idUsuario;
+    private int idRecursoTecnologico;
+    private int idArchivo;
     private String estadoSolicitud;
     private Date fechaSolicitud;//DATE TIME
     private Date fechaRespuesta;//DATE TIME
@@ -19,19 +19,19 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Usuario usuario, RecursoTecnologico recursoTecnologico, Archivo archivo, String estadoSolicitud, Date fechaSolicitud) {
-        this.usuario = usuario;
-        this.recursoTecnologico = recursoTecnologico;
-        this.archivo = archivo;
+    public Solicitud(int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Date fechaSolicitud) {
+        this.idUsuario = idUsuario;
+        this.idRecursoTecnologico = idRecursoTecnologico;
+        this.idArchivo = idArchivo;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public Solicitud(int idSolicitud, Usuario usuario, RecursoTecnologico recursoTecnologico, Archivo archivo, String estadoSolicitud, Date fechaSolicitud, Date fechaRespuesta) {
+    public Solicitud(int idSolicitud, int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Date fechaSolicitud, Date fechaRespuesta) {
         this.idSolicitud = idSolicitud;
-        this.usuario = usuario;
-        this.recursoTecnologico = recursoTecnologico;
-        this.archivo = archivo;
+        this.idUsuario = idUsuario;
+        this.idRecursoTecnologico = idRecursoTecnologico;
+        this.idArchivo = idArchivo;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaRespuesta = fechaRespuesta;
@@ -96,53 +96,53 @@ public class Solicitud {
      *
      * @return the value of archivo
      */
-    public Archivo getArchivo() {
-        return archivo;
+    public int getIdArchivo() {
+        return idArchivo;
     }
 
     /**
-     * Set the value of archivo
+     * Set the value of idArchivo
      *
-     * @param archivo new value of archivo
+     * @param idArchivo new value of idArchivo
      */
-    public void setArchivo(Archivo archivo) {
-        this.archivo = archivo;
+    public void setIdArchivo(int idArchivo) {
+        this.idArchivo = idArchivo;
     }
 
     /**
-     * Get the value of recursoTecnologico
+     * Get the value of idRecursoTecnologico
      *
-     * @return the value of recursoTecnologico
+     * @return the value of idRecursoTecnologico
      */
-    public RecursoTecnologico getRecursoTecnologico() {
-        return recursoTecnologico;
+    public int getIdRecursoTecnologico() {
+        return idRecursoTecnologico;
     }
 
     /**
-     * Set the value of recursoTecnologico
+     * Set the value of idRecursoTecnologico
      *
-     * @param recursoTecnologico new value of recursoTecnologico
+     * @param idRecursoTecnologico new value of idRecursoTecnologico
      */
-    public void setRecursoTecnologico(RecursoTecnologico recursoTecnologico) {
-        this.recursoTecnologico = recursoTecnologico;
+    public void setIdRecursoTecnologico(int idRecursoTecnologico) {
+        this.idRecursoTecnologico = idRecursoTecnologico;
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
@@ -165,7 +165,9 @@ public class Solicitud {
 
     @Override
     public String toString() {
-        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", usuario=" + usuario + ", recursoTecnologico=" + recursoTecnologico + ", archivo=" + archivo + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
+        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", idUsuario=" + idUsuario + ", idRecursoTecnologico=" + idRecursoTecnologico + ", idArchivo=" + idArchivo + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
     }
+
+    
 
 }

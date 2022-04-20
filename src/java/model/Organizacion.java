@@ -9,7 +9,7 @@ import java.util.List;
 public class Organizacion extends UsuarioGeneral {
 
     private int idOrganizacion;
-    private Usuario usuario;
+    private int idUsuario;
     private boolean reciboDeducible;
     private String razonSocial;
     private String rfc;
@@ -24,8 +24,8 @@ public class Organizacion extends UsuarioGeneral {
         super();
     }
 
-    public Organizacion(Usuario usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
-        this.usuario = usuario;
+    public Organizacion(int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
+        this.idUsuario = usuario;
         this.reciboDeducible = reciboDeducible;
         this.razonSocial = razonSocial;
         this.rfc = rfc;
@@ -35,10 +35,10 @@ public class Organizacion extends UsuarioGeneral {
         this.tipoOrganizacion = tipoOrganizacion;
     }
 
-    public Organizacion(int idOrganizacion, Usuario usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Organizacion(int idOrganizacion, int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idOrganizacion = idOrganizacion;
-        this.usuario = usuario;
+        this.idUsuario = usuario;
         this.reciboDeducible = reciboDeducible;
         this.razonSocial = razonSocial;
         this.rfc = rfc;
@@ -213,21 +213,21 @@ public class Organizacion extends UsuarioGeneral {
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
@@ -250,7 +250,7 @@ public class Organizacion extends UsuarioGeneral {
 
     @Override
     public String toString() {
-        return "Organizacion{" + "idOrganizacion=" + idOrganizacion + ", usuario=" + usuario + ", reciboDeducible=" + reciboDeducible + ", razonSocial=" + razonSocial + ", rfc=" + rfc + ", numeroTelFijo=" + numeroTelFijo + ", numeroTelMovil=" + numeroTelMovil + ", email=" + email + ", sitioWeb=" + sitioWeb + ", tipoOrganizacion=" + tipoOrganizacion + ", autorizada=" + autorizada + '}';
+        return "Organizacion{" + "idOrganizacion=" + idOrganizacion + ", usuario=" + idUsuario + ", reciboDeducible=" + reciboDeducible + ", razonSocial=" + razonSocial + ", rfc=" + rfc + ", numeroTelFijo=" + numeroTelFijo + ", numeroTelMovil=" + numeroTelMovil + ", email=" + email + ", sitioWeb=" + sitioWeb + ", tipoOrganizacion=" + tipoOrganizacion + ", autorizada=" + autorizada + '}';
     }
 
 }

@@ -14,46 +14,46 @@ public class Archivo {
     private double tamanio;
     private Date fechaCreacion;//DATE TIME   
     private String urlDestino;
-    private Usuario usuario;
+    private int idUsuario;
 
     public Archivo() {
     }
 
-    public Archivo(String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, Usuario usuario) {
+    public Archivo(String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
         this.tamanio = tamanio;
         this.fechaCreacion = fechaCreacion;
         this.urlDestino = urlDestino;
-        this.usuario = usuario;
+        this.idUsuario = usuario;
     }
 
-    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, Usuario usuario) {
+    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
         this.idArchivo = idArchivo;
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
         this.tamanio = tamanio;
         this.fechaCreacion = fechaCreacion;
         this.urlDestino = urlDestino;
-        this.usuario = usuario;
+        this.idUsuario = usuario;
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
@@ -166,7 +166,7 @@ public class Archivo {
 
     @Override
     public String toString() {
-        return "Archivo{" + "idArchivo=" + idArchivo + ", nombreArchivo=" + nombreArchivo + ", extension=" + extension + ", tamanio=" + tamanio + ", fechaCreacion=" + fechaCreacion + ", urlDestino=" + urlDestino + ", usuario=" + usuario + '}';
+        return "Archivo{" + "idArchivo=" + idArchivo + ", nombreArchivo=" + nombreArchivo + ", extension=" + extension + ", tamanio=" + tamanio + ", fechaCreacion=" + fechaCreacion + ", urlDestino=" + urlDestino + ", usuario=" + idUsuario + '}';
     }
 
 }

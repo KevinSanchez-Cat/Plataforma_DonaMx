@@ -11,9 +11,9 @@ public class EquipoComputacional {
 
     private int idEquipoComputacional;
     private String nombre;
-    private RecursoTecnologico recursoTecnologico;
+    private int idRecursoTecnologico;
     private String marca;
-    private SistemaOperativo sistemaOperativo;
+    private int idSistemaOperativo;
     private String modelo;
     private String color;
     private String memoriaRAM;
@@ -21,26 +21,27 @@ public class EquipoComputacional {
     private String velocidadRAM;
     private String capacidadMaxRAM;
     private boolean nuevo;
-    private List<Galeria> galeria;
 
     public EquipoComputacional() {
-        this.galeria = new ArrayList<>();
     }
 
-    public EquipoComputacional(String nombre, RecursoTecnologico recursoTecnologico, String marca, SistemaOperativo sistemaOperativo, List<Galeria> galeria) {
+    public EquipoComputacional(String nombre, int recursoTecnologico,
+            String marca, int sistemaOperativo) {
         this.nombre = nombre;
-        this.recursoTecnologico = recursoTecnologico;
+        this.idRecursoTecnologico = recursoTecnologico;
         this.marca = marca;
-        this.sistemaOperativo = sistemaOperativo;
-        this.galeria = galeria;
+        this.idSistemaOperativo = sistemaOperativo;
     }
 
-    public EquipoComputacional(int idEquipoComputacional, String nombre, RecursoTecnologico recursoTecnologico, String marca, SistemaOperativo sistemaOperativo, String modelo, String color, String memoriaRAM, String tipoRAM, String velocidadRAM, String capacidadMaxRAM, boolean nuevo, List<Galeria> galeria) {
+    public EquipoComputacional(int idEquipoComputacional, String nombre,
+            int recursoTecnologico, String marca, 
+            int sistemaOperativo, String modelo, String color,
+            String memoriaRAM, String tipoRAM, String velocidadRAM, String capacidadMaxRAM, boolean nuevo) {
         this.idEquipoComputacional = idEquipoComputacional;
         this.nombre = nombre;
-        this.recursoTecnologico = recursoTecnologico;
+        this.idRecursoTecnologico = recursoTecnologico;
         this.marca = marca;
-        this.sistemaOperativo = sistemaOperativo;
+        this.idSistemaOperativo = sistemaOperativo;
         this.modelo = modelo;
         this.color = color;
         this.memoriaRAM = memoriaRAM;
@@ -48,26 +49,8 @@ public class EquipoComputacional {
         this.velocidadRAM = velocidadRAM;
         this.capacidadMaxRAM = capacidadMaxRAM;
         this.nuevo = nuevo;
-        this.galeria = galeria;
     }
 
-    /**
-     * Get the value of galeria
-     *
-     * @return the value of galeria
-     */
-    public List<Galeria> getGaleria() {
-        return galeria;
-    }
-
-    /**
-     * Set the value of galeria
-     *
-     * @param galeria new value of galeria
-     */
-    public void setGaleria(List<Galeria> galeria) {
-        this.galeria = galeria;
-    }
 
     /**
      * Get the value of nuevo
@@ -196,21 +179,21 @@ public class EquipoComputacional {
     }
 
     /**
-     * Get the value of sistemaOperativo
+     * Get the value of idSistemaOperativo
      *
-     * @return the value of sistemaOperativo
+     * @return the value of idSistemaOperativo
      */
-    public SistemaOperativo getSistemaOperativo() {
-        return sistemaOperativo;
+    public int getIdSistemaOperativo() {
+        return idSistemaOperativo;
     }
 
     /**
-     * Set the value of sistemaOperativo
+     * Set the value of idSistemaOperativo
      *
-     * @param sistemaOperativo new value of sistemaOperativo
+     * @param idSistemaOperativo new value of idSistemaOperativo
      */
-    public void setSistemaOperativo(SistemaOperativo sistemaOperativo) {
-        this.sistemaOperativo = sistemaOperativo;
+    public void setIdSistemaOperativo(int idSistemaOperativo) {
+        this.idSistemaOperativo = idSistemaOperativo;
     }
 
     /**
@@ -232,21 +215,21 @@ public class EquipoComputacional {
     }
 
     /**
-     * Get the value of recursoTecnologico
+     * Get the value of idRecursoTecnologico
      *
-     * @return the value of recursoTecnologico
+     * @return the value of idRecursoTecnologico
      */
-    public RecursoTecnologico getRecursoTecnologico() {
-        return recursoTecnologico;
+    public int getIdRecursoTecnologico() {
+        return idRecursoTecnologico;
     }
 
     /**
-     * Set the value of recursoTecnologico
+     * Set the value of idRecursoTecnologico
      *
-     * @param recursoTecnologico new value of recursoTecnologico
+     * @param idRecursoTecnologico new value of idRecursoTecnologico
      */
-    public void setRecursoTecnologico(RecursoTecnologico recursoTecnologico) {
-        this.recursoTecnologico = recursoTecnologico;
+    public void setIdRecursoTecnologico(int idRecursoTecnologico) {
+        this.idRecursoTecnologico = idRecursoTecnologico;
     }
 
     /**

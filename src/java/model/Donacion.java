@@ -9,10 +9,10 @@ import java.util.Date;
 public class Donacion {
 
     private int idDonacion;
-    private Usuario donatario;
-    private Object donador; //PUEDE SER ORGANIZACION O USUARIO CIVIL EL DONADOR ***usar el instance of   
-    private Archivo archivo;
-    private RecursoTecnologico recursoTecnologico;
+    private int idDonatario;
+    private int idDonador; //PUEDE SER ORGANIZACION O USUARIO CIVIL EL DONADOR ***usar el instance of   
+    private int idArchivo;
+    private int idRecursoTecnologico;
     private Date fechaDonacion;//DATE TIME    
     private String estadoDonacion;
     private String noConfirmacion;
@@ -21,23 +21,23 @@ public class Donacion {
     public Donacion() {
     }
 
-    public Donacion(Usuario donatario, Object donador, Archivo archivo, RecursoTecnologico recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
-        this.donatario = donatario;
-        this.donador = donador;
-        this.archivo = archivo;
-        this.recursoTecnologico = recursoTecnologico;
+    public Donacion(int donatario, int donador, int archivo, int recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+        this.idDonatario = donatario;
+        this.idDonador = donador;
+        this.idArchivo = archivo;
+        this.idRecursoTecnologico = recursoTecnologico;
         this.fechaDonacion = fechaDonacion;
         this.estadoDonacion = estadoDonacion;
         this.noConfirmacion = noConfirmacion;
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, Usuario donatario, Object donador, Archivo archivo, RecursoTecnologico recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int idDonacion, int donatario, int donador, int archivo, int recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
         this.idDonacion = idDonacion;
-        this.donatario = donatario;
-        this.donador = donador;
-        this.archivo = archivo;
-        this.recursoTecnologico = recursoTecnologico;
+        this.idDonatario = donatario;
+        this.idDonador = donador;
+        this.idArchivo = archivo;
+        this.idRecursoTecnologico = recursoTecnologico;
         this.fechaDonacion = fechaDonacion;
         this.estadoDonacion = estadoDonacion;
         this.noConfirmacion = noConfirmacion;
@@ -117,75 +117,75 @@ public class Donacion {
     }
 
     /**
-     * Get the value of recursoTecnologico
+     * Get the value of idRecursoTecnologico
      *
-     * @return the value of recursoTecnologico
+     * @return the value of idRecursoTecnologico
      */
-    public RecursoTecnologico getRecursoTecnologico() {
-        return recursoTecnologico;
+    public int getIdRecursoTecnologico() {
+        return idRecursoTecnologico;
     }
 
     /**
-     * Set the value of recursoTecnologico
+     * Set the value of idRecursoTecnologico
      *
-     * @param recursoTecnologico new value of recursoTecnologico
+     * @param idRecursoTecnologico new value of idRecursoTecnologico
      */
-    public void setRecursoTecnologico(RecursoTecnologico recursoTecnologico) {
-        this.recursoTecnologico = recursoTecnologico;
+    public void setIdRecursoTecnologico(int idRecursoTecnologico) {
+        this.idRecursoTecnologico = idRecursoTecnologico;
     }
 
     /**
-     * Get the value of archivo
+     * Get the value of idArchivo
      *
-     * @return the value of archivo
+     * @return the value of idArchivo
      */
-    public Archivo getArchivo() {
-        return archivo;
+    public int getIdArchivo() {
+        return idArchivo;
     }
 
     /**
-     * Set the value of archivo
+     * Set the value of idArchivo
      *
-     * @param archivo new value of archivo
+     * @param archivo new value of idArchivo
      */
-    public void setLstArchivos(Archivo archivo) {
-        this.archivo = archivo;
+    public void setLstArchivos(int archivo) {
+        this.idArchivo = archivo;
     }
 
     /**
-     * Get the value of donador
+     * Get the value of idDonador
      *
-     * @return the value of donador
+     * @return the value of idDonador
      */
-    public Object getDonador() {
-        return donador;
+    public Object getIdDonador() {
+        return idDonador;
     }
 
     /**
-     * Set the value of donador
+     * Set the value of idDonador
      *
-     * @param donador new value of donador
+     * @param idDonador new value of idDonador
      */
-    public void setDonador(Object donador) {
-        this.donador = donador;
+    public void setIdDonador(int idDonador) {
+        this.idDonador = idDonador;
     }
 
     /**
-     * Get the value of donatario
+     * Get the value of idDonatario
      *
-     * @return the value of donatario
+     * @return the value of idDonatario
      */
-    public Usuario getDonatario() {
-        return donatario;
+    public int getIdDonatario() {
+        return idDonatario;
     }
 
     /**
-     * Set the value of donatario
+     * Set the value of idDonatario
      *
-     * @param donatario new value of donatario
+     * @param idDonatario new value of idDonatario
      */
-    public void setDonatario(Usuario donatario) {
-        this.donatario = donatario;
+    public void setIdDonatario(int idDonatario) {
+        this.idDonatario = idDonatario;
     }
 
     /**
@@ -208,7 +208,7 @@ public class Donacion {
 
     @Override
     public String toString() {
-        return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + donatario + ", donador=" + donador + ", archivo=" + archivo + ", recursoTecnologico=" + recursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
+        return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + idDonatario + ", donador=" + idDonador + ", archivo=" + idArchivo + ", recursoTecnologico=" + idRecursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
     }
 
 }

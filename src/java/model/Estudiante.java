@@ -10,7 +10,7 @@ import java.util.List;
 public class Estudiante extends UsuarioGeneral {
 
     private int idEstudiante;
-    private Usuario usuario;
+    private int idUsuario;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -34,8 +34,8 @@ public class Estudiante extends UsuarioGeneral {
         super();
     }
 
-    public Estudiante(Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String nacionalidad, String nivelEducativo, String ocupacion) {
-        this.usuario = usuario;
+    public Estudiante(int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String nacionalidad, String nivelEducativo, String ocupacion) {
+        this.idUsuario = usuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -46,10 +46,10 @@ public class Estudiante extends UsuarioGeneral {
         this.ocupacion = ocupacion;
     }
 
-    public Estudiante(int idEstudiante, Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Estudiante(int idEstudiante, int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idEstudiante = idEstudiante;
-        this.usuario = usuario;
+        this.idUsuario = usuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -395,21 +395,21 @@ public class Estudiante extends UsuarioGeneral {
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
@@ -432,7 +432,7 @@ public class Estudiante extends UsuarioGeneral {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", usuario=" + usuario + ", nombres=" + nombres + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", presentacion=" + presentacion + ", numeroTelMovil=" + numeroTelMovil + ", numeroTelFijo=" + numeroTelFijo + ", lugarNacimiento=" + lugarNacimiento + ", nacionalidad=" + nacionalidad + ", nivelEducativo=" + nivelEducativo + ", ocupacion=" + ocupacion + ", tipoEscuela=" + tipoEscuela + ", gradoEscolar=" + gradoEscolar + ", promedioAnterior=" + promedioAnterior + ", estatusEscolar=" + estatusEscolar + ", intereses=" + intereses + ", habilidades=" + habilidades + '}';
+        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", usuario=" + idUsuario + ", nombres=" + nombres + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", presentacion=" + presentacion + ", numeroTelMovil=" + numeroTelMovil + ", numeroTelFijo=" + numeroTelFijo + ", lugarNacimiento=" + lugarNacimiento + ", nacionalidad=" + nacionalidad + ", nivelEducativo=" + nivelEducativo + ", ocupacion=" + ocupacion + ", tipoEscuela=" + tipoEscuela + ", gradoEscolar=" + gradoEscolar + ", promedioAnterior=" + promedioAnterior + ", estatusEscolar=" + estatusEscolar + ", intereses=" + intereses + ", habilidades=" + habilidades + '}';
     }
 
 }

@@ -7,9 +7,9 @@ package model;
 public class Direccion {
 
     private int idDireccion;
-    private Estado estado;
-    private Municipio municipio;
-    private Localidad Localidad;
+    private int idEstado;
+    private int idMunicipio;
+    private int idLocalidad;
     private String referencias;
     private String calleInteriorYNumero;
     private String calleExteriorYNumero;
@@ -23,21 +23,21 @@ public class Direccion {
     public Direccion() {
     }
 
-    public Direccion(Estado estado, Municipio municipio, Localidad Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String nombreAsentamiento) {
-        this.estado = estado;
-        this.municipio = municipio;
-        this.Localidad = Localidad;
+    public Direccion(int estado, int municipio, int Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String nombreAsentamiento) {
+        this.idEstado = estado;
+        this.idMunicipio = municipio;
+        this.idLocalidad = Localidad;
         this.referencias = referencias;
         this.calleInteriorYNumero = calleInteriorYNumero;
         this.calleExteriorYNumero = calleExteriorYNumero;
         this.nombreAsentamiento = nombreAsentamiento;
     }
 
-    public Direccion(int idDireccion, Estado estado, Municipio municipio, Localidad Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento) {
+    public Direccion(int idDireccion, int estado, int municipio, int Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento) {
         this.idDireccion = idDireccion;
-        this.estado = estado;
-        this.municipio = municipio;
-        this.Localidad = Localidad;
+        this.idEstado = estado;
+        this.idMunicipio = municipio;
+        this.idLocalidad = Localidad;
         this.referencias = referencias;
         this.calleInteriorYNumero = calleInteriorYNumero;
         this.calleExteriorYNumero = calleExteriorYNumero;
@@ -212,57 +212,57 @@ public class Direccion {
     }
 
     /**
-     * Get the value of Localidad
+     * Get the value of idLocalidad
      *
-     * @return the value of Localidad
+     * @return the value of idLocalidad
      */
-    public Localidad getLocalidad() {
-        return Localidad;
+    public int getIdLocalidad() {
+        return idLocalidad;
     }
 
     /**
-     * Set the value of Localidad
+     * Set the value of idLocalidad
      *
-     * @param Localidad new value of Localidad
+     * @param idLocalidad new value of idLocalidad
      */
-    public void setLocalidad(Localidad Localidad) {
-        this.Localidad = Localidad;
+    public void setIdLocalidad(int idLocalidad) {
+        this.idLocalidad = idLocalidad;
     }
 
     /**
-     * Get the value of municipio
+     * Get the value of idMunicipio
      *
-     * @return the value of municipio
+     * @return the value of idMunicipio
      */
-    public Municipio getMunicipio() {
-        return municipio;
+    public int getIdMunicipio() {
+        return idMunicipio;
     }
 
     /**
-     * Set the value of municipio
+     * Set the value of idMunicipio
      *
-     * @param municipio new value of municipio
+     * @param idMunicipio new value of idMunicipio
      */
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
 
     /**
-     * Get the value of estado
+     * Get the value of idEstado
      *
-     * @return the value of estado
+     * @return the value of idEstado
      */
-    public Estado getEstado() {
-        return estado;
+    public int getIdEstado() {
+        return idEstado;
     }
 
     /**
-     * Set the value of estado
+     * Set the value of idEstado
      *
-     * @param estado new value of estado
+     * @param idEstado new value of idEstado
      */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     /**
@@ -285,7 +285,7 @@ public class Direccion {
 
     @Override
     public String toString() {
-        return "Direccion{" + "idDireccion=" + idDireccion + ", estado=" + estado + ", municipio=" + municipio + ", Localidad=" + Localidad + ", referencias=" + referencias + ", calleInteriorYNumero=" + calleInteriorYNumero + ", calleExteriorYNumero=" + calleExteriorYNumero + ", calleFrontal=" + calleFrontal + ", calleTrasera=" + calleTrasera + ", calleIzquierda=" + calleIzquierda + ", calleDerecha=" + calleDerecha + ", tipoAsentamiento=" + tipoAsentamiento + ", nombreAsentamiento=" + nombreAsentamiento + '}';
+        return "Direccion{" + "idDireccion=" + idDireccion + ", estado=" + idEstado + ", municipio=" + idMunicipio + ", Localidad=" + idLocalidad + ", referencias=" + referencias + ", calleInteriorYNumero=" + calleInteriorYNumero + ", calleExteriorYNumero=" + calleExteriorYNumero + ", calleFrontal=" + calleFrontal + ", calleTrasera=" + calleTrasera + ", calleIzquierda=" + calleIzquierda + ", calleDerecha=" + calleDerecha + ", tipoAsentamiento=" + tipoAsentamiento + ", nombreAsentamiento=" + nombreAsentamiento + '}';
     }
 
 }

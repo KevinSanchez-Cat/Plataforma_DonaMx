@@ -9,12 +9,12 @@ import java.util.Date;
 public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
 
     private int idRecursoTecnologico;
-    private Categoria categoria;
+    private int idCategoria;
     private String organizacionOCivil;
-    private Organizacion donador; //EN CASO DE QUE SEA UNA ORGANIZACION
-    private Usuario usuario; //CONTACTO QUE DA DE ALTA EL RECURSO.
+    private int idDonador; //EN CASO DE QUE SEA UNA ORGANIZACION
+    private int idUsuario; //CONTACTO QUE DA DE ALTA EL RECURSO.
     private int cantidadStock;
-    private Object recurso; //PUEDE SER EQUIPO COMPUTACIONAL, IMPRESORA, CAMARA, LICENCIA ...
+    private int idRecurso; //PUEDE SER EQUIPO COMPUTACIONAL, IMPRESORA, CAMARA, LICENCIA ...
     private String autorizado; //Pendiente, Autorizado, No autorizado
     private String estadoPublicacion;
     private boolean estadoLogico;
@@ -30,27 +30,27 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     public RecursoTecnologico() {
     }
 
-    public RecursoTecnologico(Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, String tipoSoftwarOHardware) {
-        this.categoria = categoria;
+    public RecursoTecnologico(int categoria, String organizacionOCivil, int donador, int usuario, int cantidadStock, int recurso, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, String tipoSoftwarOHardware) {
+        this.idCategoria = categoria;
         this.organizacionOCivil = organizacionOCivil;
-        this.donador = donador;
-        this.usuario = usuario;
+        this.idDonador = donador;
+        this.idUsuario = usuario;
         this.cantidadStock = cantidadStock;
-        this.recurso = recurso;
+        this.idRecurso = recurso;
         this.estadoLogico = estadoLogico;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaAutorizacion = fechaAutorizacion;
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
+    public RecursoTecnologico(int idRecursoTecnologico, int categoria, String organizacionOCivil, int donador, int usuario, int cantidadStock, int recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
         this.idRecursoTecnologico = idRecursoTecnologico;
-        this.categoria = categoria;
+        this.idCategoria = categoria;
         this.organizacionOCivil = organizacionOCivil;
-        this.donador = donador;
-        this.usuario = usuario;
+        this.idDonador = donador;
+        this.idUsuario = usuario;
         this.cantidadStock = cantidadStock;
-        this.recurso = recurso;
+        this.idRecurso = recurso;
         this.autorizado = autorizado;
         this.estadoPublicacion = estadoPublicacion;
         this.estadoLogico = estadoLogico;
@@ -263,21 +263,21 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     }
 
     /**
-     * Get the value of recurso
+     * Get the value of idRecurso
      *
-     * @return the value of recurso
+     * @return the value of idRecurso
      */
-    public Object getRecurso() {
-        return recurso;
+    public int getIdRecurso() {
+        return idRecurso;
     }
 
     /**
-     * Set the value of recurso
+     * Set the value of idRecurso
      *
-     * @param recurso new value of recurso
+     * @param idRecurso new value of idRecurso
      */
-    public void setRecurso(Object recurso) {
-        this.recurso = recurso;
+    public void setIdRecurso(int idRecurso) {
+        this.idRecurso = idRecurso;
     }
 
     /**
@@ -317,57 +317,57 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     }
 
     /**
-     * Get the value of usuario
+     * Get the value of idUsuario
      *
-     * @return the value of usuario
+     * @return the value of idUsuario
      */
-    public Usuario getUsuario() {
-        return usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Set the value of usuario
+     * Set the value of idUsuario
      *
-     * @param usuario new value of usuario
+     * @param idUsuario new value of idUsuario
      */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
-     * Get the value of donador
+     * Get the value of idDonador
      *
-     * @return the value of donador
+     * @return the value of idDonador
      */
-    public Organizacion getDonador() {
-        return donador;
+    public int getIdDonador() {
+        return idDonador;
     }
 
     /**
-     * Set the value of donador
+     * Set the value of idDonador
      *
-     * @param donador new value of donador
+     * @param idDonador new value of idDonador
      */
-    public void setDonador(Organizacion donador) {
-        this.donador = donador;
+    public void setIdDonador(int idDonador) {
+        this.idDonador = idDonador;
     }
 
     /**
-     * Get the value of categoria
+     * Get the value of idCategoria
      *
-     * @return the value of categoria
+     * @return the value of idCategoria
      */
-    public Categoria getCategoria() {
-        return categoria;
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
     /**
-     * Set the value of categoria
+     * Set the value of idCategoria
      *
-     * @param categoria new value of categoria
+     * @param idCategoria new value of idCategoria
      */
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     /**
@@ -390,7 +390,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
 
     @Override
     public String toString() {
-        return "RecursoTecnologico{" + "idRecursoTecnologico=" + idRecursoTecnologico + ", categoria=" + categoria + ", organizacionOCivil=" + organizacionOCivil + ", donador=" + donador + ", usuario=" + usuario + ", cantidadStock=" + cantidadStock + ", recurso=" + recurso + ", autorizado=" + autorizado + ", estadoPublicacion=" + estadoPublicacion + ", estadoLogico=" + estadoLogico + ", fechaPublicacion=" + fechaPublicacion + ", fechaAutorizacion=" + fechaAutorizacion + ", remunerado=" + remunerado + ", estadoCondicion=" + estadoCondicion + ", precioOriginal=" + precioOriginal + ", precioEstimado=" + precioEstimado + ", precioOfertado=" + precioOfertado + ", tipoSoftwarOHardware=" + tipoSoftwarOHardware + '}';
+        return "RecursoTecnologico{" + "idRecursoTecnologico=" + idRecursoTecnologico + ", categoria=" + idCategoria + ", organizacionOCivil=" + organizacionOCivil + ", donador=" + idDonador + ", usuario=" + idUsuario + ", cantidadStock=" + cantidadStock + ", recurso=" + idRecurso + ", autorizado=" + autorizado + ", estadoPublicacion=" + estadoPublicacion + ", estadoLogico=" + estadoLogico + ", fechaPublicacion=" + fechaPublicacion + ", fechaAutorizacion=" + fechaAutorizacion + ", remunerado=" + remunerado + ", estadoCondicion=" + estadoCondicion + ", precioOriginal=" + precioOriginal + ", precioEstimado=" + precioEstimado + ", precioOfertado=" + precioOfertado + ", tipoSoftwarOHardware=" + tipoSoftwarOHardware + '}';
     }
 
 }

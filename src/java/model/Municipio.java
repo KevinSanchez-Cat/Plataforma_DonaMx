@@ -11,39 +11,38 @@ public class Municipio {
 
     private int idMunicipio;
     private String municipio;
-    private List<Localidad> lstLocalidades;
+    private int idEstado;
 
     public Municipio() {
-        lstLocalidades = new ArrayList<>();
     }
 
-    public Municipio(String municipio) {
+    public Municipio(String municipio, int idEstado) {
         this.municipio = municipio;
-        lstLocalidades = new ArrayList<>();
+        this.idEstado = idEstado;
     }
 
-    public Municipio(int idMunicipio, String municipio, List<Localidad> lstLocalidades) {
+    public Municipio(int idMunicipio, String municipio, int idEstado) {
         this.idMunicipio = idMunicipio;
         this.municipio = municipio;
-        this.lstLocalidades = lstLocalidades;
+        this.idEstado = idEstado;
     }
 
     /**
-     * Get the value of lstLocalidades
+     * Get the value of idEstado
      *
-     * @return the value of lstLocalidades
+     * @return the value of idEstado
      */
-    public List<Localidad> getLstMunicipios() {
-        return lstLocalidades;
+    public int getIdEstado() {
+        return idEstado;
     }
 
     /**
-     * Set the value of lstLocalidades
+     * Set the value of idEstado
      *
-     * @param lstLocalidades new value of lstLocalidades
+     * @param idEstado new value of idEstado
      */
-    public void setLstMunicipios(List<Localidad> lstLocalidades) {
-        this.lstLocalidades = lstLocalidades;
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     /**
@@ -84,7 +83,7 @@ public class Municipio {
 
     @Override
     public String toString() {
-        return "Municipio{" + "idMunicipio=" + idMunicipio + ", municipio=" + municipio + ", lstLocalidades=" + lstLocalidades + '}';
+        return "Municipio{" + "idMunicipio=" + idMunicipio + ", municipio=" + municipio + ", idEstado=" + idEstado + '}';
     }
 
 }
