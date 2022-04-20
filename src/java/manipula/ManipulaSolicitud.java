@@ -24,21 +24,21 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> actualizar(String id) {
+    public GenericResponse<Solicitud> actualizar(int id) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Solicitud> editar(String id, Solicitud obj) {
+    public GenericResponse<Solicitud> editar(int id, Solicitud obj) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Solicitud> eliminar(String id) {
+    public GenericResponse<Solicitud> eliminar(int id) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public Solicitud encontrarId(String id) {
+    public Solicitud encontrarId(int id) {
         Solicitud response = new Solicitud();
 
         return response;

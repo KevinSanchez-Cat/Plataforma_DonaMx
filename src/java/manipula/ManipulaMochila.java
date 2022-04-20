@@ -24,21 +24,21 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public GenericResponse<Mochila> actualizar(String id) {
+    public GenericResponse<Mochila> actualizar(int id) {
         GenericResponse<Mochila> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Mochila> editar(String id, Mochila obj) {
+    public GenericResponse<Mochila> editar(int id, Mochila obj) {
         GenericResponse<Mochila> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Mochila> eliminar(String id) {
+    public GenericResponse<Mochila> eliminar(int id) {
         GenericResponse<Mochila> response = new GenericResponse<>();
         
         return response;
@@ -59,7 +59,7 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public Mochila encontrarId(String id) {
+    public Mochila encontrarId(int id) {
         Mochila response = new Mochila();
 
         return response;

@@ -24,21 +24,21 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> actualizar(String id) {
+    public GenericResponse<Notificacion> actualizar(int id) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Notificacion> editar(String id, Notificacion obj) {
+    public GenericResponse<Notificacion> editar(int id, Notificacion obj) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Notificacion> eliminar(String id) {
+    public GenericResponse<Notificacion> eliminar(int id) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public Notificacion encontrarId(String id) {
+    public Notificacion encontrarId(int id) {
         Notificacion response = new Notificacion();
 
         return response;

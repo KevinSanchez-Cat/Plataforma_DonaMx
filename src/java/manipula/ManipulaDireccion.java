@@ -24,21 +24,21 @@ public class ManipulaDireccion implements Manipula<Direccion> {
     }
 
     @Override
-    public GenericResponse<Direccion> actualizar(String id) {
+    public GenericResponse<Direccion> actualizar(int id) {
         GenericResponse<Direccion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Direccion> editar(String id, Direccion obj) {
+    public GenericResponse<Direccion> editar(int id, Direccion obj) {
         GenericResponse<Direccion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Direccion> eliminar(String id) {
+    public GenericResponse<Direccion> eliminar(int id) {
         GenericResponse<Direccion> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
     }
 
     @Override
-    public Direccion encontrarId(String id) {
+    public Direccion encontrarId(int id) {
         Direccion response = new Direccion();
 
         return response;

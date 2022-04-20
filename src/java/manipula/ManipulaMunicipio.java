@@ -24,21 +24,21 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
     }
 
     @Override
-    public GenericResponse<Municipio> actualizar(String id) {
+    public GenericResponse<Municipio> actualizar(int id) {
         GenericResponse<Municipio> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Municipio> editar(String id, Municipio obj) {
+    public GenericResponse<Municipio> editar(int id, Municipio obj) {
         GenericResponse<Municipio> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Municipio> eliminar(String id) {
+    public GenericResponse<Municipio> eliminar(int id) {
         GenericResponse<Municipio> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
     }
 
     @Override
-    public Municipio encontrarId(String id) {
+    public Municipio encontrarId(int id) {
         Municipio response = new Municipio();
 
         return response;

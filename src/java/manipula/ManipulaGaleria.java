@@ -24,21 +24,21 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> actualizar(String id) {
+    public GenericResponse<Galeria> actualizar(int id) {
         GenericResponse<Galeria> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Galeria> editar(String id, Galeria obj) {
+    public GenericResponse<Galeria> editar(int id, Galeria obj) {
         GenericResponse<Galeria> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Galeria> eliminar(String id) {
+    public GenericResponse<Galeria> eliminar(int id) {
         GenericResponse<Galeria> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public Galeria encontrarId(String id) {
+    public Galeria encontrarId(int id) {
         Galeria response = new Galeria();
 
         return response;

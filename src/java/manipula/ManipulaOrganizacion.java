@@ -24,21 +24,21 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public GenericResponse<Organizacion> actualizar(String id) {
+    public GenericResponse<Organizacion> actualizar(int id) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Organizacion> editar(String id, Organizacion obj) {
+    public GenericResponse<Organizacion> editar(int id, Organizacion obj) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Organizacion> eliminar(String id) {
+    public GenericResponse<Organizacion> eliminar(int id) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public Organizacion encontrarId(String id) {
+    public Organizacion encontrarId(int id) {
         Organizacion response = new Organizacion();
 
         return response;

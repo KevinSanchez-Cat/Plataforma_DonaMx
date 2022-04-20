@@ -24,21 +24,21 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> actualizar(String id) {
+    public GenericResponse<EquipoComputacional> actualizar(int id) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> editar(String id, EquipoComputacional obj) {
+    public GenericResponse<EquipoComputacional> editar(int id, EquipoComputacional obj) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> eliminar(String id) {
+    public GenericResponse<EquipoComputacional> eliminar(int id) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public EquipoComputacional encontrarId(String id) {
+    public EquipoComputacional encontrarId(int id) {
         EquipoComputacional response = new EquipoComputacional();
 
         return response;

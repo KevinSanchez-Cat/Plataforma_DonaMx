@@ -11,23 +11,23 @@ import utils.GenericResponse;
 /**
  *
  * @author por_s
- * @param <T>
+ * @param <T> objeto general
  */
 public interface Manipula<T> {
 
     public GenericResponse<T> registrar(T obj);
 
-    public GenericResponse<T> actualizar(String id);
+    public GenericResponse<T> actualizar(int id);
 
-    public GenericResponse<T> editar(String id, T obj);
+    public GenericResponse<T> editar(int id, T obj);
 
-    public GenericResponse<T> eliminar(String id);
+    public GenericResponse<T> eliminar(int id);
 
     public List<T> getData();
 
     public List<T> consultar(String... filtros);
 
-    public T encontrarId(String id);
+    public T encontrarId(int id);
 
     default GenericResponse<T> msjError(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");

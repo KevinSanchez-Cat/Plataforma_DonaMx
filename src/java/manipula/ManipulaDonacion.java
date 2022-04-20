@@ -24,21 +24,21 @@ public class ManipulaDonacion implements Manipula<Donacion> {
     }
 
     @Override
-    public GenericResponse<Donacion> actualizar(String id) {
+    public GenericResponse<Donacion> actualizar(int id) {
         GenericResponse<Donacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Donacion> editar(String id, Donacion obj) {
+    public GenericResponse<Donacion> editar(int id, Donacion obj) {
         GenericResponse<Donacion> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Donacion> eliminar(String id) {
+    public GenericResponse<Donacion> eliminar(int id) {
         GenericResponse<Donacion> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
     }
 
     @Override
-    public Donacion encontrarId(String id) {
+    public Donacion encontrarId(int id) {
         Donacion response = new Donacion();
 
         return response;

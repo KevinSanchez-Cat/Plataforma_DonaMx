@@ -24,21 +24,21 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> actualizar(String id) {
+    public GenericResponse<SistemaOperativo> actualizar(int id) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> editar(String id, SistemaOperativo obj) {
+    public GenericResponse<SistemaOperativo> editar(int id, SistemaOperativo obj) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> eliminar(String id) {
+    public GenericResponse<SistemaOperativo> eliminar(int id) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public SistemaOperativo encontrarId(String id) {
+    public SistemaOperativo encontrarId(int id) {
         SistemaOperativo response = new SistemaOperativo();
 
         return response;

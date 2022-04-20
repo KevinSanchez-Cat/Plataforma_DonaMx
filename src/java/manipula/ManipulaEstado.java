@@ -24,21 +24,21 @@ public class ManipulaEstado implements Manipula<Estado> {
     }
 
     @Override
-    public GenericResponse<Estado> actualizar(String id) {
+    public GenericResponse<Estado> actualizar(int id) {
         GenericResponse<Estado> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Estado> editar(String id, Estado obj) {
+    public GenericResponse<Estado> editar(int id, Estado obj) {
         GenericResponse<Estado> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Estado> eliminar(String id) {
+    public GenericResponse<Estado> eliminar(int id) {
         GenericResponse<Estado> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaEstado implements Manipula<Estado> {
     }
 
     @Override
-    public Estado encontrarId(String id) {
+    public Estado encontrarId(int id) {
         Estado response = new Estado();
 
         return response;

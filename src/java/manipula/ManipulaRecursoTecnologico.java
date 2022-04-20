@@ -24,21 +24,21 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> actualizar(String id) {
+    public GenericResponse<RecursoTecnologico> actualizar(int id) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> editar(String id, RecursoTecnologico obj) {
+    public GenericResponse<RecursoTecnologico> editar(int id, RecursoTecnologico obj) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> eliminar(String id) {
+    public GenericResponse<RecursoTecnologico> eliminar(int id) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public RecursoTecnologico encontrarId(String id) {
+    public RecursoTecnologico encontrarId(int id) {
         RecursoTecnologico response = new RecursoTecnologico();
 
         return response;

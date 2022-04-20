@@ -24,21 +24,21 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public GenericResponse<Archivo> actualizar(String id) {
+    public GenericResponse<Archivo> actualizar(int id) {
         GenericResponse<Archivo> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Archivo> editar(String id, Archivo obj) {
+    public GenericResponse<Archivo> editar(int id, Archivo obj) {
         GenericResponse<Archivo> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Archivo> eliminar(String id) {
+    public GenericResponse<Archivo> eliminar(int id) {
         GenericResponse<Archivo> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public Archivo encontrarId(String id) {
+    public Archivo encontrarId(int id) {
         Archivo response = new Archivo();
 
         return response;

@@ -24,21 +24,21 @@ public class ManipulaLocalidad implements Manipula<Localidad> {
     }
 
     @Override
-    public GenericResponse<Localidad> actualizar(String id) {
+    public GenericResponse<Localidad> actualizar(int id) {
         GenericResponse<Localidad> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Localidad> editar(String id, Localidad obj) {
+    public GenericResponse<Localidad> editar(int id, Localidad obj) {
         GenericResponse<Localidad> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Localidad> eliminar(String id) {
+    public GenericResponse<Localidad> eliminar(int id) {
         GenericResponse<Localidad> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaLocalidad implements Manipula<Localidad> {
     }
 
     @Override
-    public Localidad encontrarId(String id) {
+    public Localidad encontrarId(int id) {
         Localidad response = new Localidad();
 
         return response;

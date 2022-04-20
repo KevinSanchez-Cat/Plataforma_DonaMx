@@ -24,21 +24,21 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
     }
 
     @Override
-    public GenericResponse<Estudiante> actualizar(String id) {
+    public GenericResponse<Estudiante> actualizar(int id) {
         GenericResponse<Estudiante> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Estudiante> editar(String id, Estudiante obj) {
+    public GenericResponse<Estudiante> editar(int id, Estudiante obj) {
         GenericResponse<Estudiante> response = new GenericResponse<>();
 
         return response;
     }
 
     @Override
-    public GenericResponse<Estudiante> eliminar(String id) {
+    public GenericResponse<Estudiante> eliminar(int id) {
         GenericResponse<Estudiante> response = new GenericResponse<>();
 
         return response;
@@ -59,7 +59,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
     }
 
     @Override
-    public Estudiante encontrarId(String id) {
+    public Estudiante encontrarId(int id) {
         Estudiante response = new Estudiante();
 
         return response;
