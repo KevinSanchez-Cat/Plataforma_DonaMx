@@ -22,6 +22,12 @@ public class Estado {
         lstMunicipios = new ArrayList<>();
     }
 
+    public Estado(int idEstado, String estado, List<Municipio> lstMunicipios) {
+        this.idEstado = idEstado;
+        this.estado = estado;
+        this.lstMunicipios = lstMunicipios;
+    }
+
     /**
      * Get the value of lstMunicipios
      *

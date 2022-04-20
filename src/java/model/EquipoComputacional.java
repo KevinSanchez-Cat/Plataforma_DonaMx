@@ -35,6 +35,22 @@ public class EquipoComputacional {
         this.galeria = galeria;
     }
 
+    public EquipoComputacional(int idEquipoComputacional, String nombre, RecursoTecnologico recursoTecnologico, String marca, SistemaOperativo sistemaOperativo, String modelo, String color, String memoriaRAM, String tipoRAM, String velocidadRAM, String capacidadMaxRAM, boolean nuevo, List<Galeria> galeria) {
+        this.idEquipoComputacional = idEquipoComputacional;
+        this.nombre = nombre;
+        this.recursoTecnologico = recursoTecnologico;
+        this.marca = marca;
+        this.sistemaOperativo = sistemaOperativo;
+        this.modelo = modelo;
+        this.color = color;
+        this.memoriaRAM = memoriaRAM;
+        this.tipoRAM = tipoRAM;
+        this.velocidadRAM = velocidadRAM;
+        this.capacidadMaxRAM = capacidadMaxRAM;
+        this.nuevo = nuevo;
+        this.galeria = galeria;
+    }
+
     /**
      * Get the value of galeria
      *

@@ -27,6 +27,16 @@ public class Solicitud {
         this.fechaSolicitud = fechaSolicitud;
     }
 
+    public Solicitud(int idSolicitud, Usuario usuario, RecursoTecnologico recursoTecnologico, Archivo archivo, String estadoSolicitud, Date fechaSolicitud, Date fechaRespuesta) {
+        this.idSolicitud = idSolicitud;
+        this.usuario = usuario;
+        this.recursoTecnologico = recursoTecnologico;
+        this.archivo = archivo;
+        this.estadoSolicitud = estadoSolicitud;
+        this.fechaSolicitud = fechaSolicitud;
+        this.fechaRespuesta = fechaRespuesta;
+    }
+
     /**
      * Get the value of fechaRespuesta
      *

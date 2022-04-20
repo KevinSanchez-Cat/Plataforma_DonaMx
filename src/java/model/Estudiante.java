@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -43,6 +44,30 @@ public class Estudiante extends UsuarioGeneral {
         this.nacionalidad = nacionalidad;
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
+    }
+
+    public Estudiante(int idEstudiante, Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+        super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
+        this.idEstudiante = idEstudiante;
+        this.usuario = usuario;
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.presentacion = presentacion;
+        this.numeroTelMovil = numeroTelMovil;
+        this.numeroTelFijo = numeroTelFijo;
+        this.lugarNacimiento = lugarNacimiento;
+        this.nacionalidad = nacionalidad;
+        this.nivelEducativo = nivelEducativo;
+        this.ocupacion = ocupacion;
+        this.tipoEscuela = tipoEscuela;
+        this.gradoEscolar = gradoEscolar;
+        this.promedioAnterior = promedioAnterior;
+        this.estatusEscolar = estatusEscolar;
+        this.intereses = intereses;
+        this.habilidades = habilidades;
     }
 
     /**

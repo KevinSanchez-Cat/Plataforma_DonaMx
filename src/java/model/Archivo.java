@@ -28,6 +28,16 @@ public class Archivo {
         this.usuario = usuario;
     }
 
+    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, Usuario usuario) {
+        this.idArchivo = idArchivo;
+        this.nombreArchivo = nombreArchivo;
+        this.extension = extension;
+        this.tamanio = tamanio;
+        this.fechaCreacion = fechaCreacion;
+        this.urlDestino = urlDestino;
+        this.usuario = usuario;
+    }
+
     /**
      * Get the value of usuario
      *

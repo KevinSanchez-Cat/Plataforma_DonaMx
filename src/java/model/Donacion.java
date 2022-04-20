@@ -1,7 +1,7 @@
-
 package model;
 
 import java.util.Date;
+
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
@@ -19,6 +19,29 @@ public class Donacion {
     private boolean remunerado;
 
     public Donacion() {
+    }
+
+    public Donacion(Usuario donatario, Object donador, Archivo archivo, RecursoTecnologico recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+        this.donatario = donatario;
+        this.donador = donador;
+        this.archivo = archivo;
+        this.recursoTecnologico = recursoTecnologico;
+        this.fechaDonacion = fechaDonacion;
+        this.estadoDonacion = estadoDonacion;
+        this.noConfirmacion = noConfirmacion;
+        this.remunerado = remunerado;
+    }
+
+    public Donacion(int idDonacion, Usuario donatario, Object donador, Archivo archivo, RecursoTecnologico recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+        this.idDonacion = idDonacion;
+        this.donatario = donatario;
+        this.donador = donador;
+        this.archivo = archivo;
+        this.recursoTecnologico = recursoTecnologico;
+        this.fechaDonacion = fechaDonacion;
+        this.estadoDonacion = estadoDonacion;
+        this.noConfirmacion = noConfirmacion;
+        this.remunerado = remunerado;
     }
 
     /**
@@ -188,5 +211,4 @@ public class Donacion {
         return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + donatario + ", donador=" + donador + ", archivo=" + archivo + ", recursoTecnologico=" + recursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
     }
 
-   
 }

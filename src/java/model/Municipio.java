@@ -22,6 +22,12 @@ public class Municipio {
         lstLocalidades = new ArrayList<>();
     }
 
+    public Municipio(int idMunicipio, String municipio, List<Localidad> lstLocalidades) {
+        this.idMunicipio = idMunicipio;
+        this.municipio = municipio;
+        this.lstLocalidades = lstLocalidades;
+    }
+
     /**
      * Get the value of lstLocalidades
      *

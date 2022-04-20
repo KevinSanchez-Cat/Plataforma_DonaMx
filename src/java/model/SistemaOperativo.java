@@ -20,6 +20,13 @@ public class SistemaOperativo {
         this.edicion = edicion;
     }
 
+    public SistemaOperativo(int idSistemaOperativo, String sistemaOperativo, String version, String edicion) {
+        this.idSistemaOperativo = idSistemaOperativo;
+        this.sistemaOperativo = sistemaOperativo;
+        this.version = version;
+        this.edicion = edicion;
+    }
+
     /**
      * Get the value of edicion
      *

@@ -24,6 +24,14 @@ public class Notificacion {
         this.prioridad = prioridad;
     }
 
+    public Notificacion(int idNotificacion, int idUsuarioDestino, Date fechaNotificacion, String estadoVisualizacion, String prioridad) {
+        this.idNotificacion = idNotificacion;
+        this.idUsuarioDestino = idUsuarioDestino;
+        this.fechaNotificacion = fechaNotificacion;
+        this.estadoVisualizacion = estadoVisualizacion;
+        this.prioridad = prioridad;
+    }
+
     /**
      * Get the value of prioridad
      *

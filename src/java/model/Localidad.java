@@ -18,6 +18,12 @@ public class Localidad {
         this.codigoPostal = codigoPostal;
     }
 
+    public Localidad(int idLocalidad, String localidad, int codigoPostal) {
+        this.idLocalidad = idLocalidad;
+        this.localidad = localidad;
+        this.codigoPostal = codigoPostal;
+    }
+
     /**
      * Get the value of codigoPostal
      *

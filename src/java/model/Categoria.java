@@ -17,6 +17,12 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
     }
 
+    public Categoria(int idCategoria, String nombreCategoria, String descripcion) {
+        this.idCategoria = idCategoria;
+        this.nombreCategoria = nombreCategoria;
+        this.descripcion = descripcion;
+    }
+
     /**
      * Get the value of descripcion
      *

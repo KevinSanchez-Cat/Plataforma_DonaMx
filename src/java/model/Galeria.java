@@ -24,6 +24,15 @@ public class Galeria {
         this.urlDestino = urlDestino;
     }
 
+    public Galeria(int idGaleria, Usuario usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
+        this.idGaleria = idGaleria;
+        this.usuario = usuario;
+        this.nombreImagen = nombreImagen;
+        this.tamanio = tamanio;
+        this.extension = extension;
+        this.urlDestino = urlDestino;
+    }
+
     /**
      * Get the value of urlDestino
      *

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
@@ -31,6 +33,21 @@ public class Organizacion extends UsuarioGeneral {
         this.numeroTelMovil = numeroTelMovil;
         this.email = email;
         this.tipoOrganizacion = tipoOrganizacion;
+    }
+
+    public Organizacion(int idOrganizacion, Usuario usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+        super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
+        this.idOrganizacion = idOrganizacion;
+        this.usuario = usuario;
+        this.reciboDeducible = reciboDeducible;
+        this.razonSocial = razonSocial;
+        this.rfc = rfc;
+        this.numeroTelFijo = numeroTelFijo;
+        this.numeroTelMovil = numeroTelMovil;
+        this.email = email;
+        this.sitioWeb = sitioWeb;
+        this.tipoOrganizacion = tipoOrganizacion;
+        this.autorizada = autorizada;
     }
 
     /**

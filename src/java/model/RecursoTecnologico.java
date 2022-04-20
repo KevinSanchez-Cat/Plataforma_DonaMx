@@ -43,6 +43,27 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
     }
 
+    public RecursoTecnologico(int idRecursoTecnologico, Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
+        this.idRecursoTecnologico = idRecursoTecnologico;
+        this.categoria = categoria;
+        this.organizacionOCivil = organizacionOCivil;
+        this.donador = donador;
+        this.usuario = usuario;
+        this.cantidadStock = cantidadStock;
+        this.recurso = recurso;
+        this.autorizado = autorizado;
+        this.estadoPublicacion = estadoPublicacion;
+        this.estadoLogico = estadoLogico;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaAutorizacion = fechaAutorizacion;
+        this.remunerado = remunerado;
+        this.estadoCondicion = estadoCondicion;
+        this.precioOriginal = precioOriginal;
+        this.precioEstimado = precioEstimado;
+        this.precioOfertado = precioOfertado;
+        this.tipoSoftwarOHardware = tipoSoftwarOHardware;
+    }
+
     /**
      * Get the value of tipoSoftwarOHardware
      *

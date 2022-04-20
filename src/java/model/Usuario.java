@@ -41,6 +41,25 @@ public class Usuario {
         this.rol = rol;
     }
 
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, Rol rol, String foto, boolean numeroCelularConfirmado) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.contraseniia = contraseniia;
+        this.ultimaConexion = ultimaConexion;
+        this.estadoCuenta = estadoCuenta;
+        this.conectado = conectado;
+        this.correoElectronico = correoElectronico;
+        this.correoConfirmado = correoConfirmado;
+        this.numeroCelular = numeroCelular;
+        this.autenticacionDosPasos = autenticacionDosPasos;
+        this.conteoAccesosFallidos = conteoAccesosFallidos;
+        this.estadoLogico = estadoLogico;
+        this.fechaCreacion = fechaCreacion;
+        this.rol = rol;
+        this.foto = foto;
+        this.numeroCelularConfirmado = numeroCelularConfirmado;
+    }
+
     /**
      * Get the value of numeroCelularConfirmado
      *
