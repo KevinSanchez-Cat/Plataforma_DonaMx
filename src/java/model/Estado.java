@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +19,12 @@ public class Estado {
     private List<Municipio> lstMunicipios;
 
     public Estado() {
+        lstMunicipios=new ArrayList<>();
     }
 
-    public Estado(int idEstado, String estado) {
-        this.idEstado = idEstado;
+    public Estado( String estado) {
         this.estado = estado;
+        lstMunicipios=new ArrayList<>();
     }
 
     /**

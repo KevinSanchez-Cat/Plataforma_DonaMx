@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +19,12 @@ public class Municipio {
     private List<Localidad> lstLocalidades;
 
     public Municipio() {
+        lstLocalidades=new ArrayList<>();
     }
 
-    public Municipio(int idMunicipio, String municipio) {
-        this.idMunicipio = idMunicipio;
+    public Municipio(String municipio) {
         this.municipio = municipio;
+        lstLocalidades=new ArrayList<>();
     }
 
     /**

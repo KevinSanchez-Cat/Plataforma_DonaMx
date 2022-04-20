@@ -5,18 +5,19 @@
  */
 package model;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  *
  * @author por_s
  */
+
 public class Usuario {
 
     private int idUsuario;
     private String nombreUsuario;
     private String contraseniia;
-    private String ultimaConexion;//DATE TIME
+    private Date ultimaConexion;//DATE TIME
     private String estadoCuenta;
     private boolean conectado;
     private String correoElectronico;
@@ -24,26 +25,98 @@ public class Usuario {
     private int numeroCelular;
     private boolean autenticacionDosPasos;
     private int conteoAccesosFallidos;
-
+    private boolean estadoLogico;
+    private Date fechaCreacion;
     private Rol rol;
+    private String foto;
+    private boolean numeroCelularConfirmado;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, String fechaCreacion, String ultimaConexion, String estadoCuenta, boolean estadoLogico, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, String fotoUsuario, Rol rol, List<Notificacion> lstNotificaciones, boolean celularConfirmado) {
-        this.idUsuario = idUsuario;
+    //para crear en la bd
+    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Date fechaCreacion, Rol rol) {
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
-        this.ultimaConexion = ultimaConexion;
         this.estadoCuenta = estadoCuenta;
-        this.conectado = conectado;
         this.correoElectronico = correoElectronico;
-        this.correoConfirmado = correoConfirmado;
         this.numeroCelular = numeroCelular;
-        this.autenticacionDosPasos = autenticacionDosPasos;
-        this.conteoAccesosFallidos = conteoAccesosFallidos;
+        this.conteoAccesosFallidos = 0;
+        this.estadoLogico = estadoLogico;
+        this.fechaCreacion = fechaCreacion;
         this.rol = rol;
-        this.celularConfirmado = celularConfirmado;
+    }
+
+    /**
+     * Get the value of numeroCelularConfirmado
+     *
+     * @return the value of numeroCelularConfirmado
+     */
+    public boolean isNumeroCelularConfirmado() {
+        return numeroCelularConfirmado;
+    }
+
+    /**
+     * Set the value of numeroCelularConfirmado
+     *
+     * @param numeroCelularConfirmado new value of numeroCelularConfirmado
+     */
+    public void setNumeroCelularConfirmado(boolean numeroCelularConfirmado) {
+        this.numeroCelularConfirmado = numeroCelularConfirmado;
+    }
+
+    /**
+     * Get the value of foto
+     *
+     * @return the value of foto
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * Set the value of foto
+     *
+     * @param foto new value of foto
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    /**
+     * Get the value of estadoLogico
+     *
+     * @return the value of estadoLogico
+     */
+    public boolean isEstadoLogico() {
+        return estadoLogico;
+    }
+
+    /**
+     * Set the value of estadoLogico
+     *
+     * @param estadoLogico new value of estadoLogico
+     */
+    public void setEstadoLogico(boolean estadoLogico) {
+        this.estadoLogico = estadoLogico;
+    }
+
+    /**
+     * Get the value of fechaCreacion
+     *
+     * @return the value of fechaCreacion
+     */
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    /**
+     * Set the value of fechaCreacion
+     *
+     * @param fechaCreacion new value of fechaCreacion
+     */
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     /**
@@ -98,26 +171,6 @@ public class Usuario {
      */
     public void setAutenticacionDosPasos(boolean autenticacionDosPasos) {
         this.autenticacionDosPasos = autenticacionDosPasos;
-    }
-
-    private boolean celularConfirmado;
-
-    /**
-     * Get the value of celularConfirmado
-     *
-     * @return the value of celularConfirmado
-     */
-    public boolean isCelularConfirmado() {
-        return celularConfirmado;
-    }
-
-    /**
-     * Set the value of celularConfirmado
-     *
-     * @param celularConfirmado new value of celularConfirmado
-     */
-    public void setCelularConfirmado(boolean celularConfirmado) {
-        this.celularConfirmado = celularConfirmado;
     }
 
     /**
@@ -215,7 +268,7 @@ public class Usuario {
      *
      * @return the value of ultimaConexion
      */
-    public String getUltimaConexion() {
+    public Date getUltimaConexion() {
         return ultimaConexion;
     }
 
@@ -224,7 +277,7 @@ public class Usuario {
      *
      * @param ultimaConexion new value of ultimaConexion
      */
-    public void setUltimaConexion(String ultimaConexion) {
+    public void setUltimaConexion(Date ultimaConexion) {
         this.ultimaConexion = ultimaConexion;
     }
 

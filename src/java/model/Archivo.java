@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author por_s
@@ -15,15 +17,14 @@ public class Archivo {
     private String nombreArchivo;
     private String extension;
     private double tamanio;
-    private String fechaCreacion;//DATE TIME   
+    private Date fechaCreacion;//DATE TIME   
     private String urlDestino;
     private Usuario usuario;
 
     public Archivo() {
     }
 
-    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, String fechaCreacion, String urlDestino, Usuario usuario) {
-        this.idArchivo = idArchivo;
+    public Archivo(String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, Usuario usuario) {
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
         this.tamanio = tamanio;
@@ -73,7 +74,7 @@ public class Archivo {
      *
      * @return the value of fechaCreacion
      */
-    public String getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
@@ -82,7 +83,7 @@ public class Archivo {
      *
      * @param fechaCreacion new value of fechaCreacion
      */
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 

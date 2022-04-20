@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -16,26 +16,14 @@ public class Donacion {
     private int idDonacion;
     private Usuario donatario;
     private Object donador; //PUEDE SER ORGANIZACION O USUARIO CIVIL EL DONADOR ***usar el instance of   
-    private List<Archivo> lstArchivos;
+    private Archivo archivo;
     private RecursoTecnologico recursoTecnologico;
-    private String fechaDonacion;//DATE TIME    
+    private Date fechaDonacion;//DATE TIME    
     private String estadoDonacion;
     private String noConfirmacion;
-    private String remunerado;
+    private boolean remunerado;
 
     public Donacion() {
-    }
-
-    public Donacion(int idDonacion, Usuario donatario, Object donador, List<Archivo> lstArchivos, RecursoTecnologico recursoTecnologico, String fechaDonacion, String estadoDonacion, String noConfirmacion, String remunerado) {
-        this.idDonacion = idDonacion;
-        this.donatario = donatario;
-        this.donador = donador;
-        this.lstArchivos = lstArchivos;
-        this.recursoTecnologico = recursoTecnologico;
-        this.fechaDonacion = fechaDonacion;
-        this.estadoDonacion = estadoDonacion;
-        this.noConfirmacion = noConfirmacion;
-        this.remunerado = remunerado;
     }
 
     /**
@@ -43,7 +31,7 @@ public class Donacion {
      *
      * @return the value of remunerado
      */
-    public String getRemunerado() {
+    public boolean getRemunerado() {
         return remunerado;
     }
 
@@ -52,7 +40,7 @@ public class Donacion {
      *
      * @param remunerado new value of remunerado
      */
-    public void setRemunerado(String remunerado) {
+    public void setRemunerado(boolean remunerado) {
         this.remunerado = remunerado;
     }
 
@@ -97,7 +85,7 @@ public class Donacion {
      *
      * @return the value of fechaDonacion
      */
-    public String getFechaDonacion() {
+    public Date getFechaDonacion() {
         return fechaDonacion;
     }
 
@@ -106,7 +94,7 @@ public class Donacion {
      *
      * @param fechaDonacion new value of fechaDonacion
      */
-    public void setFechaDonacion(String fechaDonacion) {
+    public void setFechaDonacion(Date fechaDonacion) {
         this.fechaDonacion = fechaDonacion;
     }
 
@@ -129,21 +117,21 @@ public class Donacion {
     }
 
     /**
-     * Get the value of lstArchivos
+     * Get the value of archivo
      *
-     * @return the value of lstArchivos
+     * @return the value of archivo
      */
-    public List<Archivo> getLstArchivos() {
-        return lstArchivos;
+    public Archivo getArchivo() {
+        return archivo;
     }
 
     /**
-     * Set the value of lstArchivos
+     * Set the value of archivo
      *
-     * @param lstArchivos new value of lstArchivos
+     * @param archivo new value of archivo
      */
-    public void setLstArchivos(List<Archivo> lstArchivos) {
-        this.lstArchivos = lstArchivos;
+    public void setLstArchivos(Archivo archivo) {
+        this.archivo = archivo;
     }
 
     /**
@@ -202,7 +190,8 @@ public class Donacion {
 
     @Override
     public String toString() {
-        return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + donatario + ", donador=" + donador + ", lstArchivos=" + lstArchivos + ", recursoTecnologico=" + recursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
+        return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + donatario + ", donador=" + donador + ", archivo=" + archivo + ", recursoTecnologico=" + recursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
     }
 
+   
 }

@@ -11,11 +11,11 @@ import utils.GenericResponse;
 public class Prb {
 
     public static void main(String[] args) {
-        ManipulaRol m = new ManipulaRol();
+        Manipula m = new ManipulaRol();
         Rol role = new Rol();
         role.setIdRol(1);
-        role.setRol("Programador");
-        GenericResponse<Rol> respuesta = m.editar(role.getIdRol(),role);
+        role.setRol("Administrador");
+        GenericResponse<Rol> respuesta = m.registrar(role);
         System.out.println(respuesta.getMensaje());
 
         List<Rol> lst = m.getData();

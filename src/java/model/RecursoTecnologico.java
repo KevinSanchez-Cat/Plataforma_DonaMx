@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author por_s
@@ -21,9 +23,9 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private String autorizado; //Pendiente, Autorizado, No autorizado
     private String estadoPublicacion;
     private boolean estadoLogico;
-    private String fechaPublicacion;//DATE TIME
-    private String fechaAutorizacion;//DATE TIME    
-    private String remunerado;
+    private Date fechaPublicacion;//DATE TIME
+    private Date fechaAutorizacion;//DATE TIME    
+    private boolean remunerado;
     private String estadoCondicion;
     private double precioOriginal;
     private double precioEstimado;
@@ -33,24 +35,16 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     public RecursoTecnologico() {
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, String fechaPublicacion, String fechaAutorizacion, String remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
-        this.idRecursoTecnologico = idRecursoTecnologico;
+    public RecursoTecnologico(Categoria categoria, String organizacionOCivil, Organizacion donador, Usuario usuario, int cantidadStock, Object recurso, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, String tipoSoftwarOHardware) {
         this.categoria = categoria;
         this.organizacionOCivil = organizacionOCivil;
         this.donador = donador;
         this.usuario = usuario;
         this.cantidadStock = cantidadStock;
         this.recurso = recurso;
-        this.autorizado = autorizado;
-        this.estadoPublicacion = estadoPublicacion;
         this.estadoLogico = estadoLogico;
         this.fechaPublicacion = fechaPublicacion;
         this.fechaAutorizacion = fechaAutorizacion;
-        this.remunerado = remunerado;
-        this.estadoCondicion = estadoCondicion;
-        this.precioOriginal = precioOriginal;
-        this.precioEstimado = precioEstimado;
-        this.precioOfertado = precioOfertado;
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
     }
 
@@ -149,7 +143,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of remunerado
      */
-    public String getRemunerado() {
+    public boolean getRemunerado() {
         return remunerado;
     }
 
@@ -158,7 +152,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param remunerado new value of remunerado
      */
-    public void setRemunerado(String remunerado) {
+    public void setRemunerado(boolean remunerado) {
         this.remunerado = remunerado;
     }
 
@@ -167,7 +161,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of fechaAutorizacion
      */
-    public String getFechaAutorizacion() {
+    public Date getFechaAutorizacion() {
         return fechaAutorizacion;
     }
 
@@ -176,7 +170,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param fechaAutorizacion new value of fechaAutorizacion
      */
-    public void setFechaAutorizacion(String fechaAutorizacion) {
+    public void setFechaAutorizacion(Date fechaAutorizacion) {
         this.fechaAutorizacion = fechaAutorizacion;
     }
 
@@ -185,7 +179,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of fechaPublicacion
      */
-    public String getFechaPublicacion() {
+    public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
 
@@ -194,7 +188,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @param fechaPublicacion new value of fechaPublicacion
      */
-    public void setFechaPublicacion(String fechaPublicacion) {
+    public void setFechaPublicacion(Date fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 

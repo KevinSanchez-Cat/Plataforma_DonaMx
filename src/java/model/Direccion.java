@@ -28,21 +28,16 @@ public class Direccion {
     public Direccion() {
     }
 
-    public Direccion(int idDireccion, Estado estado, Municipio municipio, Localidad Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento) {
-        this.idDireccion = idDireccion;
+    public Direccion(Estado estado, Municipio municipio, Localidad Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String nombreAsentamiento) {
         this.estado = estado;
         this.municipio = municipio;
         this.Localidad = Localidad;
         this.referencias = referencias;
         this.calleInteriorYNumero = calleInteriorYNumero;
         this.calleExteriorYNumero = calleExteriorYNumero;
-        this.calleFrontal = calleFrontal;
-        this.calleTrasera = calleTrasera;
-        this.calleIzquierda = calleIzquierda;
-        this.calleDerecha = calleDerecha;
-        this.tipoAsentamiento = tipoAsentamiento;
         this.nombreAsentamiento = nombreAsentamiento;
     }
+
 
     /**
      * Get the value of nombreAsentamiento

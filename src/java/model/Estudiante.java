@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Estudiante extends UsuarioGeneral {
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private String fechaNacimiento;//DATE
+    private Date fechaNacimiento;//DATE
     private String genero;
     private String presentacion;
     private int numeroTelMovil;
@@ -30,7 +30,7 @@ public class Estudiante extends UsuarioGeneral {
     private String tipoEscuela; //OTRA TABLA DE LAS ESCUELAS Y TIPOS DE ESCUELAS
     private String gradoEscolar;
     private double promedioAnterior;
-    private String estatusEscolar;
+    private boolean estatusEscolar;
     private String intereses;
     private String habilidades;
 
@@ -38,28 +38,16 @@ public class Estudiante extends UsuarioGeneral {
         super();
     }
 
-    public Estudiante(int idEstudiante, Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, String estatusEscolar, String intereses, String habilidades) {
-        super();
-        this.idEstudiante = idEstudiante;
+    public Estudiante(Usuario usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String nacionalidad, String nivelEducativo, String ocupacion) {
         this.usuario = usuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
-        this.presentacion = presentacion;
-        this.numeroTelMovil = numeroTelMovil;
-        this.numeroTelFijo = numeroTelFijo;
-        this.lugarNacimiento = lugarNacimiento;
         this.nacionalidad = nacionalidad;
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
-        this.tipoEscuela = tipoEscuela;
-        this.gradoEscolar = gradoEscolar;
-        this.promedioAnterior = promedioAnterior;
-        this.estatusEscolar = estatusEscolar;
-        this.intereses = intereses;
-        this.habilidades = habilidades;
     }
 
     /**
@@ -103,7 +91,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @return the value of estatusEscolar
      */
-    public String getEstatusEscolar() {
+    public boolean isEstatusEscolar() {
         return estatusEscolar;
     }
 
@@ -112,7 +100,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @param estatusEscolar new value of estatusEscolar
      */
-    public void setEstatusEscolar(String estatusEscolar) {
+    public void setEstatusEscolar(boolean estatusEscolar) {
         this.estatusEscolar = estatusEscolar;
     }
 
@@ -319,7 +307,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @return the value of fechaNacimiento
      */
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -328,7 +316,7 @@ public class Estudiante extends UsuarioGeneral {
      *
      * @param fechaNacimiento new value of fechaNacimiento
      */
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

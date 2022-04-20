@@ -19,8 +19,7 @@ public class SistemaOperativo {
     public SistemaOperativo() {
     }
 
-    public SistemaOperativo(int idSistemaOperativo, String sistemaOperativo, String version, String edicion) {
-        this.idSistemaOperativo = idSistemaOperativo;
+    public SistemaOperativo(String sistemaOperativo, String version, String edicion) {
         this.sistemaOperativo = sistemaOperativo;
         this.version = version;
         this.edicion = edicion;

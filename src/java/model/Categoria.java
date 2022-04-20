@@ -13,13 +13,12 @@ public class Categoria {
 
     private int idCategoria;
     private String nombreCategoria;
-    private String descripcion = "Sin descripcion";
+    private String descripcion;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, String nombreCategoria) {
-        this.idCategoria = idCategoria;
+    public Categoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
 

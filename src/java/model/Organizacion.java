@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.util.List;
 
 /**
  *
@@ -15,7 +14,7 @@ public class Organizacion extends UsuarioGeneral {
 
     private int idOrganizacion;
     private Usuario usuario;
-    private String reciboDeducible;
+    private boolean reciboDeducible;
     private String razonSocial;
     private String rfc;
     private int numeroTelFijo;
@@ -23,15 +22,13 @@ public class Organizacion extends UsuarioGeneral {
     private String email;
     private String sitioWeb;
     private String tipoOrganizacion;
-    private boolean autorizada;
+    private String autorizada;
 
     public Organizacion() {
         super();
     }
 
-    public Organizacion(int idOrganizacion, Usuario usuario, String reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, boolean autorizada) {
-        super();
-        this.idOrganizacion = idOrganizacion;
+    public Organizacion(Usuario usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
         this.usuario = usuario;
         this.reciboDeducible = reciboDeducible;
         this.razonSocial = razonSocial;
@@ -39,9 +36,7 @@ public class Organizacion extends UsuarioGeneral {
         this.numeroTelFijo = numeroTelFijo;
         this.numeroTelMovil = numeroTelMovil;
         this.email = email;
-        this.sitioWeb = sitioWeb;
         this.tipoOrganizacion = tipoOrganizacion;
-        this.autorizada = autorizada;
     }
 
     /**
@@ -49,7 +44,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @return the value of autorizada
      */
-    public boolean isAutorizada() {
+    public String getAutorizada() {
         return autorizada;
     }
 
@@ -58,7 +53,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @param autorizada new value of autorizada
      */
-    public void setAutorizada(boolean autorizada) {
+    public void setAutorizada(String autorizada) {
         this.autorizada = autorizada;
     }
 
@@ -193,7 +188,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @return the value of reciboDeducible
      */
-    public String getReciboDeducible() {
+    public boolean isReciboDeducible() {
         return reciboDeducible;
     }
 
@@ -202,7 +197,7 @@ public class Organizacion extends UsuarioGeneral {
      *
      * @param reciboDeducible new value of reciboDeducible
      */
-    public void setReciboDeducible(String reciboDeducible) {
+    public void setReciboDeducible(boolean reciboDeducible) {
         this.reciboDeducible = reciboDeducible;
     }
 

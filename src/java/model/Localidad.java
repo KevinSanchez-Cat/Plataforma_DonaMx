@@ -18,8 +18,7 @@ public class Localidad {
     public Localidad() {
     }
 
-    public Localidad(int idLocalidad, String localidad, int codigoPostal) {
-        this.idLocalidad = idLocalidad;
+    public Localidad(String localidad, int codigoPostal) {
         this.localidad = localidad;
         this.codigoPostal = codigoPostal;
     }

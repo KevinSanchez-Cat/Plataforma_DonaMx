@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author por_s
@@ -12,23 +14,21 @@ package model;
 public class Notificacion {
 
     private int idNotificacion;
-    private String idUsuarioOrigen;
-    private String idUsuarioDestino;
-    private String fechaNotificacion;//DATE TIME
+    private int idUsuarioDestino;
+    private Date fechaNotificacion;//DATE TIME
     private String estadoVisualizacion;
     private String prioridad;
 
     public Notificacion() {
     }
 
-    public Notificacion(int idNotificacion, String idUsuarioOrigen, String idUsuarioDestino, String fechaNotificacion, String estadoVisualizacion, String prioridad) {
-        this.idNotificacion = idNotificacion;
-        this.idUsuarioOrigen = idUsuarioOrigen;
+    public Notificacion(int idUsuarioDestino, Date fechaNotificacion, String estadoVisualizacion, String prioridad) {
         this.idUsuarioDestino = idUsuarioDestino;
         this.fechaNotificacion = fechaNotificacion;
         this.estadoVisualizacion = estadoVisualizacion;
         this.prioridad = prioridad;
     }
+
 
     /**
      * Get the value of prioridad
@@ -71,7 +71,7 @@ public class Notificacion {
      *
      * @return the value of fechaNotificacion
      */
-    public String getFechaNotificacion() {
+    public Date getFechaNotificacion() {
         return fechaNotificacion;
     }
 
@@ -80,7 +80,7 @@ public class Notificacion {
      *
      * @param fechaNotificacion new value of fechaNotificacion
      */
-    public void setFechaNotificacion(String fechaNotificacion) {
+    public void setFechaNotificacion(Date fechaNotificacion) {
         this.fechaNotificacion = fechaNotificacion;
     }
 
@@ -89,7 +89,7 @@ public class Notificacion {
      *
      * @return the value of idUsuarioDestino
      */
-    public String getIdUsuarioDestino() {
+    public int getIdUsuarioDestino() {
         return idUsuarioDestino;
     }
 
@@ -98,26 +98,8 @@ public class Notificacion {
      *
      * @param idUsuarioDestino new value of idUsuarioDestino
      */
-    public void setIdUsuarioDestino(String idUsuarioDestino) {
+    public void setIdUsuarioDestino(int idUsuarioDestino) {
         this.idUsuarioDestino = idUsuarioDestino;
-    }
-
-    /**
-     * Get the value of idUsuarioOrigen
-     *
-     * @return the value of idUsuarioOrigen
-     */
-    public String getIdUsuarioOrigen() {
-        return idUsuarioOrigen;
-    }
-
-    /**
-     * Set the value of idUsuarioOrigen
-     *
-     * @param idUsuarioOrigen new value of idUsuarioOrigen
-     */
-    public void setIdUsuarioOrigen(String idUsuarioOrigen) {
-        this.idUsuarioOrigen = idUsuarioOrigen;
     }
 
     /**
@@ -140,7 +122,7 @@ public class Notificacion {
 
     @Override
     public String toString() {
-        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", idUsuarioOrigen=" + idUsuarioOrigen + ", idUsuarioDestino=" + idUsuarioDestino + ", fechaNotificacion=" + fechaNotificacion + ", estadoVisualizacion=" + estadoVisualizacion + ", prioridad=" + prioridad + '}';
+        return "Notificacion{" + "idNotificacion=" + idNotificacion +  ", idUsuarioDestino=" + idUsuarioDestino + ", fechaNotificacion=" + fechaNotificacion + ", estadoVisualizacion=" + estadoVisualizacion + ", prioridad=" + prioridad + '}';
     }
 
 }

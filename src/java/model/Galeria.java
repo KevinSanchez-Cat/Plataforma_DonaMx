@@ -21,14 +21,14 @@ public class Galeria {
     public Galeria() {
     }
 
-    public Galeria(int idGaleria, Usuario usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
-        this.idGaleria = idGaleria;
+    public Galeria(Usuario usuario, String nombreImagen, double tamanio, String extension, String urlDestino) {
         this.usuario = usuario;
         this.nombreImagen = nombreImagen;
         this.tamanio = tamanio;
         this.extension = extension;
         this.urlDestino = urlDestino;
     }
+
 
     /**
      * Get the value of urlDestino

@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -16,29 +16,30 @@ public class Solicitud {
     private int idSolicitud;
     private Usuario usuario;
     private RecursoTecnologico recursoTecnologico;
-    private List<Archivo> lstArchivos;
+    private Archivo archivo;
     private String estadoSolicitud;
-    private String fechaSolicitud;//DATE TIME
-    private String fechaRespuesta;//DATE TIME
+    private Date fechaSolicitud;//DATE TIME
+    private Date fechaRespuesta;//DATE TIME
 
     public Solicitud() {
     }
 
-    public Solicitud(int idSolicitud, Usuario usuario, RecursoTecnologico recursoTecnologico, String estadoSolicitud, String fechaSolicitud, String fechaRespuesta) {
-        this.idSolicitud = idSolicitud;
+    public Solicitud(Usuario usuario, RecursoTecnologico recursoTecnologico, Archivo archivo, String estadoSolicitud, Date fechaSolicitud) {
         this.usuario = usuario;
         this.recursoTecnologico = recursoTecnologico;
+        this.archivo = archivo;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
-        this.fechaRespuesta = fechaRespuesta;
     }
+
+   
 
     /**
      * Get the value of fechaRespuesta
      *
      * @return the value of fechaRespuesta
      */
-    public String getFechaRespuesta() {
+    public Date getFechaRespuesta() {
         return fechaRespuesta;
     }
 
@@ -47,7 +48,7 @@ public class Solicitud {
      *
      * @param fechaRespuesta new value of fechaRespuesta
      */
-    public void setFechaRespuesta(String fechaRespuesta) {
+    public void setFechaRespuesta(Date fechaRespuesta) {
         this.fechaRespuesta = fechaRespuesta;
     }
 
@@ -56,7 +57,7 @@ public class Solicitud {
      *
      * @return the value of fechaSolicitud
      */
-    public String getFechaSolicitud() {
+    public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
 
@@ -65,7 +66,7 @@ public class Solicitud {
      *
      * @param fechaSolicitud new value of fechaSolicitud
      */
-    public void setFechaSolicitud(String fechaSolicitud) {
+    public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
@@ -88,21 +89,21 @@ public class Solicitud {
     }
 
     /**
-     * Get the value of lstArchivos
+     * Get the value of archivo
      *
-     * @return the value of lstArchivos
+     * @return the value of archivo
      */
-    public List<Archivo> getLstArchivos() {
-        return lstArchivos;
+    public Archivo getArchivo() {
+        return archivo;
     }
 
     /**
-     * Set the value of lstArchivos
+     * Set the value of archivo
      *
-     * @param lstArchivos new value of lstArchivos
+     * @param archivo new value of archivo
      */
-    public void setLstArchivos(List<Archivo> lstArchivos) {
-        this.lstArchivos = lstArchivos;
+    public void setArchivo(Archivo archivo) {
+        this.archivo = archivo;
     }
 
     /**
@@ -161,7 +162,9 @@ public class Solicitud {
 
     @Override
     public String toString() {
-        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", usuario=" + usuario + ", recursoTecnologico=" + recursoTecnologico + ", lstArchivos=" + lstArchivos + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
+        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", usuario=" + usuario + ", recursoTecnologico=" + recursoTecnologico + ", archivo=" + archivo + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
     }
+
+   
 
 }
