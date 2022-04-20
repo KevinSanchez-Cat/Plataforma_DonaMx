@@ -5,6 +5,10 @@
  */
 package excepciones;
 
+import java.util.List;
+import manipula.Manipula;
+import utils.GenericResponse;
+
 /**
  *
  * @author por_s
@@ -14,8 +18,7 @@ public class ExcepcionSQL extends Exception {
     public ExcepcionSQL(String msj) {
         super(msj);
     }
-    
-    
+
     /*
     
     public void metodo() throws ExcepcionSQL
@@ -27,12 +30,11 @@ public class ExcepcionSQL extends Exception {
         }
     }
     
-    
     try{
     }catch(ExcepciobSQL ex){
         sout(ex.getMessage())
     }
     
-    
-    */
+     */
+
 }

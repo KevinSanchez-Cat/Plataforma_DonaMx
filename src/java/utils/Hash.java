@@ -7,9 +7,9 @@ public class Hash {
     /**
      * Retorna un hash a partir de un tipo y un texto
      *
-     * @param txt
-     * @param hashType
-     * @return
+     * @param txt texto para cifrar
+     * @param hashType metodo de cifrado
+     * @return una nueva cadena, cifrada
      */
     public static String getHash(String txt, String hashType) {
 
