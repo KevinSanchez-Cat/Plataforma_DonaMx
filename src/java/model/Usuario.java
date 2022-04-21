@@ -61,6 +61,24 @@ public class Usuario {
     }
 
     /**
+     * Get the value of idRol
+     *
+     * @return the value of idRol
+     */
+    public int getIdRol() {
+        return idRol;
+    }
+
+    /**
+     * Set the value of idRol
+     *
+     * @param idRol new value of idRol
+     */
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
+    }
+
+    /**
      * Get the value of numeroCelularConfirmado
      *
      * @return the value of numeroCelularConfirmado

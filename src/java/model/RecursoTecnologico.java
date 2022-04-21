@@ -14,7 +14,6 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private int idDonador; //EN CASO DE QUE SEA UNA ORGANIZACION
     private int idUsuario; //CONTACTO QUE DA DE ALTA EL RECURSO.
     private int cantidadStock;
-    private int idRecurso; //PUEDE SER EQUIPO COMPUTACIONAL, IMPRESORA, CAMARA, LICENCIA ...
     private String autorizado; //Pendiente, Autorizado, No autorizado
     private String estadoPublicacion;
     private boolean estadoLogico;
@@ -26,31 +25,30 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private double precioEstimado;
     private double precioOfertado;
     private String tipoSoftwarOHardware;
+    private String nombreRecurso;
 
     public RecursoTecnologico() {
     }
 
-    public RecursoTecnologico(int categoria, String organizacionOCivil, int donador, int usuario, int cantidadStock, int recurso, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, String tipoSoftwarOHardware) {
-        this.idCategoria = categoria;
+    public RecursoTecnologico(int idCategoria, String organizacionOCivil, int idUsuario, int cantidadStock, String estadoPublicacion, boolean estadoLogico, boolean remunerado, String tipoSoftwarOHardware, String nombreRecurso) {
+        this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
-        this.idDonador = donador;
-        this.idUsuario = usuario;
+        this.idUsuario = idUsuario;
         this.cantidadStock = cantidadStock;
-        this.idRecurso = recurso;
+        this.estadoPublicacion = estadoPublicacion;
         this.estadoLogico = estadoLogico;
-        this.fechaPublicacion = fechaPublicacion;
-        this.fechaAutorizacion = fechaAutorizacion;
+        this.remunerado = remunerado;
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
+        this.nombreRecurso = nombreRecurso;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, int categoria, String organizacionOCivil, int donador, int usuario, int cantidadStock, int recurso, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware) {
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso) {
         this.idRecursoTecnologico = idRecursoTecnologico;
-        this.idCategoria = categoria;
+        this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
-        this.idDonador = donador;
-        this.idUsuario = usuario;
+        this.idDonador = idDonador;
+        this.idUsuario = idUsuario;
         this.cantidadStock = cantidadStock;
-        this.idRecurso = recurso;
         this.autorizado = autorizado;
         this.estadoPublicacion = estadoPublicacion;
         this.estadoLogico = estadoLogico;
@@ -62,6 +60,26 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.precioEstimado = precioEstimado;
         this.precioOfertado = precioOfertado;
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
+        this.nombreRecurso = nombreRecurso;
+    }
+
+    
+    /**
+     * Get the value of nombreRecurso
+     *
+     * @return the value of nombreRecurso
+     */
+    public String getNombreRecurso() {
+        return nombreRecurso;
+    }
+
+    /**
+     * Set the value of nombreRecurso
+     *
+     * @param nombreRecurso new value of nombreRecurso
+     */
+    public void setNombreRecurso(String nombreRecurso) {
+        this.nombreRecurso = nombreRecurso;
     }
 
     /**
@@ -159,7 +177,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      *
      * @return the value of remunerado
      */
-    public boolean getRemunerado() {
+    public boolean isRemunerado() {
         return remunerado;
     }
 
@@ -260,24 +278,6 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
      */
     public void setAutorizado(String autorizado) {
         this.autorizado = autorizado;
-    }
-
-    /**
-     * Get the value of idRecurso
-     *
-     * @return the value of idRecurso
-     */
-    public int getIdRecurso() {
-        return idRecurso;
-    }
-
-    /**
-     * Set the value of idRecurso
-     *
-     * @param idRecurso new value of idRecurso
-     */
-    public void setIdRecurso(int idRecurso) {
-        this.idRecurso = idRecurso;
     }
 
     /**
@@ -390,7 +390,6 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
 
     @Override
     public String toString() {
-        return "RecursoTecnologico{" + "idRecursoTecnologico=" + idRecursoTecnologico + ", categoria=" + idCategoria + ", organizacionOCivil=" + organizacionOCivil + ", donador=" + idDonador + ", usuario=" + idUsuario + ", cantidadStock=" + cantidadStock + ", recurso=" + idRecurso + ", autorizado=" + autorizado + ", estadoPublicacion=" + estadoPublicacion + ", estadoLogico=" + estadoLogico + ", fechaPublicacion=" + fechaPublicacion + ", fechaAutorizacion=" + fechaAutorizacion + ", remunerado=" + remunerado + ", estadoCondicion=" + estadoCondicion + ", precioOriginal=" + precioOriginal + ", precioEstimado=" + precioEstimado + ", precioOfertado=" + precioOfertado + ", tipoSoftwarOHardware=" + tipoSoftwarOHardware + '}';
+        return "RecursoTecnologico{" + "idRecursoTecnologico=" + idRecursoTecnologico + ", idCategoria=" + idCategoria + ", organizacionOCivil=" + organizacionOCivil + ", idDonador=" + idDonador + ", idUsuario=" + idUsuario + ", cantidadStock=" + cantidadStock + ", autorizado=" + autorizado + ", estadoPublicacion=" + estadoPublicacion + ", estadoLogico=" + estadoLogico + ", fechaPublicacion=" + fechaPublicacion + ", fechaAutorizacion=" + fechaAutorizacion + ", remunerado=" + remunerado + ", estadoCondicion=" + estadoCondicion + ", precioOriginal=" + precioOriginal + ", precioEstimado=" + precioEstimado + ", precioOfertado=" + precioOfertado + ", tipoSoftwarOHardware=" + tipoSoftwarOHardware + ", nombreRecurso=" + nombreRecurso + '}';
     }
-
 }

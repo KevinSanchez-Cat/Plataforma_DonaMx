@@ -115,7 +115,6 @@ public class ManipulaRol implements Manipula<Rol> {
     @Override
     public GenericResponse<Rol> eliminar(int id) {
         GenericResponse<Rol> response = new GenericResponse<>();
-
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             Rol obj = encontrarId(id);
@@ -219,9 +218,7 @@ public class ManipulaRol implements Manipula<Rol> {
     public Rol encontrarId(int id) {
         Rol response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idRol, "
