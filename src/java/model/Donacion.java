@@ -143,6 +143,10 @@ public class Donacion {
         return idArchivo;
     }
 
+    public void setIdArchivo(int idArchivo) {
+        this.idArchivo = idArchivo;
+    }
+
     /**
      * Set the value of idArchivo
      *
@@ -157,7 +161,7 @@ public class Donacion {
      *
      * @return the value of idDonador
      */
-    public Object getIdDonador() {
+    public int getIdDonador() {
         return idDonador;
     }
 

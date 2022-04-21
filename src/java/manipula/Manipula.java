@@ -14,7 +14,7 @@ public interface Manipula<T> {
 
     public GenericResponse<T> actualizar(int id);
 
-    public GenericResponse<T> editar(int id, T obj);
+    public GenericResponse<T> editar(int id, T nvoObj);
 
     public GenericResponse<T> eliminar(int id);
 
@@ -24,31 +24,31 @@ public interface Manipula<T> {
 
     public T encontrarId(int id);
 
-    default GenericResponse<T> msjError(GenericResponse<T> obj) {
+    public default GenericResponse<T> msjError(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_ERROR);
         return obj;
     }
 
-    default GenericResponse<T> msjAdvertencia(GenericResponse<T> obj) {
+    public default GenericResponse<T> msjAdvertencia(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_WARNING);
         return obj;
     }
 
-    default GenericResponse<T> msjExito(GenericResponse<T> obj) {
+    public default GenericResponse<T> msjExito(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_SUCCESS);
         return obj;
     }
 
-    default GenericResponse<T> msjInfo(GenericResponse<T> obj) {
+    public default GenericResponse<T> msjInfo(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_DEFAULT);
         return obj;
     }
 
-    default GenericResponse<T> msjNoData(GenericResponse<T> obj) {
+    public default GenericResponse<T> msjNoData(GenericResponse<T> obj) {
         obj.setMensaje("Error de comunicación con la BD");
         obj.setStatus(utils.Constantes.LOGIC_NO_DATA);
         return obj;

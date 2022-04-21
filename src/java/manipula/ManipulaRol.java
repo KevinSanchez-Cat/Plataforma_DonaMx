@@ -74,7 +74,7 @@ public class ManipulaRol implements Manipula<Rol> {
             if (obj != null) {
                 try {
                     String sql = "UPDATE rol SET "
-                            + "rol=?"
+                            + "rol=? "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
 
@@ -163,7 +163,10 @@ public class ManipulaRol implements Manipula<Rol> {
         if (conexionDB.conectar() == 1) {
 
             try {
-                String sql = "SELECT idRol, rol FROM rol";
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -190,7 +193,10 @@ public class ManipulaRol implements Manipula<Rol> {
         if (conexionDB.conectar() == 1) {
 
             try {
-                String sql = "SELECT idRol, rol FROM rol";
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -217,7 +223,9 @@ public class ManipulaRol implements Manipula<Rol> {
         if (conexionDB.conectar() == 1) {
 
             try {
-                String sql = "SELECT idRol, rol "
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
                         + "FROM rol "
                         + "WHERE idRol=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);

@@ -1,4 +1,3 @@
-
 package manipula;
 
 import config.conexion.*;
@@ -7,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Direccion;
+import model.Donacion;
+import model.Notificacion;
+import model.Solicitud;
 import model.Usuario;
 import utils.GenericResponse;
 
@@ -20,9 +23,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
     public GenericResponse<Usuario> registrar(Usuario obj) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "INSERT INTO usuario ("
                         + "nombreUsuario, "
@@ -30,41 +31,35 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "fechaCreacion,"
                         + "estadoCuenta,"
                         + "estadoLogico,"
-                        + "conectado,"
                         + "correoElectronico,"
-                        + "correoConfirmado, "
-                        + "numeroCelular,"
-                        + "numeroCelularConfirmado,"
-                        + "autenticacionDosPasos,"
                         + "conteoAccesosFallidos,"
                         + "idRol"
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + ") VALUES (?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-
                 registro.setString(1, obj.getNombreUsuario());
-                registro.setString(2, "");
-                registro.setString(3, "");
-                registro.setString(4, "");
-                registro.setString(5, obj.getContraseniia());
-                registro.setString(6, obj.getContraseniia());
-                registro.setString(7, obj.getContraseniia());
-                registro.setString(8, obj.getContraseniia());
-                registro.setString(9, obj.getContraseniia());
-                registro.setString(10, obj.getContraseniia());
-                registro.setString(11, obj.getContraseniia());
-                registro.setString(12, obj.getContraseniia());
-                registro.setString(13, obj.getRol().getRol());
-
+                registro.setString(2, obj.getContraseniia());
+                registro.setString(3, obj.getEstadoCuenta());
+                registro.setBoolean(4, obj.isEstadoLogico());
+                registro.setString(5, obj.getCorreoElectronico());
+                registro.setInt(6, obj.getConteoAccesosFallidos());
+                registro.setInt(7, obj.getRol());
+                registro.setString(8, obj.getNombreUsuario());
                 int r = registro.executeUpdate();
                 if (r > 0) {
-                    // String sql23 = "INSERT INTO t_usuario (usuar,password,tipo_usuario) VALUES(?,?,?)";
+                    response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
+                    response.setResponseObject(obj);
+                    response.setMensaje("Registro exitoso en la base de datos");
                 } else {
-
+                    response.setStatus(utils.Constantes.STATUS_REGISTRO_FALLIDO_BD);
+                    response.setResponseObject(obj);
+                    response.setMensaje("Registro fallido en la base de datos");
                 }
             } catch (SQLException ex) {
-                response.setStatus(utils.Constantes.STATUS_REGISTRO_FALLIDO_BD);
+                response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
                 response.setResponseObject(null);
-                response.setMensaje("Error al insertar en la base de datos " + ex.getSQLState());
+                response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
+            } finally {
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -77,32 +72,22 @@ public class ManipulaUsuario implements Manipula<Usuario> {
     @Override
     public GenericResponse<Usuario> actualizar(int id) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-
+        //Ultima conexion
+        //Conectada ? desconectada
         return response;
     }
 
     @Override
-    public GenericResponse<Usuario> editar(int id, Usuario obj) {
+    public GenericResponse<Usuario> editar(int id, Usuario nvoObj) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-        String sql = "UPDATE libros SET "
-                + "nombre_libro=? ,"
-                + "autor_libro=?, "
-                + "editorial=? ,"
-                + "edicion=? ,"
-                + "cantidad=? ,"
-                + "ISBM=? "
-                + "WHERE id_libro=?";
-        
+
         return response;
     }
 
     @Override
     public GenericResponse<Usuario> eliminar(int id) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-        
-        String sql = "DELETE FROM t_libro "
-                + "WHERE nombre_libro=?";
-        
+
         return response;
     }
 
@@ -127,40 +112,41 @@ public class ManipulaUsuario implements Manipula<Usuario> {
     @Override
     public Usuario encontrarId(int id) {
         Usuario response = new Usuario();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
-        if (conexionDB.conectar() == 1) {
-            try {
-                String sql = "SELECT * FROM USUARIO WHERE idUsuario=?";
-                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
-
-                String contrase = new String("pasword");
-                String nuevopasword = utils.Hash.sha1(contrase);
-
-                ps.setString(1, "user");
-                ps.setString(2, nuevopasword);
-                ResultSet rs;
-                rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    switch (rs.getString("tipo_usuario")) {
-                        case "ADMINISTRADOR":
-                            break;
-                        default:
-                            System.out.println("Usuario no reconocido");
-                            break;
-                    }
-                }
-
-            } catch (SQLException ex) {
-
-            }
-
-        } else {
-
-        }
         return response;
 
+    }
+
+    public List<Solicitud> getSolicitudes(int idUsuario) {
+        return null;
+    }
+
+    public List<Donacion> getDonacion(int idUsuario) {
+        return null;
+    }
+
+    public List<Notificacion> getNotificacion(int idUsuario) {
+        return null;
+    }
+
+    public String getTipoAcceso(int idUsuario) {
+        return null;
+    }
+
+    public boolean changeContrasenia(int idUsuario, String contrasenia, String nvaContrasenia) {
+        return false;
+    }
+
+    public boolean changeCorreoElectronico(int idUsuario, String nvoCorreoElectronico) {
+        return false;
+    }
+
+    public boolean changeCelular(int idUsuario, int nvoCelular) {
+        return false;
+    }
+
+    public boolean changeDireccion(int idUsuario, Direccion nvaDireccion) {
+        return false;
     }
 
 }

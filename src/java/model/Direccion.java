@@ -20,10 +20,12 @@ public class Direccion {
     private String tipoAsentamiento;
     private String nombreAsentamiento;
 
+    private int idUsuario;
+
     public Direccion() {
     }
 
-    public Direccion(int estado, int municipio, int Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String nombreAsentamiento) {
+    public Direccion(int estado, int municipio, int Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String nombreAsentamiento, int idUsuario) {
         this.idEstado = estado;
         this.idMunicipio = municipio;
         this.idLocalidad = Localidad;
@@ -31,13 +33,14 @@ public class Direccion {
         this.calleInteriorYNumero = calleInteriorYNumero;
         this.calleExteriorYNumero = calleExteriorYNumero;
         this.nombreAsentamiento = nombreAsentamiento;
+        this.idUsuario = idUsuario;
     }
 
-    public Direccion(int idDireccion, int estado, int municipio, int Localidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento) {
+    public Direccion(int idDireccion, int idEstado, int idMunicipio, int idLocalidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento, int idUsuario) {
         this.idDireccion = idDireccion;
-        this.idEstado = estado;
-        this.idMunicipio = municipio;
-        this.idLocalidad = Localidad;
+        this.idEstado = idEstado;
+        this.idMunicipio = idMunicipio;
+        this.idLocalidad = idLocalidad;
         this.referencias = referencias;
         this.calleInteriorYNumero = calleInteriorYNumero;
         this.calleExteriorYNumero = calleExteriorYNumero;
@@ -47,6 +50,25 @@ public class Direccion {
         this.calleDerecha = calleDerecha;
         this.tipoAsentamiento = tipoAsentamiento;
         this.nombreAsentamiento = nombreAsentamiento;
+        this.idUsuario = idUsuario;
+    }
+
+    /**
+     * Get the value of idUsuario
+     *
+     * @return the value of idUsuario
+     */
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * Set the value of idUsuario
+     *
+     * @param idUsuario new value of idUsuario
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     /**
