@@ -76,7 +76,9 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     @Override
     public GenericResponse<EquipoComputacional> actualizar(int id) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
-
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
         return response;
     }
 

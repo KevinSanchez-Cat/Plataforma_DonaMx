@@ -53,5 +53,4 @@ public interface Manipula<T> {
         obj.setStatus(utils.Constantes.LOGIC_NO_DATA);
         return obj;
     }
-
 }

@@ -76,7 +76,53 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     @Override
     public GenericResponse<Organizacion> actualizar(int id) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
+        return response;
+    }
 
+    public GenericResponse<Organizacion> actualizar(int id, String autorizar) {
+        GenericResponse<Organizacion> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            Organizacion org = encontrarId(id);
+            if (org != null) {
+                org.setAutorizada(autorizar);
+                try {
+                    String sql = "UPDATE organizacion SET "
+                            + "autorizada=? "
+                            + "WHERE idOrganizacion=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, org.getAutorizada());
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(org);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(null);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
         return response;
     }
 
@@ -337,5 +383,38 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             Logg.error("Conexión fallida con la base de datos");
         }
         return response;
+    }
+
+    public boolean changeEstadoLogico(int id, boolean estado) {
+        boolean hecho = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE organizacion SET "
+                            + "estadoLogico=? "
+                            + "WHERE idOrganizacion=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setBoolean(1, estado);
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        hecho = true;
+                        Logg.error("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return hecho;
     }
 }

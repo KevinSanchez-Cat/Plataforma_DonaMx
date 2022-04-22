@@ -22,7 +22,6 @@ public class ManipulaRol implements Manipula<Rol> {
         GenericResponse<Rol> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "INSERT INTO rol ("
                         + "rol"
@@ -69,7 +68,6 @@ public class ManipulaRol implements Manipula<Rol> {
         GenericResponse<Rol> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             Rol obj = encontrarId(id);
             if (obj != null) {
                 try {
@@ -77,10 +75,8 @@ public class ManipulaRol implements Manipula<Rol> {
                             + "rol=? "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-
                     registro.setString(1, nvoObj.getRol());
                     registro.setInt(2, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         obj.setRol(nvoObj.getRol());
@@ -124,7 +120,6 @@ public class ManipulaRol implements Manipula<Rol> {
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
@@ -160,7 +155,6 @@ public class ManipulaRol implements Manipula<Rol> {
         List<Rol> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -169,7 +163,6 @@ public class ManipulaRol implements Manipula<Rol> {
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
-
                 while (rs.next()) {
                     response.add(new Rol(rs.getInt(1), rs.getString(2)));
                 }
@@ -188,9 +181,7 @@ public class ManipulaRol implements Manipula<Rol> {
     public List<Rol> consultar(String... filtros) {
         List<Rol> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -202,7 +193,6 @@ public class ManipulaRol implements Manipula<Rol> {
                 while (rs.next()) {
                     response.add(new Rol(rs.getInt(1), rs.getString(2)));
                 }
-
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
@@ -227,7 +217,6 @@ public class ManipulaRol implements Manipula<Rol> {
                         + "WHERE idRol=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
-
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {

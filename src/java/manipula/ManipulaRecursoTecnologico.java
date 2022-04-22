@@ -2,7 +2,6 @@ package manipula;
 
 import config.conexion.ConexionFactory;
 import config.conexion.IConexion;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +10,7 @@ import java.util.List;
 import model.RecursoTecnologico;
 import utils.GenericResponse;
 import utils.Logg;
+import utils.Misc;
 
 /**
  *
@@ -52,8 +52,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 registro.setString(6, obj.getAutorizado());
                 registro.setString(7, obj.getEstadoPublicacion());
                 registro.setBoolean(8, obj.isEstadoLogico());
-                registro.setDate(9, (Date) obj.getFechaPublicacion());
-                registro.setDate(10, (Date) obj.getFechaAutorizacion());
+                registro.setDate(9, (Misc.transformDateTimeJavaSql(obj.getFechaPublicacion())));
+                registro.setDate(10, Misc.transformDateTimeJavaSql(obj.getFechaAutorizacion()));
                 registro.setBoolean(11, obj.isRemunerado());
                 registro.setString(12, obj.getEstadoCondicion());
                 registro.setDouble(13, obj.getPrecioOriginal());
@@ -89,7 +89,9 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     @Override
     public GenericResponse<RecursoTecnologico> actualizar(int id) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
         return response;
     }
 
@@ -128,8 +130,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     registro.setString(6, nvoObj.getAutorizado());
                     registro.setString(7, nvoObj.getEstadoPublicacion());
                     registro.setBoolean(8, nvoObj.isEstadoLogico());
-                    registro.setDate(9, (Date) nvoObj.getFechaPublicacion());
-                    registro.setDate(10, (Date) nvoObj.getFechaAutorizacion());
+                    registro.setDate(9, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
+                    registro.setDate(10, Misc.transformDateTimeJavaSql(nvoObj.getFechaAutorizacion()));
                     registro.setBoolean(11, nvoObj.isRemunerado());
                     registro.setString(12, nvoObj.getEstadoCondicion());
                     registro.setDouble(13, nvoObj.getPrecioOriginal());
@@ -251,8 +253,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setAutorizado(rs.getString(7));
                     sol.setEstadoPublicacion(rs.getString(8));
                     sol.setEstadoLogico(rs.getBoolean(9));
-                    sol.setFechaPublicacion(rs.getDate(10));
-                    sol.setFechaAutorizacion(rs.getDate(11));
+                    sol.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
+                    sol.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
                     sol.setRemunerado(rs.getBoolean(12));
                     sol.setEstadoCondicion(rs.getString(13));
                     sol.setPrecioOriginal(rs.getDouble(14));
@@ -313,8 +315,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setAutorizado(rs.getString(7));
                     sol.setEstadoPublicacion(rs.getString(8));
                     sol.setEstadoLogico(rs.getBoolean(9));
-                    sol.setFechaPublicacion(rs.getDate(10));
-                    sol.setFechaAutorizacion(rs.getDate(11));
+                    sol.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
+                    sol.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
                     sol.setRemunerado(rs.getBoolean(12));
                     sol.setEstadoCondicion(rs.getString(13));
                     sol.setPrecioOriginal(rs.getDouble(14));
@@ -377,8 +379,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setAutorizado(rs.getString(7));
                     response.setEstadoPublicacion(rs.getString(8));
                     response.setEstadoLogico(rs.getBoolean(9));
-                    response.setFechaPublicacion(rs.getDate(10));
-                    response.setFechaAutorizacion(rs.getDate(11));
+                    response.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
+                    response.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
                     response.setRemunerado(rs.getBoolean(12));
                     response.setEstadoCondicion(rs.getString(13));
                     response.setPrecioOriginal(rs.getDouble(14));
@@ -399,4 +401,286 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         }
         return response;
     }
+
+    public GenericResponse<RecursoTecnologico> changeCantidadStock(int id, int cantidad) {
+        GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            RecursoTecnologico nvoObj = encontrarId(id);
+            if (encontrarId(id) != null) {
+                nvoObj.setCantidadStock(cantidad);
+                try {
+                    String sql = "UPDATE recursotecnologico SET "
+                            + "cantidadStock=?, "
+                            + "WHERE idRecursoTecnologico=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setInt(1, nvoObj.getCantidadStock());
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        nvoObj.setIdRecursoTecnologico(id);
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
+        return response;
+    }
+
+    public GenericResponse<RecursoTecnologico> changeAutorizacion(int id, String autorizado) {
+        GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            RecursoTecnologico nvoObj = encontrarId(id);
+            if (nvoObj != null) {
+                if (nvoObj.getAutorizado().equals("--") && autorizado.equals("Si")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("Si");
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                } else if (nvoObj.getAutorizado().equals("--") && autorizado.equals("No")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("Si")) {
+                    //Sin accion
+                } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("No")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("Si")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("Si");
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("No")) {
+                    //Sin accion
+                } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("--")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("--");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("--")) {
+                    nvoObj.setAutorizado(autorizado);
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setEstadoPublicacion("--");
+                    nvoObj.setFechaPublicacion(null);
+                } else {
+                    nvoObj.setAutorizado("--");
+                    nvoObj.setFechaAutorizacion(null);
+                    nvoObj.setEstadoPublicacion("--");
+                    nvoObj.setFechaPublicacion(null);
+                }
+                try {
+                    String sql = "UPDATE recursotecnologico SET "
+                            + "autorizado=?, "
+                            + "fechaAutorizacion=?, "
+                            + "estadoPublicacion=?, "
+                            + "fechaPublicacion=? "
+                            + "WHERE idRecursoTecnologico=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, nvoObj.getAutorizado());
+                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaAutorizacion()));
+                    registro.setString(3, nvoObj.getEstadoPublicacion());
+                    registro.setDate(4, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
+                    registro.setInt(5, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        nvoObj.setIdRecursoTecnologico(id);
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
+        return response;
+    }
+
+    public GenericResponse<RecursoTecnologico> changePublicacion(int id, String publicacion) {
+        GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            RecursoTecnologico nvoObj = encontrarId(id);
+            if (nvoObj != null) {
+                if (nvoObj.getAutorizado().equals("--") && publicacion.equals("Si")) {
+                    nvoObj.setEstadoPublicacion("--");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("--") && publicacion.equals("No")) {
+                    nvoObj.setEstadoPublicacion("--");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("Si") && publicacion.equals("Si")) {
+                    nvoObj.setEstadoPublicacion("Si");
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                } else if (nvoObj.getAutorizado().equals("Si") && publicacion.equals("No")) {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("No") && publicacion.equals("Si")) {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("No") && publicacion.equals("No")) {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("Si") && publicacion.equals("--")) {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else if (nvoObj.getAutorizado().equals("No") && publicacion.equals("--")) {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                } else {
+                    nvoObj.setEstadoPublicacion("No");
+                    nvoObj.setFechaPublicacion(null);
+                }
+                try {
+                    String sql = "UPDATE recursotecnologico SET "
+                            + "estadoPublicacion=?, "
+                            + "fechaPublicacion=? "
+                            + "WHERE idRecursoTecnologico=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, nvoObj.getEstadoPublicacion());
+                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
+                    registro.setInt(3, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        nvoObj.setIdRecursoTecnologico(id);
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
+        return response;
+    }
+
+    public boolean changeEstadoLogico(int id, boolean estado) {
+        boolean hecho = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE recursotecnologico SET "
+                            + "estadoLogico=? "
+                            + "WHERE idRecursoTecnologico=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setBoolean(1, estado);
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        hecho = true;
+                        Logg.error("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return hecho;
+    }
+
+    public boolean changeEstadoLogico(int id, boolean remunerado, double precioOriginal, double precioEstimado, double precioOfertado) {
+        boolean hecho = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE recursotecnologico SET "
+                            + "remunerado=?, "
+                            + "precioOriginal=?, "
+                            + "precioEstimado=?, "
+                            + "precioOfertado=? "
+                            + "WHERE idRecursoTecnologico=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setBoolean(1, remunerado);
+                    registro.setDouble(2, precioOriginal);
+                    registro.setDouble(3, precioEstimado);
+                    registro.setDouble(4, precioOfertado);
+                    registro.setInt(5, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        hecho = true;
+                        Logg.error("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return hecho;
+    }
+
 }

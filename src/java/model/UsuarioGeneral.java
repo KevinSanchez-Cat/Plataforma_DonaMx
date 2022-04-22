@@ -14,7 +14,7 @@ public class UsuarioGeneral {
     private List<Solicitud> lstSolicitudes;
     private List<Notificacion> lstNotificaciones;
     private boolean estadoLogico;
-    private String fechaCreacion;//DATE TIME    
+    private String fechaCreacion;
     private String fotoUsuario;
 
     public UsuarioGeneral() {
@@ -90,5 +90,4 @@ public class UsuarioGeneral {
     public void setFotoUsuario(String fotoUsuario) {
         this.fotoUsuario = fotoUsuario;
     }
-
 }

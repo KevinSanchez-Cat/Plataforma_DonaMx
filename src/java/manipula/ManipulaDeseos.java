@@ -7,35 +7,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Galeria;
+import model.Deseo;
 import utils.GenericResponse;
 import utils.Logg;
+import utils.Misc;
 
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaGaleria implements Manipula<Galeria> {
+public class ManipulaDeseos implements Manipula<Deseo> {
 
     @Override
-    public GenericResponse<Galeria> registrar(Galeria obj) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<Deseo> registrar(Deseo obj) {
+        GenericResponse<Deseo> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO galeria ("
-                        + "idUsuario, "
-                        + "nombreImagen, "
-                        + "tamanio, "
-                        + "extension, "
-                        + "urlDestino "
-                        + ") VALUES (?,?,?,?,?)";
+                String sql = "INSERT INTO deseo ("
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + ") VALUES (?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setInt(1, obj.getIdUsuario());
-                registro.setString(2, obj.getNombreImagen());
-                registro.setDouble(3, obj.getTamanio());
-                registro.setString(4, obj.getExtension());
-                registro.setString(5, obj.getUrlDestino());
+                registro.setInt(1, obj.getIdRecurso());
+                registro.setInt(2, obj.getIdEstudiante());
+                registro.setDate(3, Misc.transformDateTimeJavaSql(obj.getFecha()));
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -62,8 +59,8 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> actualizar(int id) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<Deseo> actualizar(int id) {
+        GenericResponse<Deseo> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -71,68 +68,24 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> editar(int id, Galeria nvoObj) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Galeria obj = encontrarId(id);
-            if (obj != null) {
-                try {
-                    String sql = "UPDATE galeria SET "
-                            + "idUsuario=?, "
-                            + "nombreImagen=?, "
-                            + "tamanio=?, "
-                            + "extension=?, "
-                            + "urlDestino=? "
-                            + "WHERE idGaleria=?";
-                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setInt(1, nvoObj.getIdUsuario());
-                    registro.setString(2, nvoObj.getNombreImagen());
-                    registro.setDouble(3, nvoObj.getTamanio());
-                    registro.setString(4, nvoObj.getExtension());
-                    registro.setString(5, nvoObj.getUrlDestino());
-                    registro.setInt(6, id);
-                    int r = registro.executeUpdate();
-                    if (r > 0) {
-                        nvoObj.setIdGaleria(id);
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
-                        response.setResponseObject(nvoObj);
-                        response.setMensaje("Edición exitosa en la base de datos");
-                    } else {
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
-                        response.setResponseObject(obj);
-                        response.setMensaje("Edición fallido en la base de datos");
-                    }
-                } catch (SQLException ex) {
-                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
-                    response.setResponseObject(null);
-                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
-                } finally {
-                    conexionDB.desconectar();
-                }
-            } else {
-                response.setStatus(utils.Constantes.STATUS_NO_DATA);
-                response.setResponseObject(null);
-                response.setMensaje("El registro no existe");
-            }
-        } else {
-            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
-            response.setResponseObject(null);
-            response.setMensaje("Error de conexión a la base de datos");
-        }
+    public GenericResponse<Deseo> editar(int id, Deseo nvoObj) {
+        GenericResponse<Deseo> response = new GenericResponse<>();
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
         return response;
     }
 
     @Override
-    public GenericResponse<Galeria> eliminar(int id) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<Deseo> eliminar(int id) {
+        GenericResponse<Deseo> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Galeria obj = encontrarId(id);
+            Deseo obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM galeria "
-                            + "WHERE idGaleria=?";
+                    String sql = "DELETE FROM deseo "
+                            + "WHERE idItem=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -166,23 +119,27 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public List<Galeria> getData() {
-        List<Galeria> response = new ArrayList<>();
+    public List<Deseo> getData() {
+        List<Deseo> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "SELECT idGaleria, "
-                        + "idUsuario, "
-                        + "nombreImagen, "
-                        + "tamanio, "
-                        + "extension, "
-                        + "urlDestino "
-                        + "FROM galeria";
+                String sql = "SELECT "
+                        + "idItem, "
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + "FROM deseo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+                    Deseo sol = new Deseo();
+                    sol.setIdItem(rs.getInt(1));
+                    sol.setIdRecurso(rs.getInt(2));
+                    sol.setIdEstudiante(rs.getInt(3));
+                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -196,24 +153,27 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public List<Galeria> consultar(String... filtros) {
-        List<Galeria> response = new ArrayList<>();
+    public List<Deseo> consultar(String... filtros) {
+        List<Deseo> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idGaleria, "
-                        + "idUsuario, "
-                        + "nombreImagen, "
-                        + "tamanio, "
-                        + "extension, "
-                        + "urlDestino "
-                        + "FROM galeria";
+                        + "idItem, "
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + "FROM deseo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+                    Deseo sol = new Deseo();
+                    sol.setIdItem(rs.getInt(1));
+                    sol.setIdRecurso(rs.getInt(2));
+                    sol.setIdEstudiante(rs.getInt(3));
+                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -227,32 +187,28 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public Galeria encontrarId(int id) {
-        Galeria response = null;
+    public Deseo encontrarId(int id) {
+        Deseo response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idGaleria, "
-                        + "idUsuario, "
-                        + "nombreImagen, "
-                        + "tamanio, "
-                        + "extension, "
-                        + "urlDestino "
-                        + "FROM galeria "
-                        + "WHERE idGaleria=?";
+                        + "idItem, "
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + "FROM deseo "
+                        + "WHERE idItem=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Galeria();
-                    response.setIdGaleria(rs.getInt(1));
-                    response.setIdUsuario(rs.getInt(2));
-                    response.setNombreImagen(rs.getString(3));
-                    response.setTamanio(rs.getDouble(4));
-                    response.setExtension(rs.getString(5));
-                    response.setUrlDestino(rs.getString(6));
+                    response = new Deseo();
+                    response.setIdItem(rs.getInt(1));
+                    response.setIdRecurso(rs.getInt(2));
+                    response.setIdEstudiante(rs.getInt(3));
+                    response.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -266,4 +222,5 @@ public class ManipulaGaleria implements Manipula<Galeria> {
         }
         return response;
     }
+
 }

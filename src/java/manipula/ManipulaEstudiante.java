@@ -95,7 +95,66 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
     @Override
     public GenericResponse<Estudiante> actualizar(int id) {
         GenericResponse<Estudiante> response = new GenericResponse<>();
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
+        return response;
+    }
 
+    public GenericResponse<Estudiante> changeSeccionEscolar(int id, Estudiante nvoObj) {
+        GenericResponse<Estudiante> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE estudiante SET "
+                            + "nivelEducativo=?, "
+                            + "ocupacion=?, "
+                            + "tipoEscuela=?, "
+                            + "gradoEscolar=?, "
+                            + "promedioAnterior=?, "
+                            + "estatusEscolar=?, "
+                            + "intereses=?, "
+                            + "habilidades=?, "
+                            + "WHERE idEstudiante=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(12, nvoObj.getNivelEducativo());
+                    registro.setString(13, nvoObj.getOcupacion());
+                    registro.setString(14, nvoObj.getTipoEscuela());
+                    registro.setString(15, nvoObj.getGradoEscolar());
+                    registro.setDouble(16, nvoObj.getPromedioAnterior());
+                    registro.setBoolean(17, nvoObj.isEstatusEscolar());
+                    registro.setString(18, nvoObj.getIntereses());
+                    registro.setString(19, nvoObj.getHabilidades());
+                    registro.setInt(21, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        nvoObj.setIdEstudiante(id);
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(nvoObj);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
         return response;
     }
 
@@ -361,7 +420,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
 
     @Override
     public Estudiante encontrarId(int id) {
-        Estudiante response = new Estudiante();
+        Estudiante response =null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -430,19 +489,102 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         return response;
     }
 
-    public boolean changeEstadoLogico(int id) {
-        return false;
+    public boolean changeEstadoLogico(int id, boolean estadoLogico) {
+        boolean status = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE estudiante SET "
+                            + "estadoLogico=? "
+                            + "WHERE idEstudiante=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setBoolean(1, estadoLogico);
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        status = true;
+                        Logg.exito("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
     }
 
-    public boolean changeNumeroMovil(int id) {
-        return false;
+    public boolean changeNumeroMovil(int id, int numeroMovil) {
+        boolean status = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE estudiante SET "
+                            + "telefonoMovil=? "
+                            + "WHERE idEstudiante=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setInt(1, numeroMovil);
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        status = true;
+                        Logg.exito("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
     }
 
-    public boolean changeNumeroFijo(int id) {
-        return false;
-    }
-
-    public boolean changeSeccionEscolar(int id) {
-        return false;
+    public boolean changeNumeroFijo(int id, int numeroFijo) {
+        boolean status = false;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (encontrarId(id) != null) {
+                try {
+                    String sql = "UPDATE estudiante SET "
+                            + "telefonoCasa=? "
+                            + "WHERE idEstudiante=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setInt(1, numeroFijo);
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        status = true;
+                        Logg.exito("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
     }
 }

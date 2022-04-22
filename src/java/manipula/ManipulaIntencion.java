@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Notificacion;
+import model.Intencion;
 import utils.GenericResponse;
 import utils.Logg;
 import utils.Misc;
@@ -16,27 +16,25 @@ import utils.Misc;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaNotificacion implements Manipula<Notificacion> {
+public class ManipulaIntencion implements Manipula<Intencion> {
 
     @Override
-    public GenericResponse<Notificacion> registrar(Notificacion obj) {
-        GenericResponse<Notificacion> response = new GenericResponse<>();
+    public GenericResponse<Intencion> registrar(Intencion obj) {
+        GenericResponse<Intencion> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO notificacion ("
-                        + "idUsuarioDestino, "
-                        + "fechaNotificacion, "
-                        + "estadoVisualizacion, "
-                        + "prioridad, "
-                        + "mensaje "
-                        + ") VALUES (?,?,?,?,?)";
+                String sql = "INSERT INTO intencion ("
+                        + "idUsuario, "
+                        + "tituloIntencion, "
+                        + "descripcion, "
+                        + "fechaIntencion, "
+                        + "estadoIntencion, "
+                        + "respuestaIntencion, "
+                        + "fechaRespuesta "
+                        + ") VALUES (?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setInt(1, obj.getIdUsuarioDestino());
-                registro.setDate(2, Misc.transformDateTimeJavaSql(obj.getFechaNotificacion()));
-                registro.setString(3, obj.getEstadoVisualizacion());
-                registro.setString(4, obj.getPrioridad());
-                registro.setString(5, obj.getMensaje());
+                registro.setInt(1, obj.getIdUsuario());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -63,34 +61,37 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> actualizar(int id) {
-        GenericResponse<Notificacion> response = new GenericResponse<>();
+    public GenericResponse<Intencion> actualizar(int id) {
+        GenericResponse<Intencion> response = new GenericResponse<>();
+        response.setMensaje("Accion no implementada");
+        response.setStatus(utils.Constantes.LOGIC_WARNING);
+        response.setResponseObject(null);
+        return response;
+    }
+
+    public GenericResponse<Intencion> actualizar(int id, String respuestaIntencion, java.util.Date fechaRespuesta,String estado) {
+        GenericResponse<Intencion> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Notificacion obj = encontrarId(id);
-            if (obj != null) {
-                switch (obj.getEstadoVisualizacion()) {
-                    case "Re":
-                        obj.setEstadoVisualizacion("Vi");
-                        break;
-                    case "Vi":
-                        break;
-                    default:
-                        obj.setEstadoVisualizacion("Re");
-                        break;
-                }
-
+            Intencion inten = encontrarId(id);
+            if (inten != null) {
                 try {
-                    String sql = "UPDATE notificacion SET "
-                            + "estadoVisualizacion=? "
-                            + "WHERE idNotificacion=?";
+                    String sql = "UPDATE intencion SET "
+                            + "respuestaIntencion=?, "
+                            + "fechaRespuesta=?, "
+                            + "estadoIntencion=? "
+                            + "WHERE idIntencion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setString(1, obj.getEstadoVisualizacion());
-                    registro.setInt(2, id);
+                    registro.setString(1, respuestaIntencion);
+                    registro.setDate(2, Misc.transformDateTimeJavaSql(fechaRespuesta));
+                    registro.setString(3, estado);
+                    registro.setInt(4, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
+                        inten.setRespuestaIntencion(respuestaIntencion);
+                        inten.setFechaRespuesta(fechaRespuesta);
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
-                        response.setResponseObject(obj);
+                        response.setResponseObject(inten);
                         response.setMensaje("Edición exitosa en la base de datos");
                     } else {
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
@@ -118,29 +119,33 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> editar(int id, Notificacion nvoObj) {
-        GenericResponse<Notificacion> response = new GenericResponse<>();
+    public GenericResponse<Intencion> editar(int id, Intencion nvoObj) {
+        GenericResponse<Intencion> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE notificacion SET "
-                            + "idUsuarioDestino=?, "
-                            + "fechaNotificacion=?, "
-                            + "estadoVisualizacion=? "
-                            + "prioridad=?, "
-                            + "mensaje=? "
-                            + "WHERE idNotificacion=?";
+                    String sql = "UPDATE intencion SET "
+                            + "idUsuario=?, "
+                            + "tituloIntencion=?, "
+                            + "descripcion=?, "
+                            + "fechaIntencion=?, "
+                            + "estadoIntencion=?, "
+                            + "respuestaIntencion=?, "
+                            + "fechaRespuesta=? "
+                            + "WHERE idIntencion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setInt(1, nvoObj.getIdUsuarioDestino());
-                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaNotificacion()));
-                    registro.setString(3, nvoObj.getEstadoVisualizacion());
-                    registro.setString(4, nvoObj.getPrioridad());
-                    registro.setString(5, nvoObj.getMensaje());
-                    registro.setInt(6, id);
+                    registro.setInt(1, nvoObj.getIdUsuario());
+                    registro.setString(2, nvoObj.getTituloIntencion());
+                    registro.setString(3, nvoObj.getDescripcion());
+                    registro.setDate(4, Misc.transformDateTimeJavaSql(nvoObj.getFechaIntencion()));
+                    registro.setString(5, nvoObj.getEstadoIntencion());
+                    registro.setString(6, nvoObj.getRespuestaIntencion());
+                    registro.setDate(7, Misc.transformDateTimeJavaSql(nvoObj.getFechaRespuesta()));
+                    registro.setInt(8, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
-                        nvoObj.setIdNotificacion(id);
+                        nvoObj.setIdIntencion(id);
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
                         response.setResponseObject(nvoObj);
                         response.setMensaje("Edición exitosa en la base de datos");
@@ -170,15 +175,15 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> eliminar(int id) {
-        GenericResponse<Notificacion> response = new GenericResponse<>();
+    public GenericResponse<Intencion> eliminar(int id) {
+        GenericResponse<Intencion> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Notificacion obj = encontrarId(id);
+            Intencion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM notificacion "
-                            + "WHERE idNotificacion=?";
+                    String sql = "DELETE FROM intencion "
+                            + "WHERE idIntencion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -212,29 +217,35 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public List<Notificacion> getData() {
-        List<Notificacion> response = new ArrayList<>();
+    public List<Intencion> getData() {
+        List<Intencion> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idNotificacion, "
+                        + "idIntencion, "
                         + "idUsuario, "
-                        + "fechaNotificacion, "
-                        + "estadoVisualizacion, "
-                        + "prioridad, "
-                        + "mensaje "
-                        + "FROM notificacion";
+                        + "tituloIntencion, "
+                        + "descripcion, "
+                        + "fechaIntencion, "
+                        + "estadoIntencion, "
+                        + "respuestaIntencion, "
+                        + "fechaRespuesta "
+                        + "FROM intencion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Notificacion(rs.getInt(1),
-                            rs.getInt(2),
-                            Misc.transformDateTimeSqlJava(rs.getDate(3)),
-                            rs.getString(4),
-                            rs.getString(5),
-                            rs.getString(6)));
+                    Intencion sol = new Intencion();
+                    sol.setIdIntencion(rs.getInt(1));
+                    sol.setIdUsuario(rs.getInt(2));
+                    sol.setTituloIntencion(rs.getString(3));
+                    sol.setDescripcion(rs.getString(4));
+                    sol.setFechaIntencion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    sol.setEstadoIntencion(rs.getString(6));
+                    sol.setRespuestaIntencion(rs.getString(6));
+                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(6)));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -248,24 +259,35 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public List<Notificacion> consultar(String... filtros) {
-        List<Notificacion> response = new ArrayList<>();
+    public List<Intencion> consultar(String... filtros) {
+        List<Intencion> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idNotificacion, "
+                        + "idIntencion, "
                         + "idUsuario, "
-                        + "fechaNotificacion, "
-                        + "estadoVisualizacion, "
-                        + "prioridad, "
-                        + "mensaje "
-                        + "FROM notificacion";
+                        + "tituloIntencion, "
+                        + "descripcion, "
+                        + "fechaIntencion, "
+                        + "estadoIntencion, "
+                        + "respuestaIntencion, "
+                        + "fechaRespuesta "
+                        + "FROM intencion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Notificacion(rs.getInt(1), rs.getInt(2), Misc.transformDateTimeSqlJava(rs.getDate(3)), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    Intencion sol = new Intencion();
+                    sol.setIdIntencion(rs.getInt(1));
+                    sol.setIdUsuario(rs.getInt(2));
+                    sol.setTituloIntencion(rs.getString(3));
+                    sol.setDescripcion(rs.getString(4));
+                    sol.setFechaIntencion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    sol.setEstadoIntencion(rs.getString(6));
+                    sol.setRespuestaIntencion(rs.getString(6));
+                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(6)));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -279,32 +301,36 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public Notificacion encontrarId(int id) {
-        Notificacion response = null;
+    public Intencion encontrarId(int id) {
+        Intencion response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idNotificacion, "
+                        + "idIntencion, "
                         + "idUsuario, "
-                        + "fechaNotificacion, "
-                        + "estadoVisualizacion, "
-                        + "prioridad, "
-                        + "mensaje "
-                        + "FROM notificacion "
-                        + "WHERE idNotificacion=?";
+                        + "tituloIntencion, "
+                        + "descripcion, "
+                        + "fechaIntencion, "
+                        + "estadoIntencion, "
+                        + "respuestaIntencion, "
+                        + "fechaRespuesta "
+                        + "FROM intencion "
+                        + "WHERE idIntencion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Notificacion();
-                    response.setIdNotificacion(rs.getInt(1));
-                    response.setIdUsuarioDestino(rs.getInt(2));
-                    response.setFechaNotificacion(Misc.transformDateTimeSqlJava(rs.getDate(3)));
-                    response.setEstadoVisualizacion(rs.getString(4));
-                    response.setPrioridad(rs.getString(5));
-                    response.setMensaje(rs.getString(6));
+                    response = new Intencion();
+                    response.setIdIntencion(rs.getInt(1));
+                    response.setIdUsuario(rs.getInt(2));
+                    response.setTituloIntencion(rs.getString(3));
+                    response.setDescripcion(rs.getString(4));
+                    response.setFechaIntencion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    response.setEstadoIntencion(rs.getString(6));
+                    response.setRespuestaIntencion(rs.getString(6));
+                    response.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(6)));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

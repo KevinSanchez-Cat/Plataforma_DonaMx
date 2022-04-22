@@ -1,7 +1,7 @@
 package manipula;
 
 import java.util.List;
-import model.*;
+import model.Rol;
 import utils.GenericResponse;
 
 /**

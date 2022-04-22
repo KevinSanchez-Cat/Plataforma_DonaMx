@@ -361,5 +361,4 @@ public class ManipulaDireccion implements Manipula<Direccion> {
         }
         return response;
     }
-
 }

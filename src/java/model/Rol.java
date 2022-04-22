@@ -17,38 +17,18 @@ public class Rol {
         this.rol = rol;
     }
 
-    /**
-     * Get the value of rol
-     *
-     * @return the value of rol
-     */
     public String getRol() {
         return rol;
     }
 
-    /**
-     * Set the value of rol
-     *
-     * @param rol new value of rol
-     */
     public void setRol(String rol) {
         this.rol = rol;
     }
 
-    /**
-     * Get the value of idRol
-     *
-     * @return the value of idRol
-     */
     public int getIdRol() {
         return idRol;
     }
 
-    /**
-     * Set the value of idRol
-     *
-     * @param idRol new value of idRol
-     */
     public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
@@ -57,5 +37,4 @@ public class Rol {
     public String toString() {
         return "Rol{" + "idRol=" + idRol + ", rol=" + rol + '}';
     }
-
 }

@@ -70,7 +70,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
         GenericResponse<Municipio> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             Municipio obj = encontrarId(id);
             if (obj != null) {
                 try {
@@ -79,11 +78,9 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                             + "municipio=? "
                             + "WHERE idMunicipio=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-
                     registro.setInt(1, nvoObj.getIdEstado());
                     registro.setString(2, nvoObj.getMunicipio());
                     registro.setInt(3, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         obj.setIdMunicipio(id);
@@ -127,7 +124,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                             + "WHERE idMunicipio=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
@@ -163,7 +159,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
         List<Municipio> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idMunicipio, "
@@ -173,7 +168,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
-
                 while (rs.next()) {
                     response.add(new Municipio(rs.getInt(1), rs.getString(3), rs.getInt(2)));
                 }
@@ -193,7 +187,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
         List<Municipio> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idMunicipio, "
@@ -203,7 +196,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
-
                 while (rs.next()) {
                     response.add(new Municipio(rs.getInt(1), rs.getString(3), rs.getInt(2)));
                 }
@@ -222,9 +214,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
     public Municipio encontrarId(int id) {
         Municipio response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
                 String sql = "SELECT "
                         + "idMunicipio, "
@@ -234,7 +224,6 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                         + "WHERE idMunicipio=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
-
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
@@ -257,6 +246,39 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
     }
 
     public List<Localidad> getLstLocalidades(int id) {
-        return null;
+          List<Localidad> response = new ArrayList<>();
+         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idLocalidad, "
+                        + "idMunicipio, "
+                        + "localidad, "
+                        + "codigoPostal "
+                        + "FROM localidad "
+                        + "WHERE idMunicipio=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    Localidad loc = new Localidad();
+                    loc.setIdLocalidad(rs.getInt(1));
+                    loc.setIdMunicipio(rs.getInt(2));
+                    loc.setLocalidad(rs.getString(3));
+                    loc.setCodigoPostal(rs.getInt(4));
+                    response.add(loc);
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
     }
 }

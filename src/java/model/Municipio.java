@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
@@ -27,56 +24,26 @@ public class Municipio {
         this.idEstado = idEstado;
     }
 
-    /**
-     * Get the value of idEstado
-     *
-     * @return the value of idEstado
-     */
     public int getIdEstado() {
         return idEstado;
     }
 
-    /**
-     * Set the value of idEstado
-     *
-     * @param idEstado new value of idEstado
-     */
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
     }
 
-    /**
-     * Get the value of municipio
-     *
-     * @return the value of municipio
-     */
     public String getMunicipio() {
         return municipio;
     }
 
-    /**
-     * Set the value of municipio
-     *
-     * @param municipio new value of municipio
-     */
     public void setMunicipio(String municipio) {
         this.municipio = municipio;
     }
 
-    /**
-     * Get the value of idMunicipio
-     *
-     * @return the value of idMunicipio
-     */
     public int getIdMunicipio() {
         return idMunicipio;
     }
 
-    /**
-     * Set the value of idMunicipio
-     *
-     * @param idMunicipio new value of idMunicipio
-     */
     public void setIdMunicipio(int idMunicipio) {
         this.idMunicipio = idMunicipio;
     }

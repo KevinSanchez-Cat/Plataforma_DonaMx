@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.Date;
@@ -6,26 +7,26 @@ import java.util.Date;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class Mochila {
+public class Deseo {
 
     private int idItem;
     private int idRecurso;
     private int idEstudiante;
     private Date fecha;
 
-    public Mochila() {
+    public Deseo() {
     }
 
-    public Mochila(int idRecurso, int cantidad, Date fecha) {
+    public Deseo(int idRecurso, int idEstudiante, Date fecha) {
         this.idRecurso = idRecurso;
-        this.idEstudiante = cantidad;
+        this.idEstudiante = idEstudiante;
         this.fecha = fecha;
     }
 
-    public Mochila(int idItem, int idRecurso, int cantidad, Date fecha) {
+    public Deseo(int idItem, int idRecurso, int idEstudiante, Date fecha) {
         this.idItem = idItem;
         this.idRecurso = idRecurso;
-        this.idEstudiante = cantidad;
+        this.idEstudiante = idEstudiante;
         this.fecha = fecha;
     }
 
@@ -63,6 +64,7 @@ public class Mochila {
 
     @Override
     public String toString() {
-        return "Mochila{" + "idItem=" + idItem + ", idRecurso=" + idRecurso + ", cantidad=" + idEstudiante + ", fecha=" + fecha + '}';
+        return "Deseo{" + "idItem=" + idItem + ", idRecurso=" + idRecurso + ", idEstudiante=" + idEstudiante + ", fecha=" + fecha + '}';
     }
+
 }

@@ -238,6 +238,37 @@ public class ManipulaEstado implements Manipula<Estado> {
     }
 
     public List<Municipio> getLstMunicipios(int id) {
-        return null;
+        List<Municipio> response = new ArrayList<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idMunicipio, "
+                        + "idEstado, "
+                        + "municipio "
+                        + "FROM municipio "
+                        + "WHERE idEstado=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    Municipio mun = new Municipio();
+                    mun.setIdMunicipio(rs.getInt(1));
+                    mun.setIdEstado(rs.getInt(2));
+                    mun.setMunicipio(rs.getString(3));
+                    response.add(mun);
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
     }
 }

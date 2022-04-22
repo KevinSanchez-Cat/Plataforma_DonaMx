@@ -243,9 +243,67 @@ public class ManipulaCategoria implements Manipula<Categoria> {
         }
         return response;
     }
-    
-    public List<RecursoTecnologico> getLstRecursosTecnologicos(int idCategoria){
-        return null;
+
+    public List<RecursoTecnologico> getLstRecursosTecnologicos(int idCategoria) {
+        List<RecursoTecnologico> response = new ArrayList<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idRecursoTecnologico, "
+                        + "idCategoria, "
+                        + "idDonador, "
+                        + "idUsuario, "
+                        + "nombreRecurso, "
+                        + "cantidadStock, "
+                        + "autorizado, "
+                        + "estadoPublicacion, "
+                        + "estadoLogico, "
+                        + "fechaPublicacion, "
+                        + "fechaAutorizacion, "
+                        + "remunerado, "
+                        + "estadoCondicion, "
+                        + "precioOriginal, "
+                        + "precioEstimado, "
+                        + "precioOfertado, "
+                        + "organizacionOCivil, "
+                        + "tipoSoftHard "
+                        + "FROM recursoTecnologico "
+                        + "WHERE idCategoria=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, idCategoria);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    RecursoTecnologico recurso = new RecursoTecnologico();
+                    recurso.setIdRecursoTecnologico(rs.getInt(1));
+                    recurso.setIdCategoria(rs.getInt(2));
+                    recurso.setIdDonador(rs.getInt(3));
+                    recurso.setIdUsuario(rs.getInt(4));
+                    recurso.setNombreRecurso(rs.getString(5));
+                    recurso.setCantidadStock(rs.getInt(6));
+                    recurso.setAutorizado(rs.getString(7));
+                    recurso.setEstadoPublicacion(rs.getString(8));
+                    recurso.setEstadoLogico(rs.getBoolean(9));
+                    recurso.setFechaPublicacion(rs.getDate(10));
+                    recurso.setFechaAutorizacion(rs.getDate(11));
+                    recurso.setRemunerado(rs.getBoolean(12));
+                    recurso.setEstadoCondicion(rs.getString(13));
+                    recurso.setPrecioOriginal(rs.getDouble(14));
+                    recurso.setPrecioEstimado(rs.getDouble(15));
+                    recurso.setPrecioOriginal(rs.getDouble(16));
+                    recurso.setOrganizacionOCivil(rs.getString(17));
+                    recurso.setTipoSoftwarOHardware(rs.getString(18));
+                    response.add(recurso);
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
     }
-    
 }

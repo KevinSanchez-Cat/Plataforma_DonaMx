@@ -2,7 +2,6 @@ package manipula;
 
 import config.conexion.ConexionFactory;
 import config.conexion.IConexion;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +10,7 @@ import java.util.List;
 import model.Donacion;
 import utils.GenericResponse;
 import utils.Logg;
+import utils.Misc;
 
 /**
  *
@@ -39,7 +39,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                 registro.setInt(2, obj.getIdDonatario());
                 registro.setInt(3, obj.getIdArchivo());
                 registro.setInt(4, obj.getIdRecursoTecnologico());
-                registro.setDate(5, (Date) obj.getFechaDonacion());
+                registro.setDate(5, Misc.transformDateTimeJavaSql(obj.getFechaDonacion()));
                 registro.setString(6, obj.getEstadoDonacion());
                 registro.setString(7, obj.getNoConfirmacion());
                 registro.setBoolean(8, obj.getRemunerado());
@@ -71,7 +71,132 @@ public class ManipulaDonacion implements Manipula<Donacion> {
     @Override
     public GenericResponse<Donacion> actualizar(int id) {
         GenericResponse<Donacion> response = new GenericResponse<>();
-        //NoConfirmacion,EstadoDonacion,IDArchivo
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            Donacion don = encontrarId(id);
+            if (don != null) {
+                switch (don.getEstadoDonacion()) {
+                    case "Pe"://Pendiente
+                        don.setEstadoDonacion("Ev");
+                        break;
+                    case "Ev"://Enviado
+                        don.setEstadoDonacion("Ec");
+                        break;
+                    case "Ec"://En camino
+                        don.setEstadoDonacion("Et");
+                        break;
+                    case "Et"://Entregado
+                        break;
+                    case "Re"://Rechazado
+                        break;
+                    default://Esperando respuesta de confirmacion
+                        if (don.getNoConfirmacion().equals("Si")) {
+                            don.setEstadoDonacion("Pe");//Preparacion. Pendiente
+                        } else if (don.getNoConfirmacion().equals("No")) {
+                            don.setEstadoDonacion("Re"); //Rechazado
+                        }
+                        break;
+                }
+                try {
+                    String sql = "UPDATE solicitud SET "
+                            + "estadoDonacion=? "
+                            + "WHERE idDonacion=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, don.getEstadoDonacion());
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(don);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(null);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
+        return response;
+    }
+
+    public GenericResponse<Donacion> actualizar(int id, String noConfirmacion) {
+        GenericResponse<Donacion> response = new GenericResponse<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            Donacion don = encontrarId(id);
+            if (don != null) {
+                if (!don.getNoConfirmacion().equals("")) {
+                    if (noConfirmacion.equals("Si")) {
+                        don.setNoConfirmacion("Si");
+                        don.setEstadoDonacion("Pe");//Preparacion. Pendiente
+                    } else if (noConfirmacion.equals("No")) {
+                        don.setNoConfirmacion("No");
+                        don.setEstadoDonacion("Re"); //Rechazado
+                    }
+                } else {
+                    if (noConfirmacion.equals("Si") && don.getNoConfirmacion().equals("Si")) {
+                        don.setNoConfirmacion("Si");
+                    } else if (noConfirmacion.equals("Si") && don.getNoConfirmacion().equals("No")) {
+                        don.setNoConfirmacion("No");
+                    } else if (noConfirmacion.equals("No") && don.getNoConfirmacion().equals("Si")) {//accion de cancelar
+                        don.setNoConfirmacion("No");
+                        don.setEstadoDonacion("Re"); //Rechazado
+                    } else if (noConfirmacion.equals("No") && don.getNoConfirmacion().equals("No")) {
+                        don.setNoConfirmacion("No");
+                        don.setEstadoDonacion("Re"); //Rechazado
+                    }
+                }
+
+                try {
+                    String sql = "UPDATE solicitud SET "
+                            + "noConfirmacion=? "
+                            + "WHERE idDonacion=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, don.getNoConfirmacion());
+                    registro.setInt(2, id);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setResponseObject(don);
+                        response.setMensaje("Edición exitosa en la base de datos");
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setResponseObject(null);
+                        response.setMensaje("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+                    response.setResponseObject(null);
+                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+                    conexionDB.desconectar();
+                }
+            } else {
+                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setResponseObject(null);
+                response.setMensaje("El registro no existe");
+            }
+        } else {
+            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
+            response.setResponseObject(null);
+            response.setMensaje("Error de conexión a la base de datos");
+        }
         return response;
     }
 
@@ -97,7 +222,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     registro.setInt(2, nvoObj.getIdDonatario());
                     registro.setInt(3, nvoObj.getIdArchivo());
                     registro.setInt(4, nvoObj.getIdRecursoTecnologico());
-                    registro.setDate(5, (Date) nvoObj.getFechaDonacion());
+                    registro.setDate(5, Misc.transformDateTimeJavaSql(nvoObj.getFechaDonacion()));
                     registro.setString(6, nvoObj.getEstadoDonacion());
                     registro.setString(7, nvoObj.getNoConfirmacion());
                     registro.setBoolean(8, nvoObj.getRemunerado());
@@ -279,7 +404,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion"
+                        + "FROM donacion "
                         + "WHERE idDonacion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
