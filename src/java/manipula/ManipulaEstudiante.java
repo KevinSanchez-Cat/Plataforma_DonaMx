@@ -8,9 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Deseo;
 import model.Estudiante;
+import model.Mochila;
 import utils.GenericResponse;
 import utils.Logg;
+import utils.Misc;
 
 /**
  *
@@ -420,7 +423,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
 
     @Override
     public Estudiante encontrarId(int id) {
-        Estudiante response =null;
+        Estudiante response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -586,5 +589,75 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
             Logg.error("Error de conexión a la base de datos");
         }
         return status;
+    }
+
+    public List<Mochila> getMochila(int id) {
+        List<Mochila> response = new ArrayList<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idItem, "
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + "FROM deseo "
+                        + "WHERE idEstudiante=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    Mochila sol = new Mochila();
+                    sol.setIdItem(rs.getInt(1));
+                    sol.setIdRecurso(rs.getInt(2));
+                    sol.setIdEstudiante(rs.getInt(3));
+                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    response.add(sol);
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
+
+    public List<Deseo> getListaDeseos(int id) {
+        List<Deseo> response = new ArrayList<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idItem, "
+                        + "idRecurso, "
+                        + "idEstudiante, "
+                        + "fecha "
+                        + "FROM deseo "
+                        + "WHERE idEstudiante=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    Deseo sol = new Deseo();
+                    sol.setIdItem(rs.getInt(1));
+                    sol.setIdRecurso(rs.getInt(2));
+                    sol.setIdEstudiante(rs.getInt(3));
+                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    response.add(sol);
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
     }
 }
