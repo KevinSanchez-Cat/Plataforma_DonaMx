@@ -375,6 +375,123 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         return response;
     }
 
+    public Usuario encontrarCorreo(String correo) {
+        Usuario response = null;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idUsuario, "
+                        + "nombreUsuario, "
+                        + "fechaCreacion, "
+                        + "ultimaConexion, "
+                        + "estadoCuenta, "
+                        + "estadoLogico, "
+                        + "conectado, "
+                        + "correoElectronico, "
+                        + "correoConfirmado, "
+                        + "numeroCelular, "
+                        + "numeroCelularConfirmado, "
+                        + "autenticacionDosPasos, "
+                        + "conteoAccesosFallidos, "
+                        + "foto, "
+                        + "idRol "
+                        + "FROM usuario "
+                        + "WHERE correoElectronica";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setString(1, correo);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    response = new Usuario();
+                    response.setIdUsuario(rs.getInt(1));
+                    response.setNombreUsuario(rs.getString(2));
+                    response.setFechaCreacion(rs.getDate(3));
+                    response.setUltimaConexion(rs.getDate(4));
+                    response.setEstadoCuenta(rs.getString(5));
+                    response.setEstadoLogico(rs.getBoolean(6));
+                    response.setConectado(rs.getBoolean(7));
+                    response.setCorreoElectronico(rs.getString(8));
+                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setNumeroCelular(rs.getInt(10));
+                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
+                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setConteoAccesosFallidos(rs.getInt(13));
+                    response.setFoto(rs.getString(14));
+                    response.setIdRol(rs.getInt(15));
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
+
+    public Usuario encontrarStatus(String nombre, String contrasenia) {
+        Usuario response = null;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idUsuario, "
+                        + "nombreUsuario, "
+                        + "fechaCreacion, "
+                        + "ultimaConexion, "
+                        + "estadoCuenta, "
+                        + "estadoLogico, "
+                        + "conectado, "
+                        + "correoElectronico, "
+                        + "correoConfirmado, "
+                        + "numeroCelular, "
+                        + "numeroCelularConfirmado, "
+                        + "autenticacionDosPasos, "
+                        + "conteoAccesosFallidos, "
+                        + "foto, "
+                        + "idRol "
+                        + "FROM usuario "
+                        + "WHERE nombreUsuario=? AND contrasenia=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setString(1, nombre);
+                ps.setString(2, contrasenia);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    response = new Usuario();
+                    response.setIdUsuario(rs.getInt(1));
+                    response.setNombreUsuario(rs.getString(2));
+                    response.setFechaCreacion(rs.getDate(3));
+                    response.setUltimaConexion(rs.getDate(4));
+                    response.setEstadoCuenta(rs.getString(5));
+                    response.setEstadoLogico(rs.getBoolean(6));
+                    response.setConectado(rs.getBoolean(7));
+                    response.setCorreoElectronico(rs.getString(8));
+                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setNumeroCelular(rs.getInt(10));
+                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
+                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setConteoAccesosFallidos(rs.getInt(13));
+                    response.setFoto(rs.getString(14));
+                    response.setIdRol(rs.getInt(15));
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
+
     public List<Solicitud> getSolicitudes(int idUsuario) {
         List<Solicitud> lstSolicitud = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
@@ -887,7 +1004,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     ResultSet rs;
                     rs = ps.executeQuery();
                     if (rs.next()) {
-                        constrasenia=rs.getString(1);
+                        constrasenia = rs.getString(1);
                     } else {
                         Logg.error("No se encontro ningun registro");
                     }
