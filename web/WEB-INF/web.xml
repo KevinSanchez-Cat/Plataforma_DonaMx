@@ -181,4 +181,11 @@
             30
         </session-timeout>
     </session-config>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>
+            /views/templates/errores/page404.jsp
+        </location>
+    </error-page>
 </web-app>
