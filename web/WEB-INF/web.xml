@@ -88,6 +88,10 @@
         <servlet-name>Srv_usuario</servlet-name>
         <servlet-class>controller.usuario.Srv_usuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>contacto</servlet-name>
+        <servlet-class>controller.home.contacto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -176,12 +180,15 @@
         <servlet-name>Srv_usuario</servlet-name>
         <url-pattern>/Srv_usuario</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contacto</servlet-name>
+        <url-pattern>/contacto</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <error-page>
         <error-code>404</error-code>
         <location>
