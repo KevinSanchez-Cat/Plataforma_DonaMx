@@ -8,21 +8,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <!--    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-              <link href="css/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
-        <link href="css/generado/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>DonaMx</title>
+        <meta content="Plataforma dedicada a unir a fundaciones y estudiantes para donaciones
+              de tipo tecnologico, de manera en que los estudiantes de escasos recursos 
+              logren continuar con sus estudios, además de ser un lugar en donde se pueda conseguir 
+              apoyo o subsidios de productos en materia de tecnologia" name="description">
+        <meta content="tecnologia, computadoras, licencias, donaciones, estudiantes, educiacion, progreso" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/imagenes/Logo_1.png" rel="icon">
+        <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body>
-      <header id="header" class="fixed-top">
+        <%@ page import="controller.inicio.Srv_contacto" %>
+        <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
-                <a href="index.jsp" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
+                <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
+
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li>
@@ -117,18 +138,13 @@
         </header>
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact" style="margin-top:100px ">
+        <section id="contact" class="contact" style="margin-top:40px ">
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Contacto</h2>
+                    <p>Ponte en contacto con nosotros llenando el siguiente formulario, con gusto te atenderemos. </p>
                 </div>
-            </div>
-
-            <div>
-                <iframe style="border:0; width: 100%; height: 350px;" 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container">
@@ -138,20 +154,20 @@
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <h4>Domicilio:</h4>
+                                <p>Av. Tecnologico, Metepec, Estado de México. </p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>info@example.com</p>
+                                <h4>Correo electronico:</h4>
+                                <p>dona@donamx.org.mx</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>+1 5589 55488 55s</p>
+                                <h4>Llamanos:</h4>
+                                <p>+52 1022 23423 23</p>
                             </div>
 
                         </div>
@@ -160,40 +176,43 @@
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
 
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="Srv_contacto" id="form-contacto" method="post"
+                              role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electronico" required>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
                             </div>
                             <div class="my-3">
-                                <div class="loading">Loading</div>
+                                <div class="loading">Cargando...</div>
                                 <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                                <div class="sent-message">Tu mensaje se ha enviado. ¡Gracias!</div>
                             </div>
-                            <div class="text-center"><button class="btn-primary" type="submit">Send Message</button></div>
+                            <div class="text-center"><button class="btn-primary" type="submit">Enviar mensaje</button></div>
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
         </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
     <%@include  file="views/templates/footer/footer_principal.jsp" %>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

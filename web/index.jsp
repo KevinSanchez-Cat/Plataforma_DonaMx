@@ -8,21 +8,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Plataforma DonaMx</title>
-        <!--    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-                <link href="css/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
-        <link href="css/generado/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>DonaMx</title>
+        <meta content="Plataforma dedicada a unir a fundaciones y estudiantes para donaciones
+              de tipo tecnologico, de manera en que los estudiantes de escasos recursos 
+              logren continuar con sus estudios, además de ser un lugar en donde se pueda conseguir 
+              apoyo o subsidios de productos en materia de tecnologia" name="description">
+        <meta content="tecnologia, computadoras, licencias, donaciones, estudiantes, educiacion, progreso" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/imagenes/Logo_1.png" rel="icon">
+        <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
     </head>
     <body>
         <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
-                <a href="index.jsp" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
+                <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li>
@@ -100,8 +120,7 @@
                     </i>    
                     Iniciar sesión
                 </a>
-
-                <a class="appointment-btn scrollto"  href="registrarse.jsp" >
+                <a  class="appointment-btn scrollto" href="registrarse.jsp" >
                     <i>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -111,16 +130,17 @@
                               d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
                         </svg>
                     </i>
-                    Registrate</a>
+                    Registrate
+                </a>
 
             </div>
+
         </header>
         <!-- ======= Hero Section ======= -->
-        <section id="hero" class="d-flex align-items-center" style="margin-top: 100px">
+        <section id="hero" class="d-flex align-items-center">
             <div class="container">
-                <h1>Welcome to Medilab</h1>
-                <h2>We are team of talented designers making websites with Bootstrap</h2>
-                <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                <h1>Bienvenid@  a  DonaMx</h1>
+                <h2>Una oportunidad para el talento mexicano y progreso tecnologico</h2>
             </div>
         </section><!-- End Hero -->
 
@@ -132,13 +152,13 @@
                     <div class="row">
                         <div class="col-lg-4 d-flex align-items-stretch">
                             <div class="content">
-                                <h3>Why Choose Medilab?</h3>
+                                <h3>¿Por qué donar?</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                                    Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                                    Su donación ayudará a equipar a los niños y jovenes necesitados con los recursos, la capacitación y la educación solicitados, 
+                                    al tiempo que ofrece la promesa de un futuro mejor. 
                                 </p>
                                 <div class="text-center">
-                                    <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                                    <a href="dona.jsp" class="more-btn">Leer más... <i class="bx bx-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -147,23 +167,23 @@
                                 <div class="row">
                                     <div class="col-xl-4 d-flex align-items-stretch">
                                         <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-receipt"></i>
-                                            <h4>Corporis voluptates sit</h4>
-                                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                            <i class="bx bx-user-pin"></i>
+                                            <h4>Conviértete en voluntario</h4>
+                                            <p>Unasé al grupo de agentes de cambio, una red lo suficientemente fuerte como para impactar un cambio positivo en la vida de los niños y jovenes.</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 d-flex align-items-stretch">
                                         <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-cube-alt"></i>
-                                            <h4>Ullamco laboris ladore pan</h4>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                            <i class="bx bx-heart"></i>
+                                            <h4>Una acción altruista</h4>
+                                            <p>Con el objetivo de ayudar al mayor número posible de estudiantes con escasos recursos, </p>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 d-flex align-items-stretch">
                                         <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-images"></i>
-                                            <h4>Labore consequatur</h4>
-                                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                            <i class="bx bx-globe"></i>
+                                            <h4>Brecha tecnologica</h4>
+                                            <p>Uno de los sectores que </p>
                                         </div>
                                     </div>
                                 </div>
@@ -173,122 +193,156 @@
 
                 </div>
             </section><!-- End Why Us Section -->
-
-            <!-- ======= Services Section ======= -->
-            <section id="services" class="services">
-                <div class="container">
-
-                    <div class="section-title">
-                        <h2>Services</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                    </div>
+            <!-- ======= About Section ======= -->
+            <section id="about" class="about">
+                <div class="container-fluid">
 
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+                            <a href="https://www.youtube.com/watch?v=zPtTB4mReBI" class="glightbox play-btn mb-4"></a>
+                        </div>
+
+                        <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+                            <h3>Recicla, Reusa, Dona</h3>
+                            <p>En atención a la contaminación del medio ambiente por desechos electronicos y electricos, 
+                                se enfatizan 3 posibles soluciones, para reducir su impacto y así reducir la brecha tecnologica que existe en México.
+                            </p>
+
                             <div class="icon-box">
-                                <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                                <h4><a href="">Lorem Ipsum</a></h4>
-                                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                                <div class="icon"><i class="bx bx-recycle"></i></div>
+                                <h4 class="title"><a href="">Recicla</a></h4>
+                                <p class="description">Los desechos electronicos y electricos causan una 
+                                    contaminación severa tanto en el medio ambiente como en los seres vivos,
+                                    un uso correcto del fin del ciclo de vida util de un aparato electronico puede evitar enfermedades.</p>
+                            </div>
+
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-reset"></i></div>
+                                <h4 class="title"><a href="">Reacondiciona</a></h4>
+                                <p class="description">Algunos aparatos aunque parezcan obsoletos, se les pueden alargar su vida util añadiendo nuevas caracteristicas o 
+                                    adaptandolos a las nuevas tecnologias. 
+                                </p>
+                            </div>
+
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-devices"></i></div>
+                                <h4 class="title"><a href="">Dona</a></h4>
+                                <p class="description">Hay aparatos que por alguna razon dejan de cumplir su función en nuestros hogares, pero pueden ser utiles para otros. Donar
+                                    un aparato que aun se mantiene en buenas condiciones puede reducir la basura electronica, y aumentar las oportunidades para un estudiante talentoso.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section><!-- End About Section -->
+
+            <!-- ======= Counts Section ======= -->
+            <section id="counts" class="counts">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="count-box">
+                                <i class="fas fa-user-circle"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="19" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Donadores</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-pills"></i></div>
-                                <h4><a href="">Sed ut perspiciatis</a></h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                            <div class="count-box">
+                                <i class="fas fa-desktop"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="102" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Equipos computacionales</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-hospital-user"></i></div>
-                                <h4><a href="">Magni Dolores</a></h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                            <div class="count-box">
+                                <i class="fas fa-building"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Talleres de reacondicionamiento</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-dna"></i></div>
-                                <h4><a href="">Nemo Enim</a></h4>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-wheelchair"></i></div>
-                                <h4><a href="">Dele cardo</a></h4>
-                                <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-notes-medical"></i></div>
-                                <h4><a href="">Divera don</a></h4>
-                                <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                            <div class="count-box">
+                                <i class="fas fa-heart"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="152" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Donaciones</p>
                             </div>
                         </div>
 
                     </div>
 
                 </div>
-            </section><!-- End Services Section -->
-
+            </section><!-- End Counts Section -->
             <!-- ======= Frequently Asked Questions Section ======= -->
             <section id="faq" class="faq section-bg">
                 <div class="container">
 
                     <div class="section-title">
-                        <h2>Frequently Asked Questions</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <h2>Preguntas frecuentes</h2>
+                        <p></p>
                     </div>
 
                     <div class="faq-list">
                         <ul>
                             <li data-aos="fade-up">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">
+                                    ¿Puedo donar una computadora usada?
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
                                 <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                                     <p>
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                        En efecto, se puede donar una computadora simpre y cuando la máquina se encuentre en buenas
+                                        condiones.
                                     </p>
                                 </div>
                             </li>
 
                             <li data-aos="fade-up" data-aos-delay="100">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">
+                                    ¿Cuentan con registro deducible de impuestos? 
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
                                 <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                        Las donaciones en especie como los equipos computacionales, tabletas, celulares son deducibles de impuestos.
                                     </p>
                                 </div>
                             </li>
 
                             <li data-aos="fade-up" data-aos-delay="200">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
+                                    Tengo una computadora que ya no uso, pero esta casi obsoleta. ¿La puedo donar?
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
                                 <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                        Nosotros la recibimos y verificamos el estado de la computadora, si no 
                                     </p>
                                 </div>
                             </li>
 
                             <li data-aos="fade-up" data-aos-delay="300">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
+                                    ¿Hay pagar paquetería?
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
                                 <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li data-aos="fade-up" data-aos-delay="400">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                                    <p>
-                                        Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
+                                        Nosotros nos encargamos de la logistica de transporte y los gastos.
                                     </p>
                                 </div>
                             </li>
@@ -298,23 +352,26 @@
 
                 </div>
             </section><!-- End Frequently Asked Questions Section -->
-
             <!-- ======= Testimonials Section ======= -->
             <section id="testimonials" class="testimonials">
                 <div class="container">
 
+                    <div class="section-title">
+                        <h2>Historias increibles</h2>
+                        <p></p>
+                    </div>
                     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                         <div class="swiper-wrapper">
-
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                        <h3>Saul Goodman</h3>
-                                        <h4>Ceo &amp; Founder</h4>
+                                        <h3>Christofer Medina</h3>
+                                        <h4>Estudiante</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                            Adentrarse al mundo de la tecnologia siempre fue un lugar desconocido, hasta que me regalarón una computadora. 
+                                            Me ayudo bastante en mis estudios, ahora tengo un equipo con el que puedo estudiar. Gracias!
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
@@ -325,11 +382,11 @@
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                        <h3>Sara Wilsson</h3>
-                                        <h4>Designer</h4>
+                                        <h3>Saray Villanueva</h3>
+                                        <h4>Estudiante</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                                            No puedo expresar la emoción que sentí cuando recibi mi primer computador!, una maravilla...
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
@@ -341,10 +398,10 @@
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                                         <h3>Jena Karlis</h3>
-                                        <h4>Store Owner</h4>
+                                        <h4>Docente</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                            Me parece que es una excelente iniciativa para promover
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
@@ -356,7 +413,7 @@
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                                         <h3>Matt Brandon</h3>
-                                        <h4>Freelancer</h4>
+                                        <h4>Voluntario</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                                             Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
@@ -371,7 +428,7 @@
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                                         <h3>John Larson</h3>
-                                        <h4>Entrepreneur</h4>
+                                        <h4>Donador civil</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                                             Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
@@ -393,8 +450,8 @@
                 <div class="container">
 
                     <div class="section-title">
-                        <h2>Gallery</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <h2>Galeria</h2>
+                        <p></p>
                     </div>
                 </div>
 
@@ -403,64 +460,64 @@
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_1.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_1.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_2.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_2.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_3.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_3.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_4.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_4.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_5.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_5.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_6.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_6.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_7.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_7.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4">
                             <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+                                <a href="assets/img/gallery/galeria_8.jpg" class="galelry-lightbox">
+                                    <img src="assets/img/gallery/galeria_8.jpg" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -474,15 +531,15 @@
 
             <%@include  file="views/templates/footer/footer_principal.jsp" %>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <!-- Vendor JS Files -->
+            <script src="assets/vendor/purecounter/purecounter.js"></script>
+            <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+            <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+            <script src="assets/vendor/php-email-form/validate.js"></script>
 
-            <!--    <script src="js/lib/jquery-1.12.4.js" type="text/javascript"></script>
-                    <script src="js/lib/bootstrap.min.js" type="text/javascript"></script>
-                    <script src="js/lib/bootbox.min.js" type="text/javascript"></script>
-                    <script src="js/lib/bootstrap-datepicker.js" type="text/javascript"></script>
-                    <script src="js/generado/bootboxActions.js" type="text/javascript"></script>
-                    <script src="js/generado/funciones.js" type="text/javascript"></script>
-                    <script src="js/generado/validations.js" type="text/javascript"></script>-->
+            <!-- Template Main JS File -->
+            <script src="assets/js/main.js"></script>
 
     </body>
 </html>

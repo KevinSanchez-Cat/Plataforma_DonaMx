@@ -92,6 +92,26 @@
         <servlet-name>contacto</servlet-name>
         <servlet-class>controller.home.contacto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Srv_dashboard</servlet-name>
+        <servlet-class>controller.dashboard.Srv_dashboard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_inicio</servlet-name>
+        <servlet-class>controller.inicio.Srv_inicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_contacto</servlet-name>
+        <servlet-class>controller.inicio.Srv_contacto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_registro</servlet-name>
+        <servlet-class>controller.inicio.Srv_registro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_inicio_sesion</servlet-name>
+        <servlet-class>controller.inicio.Srv_inicio_sesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -183,6 +203,26 @@
     <servlet-mapping>
         <servlet-name>contacto</servlet-name>
         <url-pattern>/contacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_dashboard</servlet-name>
+        <url-pattern>/Srv_dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_inicio</servlet-name>
+        <url-pattern>/home.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_contacto</servlet-name>
+        <url-pattern>/Srv_contacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_registro</servlet-name>
+        <url-pattern>/Srv_registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_inicio_sesion</servlet-name>
+        <url-pattern>/Srv_inicio_sesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

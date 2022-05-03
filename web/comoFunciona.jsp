@@ -8,21 +8,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <!--    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-              <link href="css/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
-        <link href="css/generado/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>DonaMx</title>
+        <meta content="Plataforma dedicada a unir a fundaciones y estudiantes para donaciones
+              de tipo tecnologico, de manera en que los estudiantes de escasos recursos 
+              logren continuar con sus estudios, además de ser un lugar en donde se pueda conseguir 
+              apoyo o subsidios de productos en materia de tecnologia" name="description">
+        <meta content="tecnologia, computadoras, licencias, donaciones, estudiantes, educiacion, progreso" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/imagenes/Logo_1.png" rel="icon">
+        <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body>
         <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
-                <a href="index.jsp" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
+                <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li>
@@ -63,7 +82,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link scrollto" href="conocenos.jsp">
+                            <a class="nav-link scrollto " href="conocenos.jsp">
                                 <i>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +119,6 @@
                     </i>    
                     Iniciar sesión
                 </a>
-
                 <a class="appointment-btn scrollto"  href="registrarse.jsp" >
                     <i>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
@@ -112,13 +130,114 @@
                         </svg>
                     </i>
                     Registrate</a>
-
             </div>
         </header>
-        <h1>Hello World!</h1>
+        <main>
+            <!-- ======= Departments Section ======= -->
+            <section id="departments" class="departments">
+                <div class="container">
+
+                    <div class="section-title">
+                        <h2>¿Cómo funciona?</h2>
+                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    </div>
+
+                    <div class="row gy-4">
+                        <div class="col-lg-3">
+                            <ul class="nav nav-tabs flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Busca un aparato electronico</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Revisa sus condiciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Registralo en la plataforma</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Entregalo al personal indicado</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Donalo</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active show" id="tab-1">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Cardiology</h3>
+                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                                            <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-2">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Et blanditiis nemo veritatis excepturi</h3>
+                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                                            <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-3">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                                            <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
+                                            <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-4">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
+                                            <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
+                                            <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-5">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                            <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+                                            <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section><!-- End Departments Section -->
+        </main>
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/purecounter/purecounter.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <!-- Template Main JS File -->
+        <script src="assets/js/main.js"></script>
     </body>
 </html>

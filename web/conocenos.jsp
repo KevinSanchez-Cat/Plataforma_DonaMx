@@ -8,21 +8,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <!--    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-              <link href="css/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
-        <link href="css/generado/estilos.css" rel="stylesheet" type="text/css"/>
-        <link href="css/lib/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>DonaMx</title>
+        <meta content="Plataforma dedicada a unir a fundaciones y estudiantes para donaciones
+              de tipo tecnologico, de manera en que los estudiantes de escasos recursos 
+              logren continuar con sus estudios, además de ser un lugar en donde se pueda conseguir 
+              apoyo o subsidios de productos en materia de tecnologia" name="description">
+        <meta content="tecnologia, computadoras, licencias, donaciones, estudiantes, educiacion, progreso" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/imagenes/Logo_1.png" rel="icon">
+        <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body>
         <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
-                <a href="index.jsp" class="logo me-auto"><img src="content/imagenes/donamx.svg" alt="" class="img-fluid"></a>
+                <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
+
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li>
@@ -115,10 +135,94 @@
 
             </div>
         </header>
-        <h1>Hello World!</h1>
+        <main>
+            <!-- ======= Doctors Section ======= -->
+            <section id="doctors" class="doctors">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Conocenos</h2>
+                        <p>Somos una </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="member d-flex align-items-start">
+                                <div class="pic"><img src="assets/img/team/team_6.png" class="img-fluid" alt=""></div>
+                                <div class="member-info">
+                                    <h4>Kevin Sanchez</h4>
+                                    <span>Fundador</span>
+                                    <p>NASLDJK DFKJHkjsdf lkdkjfhlklahfkjadf llahfksjhb</p>
+                                    <div class="social">
+                                        <a href=""><i class="ri-twitter-fill"></i></a>
+                                        <a href=""><i class="ri-facebook-fill"></i></a>
+                                        <a href=""><i class="ri-instagram-fill"></i></a>
+                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4 mt-lg-0">
+                            <div class="member d-flex align-items-start">
+                                <div class="pic"><img src="assets/img/team/team_5.jpg" class="img-fluid" alt=""></div>
+                                <div class="member-info">
+                                    <h4>Lizeth Hernandez</h4>
+                                    <span>Gerente de entrega</span>
+                                    <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                                    <div class="social">
+                                        <a href=""><i class="ri-twitter-fill"></i></a>
+                                        <a href=""><i class="ri-facebook-fill"></i></a>
+                                        <a href=""><i class="ri-instagram-fill"></i></a>
+                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            <div class="member d-flex align-items-start">
+                                <div class="pic"><img src="assets/img/team/team_4.jpg" class="img-fluid" alt=""></div>
+                                <div class="member-info">
+                                    <h4>Hugo de la Luz</h4>
+                                    <span>Controlador de calidad</span>
+                                    <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                                    <div class="social">
+                                        <a href=""><i class="ri-twitter-fill"></i></a>
+                                        <a href=""><i class="ri-facebook-fill"></i></a>
+                                        <a href=""><i class="ri-instagram-fill"></i></a>
+                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            <div class="member d-flex align-items-start">
+                                <div class="pic"><img src="assets/img/team/team_1.jpg" class="img-fluid" alt=""></div>
+                                <div class="member-info">
+                                    <h4>Gabriela Ramirez</h4>
+                                    <span>Asistente de programa</span>
+                                    <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                                    <div class="social">
+                                        <a href=""><i class="ri-twitter-fill"></i></a>
+                                        <a href=""><i class="ri-facebook-fill"></i></a>
+                                        <a href=""><i class="ri-instagram-fill"></i></a>
+                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Doctors Section -->
+        </main>
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/purecounter/purecounter.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <!-- Template Main JS File -->
+        <script src="assets/js/main.js"></script>
     </body>
 </html>
