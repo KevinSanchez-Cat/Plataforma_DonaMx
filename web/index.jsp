@@ -154,7 +154,8 @@
                             <div class="content">
                                 <h3>¿Por qué donar?</h3>
                                 <p>
-                                    Su donación ayudará a equipar a los niños y jovenes necesitados con los recursos, la capacitación y la educación solicitados, 
+                                    Su donación ayudará a equipar a los niños y jovenes necesitados con los recursos, 
+                                    la capacitación y la educación solicitados, 
                                     al tiempo que ofrece la promesa de un futuro mejor. 
                                 </p>
                                 <div class="text-center">
@@ -169,21 +170,31 @@
                                         <div class="icon-box mt-4 mt-xl-0">
                                             <i class="bx bx-user-pin"></i>
                                             <h4>Conviértete en voluntario</h4>
-                                            <p>Unasé al grupo de agentes de cambio, una red lo suficientemente fuerte como para impactar un cambio positivo en la vida de los niños y jovenes.</p>
+                                            <p>Unasé al grupo de agentes de cambio, 
+                                                una red lo suficientemente fuerte como para impactar un 
+                                                cambio positivo en la vida de los niños y jovenes. 
+                                                Registese ahora!
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 d-flex align-items-stretch">
                                         <div class="icon-box mt-4 mt-xl-0">
                                             <i class="bx bx-heart"></i>
                                             <h4>Una acción altruista</h4>
-                                            <p>Con el objetivo de ayudar al mayor número posible de estudiantes con escasos recursos, </p>
+                                            <p>Con el objetivo de ayudar al mayor número posible de 
+                                                estudiantes con escasos recursos, esta es más que una iniciativa social, es 
+                                                una puerta de grandes oportunidades para alcanzar sus metas.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 d-flex align-items-stretch">
                                         <div class="icon-box mt-4 mt-xl-0">
                                             <i class="bx bx-globe"></i>
                                             <h4>Brecha tecnologica</h4>
-                                            <p>Uno de los sectores que </p>
+                                            <p>La tecnología ha avanzado en todo el mundo, la globalización ha permitido que
+                                                la gente en todo el mundo aprenda, desarrolle nuevas tecnologias de la información.
+                                                Es momento de reducir esa brecha tecnlogica de México para el mundo.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -240,13 +251,15 @@
             <!-- ======= Counts Section ======= -->
             <section id="counts" class="counts">
                 <div class="container">
-
+                    <div class="section-title">
+                        <h2>Nuestra meta para cada mes</h2>
+                    </div>
                     <div class="row">
 
                         <div class="col-lg-3 col-md-6">
                             <div class="count-box">
                                 <i class="fas fa-user-circle"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="19" data-purecounter-duration="1" class="purecounter"></span>
+                                <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Donadores</p>
                             </div>
                         </div>
@@ -254,7 +267,7 @@
                         <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                             <div class="count-box">
                                 <i class="fas fa-desktop"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="102" data-purecounter-duration="1" class="purecounter"></span>
+                                <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Equipos computacionales</p>
                             </div>
                         </div>
@@ -262,7 +275,7 @@
                         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                             <div class="count-box">
                                 <i class="fas fa-building"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="1" class="purecounter"></span>
+                                <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Talleres de reacondicionamiento</p>
                             </div>
                         </div>
@@ -270,7 +283,7 @@
                         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                             <div class="count-box">
                                 <i class="fas fa-heart"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="152" data-purecounter-duration="1" class="purecounter"></span>
+                                <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Donaciones</p>
                             </div>
                         </div>
@@ -297,10 +310,11 @@
                                     <i class="bx bx-chevron-down icon-show"></i>
                                     <i class="bx bx-chevron-up icon-close"></i>
                                 </a>
-                                <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                                <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
                                     <p>
                                         En efecto, se puede donar una computadora simpre y cuando la máquina se encuentre en buenas
                                         condiones.
+                                        De otro modo, esta se puede recibir para darle un tratamiento de desechos adecuado.
                                     </p>
                                 </div>
                             </li>
@@ -314,7 +328,10 @@
                                 </a>
                                 <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Las donaciones en especie como los equipos computacionales, tabletas, celulares son deducibles de impuestos.
+                                        Por supuesto!, Una de la gran ventaja de donar es la deducción de impuestos por donaciones.
+                                        Las donaciones en especie como los equipos computacionales, 
+                                        tabletas, celulares cuentan como donaciones, y son deducibles solo con el valor estimado.
+                                        Acercate con nosotros, con gusto te atenderemos.
                                     </p>
                                 </div>
                             </li>
@@ -328,7 +345,8 @@
                                 </a>
                                 <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Nosotros la recibimos y verificamos el estado de la computadora, si no 
+                                        Nosotros la recibimos y verificamos el estado de la computadora, si ya no tiene reparación se
+                                        envia a uno de nuestros centros de reciclaje.
                                     </p>
                                 </div>
                             </li>
@@ -336,17 +354,30 @@
                             <li data-aos="fade-up" data-aos-delay="300">
                                 <i class="bx bx-help-circle icon-help"></i> 
                                 <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
-                                    ¿Hay pagar paquetería?
+                                    ¿Hay que pagar el envio de la donación?
                                     <i class="bx bx-chevron-down icon-show"></i>
                                     <i class="bx bx-chevron-up icon-close"></i>
                                 </a>
                                 <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Nosotros nos encargamos de la logistica de transporte y los gastos.
+                                        Solo hay que pagar una pequeña cuota que dependerá de la distancia del lugar en donde se recoga y se envié.
+                                        <!--Recuerda que la intención de ayudar al medio ambiente también tiene un valor.-->
                                     </p>
                                 </div>
                             </li>
-
+                            <li data-aos="fade-up" data-aos-delay="300">
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
+                                    ¿Cuál es el rango de edad para recibir una donación?
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
+                                <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                                    <p>
+                                        La plataforma esta enfocada en atender a estudiantes de 10 a 23 años.
+                                    </p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -401,7 +432,7 @@
                                         <h4>Docente</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Me parece que es una excelente iniciativa para promover
+                                            Me parece que es una excelente iniciativa para promover el interes en la ciencia y tecnología.
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
@@ -412,11 +443,12 @@
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                        <h3>Matt Brandon</h3>
+                                        <h3>Mateo Rivera</h3>
                                         <h4>Voluntario</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                                            Estoy encantado de poder ayudar a más jovenes, me ayuda a pensar que puede haber un
+                                            talento escondido en cada entrega.
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>
@@ -427,11 +459,13 @@
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
                                         <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                        <h3>John Larson</h3>
+                                        <h3>Juan Contreras</h3>
                                         <h4>Donador civil</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                                            Tenía una computadora casi nueva que ya no ocupaba, ahora 
+                                            sé que alguien más la esta ocupando,  solo espero que la este aprovechando tanto como
+                                            yo...
                                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                         </p>
                                     </div>

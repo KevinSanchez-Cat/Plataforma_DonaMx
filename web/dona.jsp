@@ -148,51 +148,51 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="col-lg-4 col-md-6 align-items-stretch">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-terminal"></i></div>
                                 <h4><a href="">Computadoras de escritorio</a></h4>
-                                <p>khlkjg</p>
+                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-terminal"></i></div>
                                 <h4><a href="">Computadoras portatiles</a></h4>
-                                <p>kjhvc</p>
+                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-tablet-alt"></i></div>
                                 <h4><a href="">Tablets</a></h4>
-                                <p>kljhgfd</p>
+                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-link"></i></div>
                                 <h4><a href="">Licencias de software</a></h4>
-                                <p>lkjhgf</p>
+                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-print"></i></div>
                                 <h4><a href="">Impresoras</a></h4>
-                                <p>lkjhgfd</p>
+                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-desktop"></i></div>
                                 <h4><a href="">Monitores</a></h4>
-                                <p>ñlkjhgfd</p>
+                                <p>Ver requerimientos para donar...s</p>
                             </div>
                         </div>
 

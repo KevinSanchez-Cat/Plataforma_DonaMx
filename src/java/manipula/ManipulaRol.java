@@ -236,4 +236,35 @@ public class ManipulaRol implements Manipula<Rol> {
         }
         return response;
     }
+    public Rol encontrarRol(String rol) {
+        Rol response = null;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM rol "
+                        + "WHERE rol=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setString(1, rol);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    response = new Rol();
+                    response.setIdRol(rs.getInt(1));
+                    response.setRol(rs.getString(2));
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
 }

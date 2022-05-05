@@ -71,7 +71,7 @@ public class Srv_estudiante extends HttpServlet {
 
     private void index(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //  String paginaJsp = "/views/usuario/index.jsp";
-        String paginaJsp = "/views/dashboard/index.jsp";
+        String paginaJsp = "/views/modulo_estudiante/index_1.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
         // req.setAttribute("listaEstudiantes", listaEstudiantes);
         dispatcher.forward(req, resp);

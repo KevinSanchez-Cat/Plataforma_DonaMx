@@ -167,7 +167,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                                    <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms" required>
                                                     <label class="form-check-label" for="acceptTerms">He leído y acepto los <a href="terminosycondiciones.jsp" target="_blank"  rel="noopener noreferrer" >terminos y condiciones</a></label>
                                                     <div class="invalid-feedback">You must agree before submitting.</div>
                                                 </div>

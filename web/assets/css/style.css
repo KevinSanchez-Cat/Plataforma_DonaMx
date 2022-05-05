@@ -9,6 +9,10 @@ body {
 main{
     margin-top: 45px
 }
+.main2{
+    margin-top: 3em;
+        color: #1c84e3
+}
 a {
     color: #1977cc;
     text-decoration: none;
@@ -1493,4 +1497,14 @@ section {
 }
 .h5-titulo-seccion{
     color: #fff;
+}
+.padding-btn{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.padding-btn-fin{
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

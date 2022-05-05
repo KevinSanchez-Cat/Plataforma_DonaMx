@@ -11,7 +11,7 @@ import utils.GenericResponse;
 public class Prb {
 
     public static void main(String[] args) {
-        Manipula m = new ManipulaRol();
+        ManipulaRol m = new ManipulaRol();
         Rol role = new Rol();
         role.setIdRol(1);
         role.setRol("Administrador");

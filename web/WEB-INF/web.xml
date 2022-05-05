@@ -112,6 +112,14 @@
         <servlet-name>Srv_inicio_sesion</servlet-name>
         <servlet-class>controller.inicio.Srv_inicio_sesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Srv_voluntario</servlet-name>
+        <servlet-class>controller.voluntario.Srv_voluntario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_administrador</servlet-name>
+        <servlet-class>controller.administrador.Srv_administrador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>Srv_inicio_sesion</servlet-name>
         <url-pattern>/Srv_inicio_sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_voluntario</servlet-name>
+        <url-pattern>/Srv_voluntario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_administrador</servlet-name>
+        <url-pattern>/Srv_administrador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
