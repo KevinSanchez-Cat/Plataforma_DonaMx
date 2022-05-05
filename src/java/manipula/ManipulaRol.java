@@ -23,7 +23,7 @@ public class ManipulaRol implements Manipula<Rol> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO rol ("
+                String sql = "INSERT INTO Rol ("
                         + "rol"
                         + ") VALUES (?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -71,7 +71,7 @@ public class ManipulaRol implements Manipula<Rol> {
             Rol obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE rol SET "
+                    String sql = "UPDATE Rol SET "
                             + "rol=? "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -116,7 +116,7 @@ public class ManipulaRol implements Manipula<Rol> {
             Rol obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM rol "
+                    String sql = "DELETE FROM Rol "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -159,7 +159,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 String sql = "SELECT "
                         + "idRol, "
                         + "rol "
-                        + "FROM rol";
+                        + "FROM Rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -186,7 +186,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 String sql = "SELECT "
                         + "idRol, "
                         + "rol "
-                        + "FROM rol";
+                        + "FROM Rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -213,7 +213,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 String sql = "SELECT "
                         + "idRol, "
                         + "rol "
-                        + "FROM rol "
+                        + "FROM Rol "
                         + "WHERE idRol=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -244,7 +244,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 String sql = "SELECT "
                         + "idRol, "
                         + "rol "
-                        + "FROM rol "
+                        + "FROM Rol "
                         + "WHERE rol=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setString(1, rol);

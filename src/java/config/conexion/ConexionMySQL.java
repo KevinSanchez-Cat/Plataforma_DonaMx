@@ -19,11 +19,11 @@ public class ConexionMySQL extends IConexion {
     @Override
     public final void init() {
         super.init();
-        setHost("localhost");
+        setHost("etacarinae.e-novanet.mx");
         setPort("3306");
-        setUser("KevinIvan");
+        setUser("donamx_KevinIvan");
         setPassword("zhQg4dJB.Kgc_ksM");
-        setBd("bd_donamx");
+        setBd("donamx_bd_donamx");
         setUrl("jdbc:mysql");
     }
 

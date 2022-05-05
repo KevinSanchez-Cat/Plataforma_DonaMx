@@ -139,8 +139,17 @@
 
                     <div class="section-title">
                         <h2>¿Cómo funciona?</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+
                     </div>
+                    <p>¡Hoy es un buen día para hacer el bien! 
+                        Tu donación ayudará a equipar a los niños y 
+                        adolescentes necesitados con los recursos tecnológicos 
+                        que difícilmente pueden abordar con su presupuesto limitado. 
+                        A través de nuestra campaña de recolección de equipos, podemos 
+                        brindarles nuevas oportunidades educativas, la promesa de un futuro mejor. 
+                         
+                    </p>
+                    <br>
 
                     <div class="row gy-4">
                         <div class="col-lg-3">
@@ -168,8 +177,16 @@
                                     <div class="row gy-4">
                                         <div class="col-lg-8 details order-2 order-lg-1">
                                             <h3>Busca un aparato electronico que ya no uses</h3>
-                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                                            <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Un aparato electronico, puede ser una computadora personal, computadora de escritorio,
+                                                una impresora, camara fotografica, telefono inteligente, teclado, mouse, monitores, tabletas electronicas.
+
+                                                Seguramente tienes una computadora que ya usaste porque te compraste una nueva,
+                                                pero que aun sirve. Tómala y revisa sus condiciones físicas. 
+                                                Si esta en buenas condiciones, la puedes registrar para una donación.
+                                                Si esta no lo esta, la puedes registrar para el proceso de reciclaje.
+                                            </p>
                                         </div>
                                         <div class="col-lg-4 text-center order-1 order-lg-2">
                                             <img src="assets/img/gallery/galeria_1.jpg" alt="" class="img-fluid">
@@ -179,9 +196,18 @@
                                 <div class="tab-pane" id="tab-2">
                                     <div class="row gy-4">
                                         <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Et blanditiis nemo veritatis excepturi</h3>
-                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                                            <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
+                                            <h3>Revisa sus condiciones</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que decidiste donarla, revisa por segunda vez si te puede funcionar a ti, o la
+                                                puedas donar a alguno de tus familiares que la necesite.
+                                                Revisa si tiene un golpe, rasguño, si le falta una tecla, el mouse, anota todos sus detalles físicos.
+                                                Revisa si prende y puedas ver su sistema operativo.
+                                                Si encendio, procede a recurperar toda tu información personal y después borrarla definitivamente 
+                                                del equipo.
+                                                Si no, trata de recuperar tu disco duro del equipo computacional. En este punto, puedes decidir si conservar tu disco duro
+                                                y convertirlo en un disco duro externo o mandarlo a reciclar.
+                                            </p>
                                         </div>
                                         <div class="col-lg-4 text-center order-1 order-lg-2">
                                             <img src="assets/img/gallery/galeria_2.jpg" alt="" class="img-fluid">
@@ -191,9 +217,15 @@
                                 <div class="tab-pane" id="tab-3">
                                     <div class="row gy-4">
                                         <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                                            <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                                            <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
+                                            <h3>Registralo en la plataforma</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez revisado, ingresa a la plataforma, registrate como donador, y registra el equipo computacional, 
+                                                escribe detalles de la condición física y lógica. 
+                                                Selecciona si la vas a donar, reciclar.
+                                                Nosotros nos encargaremos de evaluarlo y tomar una desición, si se reacondiciona para una donación o si se envia a uno
+                                                de nuestros centros de reciclaje.
+                                            </p>
                                         </div>
                                         <div class="col-lg-4 text-center order-1 order-lg-2">
                                             <img src="assets/img/gallery/galeria_3.jpg" alt="" class="img-fluid">
@@ -203,9 +235,13 @@
                                 <div class="tab-pane" id="tab-4">
                                     <div class="row gy-4">
                                         <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                                            <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                                            <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
+                                            <h3>Entregalo al personal indicado</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que se registre, llegará a tu puerta de tu casa el personal que recogerá el equipo, también esta la 
+                                                posibilidad de dejarlo en uno de los centros de acopio registrados en la plataforma, o enviarlo por 
+                                                paqueteria a una de nuestras oficinas.
+                                            </p>
                                         </div>
                                         <div class="col-lg-4 text-center order-1 order-lg-2">
                                             <img src="assets/img/gallery/galeria_4.jpg" alt="" class="img-fluid">
@@ -215,9 +251,14 @@
                                 <div class="tab-pane" id="tab-5">
                                     <div class="row gy-4">
                                         <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                                            <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                                            <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
+                                            <h3>Dónalo</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que lo entregaste, se enviará una confirmación de entrega.
+                                                ¡Te avisaremos cuando el equipo sea donado!
+                                                Si el equipo fue "Nuevo" y eres una organización se puede expedir un 
+                                                acuse para deducir impuestos.
+                                            </p>
                                         </div>
                                         <div class="col-lg-4 text-center order-1 order-lg-2">
                                             <img src="assets/img/gallery/galeria_5.jpg" alt="" class="img-fluid">

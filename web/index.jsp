@@ -140,7 +140,7 @@
         <section id="hero" class="d-flex align-items-center">
             <div class="container">
                 <h1>Bienvenid@  a  DonaMx</h1>
-                <h2>Una oportunidad para el talento mexicano y progreso tecnologico</h2>
+                <h2>Una oportunidad en tecnología para el talento mexicano</h2>
             </div>
         </section><!-- End Hero -->
 
@@ -154,12 +154,17 @@
                             <div class="content">
                                 <h3>¿Por qué donar?</h3>
                                 <p>
-                                    Su donación ayudará a equipar a los niños y jovenes necesitados con los recursos, 
-                                    la capacitación y la educación solicitados, 
-                                    al tiempo que ofrece la promesa de un futuro mejor. 
+                                    A través de una serie de estudios, 
+                                    se ha demostrado que la pobreza limita los recursos 
+                                    educativos disponibles y está directamente relacionada 
+                                    con la integridad académica. Con los estudiantes más 
+                                    vulnerables en mente, este proyecto busca ayudar a 
+                                    avanzar a las personas que arriesgan su futuro para 
+                                    mejorar su propia vida y la de su comunidad.
+
                                 </p>
                                 <div class="text-center">
-                                    <a href="dona.jsp" class="more-btn">Leer más... <i class="bx bx-chevron-right"></i></a>
+                                    <a href="dona.jsp" class="more-btn">¡Contamos contigo! <i class="bx bx-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -181,9 +186,10 @@
                                         <div class="icon-box mt-4 mt-xl-0">
                                             <i class="bx bx-heart"></i>
                                             <h4>Una acción altruista</h4>
-                                            <p>Con el objetivo de ayudar al mayor número posible de 
-                                                estudiantes con escasos recursos, esta es más que una iniciativa social, es 
-                                                una puerta de grandes oportunidades para alcanzar sus metas.
+                                            <p>
+                                                Su donación puede ayudar a lograrlo.
+                                                Al mismo tiempo, usted otorgará a estos niños la esperanza 
+                                                de un futuro más brillante.
                                             </p>
                                         </div>
                                     </div>
@@ -191,9 +197,12 @@
                                         <div class="icon-box mt-4 mt-xl-0">
                                             <i class="bx bx-globe"></i>
                                             <h4>Brecha tecnologica</h4>
-                                            <p>La tecnología ha avanzado en todo el mundo, la globalización ha permitido que
-                                                la gente en todo el mundo aprenda, desarrolle nuevas tecnologias de la información.
-                                                Es momento de reducir esa brecha tecnlogica de México para el mundo.
+                                            <p>
+                                                La tecnología ha evolucionado en todo el mundo y 
+                                                la globalización ha animado a todos a aprender, 
+                                                desarrollar nuevas tecnologías de la información. 
+                                                Es hora de que México reduzca esa brecha tecnológica 
+                                                con el resto del mundo.
                                             </p>
                                         </div>
                                     </div>
@@ -230,16 +239,17 @@
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-reset"></i></div>
                                 <h4 class="title"><a href="">Reacondiciona</a></h4>
-                                <p class="description">Algunos aparatos aunque parezcan obsoletos, se les pueden alargar su vida util añadiendo nuevas caracteristicas o 
-                                    adaptandolos a las nuevas tecnologias. 
+                                <p class="description">La idea es que hay ciertos aparatos que, aunque parezcan obsoletos, 
+                                    se les puede alargar su vida útil añadiendo nuevas características o adaptándolos a las nuevas tecnologías.
                                 </p>
                             </div>
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-devices"></i></div>
                                 <h4 class="title"><a href="">Dona</a></h4>
-                                <p class="description">Hay aparatos que por alguna razon dejan de cumplir su función en nuestros hogares, pero pueden ser utiles para otros. Donar
-                                    un aparato que aun se mantiene en buenas condiciones puede reducir la basura electronica, y aumentar las oportunidades para un estudiante talentoso.</p>
+                                <p class="description">Usted también puede donar un computador que ya no use,
+                                    y nosotros prometemos que este equipo será adecuadamente seleccionado para 
+                                    cumplir con sus expectativas. Su colaboración será muy apreciada.</p>
                             </div>
 
                         </div>
@@ -303,9 +313,9 @@
 
                     <div class="faq-list">
                         <ul>
-                            <li data-aos="fade-up">
+                            <li data-aos="fade-up" data-aos-delay="100">
                                 <i class="bx bx-help-circle icon-help"></i> 
-                                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">
+                                <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-1">
                                     ¿Puedo donar una computadora usada?
                                     <i class="bx bx-chevron-down icon-show"></i>
                                     <i class="bx bx-chevron-up icon-close"></i>
@@ -372,7 +382,7 @@
                                     <i class="bx bx-chevron-down icon-show"></i>
                                     <i class="bx bx-chevron-up icon-close"></i>
                                 </a>
-                                <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                                <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                                     <p>
                                         La plataforma esta enfocada en atender a estudiantes de 10 a 23 años.
                                     </p>
@@ -396,8 +406,8 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                        <h3>Christofer Medina</h3>
+                                        <img src="assets/img/testimonials/persona1.jpg" class="testimonial-img" alt="">
+                                        <h3>Anayelly Contreras</h3>
                                         <h4>Estudiante</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -412,8 +422,8 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                        <h3>Saray Villanueva</h3>
+                                        <img src="assets/img/testimonials/persona2.jpg" class="testimonial-img" alt="">
+                                        <h3>Cristian Velez</h3>
                                         <h4>Estudiante</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -427,8 +437,8 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                        <h3>Jena Karlis</h3>
+                                        <img src="assets/img/testimonials/persona3.jpg" class="testimonial-img" alt="">
+                                        <h3>Giselle Quesada</h3>
                                         <h4>Docente</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -442,8 +452,8 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                        <h3>Mateo Rivera</h3>
+                                        <img src="assets/img/testimonials/persona4.jpg" class="testimonial-img" alt="">
+                                        <h3>Vero Rivera</h3>
                                         <h4>Voluntario</h4>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>

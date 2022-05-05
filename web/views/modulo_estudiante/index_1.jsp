@@ -247,13 +247,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="views/intencion/index.jsp">
-                        <i class="bi bi-chat-quote"></i><span>Donaciones</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link collapsed"  href="views/intencion/index.jsp">
-                        <i class="bi bi-chat-quote"></i><span>Solictudes</span>
+                        <i class="bi bi-book"></i><span>Solictudes</span>
                     </a>
                 </li>
                 <li class="nav-heading"><hr></li>

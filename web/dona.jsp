@@ -144,23 +144,23 @@
 
                     <div class="section-title">
                         <h2>Dona tecnología</h2>
-                        <p>Catalogo de recursos tecnologicos dispoibles para donar</p>
+                        <p>¡Haga una donación para brindar a los niños y jóvenes mejores oportunidades!<br>
+                            Este es el catalogo de recursos tecnologicos dispoibles para donar. Da clic sobre uno para ver los requerimientos mínimos.
+                        </p>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 align-items-stretch">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
                             <div class="icon-box">
-                                <div class="icon"><i class="fas fa-terminal"></i></div>
+                                <div class="icon"><i class="fas fa-laptop-house"></i></div>
                                 <h4><a href="">Computadoras de escritorio</a></h4>
-                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
                             <div class="icon-box">
-                                <div class="icon"><i class="fas fa-terminal"></i></div>
+                                <div class="icon"><i class="fas fa-laptop"></i></div>
                                 <h4><a href="">Computadoras portatiles</a></h4>
-                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
@@ -168,7 +168,6 @@
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-tablet-alt"></i></div>
                                 <h4><a href="">Tablets</a></h4>
-                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
@@ -176,7 +175,6 @@
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-link"></i></div>
                                 <h4><a href="">Licencias de software</a></h4>
-                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
@@ -184,7 +182,6 @@
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-print"></i></div>
                                 <h4><a href="">Impresoras</a></h4>
-                                <p>Ver requerimientos para donar...</p>
                             </div>
                         </div>
 
@@ -192,7 +189,6 @@
                             <div class="icon-box">
                                 <div class="icon"><i class="fas fa-desktop"></i></div>
                                 <h4><a href="">Monitores</a></h4>
-                                <p>Ver requerimientos para donar...s</p>
                             </div>
                         </div>
 

@@ -141,75 +141,136 @@
                 <div class="container">
                     <div class="section-title">
                         <h2>Conocenos</h2>
-                        <p>Somos una organización sin fines de lucro, con el objetivo de ayudar estudiantes que más lo necesitan.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="member d-flex align-items-start">
-                                <div class="pic"><img src="assets/img/team/team_6.png" class="img-fluid" alt=""></div>
-                                <div class="member-info">
-                                    <h4>Kevin Sanchez</h4>
-                                    <span>Fundador</span>
-                                    <p></p>
-                                    <div class="social">
-                                        <a href=""><i class="ri-twitter-fill"></i></a>
-                                        <a href=""><i class="ri-facebook-fill"></i></a>
-                                        <a href=""><i class="ri-instagram-fill"></i></a>
-                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-4 mt-lg-0">
-                            <div class="member d-flex align-items-start">
-                                <div class="pic"><img src="assets/img/team/team_5.jpg" class="img-fluid" alt=""></div>
-                                <div class="member-info">
-                                    <h4>Lizeth Villana</h4>
-                                    <span>Gerente de entrega</span>
-                                    <p></p>
-                                    <div class="social">
-                                        <a href=""><i class="ri-twitter-fill"></i></a>
-                                        <a href=""><i class="ri-facebook-fill"></i></a>
-                                        <a href=""><i class="ri-instagram-fill"></i></a>
-                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-4">
-                            <div class="member d-flex align-items-start">
-                                <div class="pic"><img src="assets/img/team/team_4.jpg" class="img-fluid" alt=""></div>
-                                <div class="member-info">
-                                    <h4>Hugo De la O</h4>
-                                    <span>Controlador de calidad</span>
-                                    <p></p>
-                                    <div class="social">
-                                        <a href=""><i class="ri-twitter-fill"></i></a>
-                                        <a href=""><i class="ri-facebook-fill"></i></a>
-                                        <a href=""><i class="ri-instagram-fill"></i></a>
-                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-4">
-                            <div class="member d-flex align-items-start">
-                                <div class="pic"><img src="assets/img/team/team_1.jpg" class="img-fluid" alt=""></div>
-                                <div class="member-info">
-                                    <h4>Gabriela Jimenez</h4>
-                                    <span>Asistente de programa</span>
-                                    <p></p>
-                                    <div class="social">
-                                        <a href=""><i class="ri-twitter-fill"></i></a>
-                                        <a href=""><i class="ri-facebook-fill"></i></a>
-                                        <a href=""><i class="ri-instagram-fill"></i></a>
-                                        <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
+                    <p>Somos una organización sin fines de lucro que brinda tecnología, 
+                        capacitación y educación a jóvenes necesitados. Su donación ayudará 
+                        a equipar a los niños y adultos jóvenes con los recursos que necesitan 
+                        para tener éxito, al tiempo que ofrece la promesa de un futuro mejor. 
+                        Al mismo tiempo que está ayudando, también podrá aprovechar nuestras 
+                        desgravaciones fiscales para las donaciones que pueda recibir.
+                    </p>
+                    <!-- ======= Counts Section ======= -->
+                    <section id="counts" class="vision-social">
+                        <div class="container">
+                            <div class="section-title">
+                                <h2>Una visión social para el mundo</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-8">
+                                    <div class="count-box">
+                                        <h4 class="section-title" >Negocio con propósito</h4>
+                                        <p>Concentramos nuestro día a día en ofrecer una 
+                                            experiencia de usuario única a través de nuestro servicio de asesoría y 
+                                            tecnología en favor a esta iniciativa que esta mejorando y conectado
+                                            cada vez más al mundo.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-8">
+                                    <div class="count-box">
+                                        <h4 class="section-title">Altos estándares de transparencia</h4>
+                                        <p>Creemos en una economía donde la transparencia 
+                                            y la honestidad nos fortalecen a todos.
+                                            Por eso ponemos en alto la transparencia que 
+                                            permite el modelo de crowdfunding.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-8">
+                                    <div class="count-box">
+                                        <h4 class="section-title">Solucion directa</h4>
+                                        <p>Quien usa DonaMx concentra sus esfuerzos 
+                                            en solucionar un problema de su entorno y 
+                                            tiene la oportunidad de hacer un cambio directo 
+                                            en su comunidad.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section><!-- End Counts Section -->
+                    <section id="doctors" class="doctors">
+                        <div class="container">
+                            <div class="section-title">
+                                <h2>
+                                    Contacto principal
+                                </h2>
+                            </div>
+                            <div class="row justify-content-center ">
+                                <div class="col-auto col-lg-6">
+                                    <div class="member d-flex align-items-start">
+                                        <div class="pic"><img src="assets/img/team/team_6.png" class="img-fluid" alt=""></div>
+                                        <div class="member-info">
+                                            <h4>Kevin Sanchez</h4>
+                                            <span>Freelance Analista de sistemas</span>
+                                            <p>
+                                                Estudiante de la carrera de Ingenieria en Sistemas Computacionales
+                                            </p>
+                                            <div class="social">
+                                                <a href="https://twitter.com/SKevin_Ivan"><i class="ri-twitter-fill"></i></a>
+                                                <a href="https://www.facebook.com/SKevinIvan/"><i class="ri-facebook-fill"></i></a>
+                                                <a href="https://github.com/KevinSanchez-Cat"><i class="ri-github-fill"></i></a>
+                                                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2FS.Kevin_ivan%3Ffbclid%3DIwAR0MrrMkItZyYCtxMxNei5O3cNk1JSYuToQrieuBkzApvJLdMlrGY7uo4wQ&h=AT1-4I12f0Xr_gMslP6xRqlGGZS6Fgg_FxoI2RShw-QSoPH2chFlMLpV359sXYebSao6WWE-AwmnwkADDP8TGRIB1xMYthTuzLl5qoG8K9OvII2WBUBWgGTavAbHKjVq4cQy"><i class="ri-instagram-fill"></i></a>
+                                                <a href="https://www.linkedin.com/in/kevin-ivan-sanchez-valdin-b82a15206/"> <i class="ri-linkedin-box-fill"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><img src="assets/img/team/team_5.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Lizeth Villana</h4>
+                                <span>Gerente de entrega</span>
+                                <p></p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><img src="assets/img/team/team_4.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Hugo De la O</h4>
+                                <span>Controlador de calidad</span>
+                                <p></p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><img src="assets/img/team/team_1.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Gabriela Jimenez</h4>
+                                <span>Asistente de programa</span>
+                                <p></p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
 
                 </div>
             </section><!-- End Doctors Section -->
