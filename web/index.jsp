@@ -40,6 +40,7 @@
 
     </head>
     <body>
+        
         <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
                 <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
@@ -109,6 +110,7 @@
                             </a>
                         </li>
                     </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
 
@@ -377,7 +379,7 @@
                             </li>
                             <li data-aos="fade-up" data-aos-delay="300">
                                 <i class="bx bx-help-circle icon-help"></i> 
-                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
+                                <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
                                     ¿Cuál es el rango de edad para recibir una donación?
                                     <i class="bx bx-chevron-down icon-show"></i>
                                     <i class="bx bx-chevron-up icon-close"></i>
@@ -574,6 +576,11 @@
 
 
             <%@include  file="views/templates/footer/footer_principal.jsp" %>
+
+            <div id="preloader"></div>
+            <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+                <i class="bi bi-arrow-up-short"></i>
+            </a>
 
             <!-- Vendor JS Files -->
             <script src="assets/vendor/purecounter/purecounter.js"></script>

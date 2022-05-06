@@ -110,6 +110,7 @@
                             </a>
                         </li>
                     </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
 
@@ -139,7 +140,7 @@
                                         <p class="text-center small">Ingrese su usuario y contraseña para iniciar sesión</p>
                                     </div>
                                     <form action="Srv_inicio_sesion" id="form-inicio-sesion" method="post" 
-                                        class="row g-3 needs-validation" novalidate>
+                                          class="row g-3 needs-validation" novalidate>
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Usuario</label>
                                             <div class="input-group has-validation">
@@ -175,6 +176,8 @@
         </main><!-- End #main -->
 
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter.js"></script>

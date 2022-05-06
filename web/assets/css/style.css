@@ -11,7 +11,7 @@ main{
 }
 .main2{
     margin-top: 3em;
-        color: #1c84e3
+    color: #1c84e3
 }
 a {
     color: #1977cc;
@@ -185,8 +185,7 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
     padding: 8px 0 8px 20px;
 }
-.navbar a, .navbar a:focus {
-    display: flex;
+.navbar a{
     align-items: center;
     justify-content: space-between;
     font-size: 14px;
@@ -196,6 +195,10 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 2px solid #fff;
     padding: 5px 2px;
 }
+/*
+.navbar a:focus {
+    display: flex;
+}*/
 .navbar a i, .navbar a:focus i {
     font-size: 12px;
     line-height: 0;
@@ -792,7 +795,7 @@ section {
     position: relative;
     text-align: center;
     background: #fff;
-    
+
 }
 .vision-social .count-box p {
     padding: 0;

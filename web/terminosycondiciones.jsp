@@ -268,7 +268,7 @@
                         donamxCorporation@donamx.com.mx. Asimismo, el Usuario tiene derecho a revocar el consentimiento inicialmente 
                         prestado, y a interponer reclamaciones de derechos frente a la Agencia Española de Protección de Datos (AEPD). "
                     </p>
-                   
+
                     <h3>
                         Comunicaciones
                     </h3>
@@ -286,6 +286,9 @@
                 </div>
             </section>
         </main>
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter.js"></script>

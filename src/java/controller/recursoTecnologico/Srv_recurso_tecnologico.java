@@ -70,17 +70,14 @@ public class Srv_recurso_tecnologico extends HttpServlet {
     }
 
     private void index(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //  String paginaJsp = "/views/usuario/index.jsp";
         String paginaJsp = "/views/dashboard/index.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
         dispatcher.forward(req, resp);
     }
 
     private void registrar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paginaJsp = "/vista/lista-estudiantes.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
         dispatcher.forward(req, resp);
     }
 

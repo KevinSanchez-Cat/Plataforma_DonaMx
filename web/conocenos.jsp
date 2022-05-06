@@ -109,6 +109,7 @@
                             </a>
                         </li>
                     </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
 
@@ -276,6 +277,8 @@
             </section><!-- End Doctors Section -->
         </main>
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter.js"></script>
