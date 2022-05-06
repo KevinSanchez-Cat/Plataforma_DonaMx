@@ -24,7 +24,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO intencion ("
+                String sql = "INSERT INTO Intencion ("
                         + "idUsuario, "
                         + "tituloIntencion, "
                         + "descripcion, "
@@ -76,7 +76,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
             Intencion inten = encontrarId(id);
             if (inten != null) {
                 try {
-                    String sql = "UPDATE intencion SET "
+                    String sql = "UPDATE Intencion SET "
                             + "respuestaIntencion=?, "
                             + "fechaRespuesta=?, "
                             + "estadoIntencion=? "
@@ -125,7 +125,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE intencion SET "
+                    String sql = "UPDATE Intencion SET "
                             + "idUsuario=?, "
                             + "tituloIntencion=?, "
                             + "descripcion=?, "
@@ -182,7 +182,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
             Intencion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM intencion "
+                    String sql = "DELETE FROM Intencion "
                             + "WHERE idIntencion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -231,7 +231,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                         + "estadoIntencion, "
                         + "respuestaIntencion, "
                         + "fechaRespuesta "
-                        + "FROM intencion";
+                        + "FROM Intencion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -273,7 +273,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                         + "estadoIntencion, "
                         + "respuestaIntencion, "
                         + "fechaRespuesta "
-                        + "FROM intencion";
+                        + "FROM Intencion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -315,7 +315,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                         + "estadoIntencion, "
                         + "respuestaIntencion, "
                         + "fechaRespuesta "
-                        + "FROM intencion "
+                        + "FROM Intencion "
                         + "WHERE idIntencion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

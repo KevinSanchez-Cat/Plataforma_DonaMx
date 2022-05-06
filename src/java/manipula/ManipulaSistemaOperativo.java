@@ -23,7 +23,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO sistemaoperativo ("
+                String sql = "INSERT INTO SistemaOperativo ("
                         + "sistemaOperativo,"
                         + "version, "
                         + "edicion "
@@ -73,7 +73,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE sistemaoperativo SET "
+                    String sql = "UPDATE SistemaOperativo SET "
                             + "sistemaOperativo=?, "
                             + "version=?, "
                             + "edicion=? "
@@ -122,7 +122,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
             SistemaOperativo obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM sistemaoperativo "
+                    String sql = "DELETE FROM SistemaOperativo "
                             + "WHERE idSistemaOperativo=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -167,7 +167,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                         + "sistemaOperativo, "
                         + "version, "
                         + "edicion "
-                        + "FROM sistemaoperativo";
+                        + "FROM SistemaOperativo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -195,7 +195,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                         + "sistemaOperativo, "
                         + "version, "
                         + "edicion "
-                        + "FROM sistemaoperativo";
+                        + "FROM SistemaOperativo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -223,7 +223,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                         + "sistemaOperativo, "
                         + "version, "
                         + "edicion "
-                        + "FROM sistemaoperativo "
+                        + "FROM SistemaOperativo "
                         + "WHERE idSistemaOperativo=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

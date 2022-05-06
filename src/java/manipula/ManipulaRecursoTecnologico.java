@@ -24,7 +24,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO recursotecnologico ("
+                String sql = "INSERT INTO RecursoTecnologico ("
                         + "idCategoria, "
                         + "idDonador, "
                         + "idUsuario, "
@@ -102,7 +102,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "idCategoria=?, "
                             + "idDonador=?, "
                             + "idUsuario=?, "
@@ -179,7 +179,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             RecursoTecnologico obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM recursotecnologico "
+                    String sql = "DELETE FROM RecursoTecnologico "
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -238,7 +238,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioOfertado, "
                         + "organizacionOCivil, "
                         + "tipoSoftHard "
-                        + "FROM recursotecnologico";
+                        + "FROM RecursoTecnologico";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -300,7 +300,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioOfertado, "
                         + "organizacionOCivil, "
                         + "tipoSoftHard "
-                        + "FROM recursotecnologico";
+                        + "FROM RecursoTecnologico";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -362,7 +362,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioOfertado, "
                         + "organizacionOCivil, "
                         + "tipoSoftHard "
-                        + "FROM recursotecnologico"
+                        + "FROM RecursoTecnologico"
                         + "WHERE idRecursoTecnologico=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -410,7 +410,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             if (encontrarId(id) != null) {
                 nvoObj.setCantidadStock(cantidad);
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "cantidadStock=?, "
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -494,7 +494,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     nvoObj.setFechaPublicacion(null);
                 }
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "autorizado=?, "
                             + "fechaAutorizacion=?, "
                             + "estadoPublicacion=?, "
@@ -572,7 +572,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     nvoObj.setFechaPublicacion(null);
                 }
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "estadoPublicacion=?, "
                             + "fechaPublicacion=? "
                             + "WHERE idRecursoTecnologico=?";
@@ -617,7 +617,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "estadoLogico=? "
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -650,7 +650,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE recursotecnologico SET "
+                    String sql = "UPDATE RecursoTecnologico SET "
                             + "remunerado=?, "
                             + "precioOriginal=?, "
                             + "precioEstimado=?, "

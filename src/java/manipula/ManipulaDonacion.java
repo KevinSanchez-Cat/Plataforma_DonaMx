@@ -24,7 +24,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO donacion ("
+                String sql = "INSERT INTO Donacion ("
                         + "idDonador, "
                         + "idDonatario, "
                         + "idArchivo, "
@@ -98,7 +98,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         break;
                 }
                 try {
-                    String sql = "UPDATE solicitud SET "
+                    String sql = "UPDATE Donacion SET "
                             + "estadoDonacion=? "
                             + "WHERE idDonacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -164,7 +164,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                 }
 
                 try {
-                    String sql = "UPDATE solicitud SET "
+                    String sql = "UPDATE Donacion SET "
                             + "noConfirmacion=? "
                             + "WHERE idDonacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -207,7 +207,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE solicitud SET "
+                    String sql = "UPDATE Donacion SET "
                             + "idDonador=?, "
                             + "idDonatario=?, "
                             + "idArchivo=?, "
@@ -266,7 +266,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
             Donacion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM donacion "
+                    String sql = "DELETE FROM Donacion "
                             + "WHERE idDonacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -316,7 +316,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion";
+                        + "FROM Donacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -360,7 +360,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion";
+                        + "FROM Donacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -404,7 +404,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion "
+                        + "FROM Donacion "
                         + "WHERE idDonacion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

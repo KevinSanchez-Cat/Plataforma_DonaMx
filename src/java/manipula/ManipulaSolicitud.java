@@ -24,7 +24,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO solicitud ("
+                String sql = "INSERT INTO Solicitud ("
                         + "idUsuario, "
                         + "idRecurso, "
                         + "idArchivo, "
@@ -88,7 +88,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 sol.setFechaRespuesta(fechaRespuesta);
                 
                 try {
-                    String sql = "UPDATE solicitud SET "
+                    String sql = "UPDATE Solicitud SET "
                             + "estadoSolicitud=?, "
                             + "fechaRespuesta=? "
                             + "WHERE idSolicitud=?";
@@ -134,7 +134,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE solicitud SET "
+                    String sql = "UPDATE Solicitud SET "
                             + "idUsuario=?, "
                             + "idRecurso=?, "
                             + "idArchivo=?, "
@@ -189,7 +189,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             Solicitud obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM solicitud "
+                    String sql = "DELETE FROM Solicitud "
                             + "WHERE idSolicitud=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -237,7 +237,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                         + "estadoSolicitud, "
                         + "fechaSolicitud, "
                         + "fechaRespuesta "
-                        + "FROM solicitud";
+                        + "FROM Solicitud";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -277,7 +277,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                         + "estadoSolicitud, "
                         + "fechaSolicitud, "
                         + "fechaRespuesta "
-                        + "FROM solicitud";
+                        + "FROM Solicitud";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -317,7 +317,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                         + "estadoSolicitud, "
                         + "fechaSolicitud, "
                         + "fechaRespuesta "
-                        + "FROM solicitud "
+                        + "FROM Solicitud "
                         + "WHERE idSolicitud=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

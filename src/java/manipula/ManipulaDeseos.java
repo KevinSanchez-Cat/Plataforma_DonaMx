@@ -24,7 +24,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO deseo ("
+                String sql = "INSERT INTO Deseo ("
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
@@ -84,7 +84,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
             Deseo obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM deseo "
+                    String sql = "DELETE FROM Deseo "
                             + "WHERE idItem=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -129,7 +129,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM deseo";
+                        + "FROM Deseo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -163,7 +163,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM deseo";
+                        + "FROM Deseo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -197,7 +197,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM deseo "
+                        + "FROM Deseo "
                         + "WHERE idItem=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

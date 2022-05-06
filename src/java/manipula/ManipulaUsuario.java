@@ -32,7 +32,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO usuario ("
+                String sql = "INSERT INTO Usuario ("
                         + "nombreUsuario, "
                         + "contrasenia, "
                         + "fechaCreacion, "
@@ -104,7 +104,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
                 obj.setUltimaConexion(Misc.getDateTimeActualJava());
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "ultimaConexion=?, "
                             + "conectado=? "
                             + "WHERE idUsuario=?";
@@ -150,7 +150,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "nombreUsuario=?, "
                             + "estadoCuenta=?, "
                             + "estadoLogico=?, "
@@ -215,7 +215,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM usuario "
+                    String sql = "DELETE FROM Usuario "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -271,7 +271,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "conteoAccesosFallidos, "
                         + "foto, "
                         + "idRol "
-                        + "FROM usuario";
+                        + "FROM Usuario";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -338,7 +338,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "conteoAccesosFallidos, "
                         + "foto, "
                         + "idRol "
-                        + "FROM usuario "
+                        + "FROM Usuario "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -396,7 +396,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "conteoAccesosFallidos, "
                         + "foto, "
                         + "idRol "
-                        + "FROM usuario "
+                        + "FROM Usuario "
                         + "WHERE correoElectronica";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setString(1, correo);
@@ -454,7 +454,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "conteoAccesosFallidos, "
                         + "foto, "
                         + "idRol "
-                        + "FROM usuario "
+                        + "FROM Usuario "
                         + "WHERE nombreUsuario=? AND contrasenia=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setString(1, nombre);
@@ -505,7 +505,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoSolicitud, "
                         + "fechaSolicitud, "
                         + "fechaRespuesta "
-                        + "FROM solicitud "
+                        + "FROM Solicitud "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -548,7 +548,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion "
+                        + "FROM Donacion "
                         + "WHERE idDonatario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -593,7 +593,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoDonacion, "
                         + "noConfirmacion "
                         + "remunerado "
-                        + "FROM donacion "
+                        + "FROM Donacion "
                         + "WHERE idDonador=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -635,7 +635,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM galeria "
+                        + "FROM Galeria "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -669,7 +669,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoIntencion, "
                         + "respuestaIntencion, "
                         + "fechaRespuesta "
-                        + "FROM intencion "
+                        + "FROM Intencion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -718,7 +718,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
                         + "idUsuario "
-                        + "FROM direccion "
+                        + "FROM Direccion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -766,7 +766,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoVisualizacion, "
                         + "prioridad, "
                         + "mensaje "
-                        + "FROM notificacion "
+                        + "FROM Notificacion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -793,7 +793,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             try {
                 String sql = "SELECT "
                         + "idRol "
-                        + "FROM usuario "
+                        + "FROM Usuario "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -804,7 +804,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         int idRol = rs.getInt(1);
                         String sqlRol = "SELECT "
                                 + "rol "
-                                + "FROM rol "
+                                + "FROM Rol "
                                 + "WHERE idRol=?";
                         PreparedStatement ps2 = conexionDB.getConexion().prepareStatement(sqlRol);
                         ps2.setInt(1, idRol);
@@ -855,7 +855,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "rfc, "
                         + "tipooOrg, "
                         + "autorizada "
-                        + "FROM organizacion "
+                        + "FROM Organizacion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -916,7 +916,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "intereses, "
                         + "habilidades, "
                         + "estadoLogico "
-                        + "FROM solicitud"
+                        + "FROM Solicitud"
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
@@ -997,7 +997,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 try {
                     String sql = "SELECT "
                             + "contrasenia "
-                            + "FROM usuario"
+                            + "FROM Usuario"
                             + "WHERE idUsuario=?";
                     PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                     ps.setInt(1, idUsuario);
@@ -1029,7 +1029,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "nombreUsuario=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1063,7 +1063,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "contrasenia=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1097,7 +1097,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "correoElectronico=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1131,7 +1131,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "numeroCelular=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1165,7 +1165,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "correoConfirmado=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1199,7 +1199,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "numeroCelularConfirmado=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1233,7 +1233,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "autenticacionDosPasos=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1277,7 +1277,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     obj.setEstadoCuenta("Bl");
                 }
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "conteoAccesosFallidos=?, "
                             + "estadoCuenta=? "
                             + "WHERE idUsuario=?";
@@ -1313,7 +1313,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "foto=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -1347,7 +1347,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
             Usuario obj = encontrarId(idUsuario);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE usuario SET "
+                    String sql = "UPDATE Usuario SET "
                             + "idRol=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);

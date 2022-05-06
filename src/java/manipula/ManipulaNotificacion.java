@@ -24,7 +24,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO notificacion ("
+                String sql = "INSERT INTO Notificacion ("
                         + "idUsuarioDestino, "
                         + "fechaNotificacion, "
                         + "estadoVisualizacion, "
@@ -81,7 +81,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                 }
 
                 try {
-                    String sql = "UPDATE notificacion SET "
+                    String sql = "UPDATE Notificacion SET "
                             + "estadoVisualizacion=? "
                             + "WHERE idNotificacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -124,7 +124,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE notificacion SET "
+                    String sql = "UPDATE Notificacion SET "
                             + "idUsuarioDestino=?, "
                             + "fechaNotificacion=?, "
                             + "estadoVisualizacion=? "
@@ -177,7 +177,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
             Notificacion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM notificacion "
+                    String sql = "DELETE FROM Notificacion "
                             + "WHERE idNotificacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -224,7 +224,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                         + "estadoVisualizacion, "
                         + "prioridad, "
                         + "mensaje "
-                        + "FROM notificacion";
+                        + "FROM Notificacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -260,7 +260,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                         + "estadoVisualizacion, "
                         + "prioridad, "
                         + "mensaje "
-                        + "FROM notificacion";
+                        + "FROM Notificacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -291,7 +291,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                         + "estadoVisualizacion, "
                         + "prioridad, "
                         + "mensaje "
-                        + "FROM notificacion "
+                        + "FROM Notificacion "
                         + "WHERE idNotificacion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

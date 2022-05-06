@@ -24,7 +24,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO categoria ("
+                String sql = "INSERT INTO Categoria ("
                         + "nombreCategoria, "
                         + "descripcion "
                         + ") VALUES (?,?)";
@@ -72,7 +72,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE categoria SET "
+                    String sql = "UPDATE Categoria SET "
                             + "nombreCategoria=?, "
                             + "descripcion=? "
                             + "WHERE idCategoria=?";
@@ -119,7 +119,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
             Categoria obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM categoria "
+                    String sql = "DELETE FROM Categoria "
                             + "WHERE idCategoria=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -163,7 +163,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
                         + "idCategoria, "
                         + "nombreCategoria, "
                         + "descripcion "
-                        + "FROM categoria";
+                        + "FROM Categoria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -191,7 +191,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
                         + "idCategoria, "
                         + "nombreCategoria, "
                         + "descripcion "
-                        + "FROM categoria";
+                        + "FROM Categoria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -219,7 +219,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
                         + "idCategoria, "
                         + "nombreCategoria, "
                         + "descripcion "
-                        + "FROM categoria "
+                        + "FROM Categoria "
                         + "WHERE idCategoria=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -268,7 +268,7 @@ public class ManipulaCategoria implements Manipula<Categoria> {
                         + "precioOfertado, "
                         + "organizacionOCivil, "
                         + "tipoSoftHard "
-                        + "FROM recursoTecnologico "
+                        + "FROM RecursoTecnologico "
                         + "WHERE idCategoria=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idCategoria);

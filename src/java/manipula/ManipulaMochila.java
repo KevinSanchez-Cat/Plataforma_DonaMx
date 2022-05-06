@@ -24,7 +24,7 @@ public class ManipulaMochila implements Manipula<Mochila> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO mochila ("
+                String sql = "INSERT INTO Mochila ("
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
@@ -84,7 +84,7 @@ public class ManipulaMochila implements Manipula<Mochila> {
             Mochila obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM mochila "
+                    String sql = "DELETE FROM Mochila "
                             + "WHERE idItem=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -129,7 +129,7 @@ public class ManipulaMochila implements Manipula<Mochila> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM mochila";
+                        + "FROM Mochila";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -170,7 +170,7 @@ public class ManipulaMochila implements Manipula<Mochila> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM mochila "
+                        + "FROM Mochila "
                         + "WHERE idItem=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

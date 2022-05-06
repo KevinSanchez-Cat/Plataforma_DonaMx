@@ -24,7 +24,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO municipio ("
+                String sql = "INSERT INTO Municipio ("
                         + "idEstado, "
                         + "municipio "
                         + ") VALUES (?,?)";
@@ -73,7 +73,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
             Municipio obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE municipio SET "
+                    String sql = "UPDATE Municipio SET "
                             + "idEstado=?, "
                             + "municipio=? "
                             + "WHERE idMunicipio=?";
@@ -120,7 +120,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
             Municipio obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM municipio "
+                    String sql = "DELETE FROM Municipio "
                             + "WHERE idMunicipio=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -164,7 +164,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                         + "idMunicipio, "
                         + "idEstado, "
                         + "municipio "
-                        + "FROM municipio";
+                        + "FROM Municipio";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -192,7 +192,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                         + "idMunicipio, "
                         + "idEstado, "
                         + "estado "
-                        + "FROM municipio";
+                        + "FROM Municipio";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -220,7 +220,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                         + "idMunicipio, "
                         + "idEstado, "
                         + "municipio "
-                        + "FROM municipio "
+                        + "FROM Municipio "
                         + "WHERE idMunicipio=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -255,7 +255,7 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
                         + "idMunicipio, "
                         + "localidad, "
                         + "codigoPostal "
-                        + "FROM localidad "
+                        + "FROM Localidad "
                         + "WHERE idMunicipio=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

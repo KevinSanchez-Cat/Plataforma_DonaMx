@@ -53,7 +53,7 @@ public class ManipulaAutenticacion {
                     respuesta.setConectado(true);
                     respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
                     try {
-                        String sql = "UPDATE usuario SET "
+                        String sql = "UPDATE Usuario SET "
                                 + "ultimaConexion=?, "
                                 + "conectado=? "
                                 + "WHERE idUsuario=?";
@@ -103,7 +103,7 @@ public class ManipulaAutenticacion {
                     respuesta.setConectado(false);
                     respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
                     try {
-                        String sql = "UPDATE usuario SET "
+                        String sql = "UPDATE Usuario SET "
                                 + "ultimaConexion=?, "
                                 + "conectado=? "
                                 + "WHERE idUsuario=?";

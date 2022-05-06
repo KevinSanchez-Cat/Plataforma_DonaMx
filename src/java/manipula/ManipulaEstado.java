@@ -24,7 +24,7 @@ public class ManipulaEstado implements Manipula<Estado> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO estado ("
+                String sql = "INSERT INTO Estado ("
                         + "estado"
                         + ") VALUES (?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -71,7 +71,7 @@ public class ManipulaEstado implements Manipula<Estado> {
             Estado obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE estado SET "
+                    String sql = "UPDATE Estado SET "
                             + "estado=? "
                             + "WHERE idEstado=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -116,7 +116,7 @@ public class ManipulaEstado implements Manipula<Estado> {
             Estado obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM estado "
+                    String sql = "DELETE FROM Estado "
                             + "WHERE idEstado=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -159,7 +159,7 @@ public class ManipulaEstado implements Manipula<Estado> {
                 String sql = "SELECT "
                         + "idEstado, "
                         + "estado "
-                        + "FROM estado";
+                        + "FROM Estado";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -186,7 +186,7 @@ public class ManipulaEstado implements Manipula<Estado> {
                 String sql = "SELECT "
                         + "idEstado, "
                         + "estado "
-                        + "FROM estado";
+                        + "FROM Estado";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -213,7 +213,7 @@ public class ManipulaEstado implements Manipula<Estado> {
                 String sql = "SELECT "
                         + "idEstado, "
                         + "estado "
-                        + "FROM estado "
+                        + "FROM Estado "
                         + "WHERE idEstado=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -246,7 +246,7 @@ public class ManipulaEstado implements Manipula<Estado> {
                         + "idMunicipio, "
                         + "idEstado, "
                         + "municipio "
-                        + "FROM municipio "
+                        + "FROM Municipio "
                         + "WHERE idEstado=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

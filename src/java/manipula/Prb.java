@@ -14,7 +14,7 @@ public class Prb {
         ManipulaRol m = new ManipulaRol();
         Rol role = new Rol();
         role.setIdRol(1);
-        role.setRol("ADMINISTRADOR");
+        role.setRol("DEFAULT");
         GenericResponse<Rol> respuesta = m.registrar(role);
         System.out.println(respuesta.getMensaje());
 

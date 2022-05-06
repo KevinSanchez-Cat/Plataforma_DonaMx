@@ -23,7 +23,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO equipocomputacional ("
+                String sql = "INSERT INTO EquipoComputacional ("
                         + "idRecurso, "
                         + "nombre, "
                         + "marca, "
@@ -89,7 +89,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE equipocomputacional SET "
+                    String sql = "UPDATE EquipoComputacional SET "
                             + "idRecurso=?, "
                             + "nombre=?, "
                             + "marca=?, "
@@ -154,7 +154,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
             EquipoComputacional obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM equipocomputacional "
+                    String sql = "DELETE FROM EquipoComputacional "
                             + "WHERE idEstadoComputacional=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -207,7 +207,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "velocidadRam, "
                         + "capacidadMaximaRam, "
                         + "nuevo "
-                        + "FROM equipocomputacional";
+                        + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -257,7 +257,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "velocidadRam, "
                         + "capacidadMaximaRam, "
                         + "nuevo "
-                        + "FROM equipocomputacional";
+                        + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -307,7 +307,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "velocidadRam, "
                         + "capacidadMaximaRam, "
                         + "nuevo "
-                        + "FROM equipocomputacional "
+                        + "FROM EquipoComputacional "
                         + "WHERE idEquipoComputacional=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

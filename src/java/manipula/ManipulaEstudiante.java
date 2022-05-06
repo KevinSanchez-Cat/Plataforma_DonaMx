@@ -27,7 +27,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO estudiante ("
+                String sql = "INSERT INTO Estudiante ("
                         + "idUsuario, "
                         + "nombres, "
                         + "apellidoPaterno, "
@@ -110,7 +110,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE estudiante SET "
+                    String sql = "UPDATE Estudiante SET "
                             + "nivelEducativo=?, "
                             + "ocupacion=?, "
                             + "tipoEscuela=?, "
@@ -168,7 +168,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE estudiante SET "
+                    String sql = "UPDATE Estudiante SET "
                             + "idUsuario=?, "
                             + "nombres=?, "
                             + "apellidoPaterno=?, "
@@ -251,7 +251,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
             Estudiante obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM estudiante "
+                    String sql = "DELETE FROM Estudiante "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -313,7 +313,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "intereses, "
                         + "habilidades, "
                         + "estadoLogico "
-                        + "FROM solicitud";
+                        + "FROM Estudiante";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -381,7 +381,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "intereses, "
                         + "habilidades, "
                         + "estadoLogico "
-                        + "FROM solicitud";
+                        + "FROM Estudiante";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -449,7 +449,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "intereses, "
                         + "habilidades, "
                         + "estadoLogico "
-                        + "FROM solicitud"
+                        + "FROM Estudiante"
                         + "WHERE idEstudiante=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -498,7 +498,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE estudiante SET "
+                    String sql = "UPDATE Estudiante SET "
                             + "estadoLogico=? "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -531,7 +531,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE estudiante SET "
+                    String sql = "UPDATE Estudiante SET "
                             + "telefonoMovil=? "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -564,7 +564,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE estudiante SET "
+                    String sql = "UPDATE Estudiante SET "
                             + "telefonoCasa=? "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -601,7 +601,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM deseo "
+                        + "FROM Deseo "
                         + "WHERE idEstudiante=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -636,7 +636,7 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "idRecurso, "
                         + "idEstudiante, "
                         + "fecha "
-                        + "FROM deseo "
+                        + "FROM Deseo "
                         + "WHERE idEstudiante=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

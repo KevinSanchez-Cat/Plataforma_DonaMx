@@ -23,7 +23,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO organizacion ("
+                String sql = "INSERT INTO Organizacion ("
                         + "idUsuario, "
                         + "reciboDeducible, "
                         + "razonSocial, "
@@ -90,7 +90,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             if (org != null) {
                 org.setAutorizada(autorizar);
                 try {
-                    String sql = "UPDATE organizacion SET "
+                    String sql = "UPDATE Organizacion SET "
                             + "autorizada=? "
                             + "WHERE idOrganizacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -133,7 +133,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE organizacion SET "
+                    String sql = "UPDATE Organizacion SET "
                             + "idUsuario=?, "
                             + "reciboDeducible=?, "
                             + "razonSocial=?, "
@@ -198,7 +198,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             Organizacion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM organizacion "
+                    String sql = "DELETE FROM Organizacion "
                             + "WHERE idOrganizacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -251,7 +251,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "rfc, "
                         + "tipooOrg, "
                         + "autorizada "
-                        + "FROM organizacion";
+                        + "FROM Organizacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -301,7 +301,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "rfc, "
                         + "tipooOrg, "
                         + "autorizada "
-                        + "FROM organizacion";
+                        + "FROM Organizacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -351,7 +351,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "rfc, "
                         + "tipooOrg, "
                         + "autorizada "
-                        + "FROM organizacion"
+                        + "FROM Organizacion"
                         + "WHERE idSolicitud=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
@@ -391,7 +391,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE organizacion SET "
+                    String sql = "UPDATE Organizacion SET "
                             + "estadoLogico=? "
                             + "WHERE idOrganizacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);

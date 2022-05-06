@@ -24,7 +24,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO archivo ("
+                String sql = "INSERT INTO Archivo ("
                         + "nombreArchivo, "
                         + "extension, "
                         + "tamanio, "
@@ -80,7 +80,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE archivo SET "
+                    String sql = "UPDATE Archivo SET "
                             + "nombreArchivo=?, "
                             + "extension=?, "
                             + "tamanio=?, "
@@ -135,7 +135,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
             Archivo obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM archivo "
+                    String sql = "DELETE FROM Archivo "
                             + "WHERE idArchivo=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -183,7 +183,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                         + "fechaCreacion, "
                         + "urlDestino, "
                         + "idUsuario "
-                        + "FROM archivo";
+                        + "FROM Archivo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -223,7 +223,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                         + "fechaCreacion, "
                         + "urlDestino, "
                         + "idUsuario "
-                        + "FROM archivo";
+                        + "FROM Archivo";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -263,7 +263,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                         + "fechaCreacion, "
                         + "urlDestino, "
                         + "idUsuario "
-                        + "FROM archivo"
+                        + "FROM Archivo"
                         + "WHERE idArchivo=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

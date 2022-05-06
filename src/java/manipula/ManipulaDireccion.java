@@ -23,7 +23,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO direccion ("
+                String sql = "INSERT INTO Direccion ("
                         + "idEstado, "
                         + "idMunicipio, "
                         + "idLocalidad, "
@@ -94,7 +94,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
             Direccion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE direccion SET "
+                    String sql = "UPDATE Direccion SET "
                             + "idEstado, "
                             + "idMunicipio, "
                             + "idLocalidad, "
@@ -163,7 +163,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
             Direccion obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM direccion "
+                    String sql = "DELETE FROM Direccion "
                             + "WHERE idDireccion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -218,7 +218,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
                         + "idUsuario "
-                        + "FROM direccion";
+                        + "FROM Direccion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -272,7 +272,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
                         + "idUsuario "
-                        + "FROM direccion";
+                        + "FROM Direccion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -326,7 +326,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
                         + "idUsuario "
-                        + "FROM direccion "
+                        + "FROM Direccion "
                         + "WHERE idDireccion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);

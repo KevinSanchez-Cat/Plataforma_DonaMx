@@ -23,7 +23,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO galeria ("
+                String sql = "INSERT INTO Galeria ("
                         + "idUsuario, "
                         + "nombreImagen, "
                         + "tamanio, "
@@ -78,7 +78,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
             Galeria obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE galeria SET "
+                    String sql = "UPDATE Galeria SET "
                             + "idUsuario=?, "
                             + "nombreImagen=?, "
                             + "tamanio=?, "
@@ -131,7 +131,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
             Galeria obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM galeria "
+                    String sql = "DELETE FROM Galeria "
                             + "WHERE idGaleria=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -177,7 +177,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM galeria";
+                        + "FROM Galeria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -208,7 +208,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM galeria";
+                        + "FROM Galeria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
@@ -239,7 +239,7 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM galeria "
+                        + "FROM Galeria "
                         + "WHERE idGaleria=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
