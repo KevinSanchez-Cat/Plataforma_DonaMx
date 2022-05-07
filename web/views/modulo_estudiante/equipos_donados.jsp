@@ -7,11 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<template:templete_user title="Catalogo">
+<template:templete_user title="Equipos donados">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante">
                         <i class="bi bi-grid"></i>
@@ -19,22 +18,22 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link "  href="estudiante?page=catalogo">
+                    <a class="nav-link collapsed "  href="estudiante?page=catalogo">
                         <i class="bi bi-card-list"></i><span>Catalogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#equipos-nav" data-bs-toggle="collapse" href="">
+                    <a class="nav-link " data-bs-target="#equipos-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-laptop"></i><span>Equipos computacionales </span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="equipos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <ul id="equipos-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="estudiante?page=equipos_remunerados">
                                 <i class="bi bi-circle"></i><span>Remunerados</span>
                             </a>
                         </li>
                         <li>
-                            <a href="estudiante?page=equipos_donados">
+                            <a href="estudiante?page=equipos_donados" class="active">
                                 <i class="bi bi-circle"></i><span>Donados</span>
                             </a>
                         </li>                      
@@ -96,11 +95,12 @@
         <main id="main" class="main">
             <section class="section dashboard">
                 <div class="pagetitle">
-                    <h1>Catálogo</h1>
+                    <h1>Equipos computacionales donados</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="estudiante?page=catalogo">Catalogo</a></li>
+                            <li class="breadcrumb-item">Equipos computacionales</li>
+                            <li class="breadcrumb-item active">Donados</li>
                         </ol>
                     </nav>
                 </div>

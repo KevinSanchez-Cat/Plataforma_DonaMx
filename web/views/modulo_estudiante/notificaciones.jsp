@@ -1,19 +1,19 @@
 <%-- 
-    Document   : home
-    Created on : 3/05/2022, 07:02:35 AM
+    Document   : solicitudes
+    Created on : 3/05/2022, 07:01:43 AM
     Author     : por_s
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<template:templete_user title="Bienvenida">
+<template:templete_user title="Notificaciones">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="estudiante">
+                    <a class="nav-link collapsed" href="estudiante">
                         <i class="bi bi-grid"></i>
                         <span>Bienvenida</span>
                     </a>
@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="estudiante?page=notificaciones">
+                    <a class="nav-link" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
                     </a>
@@ -96,67 +96,16 @@
         <main id="main" class="main">
             <section class="section dashboard">
                 <div class="pagetitle">
-                    <h1>Bienvenida</h1>
+                    <h1>Notificaciones</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
+                            <li class="breadcrumb-item active">Notificaciones</li>
                         </ol>
                     </nav>
                 </div>
                 <section class="section">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">IDTMex</h5>
-                                    <p>¿Sabias que para evaluar el Indice de Desarrollo Tecnologico en México, hay que tener encuenta 3 puntos importantes?
-                                        Conocelos en la descripción de las imagenes.
-                                    </p>
-                                    <!-- Slides with captions -->
-                                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        </div>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="assets/img/dona_hero.jpg" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Conocimiento</h5>
-                                                    <p>Tener conocimiento de qué son las Tecnologías de la información, 
-                                                        y tener una noción de lo que consisten y para que se usan.</p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="assets/img/img_principal.jpg" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Acceso</h5>
-                                                    <p>Tener acceso al internet, y a las tecnologías, qué tan frecuente accedes a ellas. </p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="assets/img/network_destino.jpg" class="d-block w-100" alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Uso</h5>
-                                                    <p>La manipulación sobre ellas, y cómo y con qué fin las usas.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Anterior</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Siguiente</span>
-                                        </button>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
             </section>
         </main>

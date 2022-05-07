@@ -573,7 +573,7 @@
                 </div>
             </section><!-- End Gallery Section -->
 
-
+            
 
             <%@include  file="views/templates/footer/footer_principal.jsp" %>
 

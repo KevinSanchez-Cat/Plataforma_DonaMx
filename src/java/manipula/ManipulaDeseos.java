@@ -24,6 +24,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
+               
                 String sql = "INSERT INTO Deseo ("
                         + "idRecurso, "
                         + "idEstudiante, "
