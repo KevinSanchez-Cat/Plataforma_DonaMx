@@ -974,7 +974,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "intereses, "
                         + "habilidades, "
                         + "estadoLogico "
-                        + "FROM Solicitud"
+                        + "FROM Estudiante "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);

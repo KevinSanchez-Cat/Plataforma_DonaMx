@@ -11,7 +11,6 @@
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante">
                         <i class="bi bi-grid"></i>
@@ -105,6 +104,98 @@
                     </nav>
                 </div>
                 <section class="section">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <div class="col ">
+                            <a href="estudiante?page=catalogo?cat=accesorios-computacionales">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Accesorios computacionales</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="estudiante?page=catalogo?cat=aplicaciones">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Aplicaciones</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col ">
+                            <a href="estudiante?page=catalogo?cat=antivirus">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Antivirus</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="estudiante?page=catalogo?cat=camaras-fotograficas">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cámaras fotográficas</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col ">
+                            <a href="estudiante?page=catalogo?cat=celulares">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Celulares</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="estudiante?page=catalogo?cat=equipos-computacionales">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Equipos computacionales</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="estudiante?page=catalogo?cat=equipos-computacionales-remunerados">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Equipos computacionales con remuneración</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col ">
+                            <a href="estudiante?page=catalogo?cat=libros-digitales">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Libros digitales</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                         <div class="col">
+                            <a href="estudiante?page=catalogo?cat=licencias">
+                                <div class="card text-white bg-azul text-center">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Licencias</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
                 </section>
             </section>

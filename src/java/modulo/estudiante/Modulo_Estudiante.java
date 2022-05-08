@@ -44,50 +44,41 @@ public class Modulo_Estudiante extends HttpServlet {
                 String rol = (String) session.getAttribute("rol");
                 if (rol != null) {
                     if (rol.equals("DONATARIO")) {
-
                         ManipulaUsuario mUsuario = new ManipulaUsuario();
                         int idUser = (int) session.getAttribute("idUser");
-                        System.out.println(idUser + " modulo");
-                        List<Deseo> lstDeseos = new ArrayList<>();
 
-                        Direccion direccion = mUsuario.getDireccion(idUser);
-                        List<Donacion> lstDonaciones = mUsuario.getDonacionRecibidas(idUser);
-                        Estudiante estudiante = mUsuario.getEstudiante(idUser);
-                        List<Notificacion> lstNotificaciones = mUsuario.getNotificacion(idUser);
-                        List<Solicitud> lstSolicitudes = mUsuario.getSolicitudes(idUser);
-
-                        if (estudiante != null) {
-                            ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
-                            lstDeseos = mEstudiante.getListaDeseos(estudiante.getIdEstudiante());
-                        }
-                        if (lstDeseos == null) {
-                            lstDeseos = new ArrayList<>();
-                        } else {
-                            lstDeseos.forEach(System.out::println);
-                        }
+                        List<Deseo> lstDeseos;
+                        List<Donacion> lstDonaciones = (List<Donacion>) request.getAttribute("lstDonaciones");
+                        List<Notificacion> lstNotificaciones = (List<Notificacion>) request.getAttribute("lstNotificaciones");
+                        Estudiante estudiante = (Estudiante) request.getAttribute("estudiante");
                         if (lstDonaciones == null) {
-                            lstDonaciones = new ArrayList<>();
-                        } else {
-                            lstDonaciones.forEach(System.out::println);
-                        }
-                        if (lstNotificaciones == null) {
-                            lstNotificaciones = new ArrayList<>();
-                        } else {
-                            lstNotificaciones.forEach(System.out::println);
+                            lstDonaciones = mUsuario.getDonacionRecibidas(idUser);
+                            if (lstDonaciones == null) {
+                                lstDonaciones = new ArrayList<>();
+                            }
+                            request.setAttribute("lstDonaciones", lstDonaciones);
                         }
 
-                        // session.setAttribute("direccion", direccion);
-                        // session.setAttribute("lstDeseos", lstDeseos);
-                        // session.setAttribute("lstDonaciones", lstDonaciones);
-                        // session.setAttribute("lstSolicitudes", lstSolicitudes);
-                        // session.setAttribute("lstNotificaciones", lstNotificaciones);
-                        // session.setAttribute("estudiante", estudiante);
-                        request.setAttribute("direccion", direccion);
-                        request.setAttribute("lstDeseos", lstDeseos);
-                        request.setAttribute("lstDonaciones", lstDonaciones);
-                        request.setAttribute("lstSolicitudes", lstSolicitudes);
-                        request.setAttribute("lstNotificaciones", lstNotificaciones);
-                        request.setAttribute("estudiante", estudiante);
+                        if (lstNotificaciones == null) {
+                            lstNotificaciones = mUsuario.getNotificacion(idUser);
+                            if (lstNotificaciones == null) {
+                                lstNotificaciones = new ArrayList<>();
+                            }
+                            request.setAttribute("lstNotificaciones", lstNotificaciones);
+                        }
+                        if (estudiante == null) {
+                            estudiante = mUsuario.getEstudiante(idUser);
+                            if (estudiante != null) {
+                                ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
+                                lstDeseos = mEstudiante.getListaDeseos(estudiante.getIdEstudiante());
+
+                                if (lstDeseos == null) {
+                                    lstDeseos = new ArrayList<>();
+                                }
+                                request.setAttribute("lstDeseos", lstDeseos);
+                            }
+                            request.setAttribute("estudiante", estudiante);
+                        }
 
                         if (page == null) {
                             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
@@ -164,6 +155,7 @@ public class Modulo_Estudiante extends HttpServlet {
 
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
                                     dispatcher.forward(request, response);
+                                   
                                 }
                                 break;
 

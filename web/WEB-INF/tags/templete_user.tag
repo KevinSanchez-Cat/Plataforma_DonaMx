@@ -75,9 +75,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-briefcase"></i>
-
-                            <span class="badge bg-success badge-number"><%= numDonaciones%></span>
+                            <i>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #6c757d;transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);"><path d="M16 15a1 1 0 0 0-1-1H9c-.551 0-1 .448-1 1v2h8v-2zm-8 4h8v3H8z"></path><path d="M21 12c0-2.967-2.167-5.432-5-5.91V5c0-1.654-1.346-3-3-3h-2C9.346 2 8 3.346 8 5v1.09C5.167 6.568 3 9.033 3 12v8c0 1.103.897 2 2 2h1v-7c0-1.654 1.346-3 3-3h6c1.654 0 3 1.346 3 3v7h1c1.103 0 2-.897 2-2v-8zM10 5c0-.552.449-1 1-1h2a1 1 0 0 1 1 1v1h-4V5z"></path></svg>
+                            </i>
+                            <span class="badge bg-success rounded-pill badge-number"><%= numDonaciones%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                             <li class="dropdown-header">
@@ -88,8 +89,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-heart"></i>
-                            <span class="badge bg-danger badge-number"><%= numDeseos%></span>
+                            <i >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #6c757d;transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                            </i>
+                            <span class="badge bg-danger rounded-pill badge-number"><%= numDeseos%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                             <li class="dropdown-header">Tienes <%= numDeseos%> deseos
@@ -99,8 +102,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="badge bg-primary badge-number"><%= numNotificaciones%></span>
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #6c757d;transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path></svg>
+                            </i>
+                            <span class="badge bg-primary rounded-pill badge-number"><%= numNotificaciones%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                             <li class="dropdown-header">

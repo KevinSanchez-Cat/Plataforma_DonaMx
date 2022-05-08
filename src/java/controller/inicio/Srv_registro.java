@@ -38,18 +38,22 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
         if (ser != null) {
             switch (ser) {
                 case "donador": {
+                    try {
+                        Usuario user = (Usuario) session.getAttribute("user");
+                        ManipulaUsuario mUsuario = new ManipulaUsuario();
+                        Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                        ManipulaRol mRol = new ManipulaRol();
+                        Rol r = mRol.encontrarRol("DONADOR");
+                        usuario.setRol(r.getIdRol());
+                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
+                        session.setAttribute("rol", "DONADOR");
+                        session.setAttribute("idUser", usuario.getIdUsuario());
+                        session.setAttribute("usuario", usuario);
+                        response.sendRedirect("donador");
+                    } catch (Exception e) {
+                        System.out.println("Error");
+                    }
 
-                    Usuario user = (Usuario) session.getAttribute("user");
-                    ManipulaUsuario mUsuario = new ManipulaUsuario();
-                    Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                    ManipulaRol mRol = new ManipulaRol();
-                    Rol r = mRol.encontrarRol("DONADOR");
-                    usuario.setRol(r.getIdRol());
-                    mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("rol", "DONADOR");
-                    session.setAttribute("idUser", usuario.getIdUsuario());
-                    session.setAttribute("usuario", usuario);
-                    response.sendRedirect( "donador");
                 }
                 break;
                 case "donatario": {
@@ -79,7 +83,7 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                     mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
                     session.setAttribute("usuario", usuario);
                     session.setAttribute("idUser", usuario.getIdUsuario());
-                   response.sendRedirect("voluntario");
+                    response.sendRedirect("voluntario");
                 }
                 break;
                 default:
