@@ -22,7 +22,7 @@ public class Srv_contacto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        redirectView(request, response, "/registrarse.jsp");
+        //redirectView(request, response, "/registrarse.jsp");
     }
 
     /**
@@ -36,9 +36,9 @@ public class Srv_contacto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        /*response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+           
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -53,6 +53,7 @@ public class Srv_contacto extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+        */
         redirectView(request, response, "/contacto.jsp");
     }
 

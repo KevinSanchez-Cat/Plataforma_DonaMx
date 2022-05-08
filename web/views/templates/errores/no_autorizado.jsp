@@ -1,16 +1,15 @@
 <%-- 
-    Document   : page404
-    Created on : 13/04/2022, 08:12:52 PM
+    Document   : no_autorizado
+    Created on : 7/05/2022, 03:34:27 PM
     Author     : por_s
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
+ <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Error 404</title>
+        <title>Error 401</title>
         <link href="assets/img/imagenes/Logo_1.png" rel="icon">
         <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
         <link rel="stylesheet" media="all" href="assets/css/estilosPage404/styles.css" />
@@ -23,8 +22,8 @@
                 </div>
             </div>
             <div class="central-body">
-                <img class="image-404" src="assets/img/imagenes/404.png" width="500px">
-                <a href="javascript:history.back()" class="btn-go-home">Regresar a estar seguro</a>
+                <img class="image-404" src="assets/img/imagenes/401.png" width="500px">
+              
             </div>
             <div class="objects">
                 <img class="object_rocket" src="assets/img/imagenes/rocket.svg" width="40px">

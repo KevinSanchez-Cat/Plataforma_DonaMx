@@ -6,12 +6,17 @@
 package controller.inicio;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import manipula.ManipulaAutenticacion;
+import manipula.ManipulaRol;
+import model.Rol;
+import model.Usuario;
+import utils.GenericResponse;
 
 /**
  *
@@ -22,76 +27,85 @@ public class Srv_inicio_sesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Srv_inicio_sesion</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Srv_inicio_sesion at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciar_session.jsp");
+        dispatcher.forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session=request.getSession(false);
-       
-        if(!session.getId().isEmpty()){
-            //Session recuperada, continua con operaciones del servlet
-            session=request.getSession(true);//crea una sesion
-            
-        }else{
-            
-            //Sin session, devuelve una pagina de error
-        }
-        
-        if(request.isRequestedSessionIdValid()){
-            if(request.isRequestedSessionIdFromCookie()){
-                //Se obtubo de una cokkie, y se mantiene la session en la cokkie
+
+        //  if (session != null) {
+//            if (request.isRequestedSessionIdValid()) {
+//                if (request.isRequestedSessionIdFromCookie()) {
+//                    //Se obtubo de una cokkie, y se mantiene la session en la cokkie
+//                }
+//                //cualquier otra tarea que requiera de una sesion valida
+//            } else {
+//                //registra un error de session
+//            }
+        //}
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String password_cifrado = utils.Hash.sha1(password);
+        GenericResponse<Usuario> respuesta = ManipulaAutenticacion.iniciarSesionUsuario(username, password_cifrado);
+        if (respuesta.getResponseObject() != null) {
+
+            HttpSession session = request.getSession();
+            session.setAttribute("username", respuesta.getResponseObject().getNombreUsuario());
+            session.setAttribute("user", respuesta.getResponseObject());
+            session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
+            System.out.println(respuesta.getResponseObject().getIdUsuario()+" Session");
+            ManipulaRol mRol = new ManipulaRol();
+            Rol rol = mRol.encontrarId(respuesta.getResponseObject().getIdRol());
+            session.setAttribute("rol", rol.getRol());
+
+            switch (rol.getRol()) {
+                case "DONADOR": {
+                    //redirectServlet(request, response, "donador");
+                    response.sendRedirect("donador");
+                }
+                break;
+                case "DONATARIO": {
+                  //  redirectServlet(request, response, "estudiante");
+                    response.sendRedirect("estudiante");
+                }
+                break;
+                case "VOLUNTARIO": {
+                    //redirectServlet(request, response, "voluntario");
+                     response.sendRedirect("voluntario");
+                }
+                break;
+                case "ADMINISTRADOR": {
+                    //redirectServlet(request, response, "administrador");
+                    response.sendRedirect("administrador");
+                }
+                break;
+                case "PENDIENTE": {
+                    redirectServlet(request, response, "Srv_registro?ser=PENDIENTE");
+                    
+                }
+                break;
             }
-            //cualquier otra tarea que requiera de una sesion valida
-        }else{
-            //registra un error de session
+
+        } else {
+            //no se pudo conectar
+            redirectView(request, response, "/iniciarSesion.jsp");
         }
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Srv_inicio_sesion</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Srv_inicio_sesion at " + request.getContextPath() + "</h1>");
-            out.print("<p>" + request.getParameter("username") + "</p>");
-            out.print("<p>" + request.getParameter("password") + "</p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    private void redirectView(HttpServletRequest req, HttpServletResponse resp, String pathView)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pathView);
+        dispatcher.forward(req, resp);
+    }
+
+    private void redirectServlet(HttpServletRequest req, HttpServletResponse resp, String servlet)
+            throws ServletException, IOException {
+
+        req.getRequestDispatcher(servlet)
+                .forward(req, resp);
+    }
 
 }

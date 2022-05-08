@@ -17,7 +17,6 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> {
-
     @Override
     public GenericResponse<RecursoTecnologico> registrar(RecursoTecnologico obj) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();

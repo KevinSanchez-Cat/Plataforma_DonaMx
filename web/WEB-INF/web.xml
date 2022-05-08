@@ -136,6 +136,14 @@
         <servlet-name>Modulo_Voluntario</servlet-name>
         <servlet-class>modulo.voluntario.Modulo_Voluntario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>excepciones.Error</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Autenticacion</servlet-name>
+        <servlet-class>excepciones.Autenticacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -272,8 +280,16 @@
         <servlet-name>Modulo_Voluntario</servlet-name>
         <url-pattern>/voluntario</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autenticacion</servlet-name>
+        <url-pattern>/autenticacion</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>2</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <error-page>
         <error-code>404</error-code>
@@ -281,4 +297,15 @@
             /views/templates/errores/page404.jsp
         </location>
     </error-page>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>
+                /
+            </form-login-page>
+            <form-error-page>
+                /error.html
+            </form-error-page>
+        </form-login-config>
+    </login-config>
 </web-app>

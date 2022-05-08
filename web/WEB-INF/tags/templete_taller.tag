@@ -3,8 +3,8 @@
 
 <%@ attribute name="title" required="true" rtexprvalue="true"%>
 <%@ attribute name="content" fragment="true" %>
-
-<html lang="es">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html lang="es"/>
     <html>
         <head>
             <meta charset="utf-8">
@@ -17,7 +17,6 @@
                   apoyo o subsidios de productos en materia de tecnologia" name="description">
             <meta content="tecnologia, computadoras, licencias, donaciones, estudiantes, educiacion, progreso" name="keywords">
 
-            <!-- Favicons -->
             <link href="assets/img/imagenes/Logo_1.png" rel="icon">
             <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
 
@@ -34,6 +33,20 @@
             <link href="assets/css/lib/font-awesome.min.css" rel="stylesheet" type="text/css" />
         </head>
         <body>
+            <%
+                java.util.List<model.Donacion> lstDonaciones = (java.util.List<model.Donacion>) request.getAttribute("lstDonaciones");
+                java.util.List<model.Notificacion> lstNotificaciones = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
+                
+                int numDonaciones = 0;
+                int numNotificaciones = 0;
+                if (lstDonaciones != null) {
+                    numDonaciones = lstDonaciones.size();
+                }
+                if (lstNotificaciones != null) {
+                    numNotificaciones = lstNotificaciones.size();
+                }
+               
+            %>
             <header id="header" class="header fixed-top d-flex align-items-center">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="estudiante" class="logo d-flex align-items-center">
@@ -42,12 +55,6 @@
                     </a>
                     <i class="bi bi-list toggle-sidebar-btn"></i>
                 </div>
-                <!--<div class="search-bar">
-                    <form class="search-form d-flex align-items-center" method="POST" action="#">
-                        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                    </form>
-                </div>-->
                 <nav class="header-nav ms-auto">
                     <ul class="d-flex align-items-center">
                         <li class="nav-item d-block d-lg-none">
@@ -55,70 +62,61 @@
                                 <i class="bi bi-search"></i>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-briefcase"></i>
-
-                                <span class="badge bg-success badge-number">0</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                                <li class="dropdown-header">
-                                    Tienes N elementos
-                                    <a href="estudiante?page=mi_mochila"><span class="badge rounded-pill bg-success p-2 ms-2">Ver todas</span></a>
-                                </li>
-                            </ul>
-                        </li>
+                       
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-heart"></i>
-                                <span class="badge bg-danger badge-number">0</span>
+                                <span class="badge bg-danger badge-number"><%= numDonaciones%></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                 <li class="dropdown-header">
-                                    Tienes N elementos
-                                    <a href="estudiante?page=deseos"><span class="badge rounded-pill bg-danger p-2 ms-2">Ver todas</span></a>
+                                    Tienes <%= numDonaciones%> donaciones
+                                    <a href="voluntario?page=donaciones"><span class="badge rounded-pill bg-danger p-2 ms-2">Ver todas</span></a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-bell"></i>
-                                <span class="badge bg-primary badge-number">0</span>
+                                <span class="badge bg-primary badge-number"><%= numNotificaciones%></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                 <li class="dropdown-header">
-                                    Tienes N notificaciones
-                                    <a href="estudiante?page=notificaciones"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+                                    Tienes <%= numNotificaciones%> notificaciones
+                                    <a href="voluntario?page=notificaciones"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                 <li class="notification-item">
-                                      <i class="bi bi-info-circle text-primary"></i>
-                                    <div>
-                                        <h4>Lorem Ipsum</h4>
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-                                        <p>30 min. ago</p>
-                                    </div>
-                                </li>
+
+                                <c:forEach var="notificacion" items="${lstNotificaciones}">
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li class="notification-item">
+                                        <i class="bi bi-info-circle text-primary"></i>
+                                        <div>
+                                            <h4> </h4>
+                                            <p>${notificacion.mensaje}</p>
+                                            <p>${notificacion.fechaNotificacion}</p>
+                                        </div>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                         <li class="nav-item dropdown pe-3">
 
                             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                                 <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">Username</span>
+                                <span class="d-none d-md-block dropdown-toggle ps-2"><%= session.getAttribute("username")%></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                                 <li class="dropdown-header">
-                                    <h6>Username </h6>
-                                    <span>Role</span>
+                                    <h6><%= session.getAttribute("username")%></h6>
+                                    <span><%= session.getAttribute("rol")%></span>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="views/profile/perfil.jsp">
+                                    <a class="dropdown-item d-flex align-items-center" href="voluntario?page=perfil">
                                         <i class="bi bi-person"></i>
                                         <span>Mi perfil</span>
                                     </a>
@@ -128,7 +126,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <a class="dropdown-item d-flex align-items-center" href="voluntario?page=cerrar_sesion">
                                         <i class="bi bi-box-arrow-right"></i>
                                         <span>Cerrar sessión</span>
                                     </a>
@@ -141,9 +139,6 @@
             </header>
 
             <jsp:invoke fragment="content"></jsp:invoke>
-
-
-
             <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
             <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <script src="assets/vendor/quill/quill.min.js"></script>

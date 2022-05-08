@@ -16,7 +16,6 @@ import utils.Logg;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
-
     @Override
     public GenericResponse<SistemaOperativo> registrar(SistemaOperativo obj) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();

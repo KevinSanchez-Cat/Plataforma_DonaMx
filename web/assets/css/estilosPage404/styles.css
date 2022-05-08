@@ -171,8 +171,8 @@ li a:hover {
 }
 
 .central-body{
-    /*   width: 100%;*/
-    padding: 17% 5% 10% 5%;
+       width: 100%;
+   /* padding: 17% 5% 10% 5%;*/
     text-align: center;
 }
 

@@ -17,7 +17,6 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaNotificacion implements Manipula<Notificacion> {
-
     @Override
     public GenericResponse<Notificacion> registrar(Notificacion obj) {
         GenericResponse<Notificacion> response = new GenericResponse<>();

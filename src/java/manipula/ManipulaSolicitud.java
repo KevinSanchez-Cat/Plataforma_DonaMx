@@ -17,7 +17,6 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaSolicitud implements Manipula<Solicitud> {
-
     @Override
     public GenericResponse<Solicitud> registrar(Solicitud obj) {
         GenericResponse<Solicitud> response = new GenericResponse<>();

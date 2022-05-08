@@ -16,7 +16,6 @@ import utils.Logg;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaOrganizacion implements Manipula<Organizacion> {
-
     @Override
     public GenericResponse<Organizacion> registrar(Organizacion obj) {
         GenericResponse<Organizacion> response = new GenericResponse<>();

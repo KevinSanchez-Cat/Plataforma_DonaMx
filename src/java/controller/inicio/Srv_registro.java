@@ -8,7 +8,6 @@ package controller.inicio;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +15,14 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import manipula.ManipulaAutenticacion;
+import manipula.ManipulaEstudiante;
+import manipula.ManipulaRol;
+import manipula.ManipulaUsuario;
+import model.Estudiante;
+import model.Rol;
 import model.Usuario;
 import utils.GenericResponse;
+import utils.Logg;
 
 /**
  *
@@ -29,51 +34,66 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ser = request.getParameter("ser");
-        HttpSession session = request.getSession(false);
-        request.removeAttribute("ser");
+        HttpSession session = request.getSession();
         if (ser != null) {
             switch (ser) {
                 case "donador": {
-                    /* session.setAttribute("rol", "DONADOR");
-                    Usuario user = (Usuario) session.getAttribute("usuario");
+
+                    Usuario user = (Usuario) session.getAttribute("user");
                     ManipulaUsuario mUsuario = new ManipulaUsuario();
                     Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
                     ManipulaRol mRol = new ManipulaRol();
                     Rol r = mRol.encontrarRol("DONADOR");
                     usuario.setRol(r.getIdRol());
                     mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);*/
-                    redirectServlet(request, response, "donador");
+                    session.setAttribute("rol", "DONADOR");
+                    session.setAttribute("idUser", usuario.getIdUsuario());
+                    session.setAttribute("usuario", usuario);
+                    response.sendRedirect( "donador");
                 }
                 break;
                 case "donatario": {
-                    /* session.setAttribute("rol", "DONATARIO");
-                    Usuario user = (Usuario) session.getAttribute("usuario");
+                    session.setAttribute("rol", "DONATARIO");
+                    //Usuario
+                    Usuario user = (Usuario) session.getAttribute("user");
                     ManipulaUsuario mUsuario = new ManipulaUsuario();
                     Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
                     ManipulaRol mRol = new ManipulaRol();
                     Rol r = mRol.encontrarRol("DONATARIO");
                     usuario.setRol(r.getIdRol());
                     mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);*/
-                    redirectServlet(request, response, "estudiante");
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("idUser", usuario.getIdUsuario());
+                    response.sendRedirect("estudiante");
+
                 }
                 break;
                 case "voluntario": {
-                    /*session.setAttribute("rol", "VOLUNTARIO");
-                    Usuario user = (Usuario) session.getAttribute("usuario");
+                    session.setAttribute("rol", "VOLUNTARIO");
+                    Usuario user = (Usuario) session.getAttribute("user");
                     ManipulaUsuario mUsuario = new ManipulaUsuario();
                     Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
                     ManipulaRol mRol = new ManipulaRol();
                     Rol r = mRol.encontrarRol("VOLUNTARIO");
                     usuario.setRol(r.getIdRol());
                     mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);*/
-                    redirectServlet(request, response, "voluntario");
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("idUser", usuario.getIdUsuario());
+                   response.sendRedirect("voluntario");
                 }
                 break;
                 default:
                     session.setAttribute("rol", "PENDIENTE");
+                    Usuario user = (Usuario) session.getAttribute("user");
+                    ManipulaUsuario mUsuario = new ManipulaUsuario();
+                    Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                    ManipulaRol mRol = new ManipulaRol();
+                    Rol r = mRol.encontrarRol("PENDIENTE");
+                    usuario.setRol(r.getIdRol());
+                    mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("idUser", usuario.getIdUsuario());
+
                     redirectView(request, response, "/destino.jsp");
                     break;
             }
@@ -88,66 +108,68 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String s = request.getParameter("terms");
-        String terms = "";
         if (s != null) {
             if (s.equals("on")) {
-                terms = "ON";
+                String email = request.getParameter("email");
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+                String confirmar_password = request.getParameter("confirmar_password");
+                if (password.equals(confirmar_password)) {
+                    String passwordCifrado = utils.Hash.sha1(password);
+
+                    Usuario user = new Usuario();
+                    user.setNombreUsuario(username);
+                    user.setContraseniia(passwordCifrado);
+                    user.setFechaCreacion(utils.Misc.getDateTimeActualJava());
+                    user.setUltimaConexion(utils.Misc.getDateTimeActualJava());
+                    user.setEstadoCuenta("C");
+                    user.setEstadoLogico(true);
+                    user.setConectado(false);
+                    user.setCorreoElectronico(email);
+                    user.setCorreoConfirmado(false);
+                    user.setNumeroCelular(-1);
+                    user.setNumeroCelularConfirmado(false);
+                    user.setAutenticacionDosPasos(false);
+                    user.setConteoAccesosFallidos(0);
+                    user.setFoto("");
+                    ManipulaRol mRol = new ManipulaRol();
+                    Rol rol = mRol.encontrarRol("PENDIENTE");
+                    user.setIdRol(rol.getIdRol());
+
+                    GenericResponse<Usuario> registrar = ManipulaAutenticacion.registrar(user);
+                    if (registrar.getStatus() != utils.Constantes.STATUS_NOT_ACCEPTABLE
+                            || registrar.getStatus() != utils.Constantes.STATUS_CONEXION_FALLIDA_BD) {
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("username", user.getNombreUsuario());
+                        session.setAttribute("user", user);
+                        session.setAttribute("rol", "PENDIENTE");
+                        redirectView(request, response, "/destino.jsp");
+                    } else {
+                        //Registro fallido
+                        System.out.println("Registro fallido " + registrar.getMensaje());
+                        HttpSession session = request.getSession();
+                        session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                        redirectView(request, response, "/registrarse.jsp");
+                    }
+                } else {
+                    //Las contraseñas no son iguales
+                    HttpSession session = request.getSession();
+                    session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                    redirectView(request, response, "/registrarse.jsp");
+                }
             } else {
-                terms = "OFF";
+                //Tiene que aceptar los terminos y condiciones
+                HttpSession session = request.getSession();
+                session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                redirectView(request, response, "/registrarse.jsp");
             }
         } else {
-            terms = "OFF";
-        }
-
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String confirmar_password = request.getParameter("confirmar_password");
-        String passwordCifrado = utils.Hash.sha1(password);
-
-        Usuario user = new Usuario();
-        user.setNombreUsuario(username);
-        user.setContraseniia(passwordCifrado);
-        user.setFechaCreacion(utils.Misc.getDateTimeActualJava());
-        user.setUltimaConexion(utils.Misc.getDateTimeActualJava());
-        user.setEstadoCuenta("C");
-        user.setEstadoLogico(true);
-        user.setConectado(false);
-        user.setCorreoElectronico(email);
-        user.setCorreoConfirmado(false);
-        user.setNumeroCelular(-1);
-        user.setNumeroCelularConfirmado(false);
-        user.setAutenticacionDosPasos(false);
-        user.setConteoAccesosFallidos(0);
-        user.setFoto("");
-        user.setIdRol(10);
-
-        GenericResponse<Usuario> registrar = ManipulaAutenticacion.registrar(user);
-        if (registrar.getStatus() != utils.Constantes.STATUS_NOT_ACCEPTABLE
-                || registrar.getStatus() != utils.Constantes.STATUS_CONEXION_FALLIDA_BD) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("usuario", user);
-            session.setAttribute("nombre", name);
-            session.setAttribute("rol", "PENDIENTE");
-            redirectView(request, response, "/destino.jsp");
-            Cookie miCookie = new Cookie("nombre", "objetos");
-        } else {
-            System.out.println("Registro fallido " + registrar.getMensaje());
-
-            HttpSession session = request.getSession(false);
+            //Tiene que aceptar los terminos y condiciones
+            HttpSession session = request.getSession();
             session.invalidate();//para invalidar manualmente la sessión si hay una creada
-            //session.setAttribute("usuario", null);
-            //session.setAttribute("nombre", "");
-            ///session.setAttribute("rol", "");
             redirectView(request, response, "/registrarse.jsp");
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
     private void redirectView(HttpServletRequest req, HttpServletResponse resp, String pathView)
             throws ServletException, IOException {
@@ -156,7 +178,8 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
         dispatcher.forward(req, resp);
     }
 
-    private void redirectServlet(HttpServletRequest req, HttpServletResponse resp, String servlet) throws ServletException, IOException {
+    private void redirectServlet(HttpServletRequest req, HttpServletResponse resp, String servlet)
+            throws ServletException, IOException {
         req.getRequestDispatcher(servlet)
                 .forward(req, resp);
     }
@@ -164,12 +187,12 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     @Override
     public void valueBound(HttpSessionBindingEvent event) {
         //cuando almacena datos de session
-        System.out.println("Almaceno " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
+        Logg.info("Almaceno " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
     }
 
     @Override
     public void valueUnbound(HttpSessionBindingEvent event) {
         //cuando elimina datos de session
-        System.out.println("Elimino " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
+        Logg.info("Elimino " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
     }
 }

@@ -18,6 +18,7 @@ import utils.Logg;
  */
 public class ManipulaMunicipio implements Manipula<Municipio> {
 
+
     @Override
     public GenericResponse<Municipio> registrar(Municipio obj) {
         GenericResponse<Municipio> response = new GenericResponse<>();
@@ -246,8 +247,8 @@ public class ManipulaMunicipio implements Manipula<Municipio> {
     }
 
     public List<Localidad> getLstLocalidades(int id) {
-          List<Localidad> response = new ArrayList<>();
-         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        List<Localidad> response = new ArrayList<>();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "

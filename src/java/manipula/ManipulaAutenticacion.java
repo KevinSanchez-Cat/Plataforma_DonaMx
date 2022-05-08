@@ -95,54 +95,60 @@ public class ManipulaAutenticacion {
     public static GenericResponse<Usuario> cerrarSesionUsuario(Usuario usuario) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            ManipulaUsuario m = new ManipulaUsuario();
-            Usuario respuesta = m.encontrarStatus(usuario.getNombreUsuario(), usuario.getContraseniia());
-            if (respuesta != null) {
-                if (respuesta.isConectado()) {
-                    respuesta.setConectado(false);
-                    respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
-                    try {
-                        String sql = "UPDATE Usuario SET "
-                                + "ultimaConexion=?, "
-                                + "conectado=? "
-                                + "WHERE idUsuario=?";
-                        PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                        registro.setDate(1, Misc.transformDateTimeJavaSql(respuesta.getUltimaConexion()));
-                        registro.setBoolean(2, respuesta.isConectado());
-                        registro.setInt(3, respuesta.getIdUsuario());
-                        int r = registro.executeUpdate();
-                        if (r > 0) {
-                            response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
-                            response.setResponseObject(respuesta);
-                            response.setMensaje("Edición exitosa en la base de datos");
-                        } else {
-                            response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+        if (usuario != null) {
+            if (conexionDB.conectar() == 1) {
+                ManipulaUsuario m = new ManipulaUsuario();
+                Usuario respuesta = m.encontrarStatus(usuario.getNombreUsuario());
+                if (respuesta != null) {
+                    if (respuesta.isConectado()) {
+                        respuesta.setConectado(false);
+                        respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
+                        try {
+                            String sql = "UPDATE Usuario SET "
+                                    + "ultimaConexion=?, "
+                                    + "conectado=? "
+                                    + "WHERE idUsuario=?";
+                            PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                            registro.setDate(1, Misc.transformDateTimeJavaSql(respuesta.getUltimaConexion()));
+                            registro.setBoolean(2, respuesta.isConectado());
+                            registro.setInt(3, respuesta.getIdUsuario());
+                            int r = registro.executeUpdate();
+                            if (r > 0) {
+                                response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                                response.setResponseObject(respuesta);
+                                response.setMensaje("Edición exitosa en la base de datos");
+                            } else {
+                                response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                                response.setResponseObject(usuario);
+                                response.setMensaje("Edición fallido en la base de datos");
+                            }
+                        } catch (SQLException ex) {
+                            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
                             response.setResponseObject(usuario);
-                            response.setMensaje("Edición fallido en la base de datos");
+                            response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
+                        } finally {
+                            conexionDB.desconectar();
                         }
-                    } catch (SQLException ex) {
-                        response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
-                        response.setResponseObject(usuario);
-                        response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
-                    } finally {
+                    } else {
+                        response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                        response.setResponseObject(respuesta);
+                        response.setMensaje("El usuario ya no esta conectado");
                         conexionDB.desconectar();
                     }
                 } else {
                     response.setStatus(utils.Constantes.STATUS_NO_DATA);
-                    response.setResponseObject(respuesta);
-                    response.setMensaje("El usuario ya no esta conectado");
-                    conexionDB.desconectar();
+                    response.setResponseObject(usuario);
+                    response.setMensaje("El registro no existe");
                 }
             } else {
-                response.setStatus(utils.Constantes.STATUS_NO_DATA);
+                response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
                 response.setResponseObject(usuario);
-                response.setMensaje("El registro no existe");
+                response.setMensaje("Error de conexión a la base de datos");
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
             response.setResponseObject(usuario);
-            response.setMensaje("Error de conexión a la base de datos");
+            response.setMensaje("Cerrar session por un usuario nulo?");
         }
         return response;
     }
