@@ -23,31 +23,30 @@
             <div class="col-4">
                 <h5 class="h5-titulo-seccion"><strong>¡Dona!</strong></h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="dona.jsp">Dona equipos computacionales</a></li>
-                    <li><a class="text-muted" href="dona.jsp">Apoya nuestra causa</a></li>
-                    <li><a class="text-muted" href="registrarse.jsp">Crea una cuenta</a></li>
+                    <li><a class="text-white" href="dona.jsp">Dona equipos computacionales</a></li>
+                    <li><a class="text-white" href="dona.jsp">Apoya nuestra causa</a></li>
+                    <li><a class="text-white" href="registrarse.jsp">Crea una cuenta</a></li>
                 </ul>
             </div>
             <div class="col-4">
                 <h5 class="h5-titulo-seccion"> <strong>Nosotros</strong></h5>
                 <ul class="list-unstyled text-small">
 
-                    <li><a class="text-muted" href="conocenos.jsp">Conocenos</a></li>
-                    <li><a class="text-muted" href="comoFunciona.jsp">¿Cómo funciona?</a></li>
-                    <li><a class="text-muted" href="conocenos.jsp">Nuestro equipo</a></li>
+                    <li><a class="text-white" href="conocenos.jsp">Conocenos</a></li>
+                    <li><a class="text-white" href="comoFunciona.jsp">¿Cómo funciona?</a></li>
+                    <li><a class="text-white" href="conocenos.jsp">Nuestro equipo</a></li>
                 </ul>
             </div>
             <div class="col-4">
                 <h5 class="h5-titulo-seccion"><strong>Legalidad</strong></h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="transparencia.jsp">Transparencia</a></li>
-                    <li><a class="text-muted" href="terminosycondiciones.jsp">Terminos y condiones</a></li>
-                    <li><a class="text-muted" href="avisoprivacidad.jsp">Aviso de privacidad</a></li>
+                    <li><a class="text-white" href="terminosycondiciones.jsp">Terminos y condiones</a></li>
+                    <li><a class="text-white" href="avisoprivacidad.jsp">Aviso de privacidad</a></li>
                 </ul>
             </div>
         </div>
         <hr class="bg-light">
-        <h8 class="h12-titulo-seccion">DonaMx 2022. Todos los derechos reservados.</h8>
+        <h8 class="h12-titulo-seccion">Hecho con &heartsuit; por DonaMx&COPY;. Todos los derechos reservados.</h8>
 
     </div>
 </footer><!-- End Footer -->

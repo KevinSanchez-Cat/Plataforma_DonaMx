@@ -2,13 +2,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<template:templete_administrador title="Bienvenida">
+<template:templete_administrador title="Perfil">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="administrador">
+                    <a class="nav-link collapsed" href="administrador">
                         <i class="bi bi-grid"></i>
                         <span>Bienvenida</span>
                     </a>
@@ -19,18 +19,18 @@
                     </a>
                     <ul id="roles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=roles?accion=agregar">
+                            <a href="administrador?page=roles&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="administrador?page=roles?accion=buscar">
+                            <a href="administrador?page=roles&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=roles?accion=consultar">
+                            <a href="administrador?page=roles&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
@@ -42,32 +42,32 @@
                     </a>
                     <ul id="organizaciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=donadores?accion=registrar">
+                            <a href="administrador?page=donadores&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donadores?accion=buscar">
+                            <a href="administrador?page=donadores&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donadores?accion=autorizacion">
+                            <a href="administrador?page=donadores&accion=autorizacion">
                                 <i class="bi bi-circle"></i><span>Autorización</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donadores?accion=bloquear_desbloquear">
+                            <a href="administrador?page=donadores&accion=bloquear_desbloquear">
                                 <i class="bi bi-circle"></i><span>Bloquear/Desbloquear</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donadores?accion=consultar">
+                            <a href="administrador?page=donadores&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donadores?accion=lista_negra">
+                            <a href="administrador?page=donadores&accion=lista_negra">
                                 <i class="bi bi-circle"></i><span>Consultar lista negra</span>
                             </a>
                         </li>
@@ -79,27 +79,27 @@
                     </a>
                     <ul id="voluntarios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=voluntarios?accion=registrar">
+                            <a href="administrador?page=voluntarios&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=voluntarios?accion=buscar">
+                            <a href="administrador?page=voluntarios&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=voluntarios?accion=bloquear_desbloquear">
+                            <a href="administrador?page=voluntarios&accion=bloquear_desbloquear">
                                 <i class="bi bi-circle"></i><span>Bloquear/Desbloquear</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=voluntarios?accion=consultar">
+                            <a href="administrador?page=voluntarios&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=voluntarios?accion=lista_negra">
+                            <a href="administrador?page=voluntarios&accion=lista_negra">
                                 <i class="bi bi-circle"></i><span>Consultar lista negra</span>
                             </a>
                         </li>
@@ -111,27 +111,27 @@
                     </a>
                     <ul id="estudiantes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=donatarios?accion=registrar">
+                            <a href="administrador?page=donatarios&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donatarios?accion=buscar">
+                            <a href="administrador?page=donatarios&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donatarios?accion=bloquear_desbloquear">
+                            <a href="administrador?page=donatarios&accion=bloquear_desbloquear">
                                 <i class="bi bi-circle"></i><span>Bloquear/Desbloquear</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donatarios?accion=consultar">
+                            <a href="administrador?page=donatarios&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donatarios?accion=lista_negra">
+                            <a href="administrador?page=donatarios&accion=lista_negra">
                                 <i class="bi bi-circle"></i><span>Consultar lista negra</span>
                             </a>
                         </li>
@@ -145,18 +145,18 @@
                     </a>
                     <ul id="estados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=estados?accion=agregar">
+                            <a href="administrador?page=estados&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=estados?accion=buscar">
+                            <a href="administrador?page=estados&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="administrador?page=estados?accion=consultar">
+                            <a href="administrador?page=estados&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
@@ -168,17 +168,17 @@
                     </a>
                     <ul id="municipios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=municipios?accion=agregar">
+                            <a href="administrador?page=municipios&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=municipios?accion=buscar">
+                            <a href="administrador?page=municipios&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=municipios?accion=consultar">
+                            <a href="administrador?page=municipios&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
@@ -190,17 +190,17 @@
                     </a>
                     <ul id="localidades-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=localidades?accion=agregar">
+                            <a href="administrador?page=localidades&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=localidades?accion=buscar">
+                            <a href="administrador?page=localidades&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=localidades?accion=consultar">
+                            <a href="administrador?page=localidades&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
@@ -213,17 +213,17 @@
                     </a>
                     <ul id="categorias-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=categorias?accion=agregar">
+                            <a href="administrador?page=categorias&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=categorias?accion=buscar">
+                            <a href="administrador?page=categorias&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=categorias?accion=consultar">
+                            <a href="administrador?page=categorias&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
                             </a>
                         </li>
@@ -235,17 +235,17 @@
                     </a>
                     <ul id="sistemasoperativos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=sistemas_operativos?accion=agregar">
+                            <a href="administrador?page=sistemas_operativos&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="administrador?page=sistemas_operativos?accion=buscar">
+                            <a href="administrador?page=sistemas_operativos&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=sistemas_operativos?accion=consultar">
+                            <a href="administrador?page=sistemas_operativos&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todos</span>
                             </a>
                         </li>
@@ -257,27 +257,27 @@
                     </a>
                     <ul id="recursos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=recursos_tecnologicos?accion=registrar">
+                            <a href="administrador?page=recursos_tecnologicos&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="administrador?page=recursos_tecnologicos?accion=buscar">
-                                <i class="bi bi-circle"></i><span>Editar</span>
+                            <a href="administrador?page=recursos_tecnologicos&accion=buscar">
+                                <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=recursos_tecnologicos?accion=consultar_donador">
+                            <a href="administrador?page=recursos_tecnologicos&accion=consultar_donador">
                                 <i class="bi bi-circle"></i><span>Consultar por donador</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=recursos_tecnologicos?accion=consultar_categoria">
+                            <a href="administrador?page=recursos_tecnologicos&accion=consultar_categoria">
                                 <i class="bi bi-circle"></i><span>Consultar por categoría</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=recursos_tecnologicos?accion=consultar">
+                            <a href="administrador?page=recursos_tecnologicos&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todos</span>
                             </a>
                         </li>
@@ -290,22 +290,22 @@
                     </a>
                     <ul id="equiposcomputacionales-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=equipos_computacionales?accion=registrar">
+                            <a href="administrador?page=equipos_computacionales&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="administrador?page=equipos_computacionales?accion=buscar">
+                            <a href="administrador?page=equipos_computacionales&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=equipos_computacionales?accion=consultar_donados">
+                            <a href="administrador?page=equipos_computacionales&accion=consultar_donados">
                                 <i class="bi bi-circle"></i><span>Consultar donados</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=equipos_computacionales?accion=consultar_remunerados">
+                            <a href="administrador?page=equipos_computacionales&accion=consultar_remunerados">
                                 <i class="bi bi-circle"></i><span>Consultar remunerados</span>
                             </a>
                         </li>
@@ -317,22 +317,22 @@
                     </a>
                     <ul id="solicitudes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=solicitudes?accion=buscar">
+                            <a href="administrador?page=solicitudes&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar solicitud</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=solicitudes?accion=consultar_donador">
+                            <a href="administrador?page=solicitudes&accion=consultar_donador">
                                 <i class="bi bi-circle"></i><span>Consultar por donador</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=solicitudes?accion=consultar_donatario">
+                            <a href="administrador?page=solicitudes&accion=consultar_donatario">
                                 <i class="bi bi-circle"></i><span>Consultar por donatario</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=solicitudes?accion=consultar">
+                            <a href="administrador?page=solicitudes&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
@@ -344,41 +344,41 @@
                     </a>
                     <ul id="donaciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=donaciones?accion=registrar">
+                            <a href="administrador?page=donaciones&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=buscar">
+                            <a href="administrador?page=donaciones&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar donación</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=consultar_donatario">
+                            <a href="administrador?page=donaciones&accion=consultar_donatario">
                                 <i class="bi bi-circle"></i><span>Consultar por donatario</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=consultar_donador">
+                            <a href="administrador?page=donaciones&accion=consultar_donador">
                                 <i class="bi bi-circle"></i><span>Consultar por donador</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=cosultar_en_especie">
+                            <a href="administrador?page=donaciones&accion=consultar_en_especie">
                                 <i class="bi bi-circle"></i><span>Donaciones en especie</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=cosultar_economicas">
+                            <a href="administrador?page=donaciones&accion=consultar_economicas">
                                 <i class="bi bi-circle"></i><span>Donaciones economicas</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones?accion=cosultar">
+                            <a href="administrador?page=donaciones&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul>cons
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#intenciones-nav" data-bs-toggle="collapse" href="">
@@ -386,17 +386,17 @@
                     </a>
                     <ul id="intenciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=intenciones?accion=registrar">
+                            <a href="administrador?page=intenciones&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=intenciones?accion=buscar">
+                            <a href="administrador?page=intenciones&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=intenciones?accion=consultar">
+                            <a href="administrador?page=intenciones&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
@@ -413,32 +413,32 @@
                     </a>
                     <ul id="paqueteria-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=paqueteria?accion=recoger">
+                            <a href="administrador?page=paqueteria&accion=recoger">
                                 <i class="bi bi-circle"></i><span>Recoger</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=paqueteria?accion=trasladar">
+                            <a href="administrador?page=paqueteria&accion=trasladar">
                                 <i class="bi bi-circle"></i><span>Trasladar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=paqueteria?accion=enviar">
+                            <a href="administrador?page=paqueteria&accion=enviar">
                                 <i class="bi bi-circle"></i><span>Enviar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=paqueteria?accion=directo">
+                            <a href="administrador?page=paqueteria&accion=directo">
                                 <i class="bi bi-circle"></i><span>Directo</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=paqueteria?accion=buscar_serial">
+                            <a href="administrador?page=paqueteria&accion=buscar_serial">
                                 <i class="bi bi-circle"></i><span>Buscar no. de serie</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=paqueteria?accion=consultar">
+                            <a href="administrador?page=paqueteria&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
@@ -450,17 +450,17 @@
                     </a>
                     <ul id="notificaciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=notificaciones?accion=crear">
+                            <a href="administrador?page=notificaciones&accion=crear">
                                 <i class="bi bi-circle"></i><span>Crear</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=notificaciones?accion=buscar">
+                            <a href="administrador?page=notificaciones&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=notificaciones?accion=consultar">
+                            <a href="administrador?page=notificaciones&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
@@ -474,7 +474,7 @@
 
                 <li class="nav-heading">Paginas</li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="administrador?page=perfil">
+                    <a class="nav-link" href="administrador?page=perfil">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
@@ -497,11 +497,11 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Dashboard</h1>
+                <h1>Información de perfil</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="administrador">Incio</a></li>
-                        <li class="breadcrumb-item active">Bienvenida</li>
+                        <li class="breadcrumb-item active">Perfil</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
@@ -511,7 +511,7 @@
 
                 </div>
             </section>
-            <%@include  file="/views/modulo_administrador/footer.jsp" %>
+            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>
