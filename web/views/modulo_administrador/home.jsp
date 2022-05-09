@@ -13,7 +13,7 @@
                         <span>Bienvenida</span>
                     </a>
                 </li>
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#roles-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-person-rolodex"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
@@ -137,8 +137,8 @@
                         </li>
                     </ul>
                 </li>
-             
-              
+
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#estados-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-globe"></i><span>Estados</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -206,8 +206,8 @@
                         </li>
                     </ul>
                 </li>
-              
-   <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-card-list"></i><span>Categorías</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
@@ -263,7 +263,7 @@
                         </li> 
                         <li>
                             <a href="administrador?page=recursos_tecnologicos&accion=buscar">
-                                <i class="bi bi-circle"></i><span>Editar</span>
+                                <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
                         <li>
@@ -283,7 +283,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#equiposcomputacionales-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-laptop"></i><span>Equipos computacionales</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -311,7 +311,7 @@
                         </li>
                     </ul>
                 </li>
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#solicitudes-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-book-half"></i><span>Solicitudes</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
@@ -343,7 +343,7 @@
                         <i class="bi bi-gift"></i><span>Donaciones</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="donaciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                         <li>
+                        <li>
                             <a href="administrador?page=donaciones&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
@@ -364,21 +364,21 @@
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones&accion=cosultar_en_especie">
+                            <a href="administrador?page=donaciones&accion=consultar_en_especie">
                                 <i class="bi bi-circle"></i><span>Donaciones en especie</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones&accion=cosultar_economicas">
+                            <a href="administrador?page=donaciones&accion=consultar_economicas">
                                 <i class="bi bi-circle"></i><span>Donaciones economicas</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones&accion=cosultar">
+                            <a href="administrador?page=donaciones&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul>cons
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#intenciones-nav" data-bs-toggle="collapse" href="">
@@ -402,7 +402,7 @@
                         </li>
                     </ul>
                 </li>
-               <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=estadisticas">
                         <i class="bi bi-graph-up"></i><span>Estadisticas</span>
                     </a>
@@ -444,7 +444,7 @@
                         </li>
                     </ul>
                 </li>
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#notificaciones-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-chat-quote"></i><span>Notificaciones DonaMx</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
@@ -466,12 +466,12 @@
                         </li>
                     </ul>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=servidor">
                         <i class="bi bi-server"></i><span>Servidor</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-heading">Paginas</li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="administrador?page=perfil">
