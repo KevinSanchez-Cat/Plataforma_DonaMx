@@ -190,7 +190,7 @@
                     </a>
                     <ul id="localidades-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=localidades&accion=agregar>
+                            <a href="administrador?page=localidades&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>

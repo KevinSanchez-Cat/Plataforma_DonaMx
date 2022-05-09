@@ -378,7 +378,7 @@
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
-                    </ul>cons
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#intenciones-nav" data-bs-toggle="collapse" href="">

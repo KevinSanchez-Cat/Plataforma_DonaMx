@@ -108,6 +108,7 @@ public class Modulo_Administrador extends HttpServlet {
                                                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_autorizar.jsp");
                                                 dispatcher.forward(request, response);
                                             }
+                                            break;
                                             case "bloquear_desbloquear": {
                                                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_bloquear_desbloquear.jsp");
                                                 dispatcher.forward(request, response);
@@ -181,27 +182,27 @@ public class Modulo_Administrador extends HttpServlet {
                                     } else {
                                         switch (accion) {
                                             case "registrar": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_registrar.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donatarios_registrar.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
                                             case "buscar": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_buscar.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donatarios_buscar.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
                                             case "bloquear_desbloquear": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_bloquear_desbloquear.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donatarios_bloquear_desbloquear.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
                                             case "lista_negra": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_consultar_lista_negra.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donatarios_consultar_lista_negra.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
                                             case "consultar": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_consultar.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donatarios_consultar.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
@@ -253,7 +254,7 @@ public class Modulo_Administrador extends HttpServlet {
                                     } else {
                                         switch (accion) {
                                             case "agregar": {
-                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/municipios_registrar.jsp");
+                                                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/municipios_agregar.jsp");
                                                 dispatcher.forward(request, response);
                                             }
                                             break;
@@ -610,7 +611,7 @@ public class Modulo_Administrador extends HttpServlet {
                                     }
                                 }
                                 break;
-                                case "notificaciones_donamx": {
+                                case "notificaciones": {
                                     String accion = request.getParameter("accion");
                                     if (accion == null) {
                                         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/home.jsp");
@@ -661,7 +662,7 @@ public class Modulo_Administrador extends HttpServlet {
                                     dispatcher.forward(request, response);
                                 }
                                 break;
-                                case "notificaciones": {
+                                case "mis_notificaciones": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/notificaciones.jsp");
                                     dispatcher.forward(request, response);
                                 }

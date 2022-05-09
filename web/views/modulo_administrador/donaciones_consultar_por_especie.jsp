@@ -497,7 +497,7 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Consultar donaciones economicas</h1>
+                <h1>Consultar donaciones en especie</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="administrador">Incio</a></li>
