@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<template:templete_voluntario title="Perfil">
+<template:templete_voluntario title="Contacto">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
@@ -125,13 +125,13 @@
                 </li>
                 <li class="nav-heading">Paginas</li>
                 <li class="nav-item">
-                    <a class="nav-link " href="voluntario?page=perfil">
+                    <a class="nav-link collapsed" href="voluntario?page=perfil">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="voluntario?page=contacto">
+                    <a class="nav-link " href="voluntario?page=contacto">
                         <i class="bi bi-envelope"></i>
                         <span>Contacto</span>
                     </a>
@@ -148,11 +148,11 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Información de perfil</h1>
+                <h1>Información de contacto</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="voluntario">Incio</a></li>
-                        <li class="breadcrumb-item active">Perfil</li>
+                        <li class="breadcrumb-item active">Contacto</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
