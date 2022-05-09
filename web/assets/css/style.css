@@ -1381,7 +1381,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    color: #444444;
+    color: #333333;
     font-size: 14px;
     background: #f1f7fd;
 }
@@ -1437,7 +1437,7 @@ section {
     padding-top: 0;
 }
 #footer .footer-top .footer-links ul a {
-    color: #ebf1f6;
+    color: #cccccc;
     transition: 0.3s;
     display: inline-block;
     line-height: 1;
@@ -1519,6 +1519,9 @@ section {
     background-size: cover;
 }
 .h5-titulo-seccion{
+    color: #fff;
+}
+.h12-titulo-seccion{
     color: #fff;
 }
 .padding-btn{

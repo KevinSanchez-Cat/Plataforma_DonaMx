@@ -210,11 +210,11 @@
                                                 Estudiante de la carrera de Ingenieria en Sistemas Computacionales
                                             </p>
                                             <div class="social">
-                                                <a href="https://twitter.com/SKevin_Ivan"><i class="ri-twitter-fill"></i></a>
-                                                <a href="https://www.facebook.com/SKevinIvan/"><i class="ri-facebook-fill"></i></a>
-                                                <a href="https://github.com/KevinSanchez-Cat"><i class="ri-github-fill"></i></a>
-                                                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2FS.Kevin_ivan%3Ffbclid%3DIwAR0MrrMkItZyYCtxMxNei5O3cNk1JSYuToQrieuBkzApvJLdMlrGY7uo4wQ&h=AT1-4I12f0Xr_gMslP6xRqlGGZS6Fgg_FxoI2RShw-QSoPH2chFlMLpV359sXYebSao6WWE-AwmnwkADDP8TGRIB1xMYthTuzLl5qoG8K9OvII2WBUBWgGTavAbHKjVq4cQy"><i class="ri-instagram-fill"></i></a>
-                                                <a href="https://www.linkedin.com/in/kevin-ivan-sanchez-valdin-b82a15206/"> <i class="ri-linkedin-box-fill"></i> </a>
+                                                <a href="https://twitter.com/SKevin_Ivan" target="_blank" rel="noopener noreferrer"><i class="ri-twitter-fill"></i></a>
+                                                <a href="https://www.facebook.com/SKevinIvan/" target="_blank" rel="noopener noreferrer"><i class="ri-facebook-fill"></i></a>
+                                                <a href="https://github.com/KevinSanchez-Cat" target="_blank" rel="noopener noreferrer"><i class="ri-github-fill"></i></a>
+                                                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2FS.Kevin_ivan%3Ffbclid%3DIwAR0MrrMkItZyYCtxMxNei5O3cNk1JSYuToQrieuBkzApvJLdMlrGY7uo4wQ&h=AT1-4I12f0Xr_gMslP6xRqlGGZS6Fgg_FxoI2RShw-QSoPH2chFlMLpV359sXYebSao6WWE-AwmnwkADDP8TGRIB1xMYthTuzLl5qoG8K9OvII2WBUBWgGTavAbHKjVq4cQy" target="_blank" rel="noopener noreferrer"><i class="ri-instagram-fill"></i></a>
+                                                <a href="https://www.linkedin.com/in/kevin-ivan-sanchez-valdin-b82a15206/" target="_blank" rel="noopener noreferrer"> <i class="ri-linkedin-box-fill"></i> </a>
                                             </div>
                                         </div>
                                     </div>

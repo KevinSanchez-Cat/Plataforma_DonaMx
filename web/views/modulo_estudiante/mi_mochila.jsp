@@ -105,9 +105,8 @@
                         </ol>
                     </nav>
                 </div>
-
-
-
+                
+                <!--
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
@@ -117,7 +116,7 @@
                                 sure to have a parent with <code>position: relative</code> on it for tooltip positioning. In the example
                                 below, our column classes have this already, but your project may require an alternative setup. </p>
 
-                            <!-- Custom Styled Validation with Tooltips -->
+                
                             <form class="row g-3 needs-validation" novalidate>
                                 <div class="col-md-4 position-relative">
                                     <label for="validationTooltip01" class="form-label">First name</label>
@@ -171,11 +170,12 @@
                                 <div class="col-12">
                                     <button class="btn btn-primary" type="submit">Submit form</button>
                                 </div>
-                            </form><!-- End Custom Styled Validation with Tooltips -->
+                            </form>
 
                         </div>
                     </div>
                 </div>
+                -->
             </section>
 
 

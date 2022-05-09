@@ -11,7 +11,7 @@
         <div class="me-md-auto text-center text-md-start">
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <strong>Siguenos en nuestras redes sociales</strong>
+            <b>Siguenos en nuestras redes sociales   </b>
             <a href="https://twitter.com/" target="_blank"  rel="noopener noreferrer" class="twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
             <a href="https://www.facebook.com/DonaMx-101550305889198"  target="_blank" rel="noopener noreferrer" class="facebook"><i class="bx bxl-facebook" aria-hidden="true"></i></a>
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
@@ -46,6 +46,8 @@
                 </ul>
             </div>
         </div>
-        <hr>
+        <hr class="bg-light">
+        <h8 class="h12-titulo-seccion">DonaMx 2022. Todos los derechos reservados.</h8>
+
     </div>
 </footer><!-- End Footer -->

@@ -17,13 +17,10 @@ import javax.servlet.http.HttpSession;
 import manipula.ManipulaEstudiante;
 import manipula.ManipulaUsuario;
 import model.Deseo;
-import model.Direccion;
 import model.Donacion;
 import model.Estudiante;
 import model.Notificacion;
-import model.Solicitud;
 import model.Usuario;
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 /**
  *
@@ -46,7 +43,6 @@ public class Modulo_Estudiante extends HttpServlet {
                     if (rol.equals("DONATARIO")) {
                         ManipulaUsuario mUsuario = new ManipulaUsuario();
                         int idUser = (int) session.getAttribute("idUser");
-
                         List<Deseo> lstDeseos;
                         List<Donacion> lstDonaciones = (List<Donacion>) request.getAttribute("lstDonaciones");
                         List<Notificacion> lstNotificaciones = (List<Notificacion>) request.getAttribute("lstNotificaciones");
@@ -58,7 +54,6 @@ public class Modulo_Estudiante extends HttpServlet {
                             }
                             request.setAttribute("lstDonaciones", lstDonaciones);
                         }
-
                         if (lstNotificaciones == null) {
                             lstNotificaciones = mUsuario.getNotificacion(idUser);
                             if (lstNotificaciones == null) {
@@ -71,7 +66,6 @@ public class Modulo_Estudiante extends HttpServlet {
                             if (estudiante != null) {
                                 ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
                                 lstDeseos = mEstudiante.getListaDeseos(estudiante.getIdEstudiante());
-
                                 if (lstDeseos == null) {
                                     lstDeseos = new ArrayList<>();
                                 }
@@ -79,7 +73,6 @@ public class Modulo_Estudiante extends HttpServlet {
                             }
                             request.setAttribute("estudiante", estudiante);
                         }
-
                         if (page == null) {
                             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
                             dispatcher.forward(request, response);
@@ -88,64 +81,56 @@ public class Modulo_Estudiante extends HttpServlet {
                                 case "catalogo": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/categorias.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "equipos_remunerados": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/equipos_remunerados.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "equipos_donados": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/equipos_donados.jsp");
                                     dispatcher.forward(request, response);
-                                    break;
                                 }
+                                break;
                                 case "informacion_personal": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/informacion_personal.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "informacion_escolar": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/informacion_escolar.jsp");
                                     dispatcher.forward(request, response);
-                                    break;
                                 }
+                                break;
                                 case "informacion_domiciliaria": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/informacion_domiciliaria.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "mi_mochila": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/mi_mochila.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "deseos": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/lista_deseos.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "solicitudes": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/solicitudes.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "perfil": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/perfil.jsp");
                                     dispatcher.forward(request, response);
-                                    break;
                                 }
+                                break;
                                 case "notificaciones": {
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/notificaciones.jsp");
                                     dispatcher.forward(request, response);
-
                                 }
                                 break;
                                 case "cerrar_sesion": {
@@ -155,10 +140,8 @@ public class Modulo_Estudiante extends HttpServlet {
 
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
                                     dispatcher.forward(request, response);
-                                   
                                 }
                                 break;
-
                                 default:
                                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
                                     dispatcher.forward(request, response);
@@ -173,7 +156,6 @@ public class Modulo_Estudiante extends HttpServlet {
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/templates/errores/no_autorizado.jsp");
                     dispatcher.forward(request, response);
                 }
-
             } else {
                 response.sendRedirect("autenticacion");
                 //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciarSesion.jsp");

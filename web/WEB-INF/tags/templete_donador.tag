@@ -34,27 +34,16 @@
     </head>
     <body>
         <%
-            java.util.List<model.Donacion> lstDonaciones = (java.util.List<model.Donacion>) request.getAttribute("lstDonaciones");
             java.util.List<model.Notificacion> lstNotificaciones = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
-            java.util.List<model.Intencion> lstIntenciones = (java.util.List<model.Intencion>) request.getAttribute("lstIntenciones");
-
-            int numDonaciones = 0;
             int numNotificaciones = 0;
-            int numIntenciones = 0;
-            if (lstDonaciones != null) {
-                numDonaciones = lstDonaciones.size();
-            }
             if (lstNotificaciones != null) {
                 numNotificaciones = lstNotificaciones.size();
-            }
-            if (lstIntenciones != null) {
-                numIntenciones = lstIntenciones.size();
             }
 
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
-                <a href="estudiante" class="logo d-flex align-items-center">
+                <a href="donador" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
                     <span class="d-none d-lg-block">DonaMx</span>
                 </a>
@@ -67,31 +56,7 @@
                             <i class="bi bi-search"></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-briefcase"></i>
-
-                            <span class="badge bg-success badge-number"><%= numDonaciones%></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                            <li class="dropdown-header">
-                                Tienes  <%= numDonaciones%> donaciones
-                                <a href="donador?page=donaciones"><span class="badge rounded-pill bg-success p-2 ms-2">Ver todas</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-heart"></i>
-                            <span class="badge bg-danger badge-number"><%= numIntenciones%></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                            <li class="dropdown-header">
-                                Tienes <%= numIntenciones%> elementos
-                                <a href="donador?page=intenciones"><span class="badge rounded-pill bg-danger p-2 ms-2">Ver todas</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                   
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
