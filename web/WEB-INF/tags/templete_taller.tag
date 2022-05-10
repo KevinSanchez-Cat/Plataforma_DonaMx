@@ -44,7 +44,7 @@
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
-                <a href="estudiante" class="logo d-flex align-items-center">
+                <a href="taller" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
                     <span class="d-none d-lg-block">DonaMx</span>
                 </a>
@@ -52,11 +52,7 @@
             </div>
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                    <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                            <i class="bi bi-search"></i>
-                        </a>
-                    </li>
+                   
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
@@ -65,7 +61,7 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                             <li class="dropdown-header">
                                 Tienes <%= numNotificaciones%> notificaciones
-                                <a href="voluntario?page=notificaciones"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+                                <a href="taller?page=notificaciones"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
                             </li>
 
                             <c:forEach var="notificacion" items="${lstNotificaciones}">
@@ -98,7 +94,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="voluntario?page=perfil">
+                                <a class="dropdown-item d-flex align-items-center" href="taller?page=perfil">
                                     <i class="bi bi-person"></i>
                                     <span>Mi perfil</span>
                                 </a>
@@ -108,7 +104,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="voluntario?page=cerrar_sesion">
+                                <a class="dropdown-item d-flex align-items-center" href="taller?page=cerrar_sesion">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Cerrar sessión</span>
                                 </a>

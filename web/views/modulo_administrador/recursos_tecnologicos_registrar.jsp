@@ -377,7 +377,7 @@
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
-                    </ul>cons
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#intenciones-nav" data-bs-toggle="collapse" href="">
@@ -402,7 +402,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=estadisticas">
+                    <a class="nav-link collapsed" href="administrador?page=estadisticas">
                         <i class="bi bi-graph-up"></i><span>Estadisticas</span>
                     </a>
                 </li>
@@ -466,7 +466,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=servidor">
+                    <a class="nav-link collapsed" href="administrador?page=servidor">
                         <i class="bi bi-server"></i><span>Servidor</span>
                     </a>
                 </li>

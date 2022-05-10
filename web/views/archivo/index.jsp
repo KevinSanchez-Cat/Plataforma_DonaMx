@@ -7,4 +7,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <h1>Página en construccion</h1>
-<img src="assets/img/mantenimiento.png" width="100%" alt=""/>
+<img src="assets/img/mantenimiento.png" width="50%" alt=""/>

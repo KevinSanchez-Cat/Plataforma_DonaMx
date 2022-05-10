@@ -6,7 +6,6 @@
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="administrador">
                         <i class="bi bi-grid"></i>
@@ -23,7 +22,6 @@
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="administrador?page=roles&accion=buscar">
                                 <i class="bi bi-circle"></i><span>Buscar</span>
@@ -137,8 +135,6 @@
                         </li>
                     </ul>
                 </li>
-
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#estados-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-globe"></i><span>Estados</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -154,7 +150,6 @@
                                 <i class="bi bi-circle"></i><span>Buscar</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="administrador?page=estados&accion=consultar">
                                 <i class="bi bi-circle"></i><span>Consultar</span>
@@ -206,7 +201,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-card-list"></i><span>Categorías</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -283,7 +277,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#equiposcomputacionales-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-laptop"></i><span>Equipos computacionales</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -378,7 +371,7 @@
                                 <i class="bi bi-circle"></i><span>Ver todas</span>
                             </a>
                         </li>
-                    </ul>cons
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#intenciones-nav" data-bs-toggle="collapse" href="">
@@ -403,7 +396,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=estadisticas">
+                    <a class="nav-link collapsed" href="administrador?page=estadisticas">
                         <i class="bi bi-graph-up"></i><span>Estadisticas</span>
                     </a>
                 </li>
@@ -467,35 +460,32 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="administrador?page=servidor">
+                    <a class="nav-link collapsed" href="administrador?page=servidor">
                         <i class="bi bi-server"></i><span>Servidor</span>
                     </a>
                 </li>
-
                 <li class="nav-heading">Paginas</li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="administrador?page=perfil">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
-                </li><!-- End Profile Page Nav -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="administrador?page=contacto">
                         <i class="bi bi-envelope"></i>
                         <span>Contacto</span>
                     </a>
-                </li><!-- End Contact Page Nav -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="administrador?page=mis_notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
                     </a>
-                </li><!-- End Contact Page Nav -->
+                </li>
             </ul>
-        </aside><!-- End Sidebar-->
-
+        </aside>
         <main id="main" class="main">
-
             <div class="pagetitle">
                 <h1>Consular voluntarios</h1>
                 <nav>
@@ -505,15 +495,12 @@
                         <li class="breadcrumb-item active">Consultar</li>
                     </ol>
                 </nav>
-            </div><!-- End Page Title -->
-
+            </div>
             <section class="section dashboard">
                 <div class="row">
-
                 </div>
             </section>
             <%@include  file="/views/localidad/index.jsp" %>
         </main>
-
     </jsp:attribute>
 </template:templete_administrador>
