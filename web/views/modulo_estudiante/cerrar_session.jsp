@@ -1,14 +1,9 @@
-<%-- 
-    Document   : mi_informacion
-    Created on : 3/05/2022, 07:01:32 AM
-    Author     : por_s
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<template:templete_user title="Informacion personal">
+<template:templete_user title="Bienvenida">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
@@ -42,12 +37,12 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-bs-target="#informacion-nav" data-bs-toggle="collapse" href="">
+                    <a class="nav-link collapsed" data-bs-target="#informacion-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-person-badge"></i><span>Mi información</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="informacion-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                    <ul id="informacion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="estudiante?page=informacion_personal" class="active">
+                            <a href="estudiante?page=informacion_personal">
                                 <i class="bi bi-circle"></i><span>Información personal</span>
                             </a>
                         </li>
@@ -86,7 +81,7 @@
                         <span>Perfil</span>
                     </a>
                 </li>
-               
+             
                  <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
@@ -100,7 +95,7 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
+                    <a class="nav-link " href="estudiante?page=cerrar_sesion">
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span>Cerrar sesión</span>
                     </a>
@@ -110,17 +105,67 @@
         <main id="main" class="main">
             <section class="section dashboard">
                 <div class="pagetitle">
-                    <h1>Información personal</h1>
+                    <h1>Bienvenida</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
-                            <li class="breadcrumb-item">Mi información</li>
-                            <li class="breadcrumb-item active">Información personal</li>
                         </ol>
                     </nav>
                 </div>
                 <section class="section">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">IDTMex</h5>
+                                    <p>¿Sabias que para evaluar el Indice de Desarrollo Tecnologico en México, hay que tener encuenta 3 puntos importantes?
+                                        Conocelos en la descripción de las imagenes.
+                                    </p>
+                                    <!-- Slides with captions -->
+                                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="assets/img/dona_hero.jpg" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Conocimiento</h5>
+                                                    <p>Tener conocimiento de qué son las Tecnologías de la información, 
+                                                        y tener una noción de lo que consisten y para que se usan.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="assets/img/img_principal.jpg" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Acceso</h5>
+                                                    <p>Tener acceso al internet, y a las tecnologías, qué tan frecuente accedes a ellas. </p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="assets/img/network_destino.jpg" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Uso</h5>
+                                                    <p>La manipulación sobre ellas, y cómo y con qué fin las usas.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Anterior</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Siguiente</span>
+                                        </button>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </section>
         </main>

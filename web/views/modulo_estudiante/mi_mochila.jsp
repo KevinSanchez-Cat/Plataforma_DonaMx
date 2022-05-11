@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <template:templete_user title="Mi mochila">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
@@ -85,10 +86,23 @@
                         <span>Perfil</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cambiar_contrasenia">
+                        <i class="bi bi-key"></i>
+                        <span>Cambiar contraseña</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Cerrar sesión</span>
                     </a>
                 </li>
             </ul>
@@ -105,7 +119,7 @@
                         </ol>
                     </nav>
                 </div>
-                
+
                 <!--
                 <div class="row">
                     <div class="card">

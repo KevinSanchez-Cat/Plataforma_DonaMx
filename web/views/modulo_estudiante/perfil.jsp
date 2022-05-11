@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <template:templete_user title="Perfil">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
@@ -85,10 +86,23 @@
                         <span>Perfil</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cambiar_contrasenia">
+                        <i class="bi bi-key"></i>
+                        <span>Cambiar contraseña</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Cerrar sesión</span>
                     </a>
                 </li>
             </ul>
@@ -105,6 +119,67 @@
                     </nav>
                 </div>
                 <section class="section">
+
+                    <div class="card ">
+                        <div class="card-header bg-flaty-blue text-white">
+                            Cuenta
+                        </div>
+                        <div class="card-body">
+                            <br>
+                            <form action="" method="POST" class=" needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="profileImage" class="form-label">Imagen de perfil</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="assets/img/user_default.png" alt="Profile" width="100%">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-secondary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row g-3">
+                                            <div class="col-md-6 position-relative">
+                                                <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
+                                                <div class="input-group has-validation">
+                                                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                                    <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Dirección de correo eléctronico</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0">
+                                            <div class="col-md-12 position-relative">
+                                                <label for="validationTooltipUsername" class="form-label">Presentación</label>
+                                                <div class="input-group">
+                                                    <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                                              aria-describedby="validationTooltipUsernamePrepend" 
+                                                              class="form-control" id="about" rows="7" cols="1">
+
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-success" type="submit">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
                 </section>
             </section>

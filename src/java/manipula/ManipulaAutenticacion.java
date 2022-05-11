@@ -139,6 +139,7 @@ public class ManipulaAutenticacion {
                     response.setStatus(utils.Constantes.STATUS_NO_DATA);
                     response.setResponseObject(usuario);
                     response.setMensaje("El registro no existe");
+                    conexionDB.desconectar();
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);

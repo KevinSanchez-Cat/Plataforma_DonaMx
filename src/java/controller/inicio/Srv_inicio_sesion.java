@@ -55,7 +55,6 @@ public class Srv_inicio_sesion extends HttpServlet {
             session.setAttribute("username", respuesta.getResponseObject().getNombreUsuario());
             session.setAttribute("user", respuesta.getResponseObject());
             session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
-            System.out.println(respuesta.getResponseObject().getIdUsuario()+" Session");
             ManipulaRol mRol = new ManipulaRol();
             Rol rol = mRol.encontrarId(respuesta.getResponseObject().getIdRol());
             session.setAttribute("rol", rol.getRol());

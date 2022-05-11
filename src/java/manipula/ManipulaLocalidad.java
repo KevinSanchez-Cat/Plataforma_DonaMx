@@ -106,6 +106,7 @@ public class ManipulaLocalidad implements Manipula<Localidad> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -148,6 +149,7 @@ public class ManipulaLocalidad implements Manipula<Localidad> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);

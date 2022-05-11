@@ -15,10 +15,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import manipula.ManipulaAutenticacion;
-import manipula.ManipulaEstudiante;
 import manipula.ManipulaRol;
 import manipula.ManipulaUsuario;
-import model.Estudiante;
 import model.Rol;
 import model.Usuario;
 import utils.GenericResponse;
@@ -50,7 +48,7 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                         session.setAttribute("idUser", usuario.getIdUsuario());
                         session.setAttribute("usuario", usuario);
                         response.sendRedirect("donador");
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         System.out.println("Error");
                     }
 

@@ -1,18 +1,12 @@
-<%-- 
-    Document   : mi_informacion
-    Created on : 3/05/2022, 07:01:32 AM
-    Author     : por_s
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<template:templete_user title="Informacion domiciliaria">
+<template:templete_user title="Catalogo">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante">
                         <i class="bi bi-grid"></i>
@@ -20,7 +14,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link collapsed "  href="estudiante?page=catalogo">
+                    <a class="nav-link "  href="estudiante?page=catalogo">
                         <i class="bi bi-card-list"></i><span>Catalogo</span>
                     </a>
                 </li>
@@ -42,22 +36,22 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-bs-target="#informacion-nav" data-bs-toggle="collapse" href="">
+                    <a class="nav-link collapsed" data-bs-target="#informacion-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-person-badge"></i><span>Mi información</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="informacion-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                    <ul id="informacion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="estudiante?page=informacion_personal" >
+                            <a href="estudiante?page=informacion_personal">
                                 <i class="bi bi-circle"></i><span>Información personal</span>
                             </a>
                         </li>
                         <li>
-                            <a href="estudiante?page=informacion_escolar" >
+                            <a href="estudiante?page=informacion_escolar">
                                 <i class="bi bi-circle"></i><span>Información escolar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="estudiante?page=informacion_domiciliaria" class="active">
+                            <a href="estudiante?page=informacion_domiciliaria">
                                 <i class="bi bi-circle"></i><span>Información domiciliaria</span>
                             </a>
                         </li>
@@ -110,16 +104,38 @@
         <main id="main" class="main">
             <section class="section dashboard">
                 <div class="pagetitle">
-                    <h1>Información domiciliaria</h1>
+                    <h1>Catálogo</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
-                            <li class="breadcrumb-item">Mi información</li>
-                            <li class="breadcrumb-item active">Información domiciliaria</li>
+                            <li class="breadcrumb-item "><a href="estudiante?page=catalogo">Catalogo</a></li>
+                            <li class="breadcrumb-item active">${categoria}</li>
                         </ol>
                     </nav>
                 </div>
                 <section class="section">
+                    <c:choose>
+                        <c:when test="${not empty lstRecursosTecnologicos}">
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <c:forEach var="recursos" items="${lstRecursosTecnologicos}">
+                                    <div class="col ">
+                                        <a href="estudiante?page=catalogo&categoria=${recursos.getIdRecursoTecnologico()}">
+                                            <div class="card text-white bg-azul text-center">
+                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${recursos.getNombreCategoria()}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <br>
+                            <div class="alert alert-info">Aún no hay recursos tecnologicos asociados a la categoría</div>
+                        </c:otherwise>
+                    </c:choose>
 
                 </section>
             </section>

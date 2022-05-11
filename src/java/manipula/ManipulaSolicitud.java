@@ -116,6 +116,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -171,6 +172,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -213,6 +215,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -255,6 +258,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
                 conexionDB.desconectar();
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -294,6 +298,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
+                conexionDB.desconectar();
                 conexionDB.desconectar();
             }
         } else {

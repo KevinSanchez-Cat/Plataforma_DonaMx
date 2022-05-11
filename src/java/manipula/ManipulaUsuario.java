@@ -13,7 +13,6 @@ import model.Galeria;
 import model.Intencion;
 import model.Notificacion;
 import model.Organizacion;
-import model.Rol;
 import model.Solicitud;
 import model.Usuario;
 import utils.GenericResponse;
@@ -133,6 +132,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -198,6 +198,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -240,6 +241,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -1073,6 +1075,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1107,6 +1110,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1141,6 +1145,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1175,6 +1180,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1209,6 +1215,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1243,6 +1250,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1277,6 +1285,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1311,6 +1320,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1357,6 +1367,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1391,6 +1402,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -1425,6 +1437,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } else {
                 Logg.error("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             Logg.error("Error de conexión a la base de datos");

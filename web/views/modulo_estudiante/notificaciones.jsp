@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <template:templete_user title="Notificaciones">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
@@ -85,10 +87,23 @@
                         <span>Perfil</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="estudiante?page=notificaciones">
+                    <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cambiar_contrasenia">
+                        <i class="bi bi-key"></i>
+                        <span>Cambiar contraseña</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Cerrar sesión</span>
                     </a>
                 </li>
             </ul>
@@ -105,7 +120,28 @@
                     </nav>
                 </div>
                 <section class="section">
-
+                    <c:choose>
+                        <c:when test="${empty lstNotificaciones}">   
+                            <br>
+                            <div class="alert alert-info">Usted no tiene notificaciones</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <c:forEach var="notificacion" items="${lstNotificaciones}">
+                                    <div class="col ">
+                                        <a href="estudiante?page=notificaciones&id_notificacion=${notificacion.getId()}">
+                                            <div class="card text-white bg-azul text-center">
+                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${notificacion.getMensage()}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
             </section>
         </main>
