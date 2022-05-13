@@ -86,8 +86,8 @@
                         <span>Perfil</span>
                     </a>
                 </li>
-               
-                 <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
@@ -99,7 +99,7 @@
                         <span>Cambiar contraseña</span>
                     </a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span>Cerrar sesión</span>
@@ -120,7 +120,29 @@
                     </nav>
                 </div>
                 <section class="section">
+                    <c:choose>
+                        <c:when test="${not empty lstEquiposRemunerados}">   
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <c:forEach var="equipo" items="${lstEquiposRemunerados}">
+                                    <div class="col ">
+                                        <a href="estudiante?page=notificaciones&id_notificacion=${equipo}">
+                                            <div class="card text-white bg-azul text-center">
+                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${equipo}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
 
+                        </c:when>
+                        <c:otherwise>                         
+                            <br>
+                            <div class="alert alert-info">Aún no hay equipos remunerados</div>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
             </section>
         </main>

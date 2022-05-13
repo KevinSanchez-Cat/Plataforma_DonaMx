@@ -119,7 +119,6 @@
                     </nav>
                 </div>
                 <section class="section">
-
                     <div class="card ">
                         <div class="card-header bg-flaty-blue text-white">
                             Cuenta
@@ -131,10 +130,20 @@
                                     <div class="col-md-4">
                                         <label for="profileImage" class="form-label">Imagen de perfil</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="assets/img/user_default.png" alt="Profile" width="100%">
-                                            <div class="pt-2">
-                                                <a href="#" class="btn btn-secondary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            <img alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacion" width="100%">
+                                            <br><br>
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                      <label for="seleccionArchivos" class="subir">
+                                                    <i class="bi bi-upload"></i> Subir imagen
+                                                </label>
+                                                <input id="seleccionArchivos"  onchange='cambiar()' type="file" style='display: none;'  accept="image/*" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="#" class="btn btn-danger btn-sm" title="Eliminar imagen de perfil">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +189,6 @@
                             </form>
                         </div>
                     </div>
-
                 </section>
             </section>
         </main>

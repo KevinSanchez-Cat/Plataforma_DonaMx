@@ -120,10 +120,6 @@
                 <section class="section">
                     <c:choose>
                         <c:when test="${not empty lstEquiposDonados}">   
-                            <br>
-                            <div class="alert alert-info">Aún no hay equipos donados</div>
-                        </c:when>
-                        <c:otherwise>
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 <c:forEach var="equipos" items="${lstEquiposDonados}">
                                     <div class="col ">
@@ -138,6 +134,11 @@
                                     </div>
                                 </c:forEach>
                             </div>
+
+                        </c:when>
+                        <c:otherwise>                         
+                            <br>
+                            <div class="alert alert-info">Aún no hay equipos donados</div>
                         </c:otherwise>
                     </c:choose>
                 </section>

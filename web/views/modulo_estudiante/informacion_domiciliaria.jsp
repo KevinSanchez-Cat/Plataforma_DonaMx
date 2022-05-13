@@ -86,8 +86,8 @@
                         <span>Perfil</span>
                     </a>
                 </li>
-              
-                 <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
@@ -99,7 +99,7 @@
                         <span>Cambiar contraseña</span>
                     </a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=cerrar_sesion">
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span>Cerrar sesión</span>
@@ -120,7 +120,144 @@
                     </nav>
                 </div>
                 <section class="section">
+                    <div class="card ">
+                        <div class="card-header hstack gap-3 bg-flaty-blue text-white">
+                            Imformación domiciliaria
+                            <button class="btn btn-light ms-auto">
+                                Editar
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <br>
+                            <form action="" method="POST" class=" needs-validation" novalidate>
+                                <div class="col-md-2 position-relative">
+                                    <label for="nombre_usuario" class="form-label">Codigo postal</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                        <div class="valid-tooltip">
+                                            Se mira bien!
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row g-3">
+                                    <div class="col-md-3 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Estado federativo</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Municipio</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Localidad</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Tipo de asentamiento</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Nombre del asentamiento</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Calle externa y número</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Calle interna y número</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Calle interna y número</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 position-relative">
+                                        <label for="validationTooltipUsername" class="form-label">Referencias</label>
+                                        <div class="input-group">
+                                            <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                                      aria-describedby="validationTooltipUsernamePrepend" 
+                                                      class="form-control" id="about" rows="3" cols="1">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-secondary" type="submit">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card ">
+                            <div class="card-header bg-flaty-blue text-white">
+                                Documentos
+                            </div>
+                            <div class="card-body">
+                                </br>
+                                <form action="" method="POST" class=" needs-validation" novalidate>
+                                    <div class="mb-3 position-relative">
+                                        <label for="formFile" class="form-label">Comprobante domiciliario</label>
+                                        <div class="input-group has-validation">
+                                            <input class="form-control" type="file" id="formFile" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br/>
+                                    <div class="col-12 text-end">
+                                        <button class="btn btn-secondary" type="submit">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </section>
         </main>

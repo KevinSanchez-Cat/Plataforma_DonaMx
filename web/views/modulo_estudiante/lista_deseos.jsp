@@ -119,7 +119,29 @@
                     </nav>
                 </div>
                 <section class="section">
+                    <c:choose>
+                        <c:when test="${not empty lstDeseos}">   
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <c:forEach var="deseo" items="${lstDeseos}">
+                                    <div class="col ">
+                                        <a href="estudiante?page=notificaciones&id_notificacion=${deseo}">
+                                            <div class="card text-white bg-azul text-center">
+                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${deseo}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
 
+                        </c:when>
+                        <c:otherwise>                         
+                            <br>
+                            <div class="alert alert-info">Aún no tienes deseos...</div>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
             </section>
         </main>

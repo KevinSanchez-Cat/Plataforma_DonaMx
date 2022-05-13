@@ -89,7 +89,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="estudiante?page=notificaciones">
+                    <a class="nav-link" href="estudiante?page=notificaciones">
                         <i class="bi bi-bell-fill"></i>
                         <span>Notificaciones</span>
                     </a>
@@ -121,11 +121,7 @@
                 </div>
                 <section class="section">
                     <c:choose>
-                        <c:when test="${empty lstNotificaciones}">   
-                            <br>
-                            <div class="alert alert-info">Usted no tiene notificaciones</div>
-                        </c:when>
-                        <c:otherwise>
+                        <c:when test="${not empty lstNotificaciones}">   
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 <c:forEach var="notificacion" items="${lstNotificaciones}">
                                     <div class="col ">
@@ -140,6 +136,10 @@
                                     </div>
                                 </c:forEach>
                             </div>
+                        </c:when>
+                        <c:otherwise>
+                            <br>
+                            <div class="alert alert-info">Usted no tiene notificaciones</div>
                         </c:otherwise>
                     </c:choose>
                 </section>

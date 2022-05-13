@@ -47,7 +47,7 @@
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li>
-                            <a class="nav-link scrollto active" href="index.jsp">
+                            <a class="nav-link scrollto active " href="index.jsp">
                                 <i>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +114,7 @@
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
 
-                <a class="appointment-btn scrollto" href="iniciarSesion.jsp" >
+                <a class="appointment-btn scrollto d-flex align-items-center" href="iniciarSesion.jsp" >
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -122,7 +122,7 @@
                     </i>    
                     Iniciar sesión
                 </a>
-                <a  class="appointment-btn scrollto" href="registrarse.jsp" >
+                <a  class="appointment-btn scrollto d-flex align-items-center" href="registrarse.jsp" >
                     <i>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">

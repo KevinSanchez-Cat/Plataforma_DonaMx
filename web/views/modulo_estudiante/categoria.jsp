@@ -133,7 +133,7 @@
                         </c:when>
                         <c:otherwise>
                             <br>
-                            <div class="alert alert-info">Aún no hay recursos tecnologicos asociados a la categoría</div>
+                            <div class="alert alert-info">Aún no hay recursos tecnologicos asociados a esta categoría</div>
                         </c:otherwise>
                     </c:choose>
 

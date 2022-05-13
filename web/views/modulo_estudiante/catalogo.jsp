@@ -123,11 +123,11 @@
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 <c:forEach var="categoria" items="${lstCategorias}">
                                     <div class="col ">
-                                        <a href="estudiante?page=catalogo&id_categoria=${categoria.getId()}&nombre_categoria=${categoria.getNombreCategoria()}">
-                                            <div class="card text-white bg-azul text-center">
+                                        <a href="estudiante?page=catalogo&id_categoria=${categoria.getIdCategoria()}&nombre_categoria=${categoria.getNombreCategoria()}">
+                                            <div class="card text-white text-center">
                                                 <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">${categoria.getNombre()}</h5>
+                                                    <h5 class="card-title">${categoria.getNombreCategoria()}</h5>
                                                 </div>
                                             </div>
                                         </a>

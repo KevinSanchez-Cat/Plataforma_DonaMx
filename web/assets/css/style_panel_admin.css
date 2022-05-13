@@ -1196,3 +1196,29 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 13px;
     color: #012970;
 }
+
+.subir{
+    display: inline-block;
+    padding: 5px 10px;
+    background: #003366;
+    color:#fff;
+    border:0px solid #fff;
+
+
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+
+}
+
+.subir:hover{
+    color:#fff;
+    background: #002040;
+}

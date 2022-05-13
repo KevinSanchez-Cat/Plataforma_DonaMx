@@ -37,6 +37,8 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <%@ page import="controller.inicio.Srv_inicio_sesion" %>
@@ -114,7 +116,7 @@
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
 
-                <a class="appointment-btn scrollto"  href="registrarse.jsp" >
+                <a class="appointment-btn scrollto d-flex align-items-center"  href="registrarse.jsp" >
                     <i>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -160,6 +162,7 @@
                                                 <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
                                             </div>
                                         </div>
+                                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Ingresar</button>
                                         </div>
@@ -185,7 +188,7 @@
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
-
+       
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
     </body>

@@ -115,36 +115,37 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
                             <li class="breadcrumb-item "><a href="estudiante?page=catalogo">Catalogo</a></li>
-                            <li class="breadcrumb-item "><a href="estudiante?page=catalogo&categoria=${dCategoria}">${categoria.getNombreCategoria()}<a></li>
-                                        </ol>
-                                        </nav>
-                                        </div>
-                                        <section class="section">
-                                            <c:choose>
-                                                <c:when test="${not empty lstRecursosPorCategoria}">
-                                                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                                                        <c:forEach var="categoria" items="${lstRecursosPorCategoria}">
-                                                            <div class="col ">
-                                                                <a href="estudiante?page=catalogo&categoria=${categoria.getIdCategoria()}">
-                                                                    <div class="card text-white bg-azul text-center">
-                                                                        <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                                                        <div class="card-body">
-                                                                            <h5 class="card-title">${categoria.getNombreCategoria()}</h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </c:forEach>
-                                                    </div>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <br>
-                                                    <div class="alert alert-info">Aún no hay recursos tecnologicos asociados a la categoría</div>
-                                                </c:otherwise>
-                                            </c:choose>
+                            <li class="breadcrumb-item"><a href="estudiante?page=catalogo&id_categoria=${id_categoria}&nombre_categoria=${nombre_categoria}">${nombre_categoria}</a></li>
+                            <li class="breadcrumb-item active">${recurso_tecnologico.getNombreRecursoTecnologico()}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <section class="section">
+                    <c:choose>
+                        <c:when test="${not empty recurso_tecnologico}">
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <c:forEach var="categoria" items="${lstRecursosPorCategoria}">
+                                    <div class="col ">
+                                        <a href="estudiante?page=">
+                                            <div class="card text-white bg-azul text-center">
+                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${categoria.getNombreCategoria()}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <br>
+                            <div class="alert alert-warning">Error: No se encuntra el recurso tecnologico</div>
+                        </c:otherwise>
+                    </c:choose>
 
-                                        </section>
-                                        </section>
-                                        </main>
-                                    </jsp:attribute>
-                                </template:templete_user>
+                </section>
+            </section>
+        </main>
+    </jsp:attribute>
+</template:templete_user>
