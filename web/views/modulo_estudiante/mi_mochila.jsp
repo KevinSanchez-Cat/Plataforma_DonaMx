@@ -30,15 +30,16 @@
                     </a>
                     <ul id="equipos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="estudiantes?page=equipos_remunerados">
+                            <a href="estudiante?page=equipos_remunerados">
                                 <i class="bi bi-circle"></i><span>Remunerados</span>
                             </a>
                         </li>
                         <li>
-                            <a href="estudiantes?page=equipos_donados">
+                            <a href="estudiante?page=equipos_donados">
                                 <i class="bi bi-circle"></i><span>Donados</span>
                             </a>
-                        </li>                      
+                        </li>  
+
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -119,81 +120,75 @@
                         </ol>
                     </nav>
                 </div>
-
-                <!--
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Custom Styled Validation with Tooltips</h5>
-                            <p>If your form layout allows it, you can swap the <code>.{valid|invalid}-feedback</code> classes for
-                                .<code>{valid|invalid}-tooltip</code> classes to display validation feedback in a styled tooltip. Be
-                                sure to have a parent with <code>position: relative</code> on it for tooltip positioning. In the example
-                                below, our column classes have this already, but your project may require an alternative setup. </p>
-
-                
-                            <form class="row g-3 needs-validation" novalidate>
-                                <div class="col-md-4 position-relative">
-                                    <label for="validationTooltip01" class="form-label">First name</label>
-                                    <input type="text" class="form-control" id="validationTooltip01" value="John" required>
-                                    <div class="valid-tooltip">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <div class="col-md-4 position-relative">
-                                    <label for="validationTooltip02" class="form-label">Last name</label>
-                                    <input type="text" class="form-control" id="validationTooltip02" value="Doe" required>
-                                    <div class="valid-tooltip">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <div class="col-md-4 position-relative">
-                                    <label for="validationTooltipUsername" class="form-label">Username</label>
-                                    <div class="input-group has-validation">
-                                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                                        <input type="text" class="form-control" id="validationTooltipUsername"
-                                               aria-describedby="validationTooltipUsernamePrepend" required>
-                                        <div class="invalid-tooltip">
-                                            Please choose a unique and valid username.
+                <c:choose>
+                    <c:when test="${not empty lstDonaciones}">   
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            <c:forEach var="donacion" items="${lstDonaciones}">
+                                <div class="col ">
+                                    <a href="estudiante?page=notificaciones&id_notificacion=${donacion}">
+                                        <div class="card text-white bg-azul text-center">
+                                            <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${donacion}</h5>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                                <div class="col-md-6 position-relative">
-                                    <label for="validationTooltip03" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="validationTooltip03" required>
-                                    <div class="invalid-tooltip">
-                                        Please provide a valid city.
-                                    </div>
-                                </div>
-                                <div class="col-md-3 position-relative">
-                                    <label for="validationTooltip04" class="form-label">State</label>
-                                    <select class="form-select" id="validationTooltip04" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                    <div class="invalid-tooltip">
-                                        Please select a valid state.
-                                    </div>
-                                </div>
-                                <div class="col-md-3 position-relative">
-                                    <label for="validationTooltip05" class="form-label">Zip</label>
-                                    <input type="text" class="form-control" id="validationTooltip05" required>
-                                    <div class="invalid-tooltip">
-                                        Please provide a valid zip.
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                </div>
-                            </form>
-
+                            </c:forEach>
                         </div>
-                    </div>
-                </div>
-                -->
+                    </c:when>
+                    <c:otherwise>                         
+                        <br>
+                        <div class="alert alert-info">Aún no tienes donaciones...</div>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header bg-azul">
+                                        Folio: 000-XXX
+                                    </div>
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                   
+                                    </div>
+                                    <div class="card-footer">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </c:otherwise>
+                </c:choose>
             </section>
-
-
-
-        </main><!-- End #main -->
+        </main>
     </jsp:attribute>
 </template:templete_user>
