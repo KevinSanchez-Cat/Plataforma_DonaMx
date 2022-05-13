@@ -122,19 +122,57 @@
                 <section class="section">
                     <c:choose>
                         <c:when test="${not empty lstNotificaciones}">   
-                            <div class="row row-cols-1 row-cols-md-4 g-4">
-                                <c:forEach var="notificacion" items="${lstNotificaciones}">
-                                    <div class="col ">
-                                        <a href="estudiante?page=notificaciones&id_notificacion=${notificacion.getId()}">
-                                            <div class="card text-white bg-azul text-center">
-                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${notificacion.getMensage()}</h5>
-                                                </div>
-                                            </div>
-                                        </a>
+                            <div class="col-12">
+                                <div class="card recent-sales overflow-auto">
+
+                                    <div class="filter">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                            <li class="dropdown-header text-start">
+                                                <h6>Filtrar</h6>
+                                            </li>
+
+                                            <li><a class="dropdown-item" href="#">De hoy</a></li>
+                                            <li><a class="dropdown-item" href="#">De una semana</a></li>
+                                            <li><a class="dropdown-item" href="#">De un mes</a></li>
+                                        </ul>
                                     </div>
-                                </c:forEach>
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Notificaciones <span>| Hoy</span></h5>
+
+                                        <table class="table table-responsive table-bordered table-hover datatable">
+                                            <thead >
+                                                <tr class="table-primary "> 
+                                                    <th scope="col">Fecha</th>
+                                                    <th scope="col">Prioridad</th>
+                                                    <th scope="col">Mensaje</th>
+
+                                                    <th scope="col">Estado</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <c:forEach var="notificacion" items="${lstNotificaciones}">
+                                                    <tr> 
+                                                        <th>22/01/2022</th>
+                                                        <td><span class="badge bg-info text-dark"><i class="bi bi-info-square me-1"></i> Baja</span></td>
+                                                        <td>La organización ha solicitado su autorizacion</td> 
+                                                        <td> <span class="badge bg-success text-light"><i class="bi bi-eye-fill me-1"></i> Visto</span></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -147,3 +185,33 @@
         </main>
     </jsp:attribute>
 </template:templete_user>
+<!-- End Recent Sales  <tr> 
+                                        <th>22/01/2022</th>
+                                        <td><span class="badge bg-primary text-light"><i class="bi bi-info-circle me-1"></i> Normal</span></td>
+                                        <td>La organización ha solicitado su autorizacion</td> 
+                                        <td> <span class="badge bg-success text-light"><i class="bi bi-eye-fill me-1"></i> Visto</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                        <th>22/01/2022</th>
+                                        <td><span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Importante</span></td>
+                                        <td>La organización ha solicitado su autorizacion</td> 
+                                        <td> <span class="badge bg-dark text-light"><i class="bi bi-eye-slash-fill me-1"></i>No visto</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                        <th>22/01/2022</th>
+                                        <td><span class="badge bg-danger text-light"><i class="bi bi-exclamation-octagon me-1"></i> Urgente</span></td>
+                                        <td>La organización ha solicitado su autorizacion</td> 
+                                        <td> <span class="badge bg-dark text-light"><i class="bi bi-eye-slash-fill me-1"></i>No visto</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>-->

@@ -1222,3 +1222,90 @@ h1, h2, h3, h4, h5, h6 {
     color:#fff;
     background: #002040;
 }
+
+
+.btn-primary-flaty {
+    color: #fff;
+    background-color: #2c3e50;
+    border-color: #2c3e50
+}
+
+
+.btn-primary-flaty:hover {
+    color: #fff;
+    background-color: #253544;
+    border-color: #233240
+}
+
+.btn-check:focus+.btn-primary-flaty,
+.btn-primary-flaty:focus {
+    color: #fff;
+    background-color: #253544;
+    border-color: #233240;
+    box-shadow: 0 0 0 .25rem rgba(76, 91, 106, .5)
+}
+
+.btn-check:active+.btn-primary-flaty,
+.btn-check:checked+.btn-primary-flaty,
+.btn-primary-flaty.active,
+.btn-primary-flaty:active,
+.show>.btn-primary-flaty.dropdown-toggle {
+    color: #fff;
+    background-color: #233240;
+    border-color: #212f3c
+}
+
+.btn-check:active+.btn-primary-flaty:focus,
+.btn-check:checked+.btn-primary-flaty:focus,
+.btn-primary-flaty.active:focus,
+.btn-primary-flaty:active:focus,
+.show>.btn-primary-flaty.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .25rem rgba(76, 91, 106, .5)
+}
+
+.btn-primary-flaty.disabled,
+.btn-primary-flaty:disabled {
+    color: #fff;
+    background-color: #2c3e50;
+    border-color: #2c3e50
+}
+
+.btn-outline-primary-flaty {
+    color: #2c3e50;
+    border-color: #2c3e50
+}
+
+.btn-outline-primary-flaty:hover {
+    color: #fff;
+    background-color: #2c3e50;
+    border-color: #2c3e50
+}
+
+.btn-check:focus+.btn-outline-primary-flaty,
+.btn-outline-primary-flaty:focus {
+    box-shadow: 0 0 0 .25rem rgba(44, 62, 80, .5)
+}
+
+.btn-check:active+.btn-outline-primary-flaty,
+.btn-check:checked+.btn-outline-primary-flaty,
+.btn-outline-primary-flaty.active,
+.btn-outline-primary-flaty.dropdown-toggle.show,
+.btn-outline-primary-flaty:active {
+    color: #fff;
+    background-color: #2c3e50;
+    border-color: #2c3e50
+}
+
+.btn-check:active+.btn-outline-primary-flaty:focus,
+.btn-check:checked+.btn-outline-primary-flaty:focus,
+.btn-outline-primary-flaty.active:focus,
+.btn-outline-primary-flaty.dropdown-toggle.show:focus,
+.btn-outline-primary-flaty:active:focus {
+    box-shadow: 0 0 0 .25rem rgba(44, 62, 80, .5)
+}
+
+.btn-outline-primary-flaty.disabled,
+.btn-outline-primary-flaty:disabled {
+    color: #2c3e50;
+    background-color: transparent
+}

@@ -121,18 +121,35 @@
                 <section class="section">
                     <c:choose>
                         <c:when test="${not empty lstDeseos}">   
-                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-6 ">
                                 <c:forEach var="deseo" items="${lstDeseos}">
                                     <div class="col ">
-                                        <a href="estudiante?page=notificaciones&id_notificacion=${deseo}">
-                                            <div class="card text-white bg-azul text-center">
-                                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${deseo}</h5>
-                                                </div>
+                                    <div class="card">
+                                        <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Nombre del recurso</h6>
+                                            <p class="card-text">
+                                                <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                                                    Descripcion
+                                                </span> 
+
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                                 <a href="#" class="btn btn-primary-flaty rounded-pill">
+                                                    <i class="ri ri-heart-add-fill"></i>
+                                                    Solicitar
+                                                </a>
+                                                <a href="#" class=" btn btn-outline-primary-flaty rounded-pill ">
+                                                    <i class="ri ri-eye-fill"></i>
+                                                    Ver recurso
+                                                </a>
+                                               
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
+                                </div>
                                 </c:forEach>
                             </div>
 
@@ -140,6 +157,7 @@
                         <c:otherwise>                         
                             <br>
                             <div class="alert alert-info">Aún no tienes deseos...</div>
+                            
                         </c:otherwise>
                     </c:choose>
                 </section>

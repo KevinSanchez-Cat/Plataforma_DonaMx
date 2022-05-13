@@ -120,72 +120,69 @@
                         </ol>
                     </nav>
                 </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                    <div class="row">
+                        <p class="col  d-flex align-items-center ">
+                            Solo mostrar: 
+                        </p>
+                        <div class="col col-auto">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Todo</option>
+                                <option value="3">Pendientes</option>
+                                <option value="1">Entregadas</option>
+                                <option value="2">Canceladas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <form class="d-flex " style="margin: 5px">
+                        <input class="form-control me-2" type="search" placeholder="Buscar por folio" aria-label="Buscar por folio">
+                        <button class="btn btn-outline-primary-flaty" type="submit">Buscar</button>
+                    </form>
+                </div>
+
+                <br/>
                 <c:choose>
                     <c:when test="${not empty lstDonaciones}">   
-                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-6 "> <!--   row-cols-1 row-cols-md-4 g-4 row-cols-xl-4-->
                             <c:forEach var="donacion" items="${lstDonaciones}">
                                 <div class="col ">
-                                    <a href="estudiante?page=notificaciones&id_notificacion=${donacion}">
-                                        <div class="card text-white bg-azul text-center">
-                                            <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">${donacion}</h5>
+                                    <div class="card">
+                                        <div class="card-header bg-azul">
+                                            <strong>
+                                                ${donacion.getIdDonacion()}
+                                            </strong>
+                                        </div>
+                                        <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h6 class="card-title">${donacion.getRecurso().getNombreRecurso()}</h6>
+                                            <p class="card-text">
+                                                <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                                                    ${donacion.getRecurso().getDescripcion()}
+                                                </span>
+                                            </p>
+                                            <b style="color: #18bc9c">${donacion.getEstatus()}</b>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                                <a href="#" class=" btn btn-primary-flaty rounded-pill ">
+                                                    <i class="bx bx-show"></i>
+                                                    Ver recurso
+                                                </a>
+                                                <a href="#" class="btn btn-outline-primary-flaty rounded-pill">
+                                                    <i class="bx bx-info-circle"></i>
+                                                    Ver detalle
+                                                </a>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             </c:forEach>
                         </div>
                     </c:when>
-                    <c:otherwise>                         
-                        <br>
+                    <c:otherwise> 
                         <div class="alert alert-info">Aún no tienes donaciones...</div>
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header bg-azul">
-                                        Folio: 000-XXX
-                                    </div>
-                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                   
-                                    </div>
-                                    <div class="card-footer">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </c:otherwise>
                 </c:choose>
             </section>

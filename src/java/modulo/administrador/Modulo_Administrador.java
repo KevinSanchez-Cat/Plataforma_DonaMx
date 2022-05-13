@@ -448,8 +448,8 @@ public class Modulo_Administrador extends HttpServlet {
                                         Usuario user = (Usuario) session.getAttribute("user");
                                         manipula.ManipulaAutenticacion.cerrarSesionUsuario(user);
                                         session.invalidate();
-                                       // dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-                                      response.sendRedirect("/index.jsp");
+                                        // dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+                                        response.sendRedirect("home.do");
                                         break;
                                     default:
                                         dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/home.jsp");
