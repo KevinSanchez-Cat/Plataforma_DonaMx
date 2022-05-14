@@ -194,7 +194,11 @@ public class Modulo_Estudiante extends HttpServlet {
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/notificaciones.jsp");
 
                                     break;
-                                case "cambiar_contrasenia":
+                                    
+                                case "encuesta_socieconomica":
+                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/encuesta_socieconomica.jsp");
+                                    break;
+                                            case "cambiar_contrasenia":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/cambiar_contrasenia.jsp");
                                     break;
                                 case "cerrar_sesion":

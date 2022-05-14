@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--@ page import="net.tanesha.recaptcha.ReCaptcha" --%>
+<%--@ page import="net.tanesha.recaptcha.ReCaptchaFactory" --%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +40,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <%@ page import="controller.inicio.Srv_inicio_sesion" %>
@@ -162,8 +164,12 @@
                                                 <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
                                             </div>
                                         </div>
-                                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-                                        <div class="col-12">
+                                       <%--
+                                            ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW", "6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak", false);
+                                            out.print(c.createRecaptchaHtml(null, null));
+                                        --%>
+                                     <!-- <div class="g-recaptcha" data-sitekey="6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW"></div>
+                                       --> <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Ingresar</button>
                                         </div>
                                         <div class="col-12">
@@ -188,7 +194,7 @@
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
-       
+
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
     </body>

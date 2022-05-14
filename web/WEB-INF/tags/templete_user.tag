@@ -33,6 +33,10 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style_panel_admin.css" rel="stylesheet"/>
+
+
+
+      
     </head>
     <body>
 
@@ -56,7 +60,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                        <span class="d-none d-lg-block">DonaMx</span>
+                    <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -122,7 +126,7 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -163,6 +167,7 @@
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/js/main_panel_admin.js"></script>
 
+    
 </body>
 </html>
 

@@ -123,7 +123,7 @@
                     <div class="card ">
                         <div class="card-header hstack gap-3 bg-flaty-blue text-white">
                             Información personal
-                              <button class="btn btn-light ms-auto">
+                            <button class="btn btn-light ms-auto">
                                 Editar
                             </button>
                         </div>
@@ -277,16 +277,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3 position-relative">
-                                        <label for="formFile" class="form-label">CURP</label>
-                                        <div class="input-group has-validation">
-                                            <input class="form-control" type="file" id="formFile" required>
-                                            <div class="valid-tooltip">
-                                                Se mira bien!
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <br/>
                                     <div class="col-12 text-end">
                                         <button class="btn btn-secondary" type="submit">Guardar</button>
@@ -295,8 +285,10 @@
                             </div>
                         </div>
                     </div>
+
                 </section>
             </section>
         </main>
+        
     </jsp:attribute>
 </template:templete_user>

@@ -162,16 +162,16 @@
                                         <img src="assets/img/dona_hero.jpg"  class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h6 class="card-title"><strong>Nombre del recurso</strong></h6>
-                                            <p class="card-text">
-                                            <div class="hstack gap-3 ">
-                                                <b class="text-success">Reacondicionado   </b>
-                                                <i class="text-success ri ri-seedling-fill"></i> 
-                                            </div>
+                                            <div class="card-text">
+                                                <div class="hstack gap-3 ">
+                                                    <b class="text-success">Reacondicionado   </b>
+                                                    <i class="text-success ri ri-seedling-fill"></i> 
+                                                </div>
 
-                                            <b>Precio:</b> $000.00<br/>
-                                            <b>Sistema operativo:</b> Linux<br/>
-                                            <b>Donado por:</b> SoftecMx
-                                            </p>
+                                                <b>Precio:</b> $000.00<br/>
+                                                <b>Sistema operativo:</b> Linux<br/>
+                                                <b>Donado por:</b> SoftecMx
+                                            </div>
                                         </div>
                                         <div class="card-footer">
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -254,7 +254,7 @@
                                                     <i class="text-warning bx bx-info-circle "></i>
                                                     Ver
                                                 </a> 
-                                                <a href="#" class=" btn btn-danger btn-sm ">
+                                                <a href="estudiante?page=encuesta_socieconomica" class=" btn btn-danger btn-sm ">
                                                     <i class="bx bx-heart"></i>
                                                     Guardar
                                                 </a>

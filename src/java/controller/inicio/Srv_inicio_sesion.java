@@ -58,7 +58,21 @@ public class Srv_inicio_sesion extends HttpServlet {
             ManipulaRol mRol = new ManipulaRol();
             Rol rol = mRol.encontrarId(respuesta.getResponseObject().getIdRol());
             session.setAttribute("rol", rol.getRol());
+           //reCaptcha
+          /*  String remoteAddr = request.getRemoteAddr();
+            ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+            reCaptcha.setPrivateKey("6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak");
 
+            String challenge = request.getParameter("recaptcha_challenge_field");
+            String uresponse = request.getParameter("recaptcha_response_field");
+            ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, uresponse);
+
+            if (reCaptchaResponse.isValid()) {
+                System.out.print("Answer was entered correctly!");
+            } else {
+                System.out.print("Answer is wrong");
+            }
+            */
             switch (rol.getRol()) {
                 case "DONADOR": {
                     //redirectServlet(request, response, "donador");
@@ -66,13 +80,13 @@ public class Srv_inicio_sesion extends HttpServlet {
                 }
                 break;
                 case "DONATARIO": {
-                  //  redirectServlet(request, response, "estudiante");
+                    //  redirectServlet(request, response, "estudiante");
                     response.sendRedirect("estudiante");
                 }
                 break;
                 case "VOLUNTARIO": {
                     //redirectServlet(request, response, "voluntario");
-                     response.sendRedirect("voluntario");
+                    response.sendRedirect("voluntario");
                 }
                 break;
                 case "ADMINISTRADOR": {
@@ -82,7 +96,7 @@ public class Srv_inicio_sesion extends HttpServlet {
                 break;
                 case "PENDIENTE": {
                     redirectServlet(request, response, "Srv_registro?ser=PENDIENTE");
-                    
+
                 }
                 break;
             }
