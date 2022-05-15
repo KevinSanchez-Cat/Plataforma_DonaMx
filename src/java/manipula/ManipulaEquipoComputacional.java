@@ -33,8 +33,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam, "
-                        + "nuevo "
+                        + "capacidadMaximaRam "
                         + ") VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdRecursoTecnologico());
@@ -47,7 +46,6 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                 registro.setString(8, obj.getTipoRAM());
                 registro.setString(9, obj.getVelocidadRAM());
                 registro.setString(10, obj.getCapacidadMaxRAM());
-                registro.setBoolean(11, obj.isNuevo());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -99,8 +97,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                             + "memoriaRam=?, "
                             + "tipoRam=?, "
                             + "velocidadRam=?, "
-                            + "capacidadMaximaRam=?, "
-                            + "nuevo=? "
+                            + "capacidadMaximaRam=? "
                             + "WHERE idEquipoComputacional=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdRecursoTecnologico());
@@ -113,7 +110,6 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     registro.setString(8, nvoObj.getTipoRAM());
                     registro.setString(9, nvoObj.getVelocidadRAM());
                     registro.setString(10, nvoObj.getCapacidadMaxRAM());
-                    registro.setBoolean(11, nvoObj.isNuevo());
                     registro.setInt(12, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
@@ -207,8 +203,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam, "
-                        + "nuevo "
+                        + "capacidadMaximaRam "
                         + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -226,7 +221,6 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     eqCp.setTipoRAM(rs.getString(9));
                     eqCp.setVelocidadRAM(rs.getString(10));
                     eqCp.setCapacidadMaxRAM(rs.getString(11));
-                    eqCp.setNuevo(rs.getBoolean(12));
                     response.add(eqCp);
                 }
             } catch (SQLException ex) {
@@ -257,8 +251,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam, "
-                        + "nuevo "
+                        + "capacidadMaximaRam "
                         + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -276,7 +269,6 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     eqCp.setTipoRAM(rs.getString(9));
                     eqCp.setVelocidadRAM(rs.getString(10));
                     eqCp.setCapacidadMaxRAM(rs.getString(11));
-                    eqCp.setNuevo(rs.getBoolean(12));
                     response.add(eqCp);
                 }
             } catch (SQLException ex) {
@@ -307,8 +299,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam, "
-                        + "nuevo "
+                        + "capacidadMaximaRam "
                         + "FROM EquipoComputacional "
                         + "WHERE idEquipoComputacional=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -328,7 +319,6 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     response.setTipoRAM(rs.getString(9));
                     response.setVelocidadRAM(rs.getString(10));
                     response.setCapacidadMaxRAM(rs.getString(11));
-                    response.setNuevo(rs.getBoolean(12));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -341,5 +331,56 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
             Logg.error("Conexión fallida con la base de datos");
         }
         return response;
+    }
+
+    public EquipoComputacional encontrarIdRecurso(int idRecursoTecnologico) {
+        EquipoComputacional response = null;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idEquipoComputacional, "
+                        + "idRecurso, "
+                        + "nombre, "
+                        + "marca, "
+                        + "idSistemaOperativo, "
+                        + "modelo, "
+                        + "color, "
+                        + "memoriaRam, "
+                        + "tipoRam, "
+                        + "velocidadRam, "
+                        + "capacidadMaximaRam "
+                        + "FROM EquipoComputacional "
+                        + "WHERE idRecurso=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, idRecursoTecnologico);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    response = new EquipoComputacional();
+                    response.setIdEquipoComputacional(rs.getInt(1));
+                    response.setIdRecursoTecnologico(rs.getInt(2));
+                    response.setNombre(rs.getString(3));
+                    response.setMarca(rs.getString(4));
+                    response.setIdSistemaOperativo(rs.getInt(5));
+                    response.setModelo(rs.getString(6));
+                    response.setColor(rs.getString(7));
+                    response.setMemoriaRAM(rs.getString(8));
+                    response.setTipoRAM(rs.getString(9));
+                    response.setVelocidadRAM(rs.getString(10));
+                    response.setCapacidadMaxRAM(rs.getString(11));
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+
     }
 }

@@ -122,8 +122,8 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                     Usuario user = new Usuario();
                     user.setNombreUsuario(username);
                     user.setContraseniia(passwordCifrado);
-                    user.setFechaCreacion(utils.Misc.getDateTimeActualJava());
-                    user.setUltimaConexion(utils.Misc.getDateTimeActualJava());
+                    user.setFechaCreacion(utils.Misc.getDateTimeActualSQL());
+                    user.setUltimaConexion(utils.Misc.getDateTimeActualSQL());
                     user.setEstadoCuenta("C");
                     user.setEstadoLogico(true);
                     user.setConectado(false);

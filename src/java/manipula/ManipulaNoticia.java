@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Mochila;
+import model.Noticia;
 import utils.GenericResponse;
 import utils.Logg;
 import utils.Misc;
@@ -16,23 +16,29 @@ import utils.Misc;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaMochila implements Manipula<Mochila> {
+public class ManipulaNoticia implements Manipula<Noticia> {
 
     @Override
-    public GenericResponse<Mochila> registrar(Mochila obj) {
-        GenericResponse<Mochila> response = new GenericResponse<>();
+    public GenericResponse<Noticia> registrar(Noticia obj) {
+        GenericResponse<Noticia> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO Mochila ("
-                        + "idRecurso, "
-                        + "idEstudiante, "
-                        + "fecha "
-                        + ") VALUES (?,?,?)";
+                String sql = "INSERT INTO Noticias ("
+                        + "idUsusario, "
+                        + "titulo, "
+                        + "autor, "
+                        + "detalle, "
+                        + "fecha, "
+                        + "imagen "
+                        + ") VALUES (?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setInt(1, obj.getIdRecurso());
-                registro.setInt(2, obj.getIdEstudiante());
-                registro.setDate(3, Misc.transformDateTimeJavaSql(obj.getFecha()));
+                registro.setInt(1, obj.getIdUsuario());
+                registro.setString(2, obj.getTitulo());
+                registro.setString(3, obj.getAutor());
+                registro.setString(4, obj.getDetalle());
+                registro.setTimestamp(5, obj.getFecha());
+                registro.setString(6, obj.getImagen());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -59,8 +65,8 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public GenericResponse<Mochila> actualizar(int id) {
-        GenericResponse<Mochila> response = new GenericResponse<>();
+    public GenericResponse<Noticia> actualizar(int id) {
+        GenericResponse<Noticia> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -68,8 +74,8 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public GenericResponse<Mochila> editar(int id, Mochila obj) {
-        GenericResponse<Mochila> response = new GenericResponse<>();
+    public GenericResponse<Noticia> editar(int id, Noticia obj) {
+        GenericResponse<Noticia> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -77,15 +83,15 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public GenericResponse<Mochila> eliminar(int id) {
-        GenericResponse<Mochila> response = new GenericResponse<>();
+    public GenericResponse<Noticia> eliminar(int id) {
+        GenericResponse<Noticia> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Mochila obj = encontrarId(id);
+            Noticia obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM Mochila "
-                            + "WHERE idItem=?";
+                    String sql = "DELETE FROM Noticias "
+                            + "WHERE idNoticias=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -120,26 +126,32 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public List<Mochila> getData() {
-        List<Mochila> response = new ArrayList<>();
+    public List<Noticia> getData() {
+        List<Noticia> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idItem, "
-                        + "idRecurso, "
-                        + "idEstudiante, "
-                        + "fecha "
-                        + "FROM Mochila";
+                        + "idNoticias, "
+                        + "idUsusario, "
+                        + "titulo, "
+                        + "autor, "
+                        + "detalle, "
+                        + "fecha, "
+                        + "imagen "
+                        + "FROM Noticias";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    Mochila sol = new Mochila();
-                    sol.setIdItem(rs.getInt(1));
-                    sol.setIdRecurso(rs.getInt(2));
-                    sol.setIdEstudiante(rs.getInt(3));
-                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    Noticia sol = new Noticia();
+                    sol.setIdNoticia(rs.getInt(1));
+                    sol.setIdUsuario(rs.getInt(2));
+                    sol.setTitulo(rs.getString(3));
+                    sol.setAutor(rs.getString(4));
+                    sol.setDetalle(rs.getString(5));
+                    sol.setFecha(rs.getTimestamp(6));
+                    sol.setImagen(rs.getString(7));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -154,35 +166,43 @@ public class ManipulaMochila implements Manipula<Mochila> {
     }
 
     @Override
-    public List<Mochila> consultar(String... filtros) {
-        List<Mochila> response = new ArrayList<>();
+    public List<Noticia> consultar(String... filtros) {
+        List<Noticia> response = new ArrayList<>();
 
         return response;
     }
 
     @Override
-    public Mochila encontrarId(int id) {
-        Mochila response = null;
+    public Noticia encontrarId(int id) {
+        Noticia response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idItem, "
-                        + "idRecurso, "
-                        + "idEstudiante, "
-                        + "fecha "
-                        + "FROM Mochila "
-                        + "WHERE idItem=?";
+                        + "idNoticias, "
+                        + "idUsusario, "
+                        + "titulo, "
+                        + "autor, "
+                        + "detalle, "
+                        + "fecha, "
+                        + "imagen "
+                        + "FROM Noticias "
+                        + "WHERE idNoticias=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Mochila();
-                    response.setIdItem(rs.getInt(1));
-                    response.setIdRecurso(rs.getInt(2));
-                    response.setIdEstudiante(rs.getInt(3));
-                    response.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+
+                    response = new Noticia();
+                    response.setIdNoticia(rs.getInt(1));
+                    response.setIdUsuario(rs.getInt(2));
+                    response.setTitulo(rs.getString(3));
+                    response.setAutor(rs.getString(4));
+                    response.setDetalle(rs.getString(5));
+                    response.setFecha(rs.getTimestamp(6));
+                    response.setImagen(rs.getString(7));
+
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

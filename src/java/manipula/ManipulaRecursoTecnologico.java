@@ -51,8 +51,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 registro.setString(6, obj.getAutorizado());
                 registro.setString(7, obj.getEstadoPublicacion());
                 registro.setBoolean(8, obj.isEstadoLogico());
-                registro.setDate(9, (Misc.transformDateTimeJavaSql(obj.getFechaPublicacion())));
-                registro.setDate(10, Misc.transformDateTimeJavaSql(obj.getFechaAutorizacion()));
+                registro.setTimestamp(9, obj.getFechaPublicacion());
+                registro.setTimestamp(10,obj.getFechaAutorizacion());
                 registro.setBoolean(11, obj.isRemunerado());
                 registro.setString(12, obj.getEstadoCondicion());
                 registro.setDouble(13, obj.getPrecioOriginal());
@@ -129,8 +129,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     registro.setString(6, nvoObj.getAutorizado());
                     registro.setString(7, nvoObj.getEstadoPublicacion());
                     registro.setBoolean(8, nvoObj.isEstadoLogico());
-                    registro.setDate(9, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
-                    registro.setDate(10, Misc.transformDateTimeJavaSql(nvoObj.getFechaAutorizacion()));
+                    registro.setTimestamp(9, nvoObj.getFechaPublicacion());
+                    registro.setTimestamp(10,nvoObj.getFechaAutorizacion());
                     registro.setBoolean(11, nvoObj.isRemunerado());
                     registro.setString(12, nvoObj.getEstadoCondicion());
                     registro.setDouble(13, nvoObj.getPrecioOriginal());
@@ -254,8 +254,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setAutorizado(rs.getString(7));
                     sol.setEstadoPublicacion(rs.getString(8));
                     sol.setEstadoLogico(rs.getBoolean(9));
-                    sol.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
-                    sol.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
+                    sol.setFechaPublicacion(rs.getTimestamp(10));
+                    sol.setFechaAutorizacion(rs.getTimestamp(11));
                     sol.setRemunerado(rs.getBoolean(12));
                     sol.setEstadoCondicion(rs.getString(13));
                     sol.setPrecioOriginal(rs.getDouble(14));
@@ -316,8 +316,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setAutorizado(rs.getString(7));
                     sol.setEstadoPublicacion(rs.getString(8));
                     sol.setEstadoLogico(rs.getBoolean(9));
-                    sol.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
-                    sol.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
+                    sol.setFechaPublicacion(rs.getTimestamp(10));
+                    sol.setFechaAutorizacion(rs.getTimestamp(11));
                     sol.setRemunerado(rs.getBoolean(12));
                     sol.setEstadoCondicion(rs.getString(13));
                     sol.setPrecioOriginal(rs.getDouble(14));
@@ -380,8 +380,8 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setAutorizado(rs.getString(7));
                     response.setEstadoPublicacion(rs.getString(8));
                     response.setEstadoLogico(rs.getBoolean(9));
-                    response.setFechaPublicacion(Misc.transformDateTimeSqlJava(rs.getDate(10)));
-                    response.setFechaAutorizacion(Misc.transformDateTimeSqlJava(rs.getDate(11)));
+                    response.setFechaPublicacion(rs.getTimestamp(10));
+                    response.setFechaAutorizacion(rs.getTimestamp(11));
                     response.setRemunerado(rs.getBoolean(12));
                     response.setEstadoCondicion(rs.getString(13));
                     response.setPrecioOriginal(rs.getDouble(14));
@@ -457,36 +457,36 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             if (nvoObj != null) {
                 if (nvoObj.getAutorizado().equals("--") && autorizado.equals("Si")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("Si");
-                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualSQL());
                 } else if (nvoObj.getAutorizado().equals("--") && autorizado.equals("No")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("No");
                     nvoObj.setFechaPublicacion(null);
                 } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("Si")) {
                     //Sin accion
                 } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("No")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("No");
                     nvoObj.setFechaPublicacion(null);
                 } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("Si")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("Si");
-                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualSQL());
                 } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("No")) {
                     //Sin accion
                 } else if (nvoObj.getAutorizado().equals("Si") && autorizado.equals("--")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("--");
                     nvoObj.setFechaPublicacion(null);
                 } else if (nvoObj.getAutorizado().equals("No") && autorizado.equals("--")) {
                     nvoObj.setAutorizado(autorizado);
-                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaAutorizacion(Misc.getDateTimeActualSQL());
                     nvoObj.setEstadoPublicacion("--");
                     nvoObj.setFechaPublicacion(null);
                 } else {
@@ -504,9 +504,9 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setString(1, nvoObj.getAutorizado());
-                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaAutorizacion()));
+                    registro.setTimestamp(2, nvoObj.getFechaAutorizacion());
                     registro.setString(3, nvoObj.getEstadoPublicacion());
-                    registro.setDate(4, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
+                    registro.setTimestamp(4, nvoObj.getFechaPublicacion());
                     registro.setInt(5, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
@@ -554,7 +554,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     nvoObj.setFechaPublicacion(null);
                 } else if (nvoObj.getAutorizado().equals("Si") && publicacion.equals("Si")) {
                     nvoObj.setEstadoPublicacion("Si");
-                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualJava());
+                    nvoObj.setFechaPublicacion(Misc.getDateTimeActualSQL());
                 } else if (nvoObj.getAutorizado().equals("Si") && publicacion.equals("No")) {
                     nvoObj.setEstadoPublicacion("No");
                     nvoObj.setFechaPublicacion(null);
@@ -581,7 +581,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setString(1, nvoObj.getEstadoPublicacion());
-                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaPublicacion()));
+                    registro.setTimestamp(2, nvoObj.getFechaPublicacion());
                     registro.setInt(3, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {

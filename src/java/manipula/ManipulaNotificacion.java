@@ -17,6 +17,7 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaNotificacion implements Manipula<Notificacion> {
+
     @Override
     public GenericResponse<Notificacion> registrar(Notificacion obj) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
@@ -32,7 +33,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                         + ") VALUES (?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdUsuarioDestino());
-                registro.setDate(2, Misc.transformDateTimeJavaSql(obj.getFechaNotificacion()));
+                registro.setTimestamp(2, obj.getFechaNotificacion());
                 registro.setString(3, obj.getEstadoVisualizacion());
                 registro.setString(4, obj.getPrioridad());
                 registro.setString(5, obj.getMensaje());
@@ -133,7 +134,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                             + "WHERE idNotificacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdUsuarioDestino());
-                    registro.setDate(2, Misc.transformDateTimeJavaSql(nvoObj.getFechaNotificacion()));
+                    registro.setTimestamp(2, nvoObj.getFechaNotificacion());
                     registro.setString(3, nvoObj.getEstadoVisualizacion());
                     registro.setString(4, nvoObj.getPrioridad());
                     registro.setString(5, nvoObj.getMensaje());
@@ -233,7 +234,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                 while (rs.next()) {
                     response.add(new Notificacion(rs.getInt(1),
                             rs.getInt(2),
-                            Misc.transformDateTimeSqlJava(rs.getDate(3)),
+                            rs.getTimestamp(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6)));
@@ -267,7 +268,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Notificacion(rs.getInt(1), rs.getInt(2), Misc.transformDateTimeSqlJava(rs.getDate(3)), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    response.add(new Notificacion(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getString(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -303,7 +304,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                     response = new Notificacion();
                     response.setIdNotificacion(rs.getInt(1));
                     response.setIdUsuarioDestino(rs.getInt(2));
-                    response.setFechaNotificacion(Misc.transformDateTimeSqlJava(rs.getDate(3)));
+                    response.setFechaNotificacion(rs.getTimestamp(3));
                     response.setEstadoVisualizacion(rs.getString(4));
                     response.setPrioridad(rs.getString(5));
                     response.setMensaje(rs.getString(6));

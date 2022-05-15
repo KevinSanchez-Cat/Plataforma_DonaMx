@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -13,13 +14,13 @@ public class Solicitud {
     private int idRecursoTecnologico;
     private int idArchivo;
     private String estadoSolicitud;
-    private Date fechaSolicitud;
-    private Date fechaRespuesta;
+    private Timestamp fechaSolicitud;
+    private Timestamp fechaRespuesta;
 
     public Solicitud() {
     }
 
-    public Solicitud(int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Date fechaSolicitud) {
+    public Solicitud(int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Timestamp fechaSolicitud) {
         this.idUsuario = idUsuario;
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.idArchivo = idArchivo;
@@ -27,7 +28,7 @@ public class Solicitud {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public Solicitud(int idSolicitud, int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Date fechaSolicitud, Date fechaRespuesta) {
+    public Solicitud(int idSolicitud, int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Timestamp fechaSolicitud, Timestamp fechaRespuesta) {
         this.idSolicitud = idSolicitud;
         this.idUsuario = idUsuario;
         this.idRecursoTecnologico = idRecursoTecnologico;
@@ -37,19 +38,19 @@ public class Solicitud {
         this.fechaRespuesta = fechaRespuesta;
     }
 
-    public Date getFechaRespuesta() {
+    public Timestamp getFechaRespuesta() {
         return fechaRespuesta;
     }
 
-    public void setFechaRespuesta(Date fechaRespuesta) {
+    public void setFechaRespuesta(Timestamp fechaRespuesta) {
         this.fechaRespuesta = fechaRespuesta;
     }
 
-    public Date getFechaSolicitud() {
+    public Timestamp getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(Timestamp fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 

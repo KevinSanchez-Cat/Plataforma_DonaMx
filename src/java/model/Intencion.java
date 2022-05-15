@@ -1,6 +1,7 @@
 
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -13,15 +14,15 @@ public class Intencion {
     private int idUsuario;
     private String tituloIntencion;
     private String descripcion;
-    private Date fechaIntencion;
+    private Timestamp fechaIntencion;
     private String estadoIntencion;
     private String respuestaIntencion;
-    private Date fechaRespuesta;
+    private Timestamp fechaRespuesta;
 
     public Intencion() {
     }
 
-    public Intencion(int idUsuario, String tituloIntencion, String descripcion, Date fechaIntencion, String estadoIntencion) {
+    public Intencion(int idUsuario, String tituloIntencion, String descripcion, Timestamp fechaIntencion, String estadoIntencion) {
         this.idUsuario = idUsuario;
         this.tituloIntencion = tituloIntencion;
         this.descripcion = descripcion;
@@ -29,7 +30,7 @@ public class Intencion {
         this.estadoIntencion = estadoIntencion;
     }
 
-    public Intencion(int idIntencion, int idUsuario, String tituloIntencion, String descripcion, Date fechaIntencion, String estadoIntencion, String respuestaIntencion, Date fechaRespuesta) {
+    public Intencion(int idIntencion, int idUsuario, String tituloIntencion, String descripcion, Timestamp fechaIntencion, String estadoIntencion, String respuestaIntencion, Timestamp fechaRespuesta) {
         this.idIntencion = idIntencion;
         this.idUsuario = idUsuario;
         this.tituloIntencion = tituloIntencion;
@@ -40,11 +41,11 @@ public class Intencion {
         this.fechaRespuesta = fechaRespuesta;
     }
 
-    public Date getFechaRespuesta() {
+    public Timestamp getFechaRespuesta() {
         return fechaRespuesta;
     }
 
-    public void setFechaRespuesta(Date fechaRespuesta) {
+    public void setFechaRespuesta(Timestamp fechaRespuesta) {
         this.fechaRespuesta = fechaRespuesta;
     }
 
@@ -64,11 +65,11 @@ public class Intencion {
         this.estadoIntencion = estadoIntencion;
     }
 
-    public Date getFechaIntencion() {
+    public Timestamp getFechaIntencion() {
         return fechaIntencion;
     }
 
-    public void setFechaIntencion(Date fechaIntencion) {
+    public void setFechaIntencion(Timestamp fechaIntencion) {
         this.fechaIntencion = fechaIntencion;
     }
 

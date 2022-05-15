@@ -19,7 +19,7 @@ public class Direccion {
     private String calleDerecha;
     private String tipoAsentamiento;
     private String nombreAsentamiento;
-
+    private String codigoPostal;
     private int idUsuario;
 
     public Direccion() {
@@ -51,6 +51,32 @@ public class Direccion {
         this.tipoAsentamiento = tipoAsentamiento;
         this.nombreAsentamiento = nombreAsentamiento;
         this.idUsuario = idUsuario;
+    }
+
+    public Direccion(int idDireccion, int idEstado, int idMunicipio, int idLocalidad, String referencias, String calleInteriorYNumero, String calleExteriorYNumero, String calleFrontal, String calleTrasera, String calleIzquierda, String calleDerecha, String tipoAsentamiento, String nombreAsentamiento, String codigoPostal, int idUsuario) {
+        this.idDireccion = idDireccion;
+        this.idEstado = idEstado;
+        this.idMunicipio = idMunicipio;
+        this.idLocalidad = idLocalidad;
+        this.referencias = referencias;
+        this.calleInteriorYNumero = calleInteriorYNumero;
+        this.calleExteriorYNumero = calleExteriorYNumero;
+        this.calleFrontal = calleFrontal;
+        this.calleTrasera = calleTrasera;
+        this.calleIzquierda = calleIzquierda;
+        this.calleDerecha = calleDerecha;
+        this.tipoAsentamiento = tipoAsentamiento;
+        this.nombreAsentamiento = nombreAsentamiento;
+        this.codigoPostal = codigoPostal;
+        this.idUsuario = idUsuario;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
     public int getIdUsuario() {

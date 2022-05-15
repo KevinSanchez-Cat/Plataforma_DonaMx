@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -17,8 +17,8 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private String autorizado; //Pendiente, Autorizado, No autorizado
     private String estadoPublicacion;
     private boolean estadoLogico;
-    private Date fechaPublicacion;
-    private Date fechaAutorizacion;   
+    private Timestamp fechaPublicacion;
+    private Timestamp fechaAutorizacion;   
     private boolean remunerado;
     private String estadoCondicion;
     private double precioOriginal;
@@ -51,7 +51,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.nombreRecurso = nombreRecurso;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso) {
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso) {
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
@@ -72,7 +72,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.nombreRecurso = nombreRecurso;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso, String certificado, int edadMinima, int edadMaxima, String estadoConvocatoria, String otrosDetalles, String detalleEnvio, double costoEnvio, String conCosto) {
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso, String certificado, int edadMinima, int edadMaxima, String estadoConvocatoria, String otrosDetalles, String detalleEnvio, double costoEnvio, String conCosto) {
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
@@ -157,19 +157,19 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.remunerado = remunerado;
     }
 
-    public Date getFechaAutorizacion() {
+    public Timestamp getFechaAutorizacion() {
         return fechaAutorizacion;
     }
 
-    public void setFechaAutorizacion(Date fechaAutorizacion) {
+    public void setFechaAutorizacion(Timestamp fechaAutorizacion) {
         this.fechaAutorizacion = fechaAutorizacion;
     }
 
-    public Date getFechaPublicacion() {
+    public Timestamp getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
+    public void setFechaPublicacion(Timestamp fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 

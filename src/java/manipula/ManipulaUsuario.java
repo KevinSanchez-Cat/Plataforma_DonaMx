@@ -51,8 +51,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setString(1, obj.getNombreUsuario());
                 registro.setString(2, obj.getContraseniia());
-                registro.setDate(3, Misc.transformDateTimeJavaSql(obj.getFechaCreacion()));
-                registro.setDate(4, Misc.transformDateTimeJavaSql(obj.getUltimaConexion()));
+                registro.setTimestamp(3, obj.getFechaCreacion());
+                registro.setTimestamp(4, obj.getUltimaConexion());
                 registro.setString(5, obj.getEstadoCuenta());
                 registro.setBoolean(6, obj.isEstadoLogico());
                 registro.setBoolean(7, obj.isConectado());
@@ -101,14 +101,14 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 } else {
                     obj.setConectado(true);
                 }
-                obj.setUltimaConexion(Misc.getDateTimeActualJava());
+                obj.setUltimaConexion(Misc.getDateTimeActualSQL());
                 try {
                     String sql = "UPDATE Usuario SET "
                             + "ultimaConexion=?, "
                             + "conectado=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setDate(1, Misc.transformDateTimeJavaSql(obj.getUltimaConexion()));
+                    registro.setTimestamp(1, obj.getUltimaConexion());
                     registro.setBoolean(2, obj.isConectado());
                     registro.setInt(3, id);
                     int r = registro.executeUpdate();
@@ -281,8 +281,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Usuario user = new Usuario();
                     user.setIdUsuario(rs.getInt(1));
                     user.setNombreUsuario(rs.getString(2));
-                    user.setFechaCreacion(rs.getDate(3));
-                    user.setUltimaConexion(rs.getDate(4));
+                    user.setFechaCreacion(rs.getTimestamp(3));
+                    user.setUltimaConexion(rs.getTimestamp(4));
                     user.setEstadoCuenta(rs.getString(5));
                     user.setEstadoLogico(rs.getBoolean(6));
                     user.setConectado(rs.getBoolean(7));
@@ -350,8 +350,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response = new Usuario();
                     response.setIdUsuario(rs.getInt(1));
                     response.setNombreUsuario(rs.getString(2));
-                    response.setFechaCreacion(rs.getDate(3));
-                    response.setUltimaConexion(rs.getDate(4));
+                    response.setFechaCreacion(rs.getTimestamp(3));
+                    response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
                     response.setEstadoLogico(rs.getBoolean(6));
                     response.setConectado(rs.getBoolean(7));
@@ -367,7 +367,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -408,8 +408,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response = new Usuario();
                     response.setIdUsuario(rs.getInt(1));
                     response.setNombreUsuario(rs.getString(2));
-                    response.setFechaCreacion(rs.getDate(3));
-                    response.setUltimaConexion(rs.getDate(4));
+                    response.setFechaCreacion(rs.getTimestamp(3));
+                    response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
                     response.setEstadoLogico(rs.getBoolean(6));
                     response.setConectado(rs.getBoolean(7));
@@ -467,8 +467,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response = new Usuario();
                     response.setIdUsuario(rs.getInt(1));
                     response.setNombreUsuario(rs.getString(2));
-                    response.setFechaCreacion(rs.getDate(3));
-                    response.setUltimaConexion(rs.getDate(4));
+                    response.setFechaCreacion(rs.getTimestamp(3));
+                    response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
                     response.setEstadoLogico(rs.getBoolean(6));
                     response.setConectado(rs.getBoolean(7));
@@ -484,7 +484,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -525,8 +525,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response = new Usuario();
                     response.setIdUsuario(rs.getInt(1));
                     response.setNombreUsuario(rs.getString(2));
-                    response.setFechaCreacion(rs.getDate(3));
-                    response.setUltimaConexion(rs.getDate(4));
+                    response.setFechaCreacion(rs.getTimestamp(3));
+                    response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
                     response.setEstadoLogico(rs.getBoolean(6));
                     response.setConectado(rs.getBoolean(7));
@@ -578,12 +578,12 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdRecursoTecnologico(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setEstadoSolicitud(rs.getString(5));
-                    sol.setFechaSolicitud(Misc.transformDateTimeSqlJava(rs.getDate(6)));
-                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(7)));
+                    sol.setFechaSolicitud(rs.getTimestamp(6));
+                    sol.setFechaRespuesta(rs.getTimestamp(7));
                     lstSolicitud.add(sol);
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -621,14 +621,14 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdDonatario(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getDate(6));
+                    sol.setFechaDonacion(rs.getTimestamp(3));
                     sol.setEstadoDonacion(rs.getString(7));
                     sol.setNoConfirmacion(rs.getString(8));
                     sol.setRemunerado(rs.getBoolean(9));
                     lstDonacion.add(sol);
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -666,14 +666,14 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdDonatario(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getDate(6));
+                    sol.setFechaDonacion(rs.getTimestamp(6));
                     sol.setEstadoDonacion(rs.getString(7));
                     sol.setNoConfirmacion(rs.getString(8));
                     sol.setRemunerado(rs.getBoolean(9));
                     lstDonacion.add(sol);
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -705,7 +705,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     lstGaleria.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -748,7 +748,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     lstIntencion.add(sol);
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -804,7 +804,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -833,10 +833,10 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    lstNotificacion.add(new Notificacion(rs.getInt(1), rs.getInt(2), Misc.transformDateTimeSqlJava(rs.getDate(3)), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    lstNotificacion.add(new Notificacion(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getString(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -878,7 +878,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         }
                     } catch (SQLException e) {
                         tipoAcceso = "Default";
-                        Logg.error("Fallo la asignacion de IdRol "+e.getMessage());
+                        Logg.error("Fallo la asignacion de IdRol " + e.getMessage());
                     }
                 } else {
                     tipoAcceso = "Default";
@@ -886,7 +886,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 }
             } catch (SQLException ex) {
                 tipoAcceso = "Default";
-                Logg.error("Comunicación fallida con la base de datos "+ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -939,7 +939,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -1009,7 +1009,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
-                Logg.error("Comunicación fallida con la base de datos "+ ex.getMessage());
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
             } finally {
                 conexionDB.desconectar();
             }
@@ -1139,7 +1139,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         Logg.error("Edición fallido en la base de datos");
                     }
                 } catch (SQLException ex) {
-                    Logg.error("Error de comunicación con la base de datos "+ ex.getMessage());
+                    Logg.error("Error de comunicación con la base de datos " + ex.getMessage());
                 } finally {
                     conexionDB.desconectar();
                 }

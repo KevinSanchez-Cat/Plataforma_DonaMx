@@ -573,7 +573,7 @@
                                 </div>
                             </div><!-- End Revenue Card -->
                             <!-- Customers Card -->
-                            <div class="col-6  col-sm-6 col-xxl-4 col-xl-5">
+                            <div class="col-6  col-sm-6 col-xxl-6 col-xl-6">
 
                                 <div class="card bg-red-light info-card donaciones-card">
                                     <div class="card-body">
@@ -594,7 +594,7 @@
 
                             </div><!-- End Customers Card -->
                             <!-- Customers Card -->
-                            <div class="col-6 col-sm-6 col-xxl-4 col-xl-6">
+                            <div class="col-6 col-sm-6 col-xxl-6 col-xl-6">
 
                                 <div class="card bg-green-light info-card donaciones-economicas-card">
                                     <div class="card-body">

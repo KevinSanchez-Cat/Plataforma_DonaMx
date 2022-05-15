@@ -26,13 +26,13 @@ public class Prb {
         List<Rol> lst = m.getData();
         lst.forEach(System.out::println);
         
-        ManipulaNotificacion manipula=new ManipulaNotificacion();
+        /*ManipulaNotificacion manipula=new ManipulaNotificacion();
         Notificacion notificacion=new Notificacion();
         notificacion.setEstadoVisualizacion("0");
         notificacion.setFechaNotificacion(utils.Misc.getDateTimeActualJava());
         notificacion.setIdUsuarioDestino(4);
         notificacion.setMensaje("Tu registro fue exitoso!");
-        notificacion.setPrioridad("0");
+        notificacion.setPrioridad("0");*/
        // GenericResponse<Notificacion> resouesta=manipula.registrar(notificacion);
        
         //System.out.println(resouesta.getMensaje());

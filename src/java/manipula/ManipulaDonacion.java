@@ -39,7 +39,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                 registro.setInt(2, obj.getIdDonatario());
                 registro.setInt(3, obj.getIdArchivo());
                 registro.setInt(4, obj.getIdRecursoTecnologico());
-                registro.setDate(5, Misc.transformDateTimeJavaSql(obj.getFechaDonacion()));
+                registro.setTimestamp(5, obj.getFechaDonacion());
                 registro.setString(6, obj.getEstadoDonacion());
                 registro.setString(7, obj.getNoConfirmacion());
                 registro.setBoolean(8, obj.getRemunerado());
@@ -224,7 +224,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     registro.setInt(2, nvoObj.getIdDonatario());
                     registro.setInt(3, nvoObj.getIdArchivo());
                     registro.setInt(4, nvoObj.getIdRecursoTecnologico());
-                    registro.setDate(5, Misc.transformDateTimeJavaSql(nvoObj.getFechaDonacion()));
+                    registro.setTimestamp(5, nvoObj.getFechaDonacion());
                     registro.setString(6, nvoObj.getEstadoDonacion());
                     registro.setString(7, nvoObj.getNoConfirmacion());
                     registro.setBoolean(8, nvoObj.getRemunerado());
@@ -331,7 +331,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setIdDonatario(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getDate(6));
+                    sol.setFechaDonacion(rs.getTimestamp(6));
                     sol.setEstadoDonacion(rs.getString(7));
                     sol.setNoConfirmacion(rs.getString(8));
                     sol.setRemunerado(rs.getBoolean(9));
@@ -375,7 +375,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setIdDonatario(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getDate(6));
+                    sol.setFechaDonacion(rs.getTimestamp(6));
                     sol.setEstadoDonacion(rs.getString(7));
                     sol.setNoConfirmacion(rs.getString(8));
                     sol.setRemunerado(rs.getBoolean(9));
@@ -421,7 +421,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     response.setIdDonatario(rs.getInt(3));
                     response.setIdArchivo(rs.getInt(4));
                     response.setIdRecursoTecnologico(rs.getInt(5));
-                    response.setFechaDonacion(rs.getDate(6));
+                    response.setFechaDonacion(rs.getTimestamp(6));
                     response.setEstadoDonacion(rs.getString(7));
                     response.setNoConfirmacion(rs.getString(8));
                     response.setRemunerado(rs.getBoolean(9));

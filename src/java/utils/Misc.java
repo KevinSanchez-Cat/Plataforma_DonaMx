@@ -1,5 +1,6 @@
 package utils;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,22 +24,40 @@ public class Misc {
         return date;
     }
 
-    public static java.sql.Date getDateTimeActualSQL() {
+    public static java.sql.Date getDateActualSQL() {
         long miliseconds = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(miliseconds);
         return date;
     }
 
-    public static java.sql.Date transformDateTimeJavaSql(java.util.Date jDate) {
+    public static Timestamp getDateTimeActualSQL() {
+        long miliseconds = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(miliseconds);
+        return timestamp;
+    }
+
+    public static java.sql.Date transformDateJavaSql(java.util.Date jDate) {
         long timeInMilliSeconds = jDate.getTime();
         java.sql.Date sqlDate = new java.sql.Date(timeInMilliSeconds);
         return sqlDate;
     }
 
-    public static java.util.Date transformDateTimeSqlJava(java.sql.Date sqlDate) {
+    public static Timestamp transformDateTimeJavaSql(java.util.Date jDate) {
+        long timeInMilliSeconds = jDate.getTime();
+        Timestamp timestamp = new Timestamp(timeInMilliSeconds);
+        return timestamp;
+    }
+
+    public static java.util.Date transformDateSqlJava(java.sql.Date sqlDate) {
         long timeInMilliSeconds = sqlDate.getTime();
         java.sql.Date jDate = new java.sql.Date(timeInMilliSeconds);
         return jDate;
+    }
+
+    public static Timestamp transformDateTimeSqlJava(java.sql.Date sqlDate) {
+        long timeInMilliSeconds = sqlDate.getTime();
+        Timestamp timestamp = new Timestamp(timeInMilliSeconds);
+        return timestamp;
     }
 
     public static String getFormatDate(Object date) {

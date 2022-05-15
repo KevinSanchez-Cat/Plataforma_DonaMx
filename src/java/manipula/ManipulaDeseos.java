@@ -24,7 +24,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-               
+
                 String sql = "INSERT INTO Deseo ("
                         + "idRecurso, "
                         + "idEstudiante, "
@@ -33,7 +33,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdRecurso());
                 registro.setInt(2, obj.getIdEstudiante());
-                registro.setDate(3, Misc.transformDateTimeJavaSql(obj.getFecha()));
+                registro.setTimestamp(3, obj.getFecha());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -140,7 +140,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                     sol.setIdItem(rs.getInt(1));
                     sol.setIdRecurso(rs.getInt(2));
                     sol.setIdEstudiante(rs.getInt(3));
-                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    sol.setFecha(rs.getTimestamp(4));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -174,7 +174,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                     sol.setIdItem(rs.getInt(1));
                     sol.setIdRecurso(rs.getInt(2));
                     sol.setIdEstudiante(rs.getInt(3));
-                    sol.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    sol.setFecha(rs.getTimestamp(4));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -210,7 +210,7 @@ public class ManipulaDeseos implements Manipula<Deseo> {
                     response.setIdItem(rs.getInt(1));
                     response.setIdRecurso(rs.getInt(2));
                     response.setIdEstudiante(rs.getInt(3));
-                    response.setFecha(Misc.transformDateTimeSqlJava(rs.getDate(4)));
+                    response.setFecha(rs.getTimestamp(4));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

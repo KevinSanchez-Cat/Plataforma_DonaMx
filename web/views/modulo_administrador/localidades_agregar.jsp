@@ -547,6 +547,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                 <div class="col-md-3 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Codigo postal</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                        <div class="valid-tooltip">
+                                            Se mira bien!
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <br/>
                             <div class="col-12 text-end">

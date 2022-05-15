@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ public class Usuario {
     private int idUsuario;
     private String nombreUsuario;
     private String contraseniia;
-    private Date ultimaConexion;//DATE TIME
+    private Timestamp ultimaConexion;//DATE TIME
     private String estadoCuenta;
     private boolean conectado;
     private String correoElectronico;
@@ -20,7 +21,7 @@ public class Usuario {
     private boolean autenticacionDosPasos;
     private int conteoAccesosFallidos;
     private boolean estadoLogico;
-    private Date fechaCreacion;
+    private Timestamp fechaCreacion;
     private int idRol;
     private String foto;
     private boolean numeroCelularConfirmado;
@@ -29,7 +30,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Date fechaCreacion, int idRol) {
+    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Timestamp fechaCreacion, int idRol) {
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
         this.estadoCuenta = estadoCuenta;
@@ -41,7 +42,7 @@ public class Usuario {
         this.idRol = idRol;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Timestamp fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -60,7 +61,7 @@ public class Usuario {
         this.numeroCelularConfirmado = numeroCelularConfirmado;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado, String token) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Timestamp fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado, String token) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -112,11 +113,11 @@ public class Usuario {
         this.estadoLogico = estadoLogico;
     }
 
-    public Date getFechaCreacion() {
+    public Timestamp getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -184,11 +185,11 @@ public class Usuario {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public Date getUltimaConexion() {
+    public Timestamp getUltimaConexion() {
         return ultimaConexion;
     }
 
-    public void setUltimaConexion(Date ultimaConexion) {
+    public void setUltimaConexion(Timestamp ultimaConexion) {
         this.ultimaConexion = ultimaConexion;
     }
 

@@ -548,6 +548,7 @@
                                     <th scope="col">Estado</th>
                                     <th scope="col">Municipio</th>
                                     <th scope="col">Localidad</th>
+                                      <th scope="col">Codigo Postal</th>
                                     <th scope="col">Acción</th>
                                 </tr>
                             </thead>
@@ -555,6 +556,7 @@
                                 <tr> 
                                     <th>#1213</th>
                                     <td>Licencias</td>
+                                    <td>La organización ha solicitado su autorizacion</td> 
                                     <td>La organización ha solicitado su autorizacion</td> 
                                     <td>La organización ha solicitado su autorizacion</td> 
                                     <td>

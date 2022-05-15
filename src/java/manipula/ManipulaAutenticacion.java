@@ -51,14 +51,14 @@ public class ManipulaAutenticacion {
                     conexionDB.desconectar();
                 } else {
                     respuesta.setConectado(true);
-                    respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
+                    respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
                     try {
                         String sql = "UPDATE Usuario SET "
                                 + "ultimaConexion=?, "
                                 + "conectado=? "
                                 + "WHERE idUsuario=?";
                         PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                        registro.setDate(1, Misc.transformDateTimeJavaSql(respuesta.getUltimaConexion()));
+                        registro.setTimestamp(1, respuesta.getUltimaConexion());
                         registro.setBoolean(2, respuesta.isConectado());
                         registro.setInt(3, respuesta.getIdUsuario());
                         int r = registro.executeUpdate();
@@ -102,14 +102,14 @@ public class ManipulaAutenticacion {
                 if (respuesta != null) {
                     if (respuesta.isConectado()) {
                         respuesta.setConectado(false);
-                        respuesta.setUltimaConexion(Misc.getDateTimeActualJava());
+                        respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
                         try {
                             String sql = "UPDATE Usuario SET "
                                     + "ultimaConexion=?, "
                                     + "conectado=? "
                                     + "WHERE idUsuario=?";
                             PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                            registro.setDate(1, Misc.transformDateTimeJavaSql(respuesta.getUltimaConexion()));
+                            registro.setTimestamp(1, respuesta.getUltimaConexion());
                             registro.setBoolean(2, respuesta.isConectado());
                             registro.setInt(3, respuesta.getIdUsuario());
                             int r = registro.executeUpdate();

@@ -1,6 +1,7 @@
 
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ public class Documento extends Archivo{
     public Documento() {
     }
 
-    public Documento(String seccion, String motivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public Documento(String seccion, String motivo, String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         super(nombreArchivo, extension, tamanio, fechaCreacion, urlDestino, usuario);
         this.seccion = seccion;
         this.motivo = motivo;

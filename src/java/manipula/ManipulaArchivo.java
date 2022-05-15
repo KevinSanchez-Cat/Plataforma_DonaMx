@@ -36,7 +36,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                 registro.setString(1, obj.getNombreArchivo());
                 registro.setString(2, obj.getExtension());
                 registro.setDouble(3, obj.getTamanio());
-                registro.setDate(4, Misc.transformDateTimeJavaSql(obj.getFechaCreacion()));
+                registro.setTimestamp(4, obj.getFechaCreacion());
                 registro.setString(5, obj.getUrlDestino());
                 registro.setInt(6, obj.getIdUsuario());
                 int r = registro.executeUpdate();
@@ -92,7 +92,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                     registro.setString(1, nvoObj.getNombreArchivo());
                     registro.setString(2, nvoObj.getExtension());
                     registro.setDouble(3, nvoObj.getTamanio());
-                    registro.setDate(4, Misc.transformDateTimeJavaSql(nvoObj.getFechaCreacion()));
+                    registro.setTimestamp(4, nvoObj.getFechaCreacion());
                     registro.setString(5, nvoObj.getUrlDestino());
                     registro.setInt(6, nvoObj.getIdUsuario());
                     registro.setInt(7, id);
@@ -195,7 +195,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                     sol.setNombreArchivo(rs.getString(2));
                     sol.setExtension(rs.getString(3));
                     sol.setTamanio(rs.getDouble(4));
-                    sol.setFechaCreacion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    sol.setFechaCreacion(rs.getTimestamp(5));
                     sol.setUrlDestino(rs.getString(6));
                     sol.setIdUsuario(rs.getInt(7));
                     response.add(sol);
@@ -235,7 +235,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                     sol.setNombreArchivo(rs.getString(2));
                     sol.setExtension(rs.getString(3));
                     sol.setTamanio(rs.getDouble(4));
-                    sol.setFechaCreacion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    sol.setFechaCreacion(rs.getTimestamp(5));
                     sol.setUrlDestino(rs.getString(6));
                     sol.setIdUsuario(rs.getInt(7));
                     response.add(sol);
@@ -277,7 +277,7 @@ public class ManipulaArchivo implements Manipula<Archivo> {
                     response.setNombreArchivo(rs.getString(2));
                     response.setExtension(rs.getString(3));
                     response.setTamanio(rs.getDouble(4));
-                    response.setFechaCreacion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    response.setFechaCreacion(rs.getTimestamp(5));
                     response.setUrlDestino(rs.getString(6));
                     response.setIdUsuario(rs.getInt(7));
                 } else {

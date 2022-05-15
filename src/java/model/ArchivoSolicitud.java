@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -10,12 +11,12 @@ public class ArchivoSolicitud extends Archivo {
 
     private int idSolicitud;
 
-    public ArchivoSolicitud(int idSolicitud, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public ArchivoSolicitud(int idSolicitud, String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         super(nombreArchivo, extension, tamanio, fechaCreacion, urlDestino, usuario);
         this.idSolicitud = idSolicitud;
     }
 
-    public ArchivoSolicitud(int idSolicitud, int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public ArchivoSolicitud(int idSolicitud, int idArchivo, String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         super(idArchivo, nombreArchivo, extension, tamanio, fechaCreacion, urlDestino, usuario);
         this.idSolicitud = idSolicitud;
     }

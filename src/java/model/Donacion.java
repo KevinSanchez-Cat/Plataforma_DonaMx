@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ public class Donacion {
     private int idDonador;
     private int idArchivo;
     private int idRecursoTecnologico;
-    private Date fechaDonacion;  
+    private Timestamp fechaDonacion;  
     private String estadoDonacion;
     private String noConfirmacion;
     private boolean remunerado;
@@ -26,7 +27,7 @@ public class Donacion {
     public Donacion() {
     }
 
-    public Donacion(int donatario, int donador, int archivo, int recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int donatario, int donador, int archivo, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
         this.idDonatario = donatario;
         this.idDonador = donador;
         this.idArchivo = archivo;
@@ -37,7 +38,7 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int donatario, int donador, int archivo, int recursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int idDonacion, int donatario, int donador, int archivo, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
         this.idDonacion = idDonacion;
         this.idDonatario = donatario;
         this.idDonador = donador;
@@ -49,7 +50,7 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int idDonatario, int idDonador, int idArchivo, int idRecursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
+    public Donacion(int idDonacion, int idDonatario, int idDonador, int idArchivo, int idRecursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
         this.idDonacion = idDonacion;
         this.idDonatario = idDonatario;
         this.idDonador = idDonador;
@@ -130,11 +131,11 @@ public class Donacion {
         this.estadoDonacion = estadoDonacion;
     }
 
-    public Date getFechaDonacion() {
+    public Timestamp getFechaDonacion() {
         return fechaDonacion;
     }
 
-    public void setFechaDonacion(Date fechaDonacion) {
+    public void setFechaDonacion(Timestamp fechaDonacion) {
         this.fechaDonacion = fechaDonacion;
     }
 

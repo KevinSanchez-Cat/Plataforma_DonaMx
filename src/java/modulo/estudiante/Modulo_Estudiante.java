@@ -33,13 +33,34 @@ public class Modulo_Estudiante extends HttpServlet {
         if (session != null) {
             String username = (String) session.getAttribute("username");
             //  session.setMaxInactiveInterval(60);//session timeout in seconds 
-            long hora = utils.Misc.getDateTimeActualJava().getTime();
-            long milisegundos = hora - (session.getLastAccessedTime());
-            int timepoInactividad = (int) (milisegundos / 1000 / 60);
+            // long hora = utils.Misc.getDateTimeActualJava().getTime();
+            // long milisegundos = hora - (session.getLastAccessedTime());
+            //int timepoInactividad = (int) (milisegundos / 1000 / 60);
             ManipulaCategoria mCategoria = null;
             ManipulaUsuario mUsuario = null;
+            ManipulaEstudiante mEstudiante = null;
+            ManipulaDireccion mDireccion = null;
+            ManipulaEstado mEstado = null;
+            ManipulaMunicipio mMunicipio = null;
+            ManipulaLocalidad mLocalidad = null;
+            ManipulaRecursoTecnologico mRecursosTecnologicos = null;
+            ManipulaEquipoComputacional mEquiposComputacionales = null;
+            ManipulaGaleria mGaleria = null;
+            ManipulaArchivo mArchivos = null;
+            ManipulaSolicitud mSolicitudes = null;
+            ManipulaDeseos mDeseos = null;
+            ManipulaDonacion mDonaciones = null;
+
             RequestDispatcher dispatcher = null;
             List<RecursoTecnologico> lstRecursosTecnologicos = null;
+            List<Categoria> lstCategorias = null;
+            List<EquipoComputacional> lstEquiposComputacionalesDonados = null;
+            List<EquipoComputacional> lstEquiposComputacionalesRemunerados = null;
+            List<Deseo> lstDeseos = null;
+            List<Donacion> lstDonaciones = null;
+            List<Notificacion> lstNotificaciones = null;
+            Estudiante estudiante = null;
+
             if (username != null) {
                 String rol = String.valueOf(session.getAttribute("rol"));
                 if (rol == null) {
@@ -48,20 +69,21 @@ public class Modulo_Estudiante extends HttpServlet {
                     if (rol.equals("DONATARIO")) {
                         mUsuario = new ManipulaUsuario();
                         int idUser = (int) session.getAttribute("idUser");
-                        List<Deseo> lstDeseos = null;
-                        List<Donacion> lstDonaciones = mUsuario.getDonacionRecibidas(idUser);
-                        List<Notificacion> lstNotificaciones = mUsuario.getNotificacion(idUser);
-                        Estudiante estudiante = mUsuario.getEstudiante(idUser);
-                        if (estudiante == null) {
-                            if (estudiante != null) {
-                                ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
-                                lstDeseos = mEstudiante.getListaDeseos(estudiante.getIdEstudiante());
-                            }
+
+                        lstDonaciones = mUsuario.getDonacionRecibidas(idUser);
+                        lstNotificaciones = mUsuario.getNotificacion(idUser);
+                        estudiante = mUsuario.getEstudiante(idUser);
+
+                        if (estudiante != null) {
+                            mEstudiante = new ManipulaEstudiante();
+                            lstDeseos = mEstudiante.getListaDeseos(estudiante.getIdEstudiante());
                         }
+
                         request.setAttribute("lstDeseos", lstDeseos);
                         request.setAttribute("estudiante", estudiante);
                         request.setAttribute("lstNotificaciones", lstNotificaciones);
                         request.setAttribute("lstDonaciones", lstDonaciones);
+
                         if (page == null) {
                             dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
                         } else {
@@ -72,7 +94,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                     if (idCat == null) {
                                         dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/catalogo.jsp");
                                         mCategoria = new ManipulaCategoria();
-                                        List<Categoria> lstCategorias = mCategoria.getData();
+                                        lstCategorias = mCategoria.getData();
                                         request.setAttribute("lstCategorias", lstCategorias);
                                     } else {
                                         if (categoria != null) {
@@ -80,17 +102,29 @@ public class Modulo_Estudiante extends HttpServlet {
                                             if (idRecurso != null) {
                                                 try {
                                                     int idRecTec = Integer.parseInt(idRecurso);
-                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/recurso_tecnologico_categoria.jsp");
                                                     ManipulaRecursoTecnologico mRecursoTecnologico = new ManipulaRecursoTecnologico();
                                                     RecursoTecnologico recTec = mRecursoTecnologico.encontrarId(idRecTec);
                                                     //saber que es para mostrar la información correcta
+                                                    EquipoComputacional equipoComuto = null;
+                                                    if (recTec != null) {
+                                                        mEquiposComputacionales=new ManipulaEquipoComputacional();
+                                                        equipoComuto = mEquiposComputacionales.encontrarIdRecurso(recTec.getIdRecursoTecnologico());
+                                                        if (equipoComuto != null) {
+                                                            dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/equipo_computacional_categoria.jsp");
+                                                            request.setAttribute("equipo_computo", equipoComuto);
+                                                        } else {
+                                                            dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/recurso_tecnologico_categoria.jsp");
+                                                        }
+                                                    } else {
+                                                        dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/recurso_tecnologico_categoria.jsp");
+                                                    }
                                                     request.setAttribute("recurso_tecnologico", recTec);
                                                     request.setAttribute("id_categoria", idCat);
                                                     request.setAttribute("nombre_categoria", categoria);
                                                 } catch (NumberFormatException e) {
-                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/catalogo.jsp");
+                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/categoria.jsp");
                                                     mCategoria = new ManipulaCategoria();
-                                                    List<Categoria> lstCategorias = mCategoria.getData();
+                                                    lstCategorias = mCategoria.getData();
                                                     request.setAttribute("lstCategorias", lstCategorias);
                                                 }
                                             } else {
@@ -104,14 +138,14 @@ public class Modulo_Estudiante extends HttpServlet {
                                                 } catch (NumberFormatException e) {
                                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/catalogo.jsp");
                                                     mCategoria = new ManipulaCategoria();
-                                                    List<Categoria> lstCategorias = mCategoria.getData();
+                                                    lstCategorias = mCategoria.getData();
                                                     request.setAttribute("lstCategorias", lstCategorias);
                                                 }
                                             }
                                         } else {
                                             dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/catalogo.jsp");
                                             mCategoria = new ManipulaCategoria();
-                                            List<Categoria> lstCategorias = mCategoria.getData();
+                                            lstCategorias = mCategoria.getData();
                                             request.setAttribute("lstCategorias", lstCategorias);
                                         }
                                     }
@@ -178,8 +212,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                     break;
                                 case "mi_mochila":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/mi_mochila.jsp");
-                                   
-                                    
+
                                     break;
                                 case "deseos":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/lista_deseos.jsp");
@@ -194,11 +227,11 @@ public class Modulo_Estudiante extends HttpServlet {
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/notificaciones.jsp");
 
                                     break;
-                                    
+
                                 case "encuesta_socieconomica":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/encuesta_socieconomica.jsp");
                                     break;
-                                            case "cambiar_contrasenia":
+                                case "cambiar_contrasenia":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/cambiar_contrasenia.jsp");
                                     break;
                                 case "cerrar_sesion":
@@ -218,22 +251,15 @@ public class Modulo_Estudiante extends HttpServlet {
                         dispatcher = getServletContext().getRequestDispatcher("/views/templates/errores/no_autorizado.jsp");
                     }
                 }
+                if (dispatcher != null) {
+                    dispatcher.forward(request, response);
+                }
             } else {
                 response.sendRedirect("autenticacion");
-                //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciarSesion.jsp");
-                // dispatcher.forward(request, response);
-                // System.out.println("No autenticado");
-            }
-            if (dispatcher != null) {
-                dispatcher.forward(request, response);
             }
         } else {
             response.sendRedirect("autenticacion");
-            // System.out.println("No autenticado");
-            //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciarSesion.jsp");
-            //dispatcher.forward(request, response);
         }
-
     }
 
     @Override

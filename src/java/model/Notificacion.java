@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ public class Notificacion {
 
     private int idNotificacion;
     private int idUsuarioDestino;
-    private Date fechaNotificacion;//DATE TIME
+    private Timestamp fechaNotificacion;//DATE TIME
     private String estadoVisualizacion;
     private String prioridad;
     private String mensaje;
@@ -18,14 +19,14 @@ public class Notificacion {
     public Notificacion() {
     }
 
-    public Notificacion(int idUsuarioDestino, Date fechaNotificacion, String estadoVisualizacion, String prioridad) {
+    public Notificacion(int idUsuarioDestino, Timestamp fechaNotificacion, String estadoVisualizacion, String prioridad) {
         this.idUsuarioDestino = idUsuarioDestino;
         this.fechaNotificacion = fechaNotificacion;
         this.estadoVisualizacion = estadoVisualizacion;
         this.prioridad = prioridad;
     }
 
-    public Notificacion(int idNotificacion, int idUsuarioDestino, Date fechaNotificacion, String estadoVisualizacion, String prioridad, String mensaje) {
+    public Notificacion(int idNotificacion, int idUsuarioDestino, Timestamp fechaNotificacion, String estadoVisualizacion, String prioridad, String mensaje) {
         this.idNotificacion = idNotificacion;
         this.idUsuarioDestino = idUsuarioDestino;
         this.fechaNotificacion = fechaNotificacion;
@@ -58,11 +59,11 @@ public class Notificacion {
         this.estadoVisualizacion = estadoVisualizacion;
     }
 
-    public Date getFechaNotificacion() {
+    public Timestamp getFechaNotificacion() {
         return fechaNotificacion;
     }
 
-    public void setFechaNotificacion(Date fechaNotificacion) {
+    public void setFechaNotificacion(Timestamp fechaNotificacion) {
         this.fechaNotificacion = fechaNotificacion;
     }
 

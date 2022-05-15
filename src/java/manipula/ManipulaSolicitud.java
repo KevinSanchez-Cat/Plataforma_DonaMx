@@ -5,6 +5,7 @@ import config.conexion.IConexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.Solicitud;
@@ -17,6 +18,7 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaSolicitud implements Manipula<Solicitud> {
+
     @Override
     public GenericResponse<Solicitud> registrar(Solicitud obj) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
@@ -36,8 +38,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 registro.setInt(2, obj.getIdRecursoTecnologico());
                 registro.setInt(3, obj.getIdArchivo());
                 registro.setString(4, obj.getEstadoSolicitud());
-                registro.setDate(5, Misc.transformDateTimeJavaSql(obj.getFechaSolicitud()));
-                registro.setDate(6, Misc.transformDateTimeJavaSql(obj.getFechaRespuesta()));
+                registro.setTimestamp(5, obj.getFechaSolicitud());
+                registro.setTimestamp(6, obj.getFechaRespuesta());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -72,11 +74,11 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
         return response;
     }
 
-    public GenericResponse<Solicitud> actualizar(int id, java.util.Date fechaRespuesta, String estadoSolicitud) {
+    public GenericResponse<Solicitud> actualizar(int id, Timestamp fechaRespuesta, String estadoSolicitud) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
-          IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Solicitud sol=encontrarId(id);
+            Solicitud sol = encontrarId(id);
             if (sol != null) {
                 //AC->ACEPTADA
                 //RE->RECHAZADA
@@ -85,7 +87,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 //CA->CANCELADA
                 sol.setEstadoSolicitud(estadoSolicitud);
                 sol.setFechaRespuesta(fechaRespuesta);
-                
+
                 try {
                     String sql = "UPDATE Solicitud SET "
                             + "estadoSolicitud=?, "
@@ -93,7 +95,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                             + "WHERE idSolicitud=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setString(1, sol.getEstadoSolicitud());
-                    registro.setDate(2, Misc.transformDateTimeJavaSql(sol.getFechaRespuesta()));
+                    registro.setTimestamp(2, sol.getFechaRespuesta());
                     registro.setInt(3, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
@@ -123,7 +125,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             response.setResponseObject(null);
             response.setMensaje("Error de conexión a la base de datos");
         }
-       
+
         return response;
     }
 
@@ -147,8 +149,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     registro.setInt(2, nvoObj.getIdRecursoTecnologico());
                     registro.setInt(3, nvoObj.getIdArchivo());
                     registro.setString(4, nvoObj.getEstadoSolicitud());
-                    registro.setDate(5, Misc.transformDateTimeJavaSql(nvoObj.getFechaSolicitud()));
-                    registro.setDate(6, Misc.transformDateTimeJavaSql(nvoObj.getFechaRespuesta()));
+                    registro.setTimestamp(5, nvoObj.getFechaSolicitud());
+                    registro.setTimestamp(6, nvoObj.getFechaRespuesta());
                     registro.setInt(7, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
@@ -250,8 +252,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     sol.setIdRecursoTecnologico(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setEstadoSolicitud(rs.getString(5));
-                    sol.setFechaSolicitud(Misc.transformDateTimeSqlJava(rs.getDate(6)));
-                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(7)));
+                    sol.setFechaSolicitud(rs.getTimestamp(6));
+                    sol.setFechaRespuesta(rs.getTimestamp(7));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -291,8 +293,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     sol.setIdRecursoTecnologico(rs.getInt(3));
                     sol.setIdArchivo(rs.getInt(4));
                     sol.setEstadoSolicitud(rs.getString(5));
-                    sol.setFechaSolicitud(Misc.transformDateTimeSqlJava(rs.getDate(6)));
-                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(7)));
+                    sol.setFechaSolicitud(rs.getTimestamp(6));
+                    sol.setFechaRespuesta(rs.getTimestamp(7));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -334,8 +336,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     response.setIdRecursoTecnologico(rs.getInt(3));
                     response.setIdArchivo(rs.getInt(4));
                     response.setEstadoSolicitud(rs.getString(5));
-                    response.setFechaSolicitud(Misc.transformDateTimeSqlJava(rs.getDate(6)));
-                    response.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(7)));
+                    response.setFechaSolicitud(rs.getTimestamp(6));
+                    response.setFechaRespuesta(rs.getTimestamp(7));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

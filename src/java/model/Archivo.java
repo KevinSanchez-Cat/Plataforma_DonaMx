@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,14 +13,14 @@ public class Archivo {
     private String nombreArchivo;
     private String extension;
     private double tamanio;
-    private Date fechaCreacion;//DATE TIME   
+    private Timestamp fechaCreacion;//DATE TIME   
     private String urlDestino;
     private int idUsuario;
 
     public Archivo() {
     }
 
-    public Archivo(String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public Archivo(String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
         this.tamanio = tamanio;
@@ -28,7 +29,7 @@ public class Archivo {
         this.idUsuario = usuario;
     }
 
-    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         this.idArchivo = idArchivo;
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
@@ -54,11 +55,11 @@ public class Archivo {
         this.urlDestino = urlDestino;
     }
 
-    public Date getFechaCreacion() {
+    public Timestamp getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 

@@ -1,6 +1,7 @@
 
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,29 +13,29 @@ public class Deseo {
     private int idItem;
     private int idRecurso;
     private int idEstudiante;
-    private Date fecha;
+    private Timestamp fecha;
 
     public Deseo() {
     }
 
-    public Deseo(int idRecurso, int idEstudiante, Date fecha) {
+    public Deseo(int idRecurso, int idEstudiante, Timestamp fecha) {
         this.idRecurso = idRecurso;
         this.idEstudiante = idEstudiante;
         this.fecha = fecha;
     }
 
-    public Deseo(int idItem, int idRecurso, int idEstudiante, Date fecha) {
+    public Deseo(int idItem, int idRecurso, int idEstudiante, Timestamp fecha) {
         this.idItem = idItem;
         this.idRecurso = idRecurso;
         this.idEstudiante = idEstudiante;
         this.fecha = fecha;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 
