@@ -191,7 +191,7 @@
                     <ul id="localidades-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="administrador?page=localidades&accion=agregar>
-                                <i class="bi bi-circle"></i><span>Agregar</span>
+                               <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
@@ -508,11 +508,51 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
-
+                <div class="card ">
+                    <div class="card-header hstack gap-3 bg-flaty-blue text-white">
+                        Sistema operativo
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <form action="" method="POST" class=" needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col col-md-4 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Nombre del sistema operativo</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                        <div class="valid-tooltip">
+                                            Se mira bien!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-3 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Versión</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                        <div class="valid-tooltip">
+                                            Se mira bien!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-3 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Edición</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                        <div class="valid-tooltip">
+                                            Se mira bien!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <br/>
+                            <div class="col-12 text-end">
+                                <button class="btn btn-secondary" type="submit">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

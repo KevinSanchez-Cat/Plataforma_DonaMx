@@ -328,6 +328,26 @@ public class Modulo_Administrador extends HttpServlet {
                                             }
                                         }
                                         break;
+                                    case "noticias":
+                                        if (accion == null) {
+                                            dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/home.jsp");
+                                        } else {
+                                            switch (accion) {
+                                                case "buscar":
+                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/noticias_buscar.jsp");
+                                                    break;
+                                                case "consultar":
+                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/noticias_consultar_por_donador.jsp");
+                                                    break;
+                                                case "crear":
+                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/noticias_crear.jsp");
+                                                    break;
+                                                default:
+                                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/home.jsp");
+                                                    break;
+                                            }
+                                        }
+                                        break;
                                     case "donaciones":
                                         if (accion == null) {
                                             dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/home.jsp");

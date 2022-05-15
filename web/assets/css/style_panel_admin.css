@@ -185,6 +185,36 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #f8d7da;
     border-color: #f8d7da;
 }
+
+
+.bg-orange-light {
+    color:  #ffecdf;
+    background: #ffecdf;
+}
+.bg-pink-light {
+    color: #f5dcf5;
+    background: #f5dcf5;
+}
+.bg-purple-light {
+    color:  #e5cbff;
+    background: #e5cbff;
+}
+.bg-blue-light {
+    color:  #c9d8f6;
+    background: #c9d8f6;
+}
+.bg-red-light {
+    color: #ffcbcb;
+    background: #ffcbcb;
+}
+.bg-green-light {
+    color:  #baeccd;
+    background: #baeccd;
+}
+/* Activity */
+.dashboard .activity {
+    font-size: 14px;
+}
 /*
 .bk-blue{
     background-color: #2c3e50;
@@ -834,19 +864,32 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
     flex-grow: 0;
 }
-.dashboard .sales-card .card-icon {
-    color: #4154f1;
-    background: #f6f6fe;
-}
-.dashboard .revenue-card .card-icon {
-    color: #2eca6a;
-    background: #e0f8e9;
-}
-.dashboard .customers-card .card-icon {
+
+.dashboard .equipos-card .card-icon {
     color: #ff771d;
     background: #ffecdf;
 }
 
+.dashboard .organizaciones-card .card-icon {
+    color: #990099;
+    background: #ffccff;
+}
+.dashboard .voluntarios-card .card-icon {
+    color: #6600cc;
+    background: #e9d4ff;
+}
+.dashboard .estudiantes-card .card-icon {
+    color: #003399;
+    background: #adc8ff;
+}
+.dashboard .donaciones-card .card-icon {
+    color: #990033;
+    background: #ff9999;
+}
+.dashboard .donaciones-economicas-card .card-icon {
+    color: #13b351;
+    background: #cbf2da;
+}
 /* Activity */
 .dashboard .activity {
     font-size: 14px;

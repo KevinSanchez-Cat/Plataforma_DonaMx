@@ -191,7 +191,7 @@
                     <ul id="localidades-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="administrador?page=localidades&accion=agregar>
-                                <i class="bi bi-circle"></i><span>Agregar</span>
+                               <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
@@ -508,11 +508,60 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
+                <div class="card ">
+                    <div class="card-header hstack gap-3 bg-flaty-blue text-white">
+                        Notificación DonaMx
+                       
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <form action="" method="POST" class=" needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-3 position-relative">
+                                    <label for="validation" class="form-label">
+                                        Usuario
+                                    </label>
+                                    <div class="col col-auto">
+                                        <select id="validation" class="form-select" aria-label="Default select example">
+                                            <option selected>Seleccionar una opción</option>
+                                            <option value="3">----</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 position-relative">
+                                    <label for="validation" class="form-label">
+                                        Prioridad
+                                    </label>
+                                    <div class="col col-auto">
+                                        <select id="validation" class="form-select" aria-label="Default select example">
+                                            <option selected>Seleccionar una opción</option>
+                                            <option value="1">Baja</option>
+                                            <option value="2">Normal</option>
+                                            <option value="3">Importante</option>
+                                            <option value="4">Urgente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 position-relative">
+                                    <label for="validationTooltipUsername" class="form-label">Mensaje</label>
+                                    <div class="input-group">
+                                        <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                                  aria-describedby="validationTooltipUsernamePrepend" 
+                                                  class="form-control" id="about" rows="3" cols="1">
 
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <div class="col-12 text-end">
+                                <button class="btn btn-secondary" type="submit">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

@@ -508,11 +508,35 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
-
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Categorías</h5>
+                        <table class="table table-responsive table-bordered table-hover datatable">
+                            <thead >
+                                <tr class="table-primary "> 
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre de la categoría</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr> 
+                                    <th>#1213</th>
+                                    <td>Licencias</td>
+                                    <td>La organización ha solicitado su autorizacion</td> 
+                                    <td>
+                                        <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                        <button type="button" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i></button>
+                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

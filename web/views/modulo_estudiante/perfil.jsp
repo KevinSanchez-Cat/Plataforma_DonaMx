@@ -120,8 +120,11 @@
                 </div>
                 <section class="section">
                     <div class="card ">
-                        <div class="card-header bg-flaty-blue text-white">
+                        <div class="card-header hstack gap-3 bg-flaty-blue text-white">
                             Cuenta
+                            <b class=" ms-auto">
+                                DONATARIO
+                            </b>
                         </div>
                         <div class="card-body">
                             <br>
@@ -134,10 +137,10 @@
                                             <br><br>
                                             <div class="row g-2">
                                                 <div class="col-md-6">
-                                                      <label for="seleccionArchivos" class="subir">
-                                                    <i class="bi bi-upload"></i> Subir imagen
-                                                </label>
-                                                <input id="seleccionArchivos"  onchange='cambiar()' type="file" style='display: none;'  accept="image/*" />
+                                                    <label for="seleccionArchivos" class="subir">
+                                                        <i class="bi bi-upload"></i> Subir imagen
+                                                    </label>
+                                                    <input id="seleccionArchivos"  onchange='cambiar()' type="file" style='display: none;'  accept="image/*" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <a href="#" class="btn btn-danger btn-sm" title="Eliminar imagen de perfil">

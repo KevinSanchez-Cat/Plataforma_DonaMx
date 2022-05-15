@@ -508,11 +508,52 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
+                <div class="d-grid d-md-flex justify-content-md-start">
+                    <form class="d-flex " style="margin: 5px">
+                        <input class="form-control col-md-6 me-2" type="search" placeholder="Buscar " aria-label="Buscar por folio">
+                        <button class="btn btn-outline-primary-flaty" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <br/>
+                <div class="card">
+                    <div class="card-header hstack gap-3 bg-flaty-blue text-white">
+                        Categoría
+                        <button class="btn btn-light ms-auto">
+                            Editar
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <form action="" method="POST" class=" needs-validation" novalidate>
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltip02" class="form-label">Nombre de la categoría</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                    <div class="valid-tooltip">
+                                        Se mira bien!
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltipUsername" class="form-label">Descripción</label>
+                                <div class="input-group">
+                                    <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                              aria-describedby="validationTooltipUsernamePrepend" 
+                                              class="form-control" id="about" rows="3" cols="1">
+
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <div class="col-12 text-end">
+                                <button class="btn btn-secondary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

@@ -2,6 +2,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <template:templete_administrador title="Intenciones">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
@@ -508,11 +510,127 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
+                <c:choose>
+                    <c:when test="${not empty lstNotificaciones}">   
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
 
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filtrar</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">De hoy</a></li>
+                                        <li><a class="dropdown-item" href="#">De una semana</a></li>
+                                        <li><a class="dropdown-item" href="#">De un mes</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Notificaciones <span>| Hoy</span></h5>
+
+                                    <table class="table table-responsive table-bordered table-hover datatable">
+                                        <thead >
+                                            <tr class="table-primary "> 
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Prioridad</th>
+                                                <th scope="col">Mensaje</th>
+
+                                                <th scope="col">Estado</th>
+                                                <th scope="col">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <c:forEach var="notificacion" items="${lstNotificaciones}">
+                                                <tr> 
+                                                    <th>22/01/2022</th>
+                                                    <td><span class="badge bg-info text-dark"><i class="bi bi-info-square me-1"></i> Baja</span></td>
+                                                    <td>La organización ha solicitado su autorizacion</td> 
+                                                    <td> <span class="badge bg-success text-light"><i class="bi bi-eye-fill me-1"></i> Visto</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <br>
+                        <div class="alert alert-info">Usted no tiene notificaciones</div>
+                    </c:otherwise>
+                </c:choose>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filtrar</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">De hoy</a></li>
+                                <li><a class="dropdown-item" href="#">De una semana</a></li>
+                                <li><a class="dropdown-item" href="#">De un mes</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Intenciones <span>| Hoy</span></h5>
+
+                            <table class="table table-responsive table-bordered table-hover datatable">
+                                <thead >
+                                    <tr class="table-primary "> 
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Titulo</th>
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Fecha de intencion</th>
+                                        <th scope="col">Fecha de respuesta</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr> 
+                                        <th>#9868</th>
+                                        <td>Mouses</td>
+                                        <td><a href="#" class="text-flaty-primary"><b>Uriel</b></a></td>
+                                        <td>12/23/1221</td>
+                                        <td>12/23/1221</td>
+                                        <td><span class="badge bg-flaty-warning text-light"><i class="bi bi-pin me-1"></i>Pendiente</span>
+                                            <span class="badge bg-primary text-light"><i class="bi bi-check-circle me-1"></i>Revisado</span>
+                                            <span class="badge bg-success text-light"><i class="bi bi-hand-thumbs-up me-1"></i>Aceptado</span>
+                                            <span class="badge bg-danger text-light"><i class="bi bi-hand-thumbs-down me-1"></i>Rechazado</span>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-info-circle"></i></button>
+                                            <button type="button" class="btn btn-success"><i class="bi bi-reply"></i></button>
+                                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

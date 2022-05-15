@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<template:templete_administrador title="Estados">
+<template:templete_administrador title="Donaciones">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
@@ -140,12 +140,12 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link " data-bs-target="#estados-nav" data-bs-toggle="collapse" href="">
+                    <a class="nav-link collapsed" data-bs-target="#estados-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-globe"></i><span>Estados</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="estados-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                    <ul id="estados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="administrador?page=estados&accion=agregar" class="active">
+                            <a href="administrador?page=estados&accion=agregar">
                                 <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
@@ -339,17 +339,17 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#donaciones-nav" data-bs-toggle="collapse" href="">
+                    <a class="nav-link " data-bs-target="#donaciones-nav" data-bs-toggle="collapse" href="">
                         <i class="bi bi-gift"></i><span>Donaciones</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="donaciones-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <ul id="donaciones-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="administrador?page=donaciones&accion=registrar">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="administrador?page=donaciones&accion=buscar">
+                            <a href="administrador?page=donaciones&accion=buscar" class="active">
                                 <i class="bi bi-circle"></i><span>Buscar donación</span>
                             </a>
                         </li>
@@ -497,42 +497,22 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Agregar estado</h1>
+                <h1>Consultar noticias</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="administrador">Incio</a></li>
-                        <li class="breadcrumb-item ">Estados</li>
-                        <li class="breadcrumb-item active">Agregar</li>
+                        <li class="breadcrumb-item">Donaciones</li>
+                        <li class="breadcrumb-item active">Consultar</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="card ">
-                    <div class="card-header hstack gap-3 bg-flaty-blue text-white">
-                         Estado federativo
-                    </div>
-                    <div class="card-body">
-                        <br>
-                        <form action="" method="POST" class=" needs-validation" novalidate>
-                            <div class="col-md-3 position-relative">
-                                <label for="validationTooltip02" class="form-label">Nombre del estado federativo</label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
-                                    <div class="valid-tooltip">
-                                        Se mira bien!
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <br/>
-                            <div class="col-12 text-end">
-                                <button class="btn btn-secondary" type="submit">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="row">
+
                 </div>
             </section>
+            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>

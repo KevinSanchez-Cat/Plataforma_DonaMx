@@ -289,6 +289,6 @@
                 </section>
             </section>
         </main>
-        
+
     </jsp:attribute>
 </template:templete_user>

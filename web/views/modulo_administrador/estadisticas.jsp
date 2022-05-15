@@ -507,11 +507,145 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
 
-                </div>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Cantidad de donaciones por estado</h5>
+
+                                    <!-- Bar Chart -->
+                                    <canvas id="barChart" style="max-height: 400px;"></canvas>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new Chart(document.querySelector('#barChart'), {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: ['Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Durango'],
+                                                    datasets: [{
+                                                            label: 'Bar Chart',
+                                                            data: [65, 59, 80, 81, 56],
+                                                            backgroundColor: [
+                                                                'rgb(0, 29, 120,0.2)',
+                                                                'rgb(121, 218, 232,0.2)',
+                                                                'rgb(10, 161, 221,0.2)',
+                                                                'rgb(33, 85, 205,0.2)',
+                                                                'rgb(0, 29, 110,0.2)'
+                                                            ],
+                                                            borderColor: [
+                                                                'rgb(0, 29, 120)',
+                                                                'rgb(121, 218, 232)',
+                                                                'rgb(10, 161, 221)',
+                                                                'rgb(33, 85, 205)',
+                                                                'rgb(0, 29, 110)'
+                                                            ],
+                                                            borderWidth: 1
+                                                        }]
+                                                },
+                                                options: {
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Bar CHart -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">% De los recursos tecnologicos donados por categoría</h5>
+
+                                    <!-- Pie Chart -->
+                                    <canvas id="pieChart" style="max-height: 400px;"></canvas>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new Chart(document.querySelector('#pieChart'), {
+                                                type: 'pie',
+                                                data: {
+                                                    labels: [
+                                                        'Categoria 1',
+                                                        'Cateogoria 2',
+                                                        'Cateogoria 6',
+                                                        'Cateogoria 5',
+                                                        'Categoría 3'
+                                                    ],
+                                                    datasets: [{
+                                                            label: 'My First Dataset',
+                                                            data: [300, 50, 100, 32, 51],
+                                                            backgroundColor: [
+                                                                'rgb(0, 29, 120)',
+                                                                'rgb(121, 218, 232)',
+                                                                'rgb(10, 161, 221)',
+                                                                'rgb(33, 85, 205)',
+                                                                'rgb(0, 29, 110)'
+                                                            ],
+                                                            hoverOffset: 4
+                                                        }]
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Pie CHart -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">% de los recursos tecnologicos por categoría</h5>
+
+                                    <!-- Doughnut Chart -->
+                                    <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new Chart(document.querySelector('#doughnutChart'), {
+                                                type: 'doughnut',
+                                                data: {
+                                                    labels: [
+                                                        'Categoria 1',
+                                                        'Cateogoria 2',
+                                                        'Cateogoria 6',
+                                                        'Cateogoria 5',
+                                                        'Categoría 3'
+                                                    ],
+                                                    datasets: [{
+                                                            label: 'My First Dataset',
+                                                            data: [300, 50, 100, 32, 51],
+                                                            backgroundColor: [
+                                                                'rgb(0, 29, 110)',
+                                                                'rgb(121, 218, 232)',
+                                                                'rgb(10, 161, 221)',
+                                                                'rgb(33, 85, 205)',
+                                                                'rgb(0, 29, 110)'
+                                                            ],
+                                                            hoverOffset: 4
+                                                        }]
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Doughnut CHart -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
+
         </main>
 
     </jsp:attribute>

@@ -506,13 +506,211 @@
                 </nav>
             </div><!-- End Page Title -->
 
-            <section class="section dashboard">
-                <div class="row">
+            <section class="section ">
 
-                </div>
+                <section class="section">
+                    <div class="card ">
+                        <div class="card-header hstack gap-3 bg-flaty-blue text-white">
+                            Organización
+                            <button class="btn btn-light ms-auto">
+                                Editar
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <br>
+                            <form action="" method="POST" class=" needs-validation" novalidate>
+
+                                <div class="row gap-0">
+                                    <div class="col-md-3 position-relative">
+                                        <label for="validationTooltip02" class="form-label">RFC</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="col-md-6 position-relative">
+                                        <label for="nombre_usuario" class="form-label">Razón social</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Telefono fijo</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Telefono movil</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-4 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Email</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-4 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Sitio web</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <br/>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-secondary" type="submit">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row gap-0">
+                        <div class="col col-6">
+                            <div class="card ">
+                                <div class="card-header bg-flaty-blue text-white">
+                                    Dirección
+                                </div>
+                                <div class="card-body">
+                                    <br>
+                                    <form action="" method="POST" class=" needs-validation" novalidate>
+
+                                        <div class="row gap-2">
+                                            <div class="col-md-3 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Estado</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Municipio</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Localidad</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 position-relative">
+                                                <label for="nombre_usuario" class="form-label">Dirección</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Codigo postal</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <br/>
+                                        <div class="col-12 text-end">
+                                            <button class="btn btn-secondary" type="submit">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-6">
+                            <div class="card">
+                                <div class="card-header bg-flaty-blue text-white">
+                                    Redes sociales
+                                </div>
+                                <div class="card-body">
+                                    <br>
+                                    <form action="" method="POST" class=" needs-validation" novalidate>
+                                        <div class="row ">
+                                            <div class="col-md-4 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Facebook</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="validationTooltip02" class="form-label">Instagram</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="validationTooltip02" class="form-label">YouTube</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="nombre_usuario" class="form-label">Linkedin</label>
+                                                <div class="input-group has-validation">
+                                                    <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="col-12 text-end">
+                                            <button class="btn btn-secondary" type="submit">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
-
     </jsp:attribute>
 </template:templete_administrador>

@@ -2,6 +2,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <template:templete_administrador title="Contacto">
     <jsp:attribute name="content">
         <aside id="sidebar" class="sidebar">
@@ -505,13 +507,181 @@
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
+            <section class="section">
 
+                <div class="row row-cols-4 ">
+                    <div class="col col-3">
+                        <div class="card  text-center bg-flaty-cyan">
+                            <div class="card-title text-light">
+                                BASE DE DATOS
+                            </div>
+                            <div class="card-body text-light">
+                                MySQL
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col col-3">
+                        <div class="card text-center bg-flaty-green">
+                            <div class="card-title text-light">
+                                SERVIDOR
+                            </div>
+                            <div class="card-body text-light">
+                                Tomcat
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col col-3">
+                        <div class="card text-center bg-flaty-blue">
+                            <div class="card-title text-light">
+                                VELOCIDAD DE TRANSFERNCIA
+                            </div>
+                            <div class="card-body text-light">
+                                8977656 Mbs
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col col-3">
+                        <div class="card  text-center bg-flaty-warning">
+                            <div class="card-title text-light">
+                                ANCHO DE BANDA
+                            </div>
+                            <div class="card-body text-light">
+                                8977656
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+
+            </section>
             <section class="section dashboard">
-                <div class="row">
 
+                <c:choose>
+                    <c:when test="${not empty lstNotificaciones}">   
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filtrar</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">De hoy</a></li>
+                                        <li><a class="dropdown-item" href="#">De una semana</a></li>
+                                        <li><a class="dropdown-item" href="#">De un mes</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Notificaciones <span>| Hoy</span></h5>
+
+                                    <table class="table table-responsive table-bordered table-hover datatable">
+                                        <thead >
+                                            <tr class="table-primary "> 
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Milisegundos</th>
+                                                <th scope="col">Mensaje</th>
+
+                                                <th scope="col">Estado</th>
+                                                <th scope="col">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <c:forEach var="notificacion" items="${lstNotificaciones}">
+                                                <tr> 
+                                                    <th>22/01/2022</th>
+                                                    <td><span class="badge bg-info text-dark"><i class="bi bi-info-square me-1"></i> Baja</span></td>
+                                                    <td>La organización ha solicitado su autorizacion</td> 
+                                                    <td> <span class="badge bg-success text-light"><i class="bi bi-eye-fill me-1"></i> Visto</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <br>
+                        <div class="alert alert-info">Usted no tiene notificaciones</div>
+                    </c:otherwise>
+                </c:choose>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filtrar</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">De hoy</a></li>
+                                <li><a class="dropdown-item" href="#">De una semana</a></li>
+                                <li><a class="dropdown-item" href="#">De un mes</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Registros <span>| Hoy</span></h5>
+
+                            <table class="table table-responsive table-bordered table-hover datatable">
+                                <thead >
+                                    <tr class="table-primary "> 
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Milisegundos</th>
+                                        <th scope="col">Secuencia</th>
+                                        <th scope="col">Logger</th>
+                                        <th scope="col">Nivel</th>
+                                        <th scope="col">Clase</th>
+                                        <th scope="col">Metodo</th>
+                                        <th scope="col">Hilo</th>
+                                        <th scope="col">Mensaje</th>
+                                        <th scope="col">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr> 
+                                        <th>22/01/2022</th>
+                                        <td>0121323</td>
+                                        <td>0</td>
+                                        <td>Bitacora.Bitacora</td>
+                                        <td>
+                                            <span class="badge bg-success text-white"><i class="bi bi-info-circle me-1"></i>INFO</span>
+                                            <span class="badge bg-warning text-white"><i class="bi bi-exclamation-triangle me-1"></i>ADVERTENCIA</span>
+                                            <span class="badge bg-danger text-white"><i class="bi bi-exclamation-circle me-1"></i>ERROR</span>
+                                            <span class="badge bg-dark text-white"><i class="bi bi-exclamation-octagon me-1"></i>FATAL</span>
+                                        </td>
+                                        <td>logs.Logs</td>
+                                        <td>main</td>
+                                        <td>1</td>
+                                        <td>Bitacora inicializada...</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-eye"></i></button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
+
         </main>
 
     </jsp:attribute>

@@ -508,11 +508,66 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-                <div class="row">
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Localidades</h5>
 
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                            <div class="row">
+                                <p class="col  d-flex align-items-center ">
+                                    Estado: 
+                                </p>
+                                <div class="col col-auto">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Todo</option>
+                                        <option value="3">--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="col  d-flex align-items-center ">
+                                    Municipio: 
+                                </p>
+                                <div class="col col-auto">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Todo</option>
+                                        <option value="3">--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <form class="d-flex " style="margin: 5px">
+                                <input class="form-control me-2" type="search" placeholder="Buscar " aria-label="Buscar por folio">
+                                <button class="btn btn-outline-primary-flaty" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                        <br/>
+                        <table class="table table-responsive table-bordered table-hover datatable">
+                            <thead >
+                                <tr class="table-primary "> 
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Municipio</th>
+                                    <th scope="col">Localidad</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr> 
+                                    <th>#1213</th>
+                                    <td>Licencias</td>
+                                    <td>La organización ha solicitado su autorizacion</td> 
+                                    <td>La organización ha solicitado su autorizacion</td> 
+                                    <td>
+                                        <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                        <button type="button" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i></button>
+                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
-            <%@include  file="/views/localidad/index.jsp" %>
         </main>
 
     </jsp:attribute>
