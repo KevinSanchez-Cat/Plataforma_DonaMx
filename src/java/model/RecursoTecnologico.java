@@ -26,6 +26,15 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private double precioOfertado;
     private String tipoSoftwarOHardware;
     private String nombreRecurso;
+    private String certificado;
+    private int edadMinima;
+    private int edadMaxima;
+    private String estadoConvocatoria;
+    private String otrosDetalles;
+    private String detalleEnvio;
+    private double costoEnvio;
+    private String conCosto;
+
 
     public RecursoTecnologico() {
     }
@@ -61,6 +70,35 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.precioOfertado = precioOfertado;
         this.tipoSoftwarOHardware = tipoSoftwarOHardware;
         this.nombreRecurso = nombreRecurso;
+    }
+
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Date fechaPublicacion, Date fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso, String certificado, int edadMinima, int edadMaxima, String estadoConvocatoria, String otrosDetalles, String detalleEnvio, double costoEnvio, String conCosto) {
+        this.idRecursoTecnologico = idRecursoTecnologico;
+        this.idCategoria = idCategoria;
+        this.organizacionOCivil = organizacionOCivil;
+        this.idDonador = idDonador;
+        this.idUsuario = idUsuario;
+        this.cantidadStock = cantidadStock;
+        this.autorizado = autorizado;
+        this.estadoPublicacion = estadoPublicacion;
+        this.estadoLogico = estadoLogico;
+        this.fechaPublicacion = fechaPublicacion;
+        this.fechaAutorizacion = fechaAutorizacion;
+        this.remunerado = remunerado;
+        this.estadoCondicion = estadoCondicion;
+        this.precioOriginal = precioOriginal;
+        this.precioEstimado = precioEstimado;
+        this.precioOfertado = precioOfertado;
+        this.tipoSoftwarOHardware = tipoSoftwarOHardware;
+        this.nombreRecurso = nombreRecurso;
+        this.certificado = certificado;
+        this.edadMinima = edadMinima;
+        this.edadMaxima = edadMaxima;
+        this.estadoConvocatoria = estadoConvocatoria;
+        this.otrosDetalles = otrosDetalles;
+        this.detalleEnvio = detalleEnvio;
+        this.costoEnvio = costoEnvio;
+        this.conCosto = conCosto;
     }
 
     public String getNombreRecurso() {
@@ -205,6 +243,70 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
 
     public void setIdRecursoTecnologico(int idRecursoTecnologico) {
         this.idRecursoTecnologico = idRecursoTecnologico;
+    }
+
+    public String getCertificado() {
+        return certificado;
+    }
+
+    public void setCertificado(String certificado) {
+        this.certificado = certificado;
+    }
+
+    public int getEdadMinima() {
+        return edadMinima;
+    }
+
+    public void setEdadMinima(int edadMinima) {
+        this.edadMinima = edadMinima;
+    }
+
+    public int getEdadMaxima() {
+        return edadMaxima;
+    }
+
+    public void setEdadMaxima(int edadMaxima) {
+        this.edadMaxima = edadMaxima;
+    }
+
+    public String getEstadoConvocatoria() {
+        return estadoConvocatoria;
+    }
+
+    public void setEstadoConvocatoria(String estadoConvocatoria) {
+        this.estadoConvocatoria = estadoConvocatoria;
+    }
+
+    public String getOtrosDetalles() {
+        return otrosDetalles;
+    }
+
+    public void setOtrosDetalles(String otrosDetalles) {
+        this.otrosDetalles = otrosDetalles;
+    }
+
+    public String getDetalleEnvio() {
+        return detalleEnvio;
+    }
+
+    public void setDetalleEnvio(String detalleEnvio) {
+        this.detalleEnvio = detalleEnvio;
+    }
+
+    public double getCostoEnvio() {
+        return costoEnvio;
+    }
+
+    public void setCostoEnvio(double costoEnvio) {
+        this.costoEnvio = costoEnvio;
+    }
+
+    public String getConCosto() {
+        return conCosto;
+    }
+
+    public void setConCosto(String conCosto) {
+        this.conCosto = conCosto;
     }
 
     @Override

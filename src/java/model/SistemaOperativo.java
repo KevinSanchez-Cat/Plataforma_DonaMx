@@ -10,6 +10,7 @@ public class SistemaOperativo {
     private String sistemaOperativo;
     private String version;
     private String edicion;
+    private String tipo;
 
     public SistemaOperativo() {
     }
@@ -25,6 +26,22 @@ public class SistemaOperativo {
         this.sistemaOperativo = sistemaOperativo;
         this.version = version;
         this.edicion = edicion;
+    }
+
+    public SistemaOperativo(int idSistemaOperativo, String sistemaOperativo, String version, String edicion, String tipo) {
+        this.idSistemaOperativo = idSistemaOperativo;
+        this.sistemaOperativo = sistemaOperativo;
+        this.version = version;
+        this.edicion = edicion;
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getEdicion() {

@@ -17,6 +17,11 @@ public class Donacion {
     private String estadoDonacion;
     private String noConfirmacion;
     private boolean remunerado;
+    private String estadoPago;
+    private String estadoEnvio;
+    private String estadoEntrega;
+    private String noSerie;
+    private String estadoPreparacion;
 
     public Donacion() {
     }
@@ -42,6 +47,63 @@ public class Donacion {
         this.estadoDonacion = estadoDonacion;
         this.noConfirmacion = noConfirmacion;
         this.remunerado = remunerado;
+    }
+
+    public Donacion(int idDonacion, int idDonatario, int idDonador, int idArchivo, int idRecursoTecnologico, Date fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
+        this.idDonacion = idDonacion;
+        this.idDonatario = idDonatario;
+        this.idDonador = idDonador;
+        this.idArchivo = idArchivo;
+        this.idRecursoTecnologico = idRecursoTecnologico;
+        this.fechaDonacion = fechaDonacion;
+        this.estadoDonacion = estadoDonacion;
+        this.noConfirmacion = noConfirmacion;
+        this.remunerado = remunerado;
+        this.estadoPago = estadoPago;
+        this.estadoEnvio = estadoEnvio;
+        this.estadoEntrega = estadoEntrega;
+        this.noSerie = noSerie;
+        this.estadoPreparacion = estadoPreparacion;
+    }
+
+    public String getEstadoPago() {
+        return estadoPago;
+    }
+
+    public void setEstadoPago(String estadoPago) {
+        this.estadoPago = estadoPago;
+    }
+
+    public String getEstadoEnvio() {
+        return estadoEnvio;
+    }
+
+    public void setEstadoEnvio(String estadoEnvio) {
+        this.estadoEnvio = estadoEnvio;
+    }
+
+    public String getEstadoEntrega() {
+        return estadoEntrega;
+    }
+
+    public void setEstadoEntrega(String estadoEntrega) {
+        this.estadoEntrega = estadoEntrega;
+    }
+
+    public String getNoSerie() {
+        return noSerie;
+    }
+
+    public void setNoSerie(String noSerie) {
+        this.noSerie = noSerie;
+    }
+
+    public String getEstadoPreparacion() {
+        return estadoPreparacion;
+    }
+
+    public void setEstadoPreparacion(String estadoPreparacion) {
+        this.estadoPreparacion = estadoPreparacion;
     }
 
     public boolean getRemunerado() {

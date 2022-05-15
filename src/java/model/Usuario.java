@@ -24,6 +24,7 @@ public class Usuario {
     private int idRol;
     private String foto;
     private boolean numeroCelularConfirmado;
+    private String token;
 
     public Usuario() {
     }
@@ -57,6 +58,26 @@ public class Usuario {
         this.idRol = idRol;
         this.foto = foto;
         this.numeroCelularConfirmado = numeroCelularConfirmado;
+    }
+
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Date ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Date fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado, String token) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.contraseniia = contraseniia;
+        this.ultimaConexion = ultimaConexion;
+        this.estadoCuenta = estadoCuenta;
+        this.conectado = conectado;
+        this.correoElectronico = correoElectronico;
+        this.correoConfirmado = correoConfirmado;
+        this.numeroCelular = numeroCelular;
+        this.autenticacionDosPasos = autenticacionDosPasos;
+        this.conteoAccesosFallidos = conteoAccesosFallidos;
+        this.estadoLogico = estadoLogico;
+        this.fechaCreacion = fechaCreacion;
+        this.idRol = idRol;
+        this.foto = foto;
+        this.numeroCelularConfirmado = numeroCelularConfirmado;
+        this.token = token;
     }
 
     public int getIdRol() {
@@ -193,6 +214,14 @@ public class Usuario {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override

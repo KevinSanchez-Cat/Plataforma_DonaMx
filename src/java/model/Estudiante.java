@@ -29,6 +29,17 @@ public class Estudiante extends UsuarioGeneral {
     private boolean estatusEscolar;
     private String intereses;
     private String habilidades;
+    private String curp;
+    private String estadoCivil;
+    private String nombreEscuela;
+    private String matricula;
+    private boolean regular;
+    private String tipoPeriodo;
+    private int totalPeriodos;
+    private int periodoActual;
+    private String periodo;
+    private double promedioGeneral;
+    private String validado;
 
     public Estudiante() {
         super();
@@ -68,6 +79,40 @@ public class Estudiante extends UsuarioGeneral {
         this.estatusEscolar = estatusEscolar;
         this.intereses = intereses;
         this.habilidades = habilidades;
+    }
+
+    public Estudiante(int idEstudiante, int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, String curp, String estadoCivil, String nombreEscuela, String matricula, boolean regular, String tipoPeriodo, int totalPeriodos, int periodoActual, String periodo, double promedioGeneral, String validado) {
+        this.idEstudiante = idEstudiante;
+        this.idUsuario = idUsuario;
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.presentacion = presentacion;
+        this.numeroTelMovil = numeroTelMovil;
+        this.numeroTelFijo = numeroTelFijo;
+        this.lugarNacimiento = lugarNacimiento;
+        this.nacionalidad = nacionalidad;
+        this.nivelEducativo = nivelEducativo;
+        this.ocupacion = ocupacion;
+        this.tipoEscuela = tipoEscuela;
+        this.gradoEscolar = gradoEscolar;
+        this.promedioAnterior = promedioAnterior;
+        this.estatusEscolar = estatusEscolar;
+        this.intereses = intereses;
+        this.habilidades = habilidades;
+        this.curp = curp;
+        this.estadoCivil = estadoCivil;
+        this.nombreEscuela = nombreEscuela;
+        this.matricula = matricula;
+        this.regular = regular;
+        this.tipoPeriodo = tipoPeriodo;
+        this.totalPeriodos = totalPeriodos;
+        this.periodoActual = periodoActual;
+        this.periodo = periodo;
+        this.promedioGeneral = promedioGeneral;
+        this.validado = validado;
     }
 
     public String getHabilidades() {
@@ -228,6 +273,94 @@ public class Estudiante extends UsuarioGeneral {
 
     public void setIdEstudiante(int idEstudiante) {
         this.idEstudiante = idEstudiante;
+    }
+
+    public String getCurp() {
+        return curp;
+    }
+
+    public void setCurp(String curp) {
+        this.curp = curp;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getNombreEscuela() {
+        return nombreEscuela;
+    }
+
+    public void setNombreEscuela(String nombreEscuela) {
+        this.nombreEscuela = nombreEscuela;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public boolean isRegular() {
+        return regular;
+    }
+
+    public void setRegular(boolean regular) {
+        this.regular = regular;
+    }
+
+    public String getTipoPeriodo() {
+        return tipoPeriodo;
+    }
+
+    public void setTipoPeriodo(String tipoPeriodo) {
+        this.tipoPeriodo = tipoPeriodo;
+    }
+
+    public int getTotalPeriodos() {
+        return totalPeriodos;
+    }
+
+    public void setTotalPeriodos(int totalPeriodos) {
+        this.totalPeriodos = totalPeriodos;
+    }
+
+    public int getPeriodoActual() {
+        return periodoActual;
+    }
+
+    public void setPeriodoActual(int periodoActual) {
+        this.periodoActual = periodoActual;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public double getPromedioGeneral() {
+        return promedioGeneral;
+    }
+
+    public void setPromedioGeneral(double promedioGeneral) {
+        this.promedioGeneral = promedioGeneral;
+    }
+
+    public String getValidado() {
+        return validado;
+    }
+
+    public void setValidado(String validado) {
+        this.validado = validado;
     }
 
     @Override
