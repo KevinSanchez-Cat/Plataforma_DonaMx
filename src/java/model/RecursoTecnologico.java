@@ -34,7 +34,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private String detalleEnvio;
     private double costoEnvio;
     private String conCosto;
-
+    private String tipoDonacion;
 
     public RecursoTecnologico() {
     }
@@ -99,6 +99,14 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.detalleEnvio = detalleEnvio;
         this.costoEnvio = costoEnvio;
         this.conCosto = conCosto;
+    }
+
+    public String getTipoDonacion() {
+        return tipoDonacion;
+    }
+
+    public void setTipoDonacion(String tipoDonacion) {
+        this.tipoDonacion = tipoDonacion;
     }
 
     public String getNombreRecurso() {

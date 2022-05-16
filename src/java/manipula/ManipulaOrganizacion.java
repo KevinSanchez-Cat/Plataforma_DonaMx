@@ -16,6 +16,7 @@ import utils.Logg;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaOrganizacion implements Manipula<Organizacion> {
+
     @Override
     public GenericResponse<Organizacion> registrar(Organizacion obj) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
@@ -33,8 +34,19 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "estadoLogico, "
                         + "rfc, "
                         + "tipooOrg, "
-                        + "autorizada "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                        + "autorizada, "
+                        + "linkFacebook, "
+                        + "linkInstagram, "
+                        + "linkLinkedin, "
+                        + "linkTwiteer, "
+                        + "nombreContacto, "
+                        + "apellidosContacto, "
+                        + "cargo, "
+                        + "donatariaAutorizada, "
+                        + "fechaDonatariaAutorizada, "
+                        + "cluni, "
+                        + "noNotariaPublica "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdUsuario());
                 registro.setBoolean(2, obj.isReciboDeducible());
@@ -47,6 +59,17 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                 registro.setString(9, obj.getRfc());
                 registro.setString(10, obj.getTipoOrganizacion());
                 registro.setString(11, obj.getAutorizada());
+                registro.setString(12, obj.getLinkFacebook());
+                registro.setString(13, obj.getLinkInstragram());
+                registro.setString(14, obj.getLinkLinkedin());
+                registro.setString(15, obj.getLinkTwiteer());
+                registro.setString(16, obj.getNombreContacto());
+                registro.setString(17, obj.getApellidosContacto());
+                registro.setString(18, obj.getCargo());
+                registro.setString(19, obj.getDonatariaAutorizada());
+                registro.setTimestamp(20, obj.getFechaDonatariaAutorizada());
+                registro.setString(21, obj.getCluni());
+                registro.setString(22, obj.getNoNotariaPublica());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -144,7 +167,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                             + "estadoLogico=?, "
                             + "rfc=?, "
                             + "tipooOrg=?, "
-                            + "autorizada=? "
+                            + "autorizada=?, "
+                            + "linkFacebook=?, "
+                            + "linkInstagram=?, "
+                            + "linkLinkedin=?, "
+                            + "linkTwiteer=?, "
+                            + "nombreContacto=?, "
+                            + "apellidosContacto=?, "
+                            + "cargo=?, "
+                            + "donatariaAutorizada=?, "
+                            + "fechaDonatariaAutorizada=?, "
+                            + "cluni=?, "
+                            + "noNotariaPublica=? "
                             + "WHERE idOrganizacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdUsuario());
@@ -158,7 +192,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     registro.setString(9, nvoObj.getRfc());
                     registro.setString(10, nvoObj.getTipoOrganizacion());
                     registro.setString(11, nvoObj.getAutorizada());
-                    registro.setInt(12, id);
+                    registro.setString(12, nvoObj.getLinkFacebook());
+                    registro.setString(13, nvoObj.getLinkInstragram());
+                    registro.setString(14, nvoObj.getLinkLinkedin());
+                    registro.setString(15, nvoObj.getLinkTwiteer());
+                    registro.setString(16, nvoObj.getNombreContacto());
+                    registro.setString(17, nvoObj.getApellidosContacto());
+                    registro.setString(18, nvoObj.getCargo());
+                    registro.setString(19, nvoObj.getDonatariaAutorizada());
+                    registro.setTimestamp(20, nvoObj.getFechaDonatariaAutorizada());
+                    registro.setString(21, nvoObj.getCluni());
+                    registro.setString(22, nvoObj.getNoNotariaPublica());
+                    registro.setInt(23, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdOrganizacion(id);
@@ -252,7 +297,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "estadoLogico, "
                         + "rfc, "
                         + "tipooOrg, "
-                        + "autorizada "
+                        + "autorizada, "
+                        + "linkFacebook, "
+                        + "linkInstagram, "
+                        + "linkLinkedin, "
+                        + "linkTwiteer, "
+                        + "nombreContacto, "
+                        + "apellidosContacto, "
+                        + "cargo, "
+                        + "donatariaAutorizada, "
+                        + "fechaDonatariaAutorizada, "
+                        + "cluni, "
+                        + "noNotariaPublica "
                         + "FROM Organizacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -271,6 +327,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     sol.setRfc(rs.getString(10));
                     sol.setTipoOrganizacion(rs.getString(11));
                     sol.setAutorizada(rs.getString(12));
+                    sol.setLinkFacebook(rs.getString(13));
+                    sol.setLinkInstragram(rs.getString(14));
+                    sol.setLinkLinkedin(rs.getString(15));
+                    sol.setLinkTwiteer(rs.getString(16));
+                    sol.setNombreContacto(rs.getString(17));
+                    sol.setApellidosContacto(rs.getString(18));
+                    sol.setCargo(rs.getString(19));
+                    sol.setDonatariaAutorizada(rs.getString(20));
+                    sol.setFechaDonatariaAutorizada(rs.getTimestamp(21));
+                    sol.setCluni(rs.getString(22));
+                    sol.setNoNotariaPublica(rs.getString(23));
+
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -302,7 +370,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "estadoLogico, "
                         + "rfc, "
                         + "tipooOrg, "
-                        + "autorizada "
+                        + "autorizada, "
+                        + "linkFacebook, "
+                        + "linkInstagram, "
+                        + "linkLinkedin, "
+                        + "linkTwiteer, "
+                        + "nombreContacto, "
+                        + "apellidosContacto, "
+                        + "cargo, "
+                        + "donatariaAutorizada, "
+                        + "fechaDonatariaAutorizada, "
+                        + "cluni, "
+                        + "noNotariaPublica "
                         + "FROM Organizacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -321,6 +400,17 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     sol.setRfc(rs.getString(10));
                     sol.setTipoOrganizacion(rs.getString(11));
                     sol.setAutorizada(rs.getString(12));
+                    sol.setLinkFacebook(rs.getString(13));
+                    sol.setLinkInstragram(rs.getString(14));
+                    sol.setLinkLinkedin(rs.getString(15));
+                    sol.setLinkTwiteer(rs.getString(16));
+                    sol.setNombreContacto(rs.getString(17));
+                    sol.setApellidosContacto(rs.getString(18));
+                    sol.setCargo(rs.getString(19));
+                    sol.setDonatariaAutorizada(rs.getString(20));
+                    sol.setFechaDonatariaAutorizada(rs.getTimestamp(21));
+                    sol.setCluni(rs.getString(22));
+                    sol.setNoNotariaPublica(rs.getString(23));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -352,7 +442,18 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                         + "estadoLogico, "
                         + "rfc, "
                         + "tipooOrg, "
-                        + "autorizada "
+                        + "autorizada, "
+                        + "linkFacebook, "
+                        + "linkInstagram, "
+                        + "linkLinkedin, "
+                        + "linkTwiteer, "
+                        + "nombreContacto, "
+                        + "apellidosContacto, "
+                        + "cargo, "
+                        + "donatariaAutorizada, "
+                        + "fechaDonatariaAutorizada, "
+                        + "cluni, "
+                        + "noNotariaPublica "
                         + "FROM Organizacion"
                         + "WHERE idSolicitud=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -373,6 +474,17 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     response.setRfc(rs.getString(10));
                     response.setTipoOrganizacion(rs.getString(11));
                     response.setAutorizada(rs.getString(12));
+                    response.setLinkFacebook(rs.getString(13));
+                    response.setLinkInstragram(rs.getString(14));
+                    response.setLinkLinkedin(rs.getString(15));
+                    response.setLinkTwiteer(rs.getString(16));
+                    response.setNombreContacto(rs.getString(17));
+                    response.setApellidosContacto(rs.getString(18));
+                    response.setCargo(rs.getString(19));
+                    response.setDonatariaAutorizada(rs.getString(20));
+                    response.setFechaDonatariaAutorizada(rs.getTimestamp(21));
+                    response.setCluni(rs.getString(22));
+                    response.setNoNotariaPublica(rs.getString(23));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

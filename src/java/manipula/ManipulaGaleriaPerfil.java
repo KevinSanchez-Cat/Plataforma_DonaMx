@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Galeria;
+import model.GaleriaPerfil;
 import utils.GenericResponse;
 import utils.Logg;
 
@@ -15,15 +16,15 @@ import utils.Logg;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaGaleria implements Manipula<Galeria> {
+public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
 
     @Override
-    public GenericResponse<Galeria> registrar(Galeria obj) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<GaleriaPerfil> registrar(GaleriaPerfil obj) {
+        GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO Galeria ("
+                String sql = "INSERT INTO GaleriaPerfil ("
                         + "idUsuario, "
                         + "nombreImagen, "
                         + "tamanio, "
@@ -62,8 +63,8 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> actualizar(int id) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<GaleriaPerfil> actualizar(int id) {
+        GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -71,14 +72,14 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> editar(int id, Galeria nvoObj) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<GaleriaPerfil> editar(int id, GaleriaPerfil nvoObj) {
+        GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Galeria obj = encontrarId(id);
+            GaleriaPerfil obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE Galeria SET "
+                    String sql = "UPDATE GaleriaPerfil SET "
                             + "idUsuario=?, "
                             + "nombreImagen=?, "
                             + "tamanio=?, "
@@ -125,14 +126,14 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public GenericResponse<Galeria> eliminar(int id) {
-        GenericResponse<Galeria> response = new GenericResponse<>();
+    public GenericResponse<GaleriaPerfil> eliminar(int id) {
+        GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Galeria obj = encontrarId(id);
+            GaleriaPerfil obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM Galeria "
+                    String sql = "DELETE FROM GaleriaPerfil "
                             + "WHERE idGaleria=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
@@ -168,8 +169,8 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public List<Galeria> getData() {
-        List<Galeria> response = new ArrayList<>();
+    public List<GaleriaPerfil> getData() {
+        List<GaleriaPerfil> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -179,12 +180,12 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM Galeria";
+                        + "FROM GaleriaPerfil";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+                    response.add(new GaleriaPerfil(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -198,8 +199,8 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public List<Galeria> consultar(String... filtros) {
-        List<Galeria> response = new ArrayList<>();
+    public List<GaleriaPerfil> consultar(String... filtros) {
+        List<GaleriaPerfil> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -210,12 +211,12 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM Galeria";
+                        + "FROM GaleriaPerfil";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+                    response.add(new GaleriaPerfil(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -229,8 +230,8 @@ public class ManipulaGaleria implements Manipula<Galeria> {
     }
 
     @Override
-    public Galeria encontrarId(int id) {
-        Galeria response = null;
+    public GaleriaPerfil encontrarId(int id) {
+        GaleriaPerfil response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -241,14 +242,14 @@ public class ManipulaGaleria implements Manipula<Galeria> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM Galeria "
+                        + "FROM GaleriaPerfil "
                         + "WHERE idGaleria=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Galeria();
+                    response = new GaleriaPerfil();
                     response.setIdGaleria(rs.getInt(1));
                     response.setIdUsuario(rs.getInt(2));
                     response.setNombreImagen(rs.getString(3));

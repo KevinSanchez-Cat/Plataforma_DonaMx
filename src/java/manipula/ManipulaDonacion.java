@@ -27,22 +27,30 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                 String sql = "INSERT INTO Donacion ("
                         + "idDonador, "
                         + "idDonatario, "
-                        + "idArchivo, "
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
                         + "noConfirmacion, "
-                        + "remunerado "
-                        + ") VALUES (?,?,?,?,?,?,?,?)";
+                        + "remunerado, "
+                        + "estadoPago, "
+                        + "estadoEnvio, "
+                        + "estadoEntrega, "
+                        + "noSerie, "
+                        + "estadoPreparacion "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdDonador());
                 registro.setInt(2, obj.getIdDonatario());
-                registro.setInt(3, obj.getIdArchivo());
-                registro.setInt(4, obj.getIdRecursoTecnologico());
-                registro.setTimestamp(5, obj.getFechaDonacion());
-                registro.setString(6, obj.getEstadoDonacion());
-                registro.setString(7, obj.getNoConfirmacion());
-                registro.setBoolean(8, obj.getRemunerado());
+                registro.setInt(3, obj.getIdRecursoTecnologico());
+                registro.setTimestamp(4, obj.getFechaDonacion());
+                registro.setString(5, obj.getEstadoDonacion());
+                registro.setString(6, obj.getNoConfirmacion());
+                registro.setBoolean(7, obj.getRemunerado());
+                registro.setString(8, obj.getEstadoPago());
+                registro.setString(9, obj.getEstadoEnvio());
+                registro.setString(10, obj.getEstadoEntrega());
+                registro.setString(11, obj.getNoSerie());
+                registro.setString(12, obj.getEstadoPreparacion());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -213,22 +221,30 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                             + "idDonador=?, "
                             + "idDonatario=?, "
                             + "idArchivo=?, "
-                            + "idRecurso=?, "
                             + "fechaDonacion=?, "
-                            + "estadoDonacion=? "
-                            + "noConfirmacion=? "
+                            + "estadoDonacion=?, "
+                            + "noConfirmacion=?, "
                             + "remunerado=? "
+                            + "estadoPago, "
+                            + "estadoEnvio, "
+                            + "estadoEntrega, "
+                            + "noSerie, "
+                            + "estadoPreparacion "
                             + "WHERE idDonacion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdDonador());
                     registro.setInt(2, nvoObj.getIdDonatario());
-                    registro.setInt(3, nvoObj.getIdArchivo());
-                    registro.setInt(4, nvoObj.getIdRecursoTecnologico());
-                    registro.setTimestamp(5, nvoObj.getFechaDonacion());
-                    registro.setString(6, nvoObj.getEstadoDonacion());
-                    registro.setString(7, nvoObj.getNoConfirmacion());
-                    registro.setBoolean(8, nvoObj.getRemunerado());
-                    registro.setInt(9, id);
+                    registro.setInt(3, nvoObj.getIdRecursoTecnologico());
+                    registro.setTimestamp(4, nvoObj.getFechaDonacion());
+                    registro.setString(5, nvoObj.getEstadoDonacion());
+                    registro.setString(6, nvoObj.getNoConfirmacion());
+                    registro.setBoolean(7, nvoObj.getRemunerado());
+                    registro.setString(8, nvoObj.getEstadoPago());
+                    registro.setString(9, nvoObj.getEstadoEnvio());
+                    registro.setString(10, nvoObj.getEstadoEntrega());
+                    registro.setString(11, nvoObj.getNoSerie());
+                    registro.setString(12, nvoObj.getEstadoPreparacion());
+                    registro.setInt(13, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdDonacion(id);
@@ -314,12 +330,16 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "idDonacion, "
                         + "idDonador, "
                         + "idDonatario, "
-                        + "idArchivo, "
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
-                        + "noConfirmacion "
-                        + "remunerado "
+                        + "noConfirmacion, "
+                        + "remunerado, "
+                        + "estadoPago, "
+                        + "estadoEnvio, "
+                        + "estadoEntrega, "
+                        + "noSerie, "
+                        + "estadoPreparacion "
                         + "FROM Donacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -329,12 +349,16 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setIdDonacion(rs.getInt(1));
                     sol.setIdDonador(rs.getInt(2));
                     sol.setIdDonatario(rs.getInt(3));
-                    sol.setIdArchivo(rs.getInt(4));
-                    sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getTimestamp(6));
-                    sol.setEstadoDonacion(rs.getString(7));
-                    sol.setNoConfirmacion(rs.getString(8));
-                    sol.setRemunerado(rs.getBoolean(9));
+                    sol.setIdRecursoTecnologico(rs.getInt(4));
+                    sol.setFechaDonacion(rs.getTimestamp(5));
+                    sol.setEstadoDonacion(rs.getString(6));
+                    sol.setNoConfirmacion(rs.getString(7));
+                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setEstadoPago(rs.getString(9));
+                    sol.setEstadoEnvio(rs.getString(10));
+                    sol.setEstadoEntrega(rs.getString(11));
+                    sol.setNoSerie(rs.getString(12));
+                    sol.setEstadoPreparacion(rs.getString(13));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -358,12 +382,16 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "idDonacion, "
                         + "idDonador, "
                         + "idDonatario, "
-                        + "idArchivo, "
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
-                        + "noConfirmacion "
-                        + "remunerado "
+                        + "noConfirmacion, "
+                        + "remunerado, "
+                        + "estadoPago, "
+                        + "estadoEnvio, "
+                        + "estadoEntrega, "
+                        + "noSerie, "
+                        + "estadoPreparacion "
                         + "FROM Donacion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -373,12 +401,16 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setIdDonacion(rs.getInt(1));
                     sol.setIdDonador(rs.getInt(2));
                     sol.setIdDonatario(rs.getInt(3));
-                    sol.setIdArchivo(rs.getInt(4));
-                    sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getTimestamp(6));
-                    sol.setEstadoDonacion(rs.getString(7));
-                    sol.setNoConfirmacion(rs.getString(8));
-                    sol.setRemunerado(rs.getBoolean(9));
+                    sol.setIdRecursoTecnologico(rs.getInt(4));
+                    sol.setFechaDonacion(rs.getTimestamp(5));
+                    sol.setEstadoDonacion(rs.getString(6));
+                    sol.setNoConfirmacion(rs.getString(7));
+                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setEstadoPago(rs.getString(9));
+                    sol.setEstadoEnvio(rs.getString(10));
+                    sol.setEstadoEntrega(rs.getString(11));
+                    sol.setNoSerie(rs.getString(12));
+                    sol.setEstadoPreparacion(rs.getString(13));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -406,8 +438,13 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
-                        + "noConfirmacion "
-                        + "remunerado "
+                        + "noConfirmacion, "
+                        + "remunerado, "
+                        + "estadoPago, "
+                        + "estadoEnvio, "
+                        + "estadoEntrega, "
+                        + "noSerie, "
+                        + "estadoPreparacion "
                         + "FROM Donacion "
                         + "WHERE idDonacion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -419,12 +456,16 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     response.setIdDonacion(rs.getInt(1));
                     response.setIdDonador(rs.getInt(2));
                     response.setIdDonatario(rs.getInt(3));
-                    response.setIdArchivo(rs.getInt(4));
-                    response.setIdRecursoTecnologico(rs.getInt(5));
-                    response.setFechaDonacion(rs.getTimestamp(6));
-                    response.setEstadoDonacion(rs.getString(7));
-                    response.setNoConfirmacion(rs.getString(8));
-                    response.setRemunerado(rs.getBoolean(9));
+                    response.setIdRecursoTecnologico(rs.getInt(4));
+                    response.setFechaDonacion(rs.getTimestamp(5));
+                    response.setEstadoDonacion(rs.getString(6));
+                    response.setNoConfirmacion(rs.getString(7));
+                    response.setRemunerado(rs.getBoolean(8));
+                    response.setEstadoPago(rs.getString(9));
+                    response.setEstadoEnvio(rs.getString(10));
+                    response.setEstadoEntrega(rs.getString(11));
+                    response.setNoSerie(rs.getString(12));
+                    response.setEstadoPreparacion(rs.getString(13));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

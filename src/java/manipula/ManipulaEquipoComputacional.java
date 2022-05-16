@@ -33,8 +33,44 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                        + "capacidadMaximaRam, "
+                        + "estadoEquipo, "
+                        + "capDiscoDuro, "
+                        + "interfaceDiscoDuro, "
+                        + "resolucionPantalla, "
+                        + "tipoResolucion, "
+                        + "tamanioPantalla, "
+                        + "relacionAspecto, "
+                        + "tipoPantalla, "
+                        + "conAntireflejo, "
+                        + "tarjetaGrafica, "
+                        + "marcaProcesador, "
+                        + "cantidadNucleos, "
+                        + "velocidadProcesador, "
+                        + "tipoBateria, "
+                        + "duracionBateria, "
+                        + "puertosVideo, "
+                        + "puertosUSB, "
+                        + "cantidadRanurasRAM, "
+                        + "cantidadTotalPuertosUSB, "
+                        + "conUSB, "
+                        + "conWifi, "
+                        + "conHDMI, "
+                        + "conBluetooth, "
+                        + "conSalidaAudifonos, "
+                        + "conPuertoEthernet, "
+                        + "conLectorTarjetaMemoriaSD, "
+                        + "conVGA, "
+                        + "peso, "
+                        + "ancho, "
+                        + "profundidad, "
+                        + "altura, "
+                        + "modoSonido, "
+                        + "cantidadParlantes, "
+                        + "conMicrofono, "
+                        + "conCamaraWeb, "
+                        + "fechaCreacion "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdRecursoTecnologico());
                 registro.setString(2, obj.getNombre());
@@ -46,6 +82,42 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                 registro.setString(8, obj.getTipoRAM());
                 registro.setString(9, obj.getVelocidadRAM());
                 registro.setString(10, obj.getCapacidadMaxRAM());
+                registro.setString(11, obj.getEstadoEquipo());
+                registro.setString(12, obj.getCapDiscoDuro());
+                registro.setString(13, obj.getInterfaceDiscoDuro());
+                registro.setString(14, obj.getResolucionPantalla());
+                registro.setString(15, obj.getTipoResolucion());
+                registro.setString(16, obj.getTamanioPantalla());
+                registro.setString(17, obj.getRelacionAspecto());
+                registro.setString(18, obj.getTipoPantalla());
+                registro.setString(19, obj.getConAntireflejo());
+                registro.setString(20, obj.getTarjetaGrafica());
+                registro.setString(21, obj.getMarcaProcesador());
+                registro.setInt(22, obj.getCantidadNucleos());
+                registro.setString(23, obj.getVelocidadProcesador());
+                registro.setString(24, obj.getTipoBateria());
+                registro.setInt(25, obj.getDuracionBateria());
+                registro.setString(26, obj.getPuertosVideo());
+                registro.setString(27, obj.getPuertosUSB());
+                registro.setInt(28, obj.getCantidadRanurasRAM());
+                registro.setInt(29, obj.getCantidadPuertosUSB());
+                registro.setString(30, obj.getConUSB());
+                registro.setString(31, obj.getConWifi());
+                registro.setString(32, obj.getConHDMI());
+                registro.setString(33, obj.getConBluetooth());
+                registro.setString(34, obj.getConSalidaAudifinos());
+                registro.setString(35, obj.getConPuertoEthernet());
+                registro.setString(36, obj.getConLectorTarjetaMemoriaSD());
+                registro.setString(37, obj.getConVGA());
+                registro.setDouble(38, obj.getPeso());
+                registro.setDouble(39, obj.getAncho());
+                registro.setDouble(40, obj.getProfundidad());
+                registro.setDouble(41, obj.getAltura());
+                registro.setString(42, obj.getModoSonido());
+                registro.setInt(43, obj.getCantidadParlantes());
+                registro.setString(44, obj.getConMicrofono());
+                registro.setString(45, obj.getConCamaraWeb());
+                registro.setTimestamp(46, obj.getFechaCreacion());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -97,7 +169,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                             + "memoriaRam=?, "
                             + "tipoRam=?, "
                             + "velocidadRam=?, "
-                            + "capacidadMaximaRam=? "
+                            + "capacidadMaximaRam=?, "
+                            + "estadoEquipo=?, "
+                            + "capDiscoDuro=?, "
+                            + "interfaceDiscoDuro=?, "
+                            + "resolucionPantalla=?, "
+                            + "tipoResolucion=?, "
+                            + "tamanioPantalla=?, "
+                            + "relacionAspecto=?, "
+                            + "tipoPantalla=?, "
+                            + "conAntireflejo=?, "
+                            + "tarjetaGrafica=?, "
+                            + "marcaProcesador=?, "
+                            + "cantidadNucleos=?, "
+                            + "velocidadProcesador=?, "
+                            + "tipoBateria=?, "
+                            + "duracionBateria=?, "
+                            + "puertosVideo=?, "
+                            + "puertosUSB=?, "
+                            + "cantidadRanurasRAM=?, "
+                            + "cantidadTotalPuertosUSB=?, "
+                            + "conUSB=?, "
+                            + "conWifi=?, "
+                            + "conHDMI=?, "
+                            + "conBluetooth=?, "
+                            + "conSalidaAudifonos=?, "
+                            + "conPuertoEthernet=?, "
+                            + "conLectorTarjetaMemoriaSD=?, "
+                            + "conVGA=?, "
+                            + "peso=?, "
+                            + "ancho=?, "
+                            + "profundidad=?, "
+                            + "altura=?, "
+                            + "modoSonido=?, "
+                            + "cantidadParlantes=?, "
+                            + "conMicrofono=?, "
+                            + "conCamaraWeb=?, "
+                            + "fechaCreacion=? "
                             + "WHERE idEquipoComputacional=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdRecursoTecnologico());
@@ -110,7 +218,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     registro.setString(8, nvoObj.getTipoRAM());
                     registro.setString(9, nvoObj.getVelocidadRAM());
                     registro.setString(10, nvoObj.getCapacidadMaxRAM());
-                    registro.setInt(12, id);
+                    registro.setString(11, nvoObj.getEstadoEquipo());
+                    registro.setString(12, nvoObj.getCapDiscoDuro());
+                    registro.setString(13, nvoObj.getInterfaceDiscoDuro());
+                    registro.setString(14, nvoObj.getResolucionPantalla());
+                    registro.setString(15, nvoObj.getTipoResolucion());
+                    registro.setString(16, nvoObj.getTamanioPantalla());
+                    registro.setString(17, nvoObj.getRelacionAspecto());
+                    registro.setString(18, nvoObj.getTipoPantalla());
+                    registro.setString(19, nvoObj.getConAntireflejo());
+                    registro.setString(20, nvoObj.getTarjetaGrafica());
+                    registro.setString(21, nvoObj.getMarcaProcesador());
+                    registro.setInt(22, nvoObj.getCantidadNucleos());
+                    registro.setString(23, nvoObj.getVelocidadProcesador());
+                    registro.setString(24, nvoObj.getTipoBateria());
+                    registro.setInt(25, nvoObj.getDuracionBateria());
+                    registro.setString(26, nvoObj.getPuertosVideo());
+                    registro.setString(27, nvoObj.getPuertosUSB());
+                    registro.setInt(28, nvoObj.getCantidadRanurasRAM());
+                    registro.setInt(29, nvoObj.getCantidadPuertosUSB());
+                    registro.setString(30, nvoObj.getConUSB());
+                    registro.setString(31, nvoObj.getConWifi());
+                    registro.setString(32, nvoObj.getConHDMI());
+                    registro.setString(33, nvoObj.getConBluetooth());
+                    registro.setString(34, nvoObj.getConSalidaAudifinos());
+                    registro.setString(35, nvoObj.getConPuertoEthernet());
+                    registro.setString(36, nvoObj.getConLectorTarjetaMemoriaSD());
+                    registro.setString(37, nvoObj.getConVGA());
+                    registro.setDouble(38, nvoObj.getPeso());
+                    registro.setDouble(39, nvoObj.getAncho());
+                    registro.setDouble(40, nvoObj.getProfundidad());
+                    registro.setDouble(41, nvoObj.getAltura());
+                    registro.setString(42, nvoObj.getModoSonido());
+                    registro.setInt(43, nvoObj.getCantidadParlantes());
+                    registro.setString(44, nvoObj.getConMicrofono());
+                    registro.setString(45, nvoObj.getConCamaraWeb());
+                    registro.setTimestamp(46, nvoObj.getFechaCreacion());
+                    registro.setInt(47, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdEquipoComputacional(id);
@@ -203,7 +347,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam "
+                        + "capacidadMaximaRam, "
+                        + "estadoEquipo, "
+                        + "capDiscoDuro, "
+                        + "interfaceDiscoDuro, "
+                        + "resolucionPantalla, "
+                        + "tipoResolucion, "
+                        + "tamanioPantalla, "
+                        + "relacionAspecto, "
+                        + "tipoPantalla, "
+                        + "conAntireflejo, "
+                        + "tarjetaGrafica, "
+                        + "marcaProcesador, "
+                        + "cantidadNucleos, "
+                        + "velocidadProcesador, "
+                        + "tipoBateria, "
+                        + "duracionBateria, "
+                        + "puertosVideo, "
+                        + "puertosUSB, "
+                        + "cantidadRanurasRAM, "
+                        + "cantidadTotalPuertosUSB, "
+                        + "conUSB, "
+                        + "conWifi, "
+                        + "conHDMI, "
+                        + "conBluetooth, "
+                        + "conSalidaAudifonos, "
+                        + "conPuertoEthernet, "
+                        + "conLectorTarjetaMemoriaSD, "
+                        + "conVGA, "
+                        + "peso, "
+                        + "ancho, "
+                        + "profundidad, "
+                        + "altura, "
+                        + "modoSonido, "
+                        + "cantidadParlantes, "
+                        + "conMicrofono, "
+                        + "conCamaraWeb, "
+                        + "fechaCreacion "
                         + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -221,6 +401,42 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     eqCp.setTipoRAM(rs.getString(9));
                     eqCp.setVelocidadRAM(rs.getString(10));
                     eqCp.setCapacidadMaxRAM(rs.getString(11));
+                    eqCp.setEstadoEquipo(rs.getString(12));
+                    eqCp.setCapDiscoDuro(rs.getString(13));
+                    eqCp.setInterfaceDiscoDuro(rs.getString(14));
+                    eqCp.setResolucionPantalla(rs.getString(15));
+                    eqCp.setTipoResolucion(rs.getString(16));
+                    eqCp.setTamanioPantalla(rs.getString(17));
+                    eqCp.setRelacionAspecto(rs.getString(18));
+                    eqCp.setTipoPantalla(rs.getString(19));
+                    eqCp.setConAntireflejo(rs.getString(20));
+                    eqCp.setTarjetaGrafica(rs.getString(21));
+                    eqCp.setMarcaProcesador(rs.getString(22));
+                    eqCp.setCantidadNucleos(rs.getInt(23));
+                    eqCp.setVelocidadProcesador(rs.getString(24));
+                    eqCp.setTipoBateria(rs.getString(25));
+                    eqCp.setDuracionBateria(rs.getInt(26));
+                    eqCp.setPuertosVideo(rs.getString(27));
+                    eqCp.setPuertosUSB(rs.getString(28));
+                    eqCp.setCantidadRanurasRAM(rs.getInt(29));
+                    eqCp.setCantidadPuertosUSB(rs.getInt(30));
+                    eqCp.setConUSB(rs.getString(31));
+                    eqCp.setConWifi(rs.getString(32));
+                    eqCp.setConHDMI(rs.getString(33));
+                    eqCp.setConBluetooth(rs.getString(34));
+                    eqCp.setConSalidaAudifinos(rs.getString(35));
+                    eqCp.setConPuertoEthernet(rs.getString(36));
+                    eqCp.setConLectorTarjetaMemoriaSD(rs.getString(37));
+                    eqCp.setConVGA(rs.getString(38));
+                    eqCp.setPeso(rs.getDouble(39));
+                    eqCp.setAncho(rs.getDouble(40));
+                    eqCp.setProfundidad(rs.getDouble(41));
+                    eqCp.setAltura(rs.getDouble(42));
+                    eqCp.setModoSonido(rs.getString(43));
+                    eqCp.setCantidadParlantes(rs.getInt(44));
+                    eqCp.setConMicrofono(rs.getString(45));
+                    eqCp.setConCamaraWeb(rs.getString(46));
+                    eqCp.setFechaCreacion(rs.getTimestamp(47));
                     response.add(eqCp);
                 }
             } catch (SQLException ex) {
@@ -251,7 +467,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam "
+                        + "capacidadMaximaRam, "
+                        + "estadoEquipo, "
+                        + "capDiscoDuro, "
+                        + "interfaceDiscoDuro, "
+                        + "resolucionPantalla, "
+                        + "tipoResolucion, "
+                        + "tamanioPantalla, "
+                        + "relacionAspecto, "
+                        + "tipoPantalla, "
+                        + "conAntireflejo, "
+                        + "tarjetaGrafica, "
+                        + "marcaProcesador, "
+                        + "cantidadNucleos, "
+                        + "velocidadProcesador, "
+                        + "tipoBateria, "
+                        + "duracionBateria, "
+                        + "puertosVideo, "
+                        + "puertosUSB, "
+                        + "cantidadRanurasRAM, "
+                        + "cantidadTotalPuertosUSB, "
+                        + "conUSB, "
+                        + "conWifi, "
+                        + "conHDMI, "
+                        + "conBluetooth, "
+                        + "conSalidaAudifonos, "
+                        + "conPuertoEthernet, "
+                        + "conLectorTarjetaMemoriaSD, "
+                        + "conVGA, "
+                        + "peso, "
+                        + "ancho, "
+                        + "profundidad, "
+                        + "altura, "
+                        + "modoSonido, "
+                        + "cantidadParlantes, "
+                        + "conMicrofono, "
+                        + "conCamaraWeb, "
+                        + "fechaCreacion "
                         + "FROM EquipoComputacional";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -269,6 +521,42 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     eqCp.setTipoRAM(rs.getString(9));
                     eqCp.setVelocidadRAM(rs.getString(10));
                     eqCp.setCapacidadMaxRAM(rs.getString(11));
+                    eqCp.setEstadoEquipo(rs.getString(12));
+                    eqCp.setCapDiscoDuro(rs.getString(13));
+                    eqCp.setInterfaceDiscoDuro(rs.getString(14));
+                    eqCp.setResolucionPantalla(rs.getString(15));
+                    eqCp.setTipoResolucion(rs.getString(16));
+                    eqCp.setTamanioPantalla(rs.getString(17));
+                    eqCp.setRelacionAspecto(rs.getString(18));
+                    eqCp.setTipoPantalla(rs.getString(19));
+                    eqCp.setConAntireflejo(rs.getString(20));
+                    eqCp.setTarjetaGrafica(rs.getString(21));
+                    eqCp.setMarcaProcesador(rs.getString(22));
+                    eqCp.setCantidadNucleos(rs.getInt(23));
+                    eqCp.setVelocidadProcesador(rs.getString(24));
+                    eqCp.setTipoBateria(rs.getString(25));
+                    eqCp.setDuracionBateria(rs.getInt(26));
+                    eqCp.setPuertosVideo(rs.getString(27));
+                    eqCp.setPuertosUSB(rs.getString(28));
+                    eqCp.setCantidadRanurasRAM(rs.getInt(29));
+                    eqCp.setCantidadPuertosUSB(rs.getInt(30));
+                    eqCp.setConUSB(rs.getString(31));
+                    eqCp.setConWifi(rs.getString(32));
+                    eqCp.setConHDMI(rs.getString(33));
+                    eqCp.setConBluetooth(rs.getString(34));
+                    eqCp.setConSalidaAudifinos(rs.getString(35));
+                    eqCp.setConPuertoEthernet(rs.getString(36));
+                    eqCp.setConLectorTarjetaMemoriaSD(rs.getString(37));
+                    eqCp.setConVGA(rs.getString(38));
+                    eqCp.setPeso(rs.getDouble(39));
+                    eqCp.setAncho(rs.getDouble(40));
+                    eqCp.setProfundidad(rs.getDouble(41));
+                    eqCp.setAltura(rs.getDouble(42));
+                    eqCp.setModoSonido(rs.getString(43));
+                    eqCp.setCantidadParlantes(rs.getInt(44));
+                    eqCp.setConMicrofono(rs.getString(45));
+                    eqCp.setConCamaraWeb(rs.getString(46));
+                    eqCp.setFechaCreacion(rs.getTimestamp(47));
                     response.add(eqCp);
                 }
             } catch (SQLException ex) {
@@ -299,7 +587,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam "
+                        + "capacidadMaximaRam, "
+                        + "estadoEquipo, "
+                        + "capDiscoDuro, "
+                        + "interfaceDiscoDuro, "
+                        + "resolucionPantalla, "
+                        + "tipoResolucion, "
+                        + "tamanioPantalla, "
+                        + "relacionAspecto, "
+                        + "tipoPantalla, "
+                        + "conAntireflejo, "
+                        + "tarjetaGrafica, "
+                        + "marcaProcesador, "
+                        + "cantidadNucleos, "
+                        + "velocidadProcesador, "
+                        + "tipoBateria, "
+                        + "duracionBateria, "
+                        + "puertosVideo, "
+                        + "puertosUSB, "
+                        + "cantidadRanurasRAM, "
+                        + "cantidadTotalPuertosUSB, "
+                        + "conUSB, "
+                        + "conWifi, "
+                        + "conHDMI, "
+                        + "conBluetooth, "
+                        + "conSalidaAudifonos, "
+                        + "conPuertoEthernet, "
+                        + "conLectorTarjetaMemoriaSD, "
+                        + "conVGA, "
+                        + "peso, "
+                        + "ancho, "
+                        + "profundidad, "
+                        + "altura, "
+                        + "modoSonido, "
+                        + "cantidadParlantes, "
+                        + "conMicrofono, "
+                        + "conCamaraWeb, "
+                        + "fechaCreacion "
                         + "FROM EquipoComputacional "
                         + "WHERE idEquipoComputacional=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -319,6 +643,42 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     response.setTipoRAM(rs.getString(9));
                     response.setVelocidadRAM(rs.getString(10));
                     response.setCapacidadMaxRAM(rs.getString(11));
+                    response.setEstadoEquipo(rs.getString(12));
+                    response.setCapDiscoDuro(rs.getString(13));
+                    response.setInterfaceDiscoDuro(rs.getString(14));
+                    response.setResolucionPantalla(rs.getString(15));
+                    response.setTipoResolucion(rs.getString(16));
+                    response.setTamanioPantalla(rs.getString(17));
+                    response.setRelacionAspecto(rs.getString(18));
+                    response.setTipoPantalla(rs.getString(19));
+                    response.setConAntireflejo(rs.getString(20));
+                    response.setTarjetaGrafica(rs.getString(21));
+                    response.setMarcaProcesador(rs.getString(22));
+                    response.setCantidadNucleos(rs.getInt(23));
+                    response.setVelocidadProcesador(rs.getString(24));
+                    response.setTipoBateria(rs.getString(25));
+                    response.setDuracionBateria(rs.getInt(26));
+                    response.setPuertosVideo(rs.getString(27));
+                    response.setPuertosUSB(rs.getString(28));
+                    response.setCantidadRanurasRAM(rs.getInt(29));
+                    response.setCantidadPuertosUSB(rs.getInt(30));
+                    response.setConUSB(rs.getString(31));
+                    response.setConWifi(rs.getString(32));
+                    response.setConHDMI(rs.getString(33));
+                    response.setConBluetooth(rs.getString(34));
+                    response.setConSalidaAudifinos(rs.getString(35));
+                    response.setConPuertoEthernet(rs.getString(36));
+                    response.setConLectorTarjetaMemoriaSD(rs.getString(37));
+                    response.setConVGA(rs.getString(38));
+                    response.setPeso(rs.getDouble(39));
+                    response.setAncho(rs.getDouble(40));
+                    response.setProfundidad(rs.getDouble(41));
+                    response.setAltura(rs.getDouble(42));
+                    response.setModoSonido(rs.getString(43));
+                    response.setCantidadParlantes(rs.getInt(44));
+                    response.setConMicrofono(rs.getString(45));
+                    response.setConCamaraWeb(rs.getString(46));
+                    response.setFechaCreacion(rs.getTimestamp(47));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -349,7 +709,43 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                         + "memoriaRam, "
                         + "tipoRam, "
                         + "velocidadRam, "
-                        + "capacidadMaximaRam "
+                        + "capacidadMaximaRam, "
+                        + "estadoEquipo, "
+                        + "capDiscoDuro, "
+                        + "interfaceDiscoDuro, "
+                        + "resolucionPantalla, "
+                        + "tipoResolucion, "
+                        + "tamanioPantalla, "
+                        + "relacionAspecto, "
+                        + "tipoPantalla, "
+                        + "conAntireflejo, "
+                        + "tarjetaGrafica, "
+                        + "marcaProcesador, "
+                        + "cantidadNucleos, "
+                        + "velocidadProcesador, "
+                        + "tipoBateria, "
+                        + "duracionBateria, "
+                        + "puertosVideo, "
+                        + "puertosUSB, "
+                        + "cantidadRanurasRAM, "
+                        + "cantidadTotalPuertosUSB, "
+                        + "conUSB, "
+                        + "conWifi, "
+                        + "conHDMI, "
+                        + "conBluetooth, "
+                        + "conSalidaAudifonos, "
+                        + "conPuertoEthernet, "
+                        + "conLectorTarjetaMemoriaSD, "
+                        + "conVGA, "
+                        + "peso, "
+                        + "ancho, "
+                        + "profundidad, "
+                        + "altura, "
+                        + "modoSonido, "
+                        + "cantidadParlantes, "
+                        + "conMicrofono, "
+                        + "conCamaraWeb, "
+                        + "fechaCreacion "
                         + "FROM EquipoComputacional "
                         + "WHERE idRecurso=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);

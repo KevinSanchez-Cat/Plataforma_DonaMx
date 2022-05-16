@@ -6,6 +6,7 @@
 package controller.inicio;
 
 import java.io.IOException;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -134,6 +135,7 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                     user.setAutenticacionDosPasos(false);
                     user.setConteoAccesosFallidos(0);
                     user.setFoto("");
+                    user.setToken(generarToken());
                     ManipulaRol mRol = new ManipulaRol();
                     Rol rol = mRol.encontrarRol("PENDIENTE");
                     user.setIdRol(rol.getIdRol());
@@ -196,5 +198,10 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     public void valueUnbound(HttpSessionBindingEvent event) {
         //cuando elimina datos de session
         Logg.info("Elimino " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
+    }
+    
+    private String generarToken(){
+        String uuidw = UUID.randomUUID().toString().replace("-", "");
+        return uuidw;
     }
 }

@@ -7,38 +7,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Archivo;
+import model.Galeria;
+import model.GaleriaRecurso;
 import utils.GenericResponse;
 import utils.Logg;
-import utils.Misc;
 
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaArchivo implements Manipula<Archivo> {
+public class ManipulaGaleriaRecurso implements Manipula<GaleriaRecurso> {
 
     @Override
-    public GenericResponse<Archivo> registrar(Archivo obj) {
-        GenericResponse<Archivo> response = new GenericResponse<>();
+    public GenericResponse<GaleriaRecurso> registrar(GaleriaRecurso obj) {
+        GenericResponse<GaleriaRecurso> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO Archivo ("
-                        + "nombreArchivo, "
-                        + "extension, "
+                String sql = "INSERT INTO GaleriaRecursos ("
+                        + "idRecurso, "
+                        + "nombreImagen, "
                         + "tamanio, "
-                        + "fechaCreacion, "
-                        + "urlDestino, "
-                        + "idUsuario "
-                        + ") VALUES (?,?,?,?,?,?)";
+                        + "extension, "
+                        + "urlDestino "
+                        + ") VALUES (?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setString(1, obj.getNombreArchivo());
-                registro.setString(2, obj.getExtension());
+                registro.setInt(1, obj.getIdRecurso());
+                registro.setString(2, obj.getNombreImagen());
                 registro.setDouble(3, obj.getTamanio());
-                registro.setTimestamp(4, obj.getFechaCreacion());
+                registro.setString(4, obj.getExtension());
                 registro.setString(5, obj.getUrlDestino());
-                registro.setInt(6, obj.getIdUsuario());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -65,8 +63,8 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public GenericResponse<Archivo> actualizar(int id) {
-        GenericResponse<Archivo> response = new GenericResponse<>();
+    public GenericResponse<GaleriaRecurso> actualizar(int id) {
+        GenericResponse<GaleriaRecurso> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -74,37 +72,36 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public GenericResponse<Archivo> editar(int id, Archivo nvoObj) {
-        GenericResponse<Archivo> response = new GenericResponse<>();
+    public GenericResponse<GaleriaRecurso> editar(int id, GaleriaRecurso nvoObj) {
+        GenericResponse<GaleriaRecurso> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+            GaleriaRecurso obj = encontrarId(id);
+            if (obj != null) {
                 try {
-                    String sql = "UPDATE Archivo SET "
-                            + "nombreArchivo=?, "
-                            + "extension=?, "
+                    String sql = "UPDATE GaleriaRecursos SET "
+                            + "idRecurso=?, "
+                            + "nombreImagen=?, "
                             + "tamanio=?, "
-                            + "fechaCreacion=?, "
-                            + "urlDestino=?, "
-                            + "idUsuario=? "
-                            + "WHERE idArchivo=?";
+                            + "extension=?, "
+                            + "urlDestino=? "
+                            + "WHERE idGaleriaRecursos=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setString(1, nvoObj.getNombreArchivo());
-                    registro.setString(2, nvoObj.getExtension());
+                    registro.setInt(1, nvoObj.getIdGaleriaRecursos());
+                    registro.setString(2, nvoObj.getNombreImagen());
                     registro.setDouble(3, nvoObj.getTamanio());
-                    registro.setTimestamp(4, nvoObj.getFechaCreacion());
+                    registro.setString(4, nvoObj.getExtension());
                     registro.setString(5, nvoObj.getUrlDestino());
-                    registro.setInt(6, nvoObj.getIdUsuario());
-                    registro.setInt(7, id);
+                    registro.setInt(6, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
-                        nvoObj.setIdArchivo(id);
+                        nvoObj.setIdGaleriaRecursos(id);
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
                         response.setResponseObject(nvoObj);
                         response.setMensaje("Edición exitosa en la base de datos");
                     } else {
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
-                        response.setResponseObject(nvoObj);
+                        response.setResponseObject(obj);
                         response.setMensaje("Edición fallido en la base de datos");
                     }
                 } catch (SQLException ex) {
@@ -129,15 +126,15 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public GenericResponse<Archivo> eliminar(int id) {
-        GenericResponse<Archivo> response = new GenericResponse<>();
+    public GenericResponse<GaleriaRecurso> eliminar(int id) {
+        GenericResponse<GaleriaRecurso> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Archivo obj = encontrarId(id);
+            GaleriaRecurso obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM Archivo "
-                            + "WHERE idArchivo=?";
+                    String sql = "DELETE FROM GaleriaRecursos "
+                            + "WHERE idGaleriaRecursos=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -172,33 +169,23 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public List<Archivo> getData() {
-        List<Archivo> response = new ArrayList<>();
+    public List<GaleriaRecurso> getData() {
+        List<GaleriaRecurso> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "SELECT "
-                        + "idArchivo, "
-                        + "nombreArchivo, "
-                        + "extension, "
+                String sql = "SELECT idGaleriaRecursos, "
+                        + "idRecurso, "
+                        + "nombreImagen, "
                         + "tamanio, "
-                        + "fechaCreacion, "
-                        + "urlDestino, "
-                        + "idUsuario "
-                        + "FROM Archivo";
+                        + "extension, "
+                        + "urlDestino "
+                        + "FROM GaleriaRecursos ";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    Archivo sol = new Archivo();
-                    sol.setIdArchivo(rs.getInt(1));
-                    sol.setNombreArchivo(rs.getString(2));
-                    sol.setExtension(rs.getString(3));
-                    sol.setTamanio(rs.getDouble(4));
-                    sol.setFechaCreacion(rs.getTimestamp(5));
-                    sol.setUrlDestino(rs.getString(6));
-                    sol.setIdUsuario(rs.getInt(7));
-                    response.add(sol);
+                    response.add(new GaleriaRecurso(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -212,33 +199,24 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public List<Archivo> consultar(String... filtros) {
-        List<Archivo> response = new ArrayList<>();
+    public List<GaleriaRecurso> consultar(String... filtros) {
+        List<GaleriaRecurso> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idArchivo, "
-                        + "nombreArchivo, "
-                        + "extension, "
+                        + "idGaleriaRecursos, "
+                        + "idRecurso, "
+                        + "nombreImagen, "
                         + "tamanio, "
-                        + "fechaCreacion, "
-                        + "urlDestino, "
-                        + "idUsuario "
-                        + "FROM Archivo";
+                        + "extension, "
+                        + "urlDestino "
+                        + "FROM GaleriaRecursos";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    Archivo sol = new Archivo();
-                    sol.setIdArchivo(rs.getInt(1));
-                    sol.setNombreArchivo(rs.getString(2));
-                    sol.setExtension(rs.getString(3));
-                    sol.setTamanio(rs.getDouble(4));
-                    sol.setFechaCreacion(rs.getTimestamp(5));
-                    sol.setUrlDestino(rs.getString(6));
-                    sol.setIdUsuario(rs.getInt(7));
-                    response.add(sol);
+                    response.add(new GaleriaRecurso(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -252,34 +230,32 @@ public class ManipulaArchivo implements Manipula<Archivo> {
     }
 
     @Override
-    public Archivo encontrarId(int id) {
-        Archivo response = null;
+    public GaleriaRecurso encontrarId(int id) {
+        GaleriaRecurso response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idArchivo, "
-                        + "nombreArchivo, "
-                        + "extension, "
+                        + "idGaleriaRecursos, "
+                        + "idRecurso, "
+                        + "nombreImagen, "
                         + "tamanio, "
-                        + "fechaCreacion, "
-                        + "urlDestino, "
-                        + "idUsuario "
-                        + "FROM Archivo"
-                        + "WHERE idArchivo=?";
+                        + "extension, "
+                        + "urlDestino "
+                        + "FROM GaleriaRecursos  "
+                        + "WHERE idGaleriaRecursos=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Archivo();
-                    response.setIdArchivo(rs.getInt(1));
-                    response.setNombreArchivo(rs.getString(2));
-                    response.setExtension(rs.getString(3));
+                    response = new GaleriaRecurso();
+                    response.setIdGaleriaRecursos(rs.getInt(1));
+                    response.setIdRecurso(rs.getInt(2));
+                    response.setNombreImagen(rs.getString(3));
                     response.setTamanio(rs.getDouble(4));
-                    response.setFechaCreacion(rs.getTimestamp(5));
+                    response.setExtension(rs.getString(5));
                     response.setUrlDestino(rs.getString(6));
-                    response.setIdUsuario(rs.getInt(7));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

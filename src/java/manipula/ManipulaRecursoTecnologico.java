@@ -17,6 +17,7 @@ import utils.Misc;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> {
+
     @Override
     public GenericResponse<RecursoTecnologico> registrar(RecursoTecnologico obj) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
@@ -40,8 +41,17 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioEstimado, "
                         + "precioOfertado, "
                         + "organizacionOCivil, "
-                        + "tipoSoftHard "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + "tipoSoftHard, "
+                        + "conCosto, "
+                        + "costoEnvio, "
+                        + "tipoDonacion, "
+                        + "detalleEnvio, "
+                        + "otrosDetalles, "
+                        + "estadoConvocatoria, "
+                        + "EdadMinima, "
+                        + "EdadMaxima, "
+                        + "certificado "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdCategoria());
                 registro.setInt(2, obj.getIdDonador());
@@ -52,7 +62,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 registro.setString(7, obj.getEstadoPublicacion());
                 registro.setBoolean(8, obj.isEstadoLogico());
                 registro.setTimestamp(9, obj.getFechaPublicacion());
-                registro.setTimestamp(10,obj.getFechaAutorizacion());
+                registro.setTimestamp(10, obj.getFechaAutorizacion());
                 registro.setBoolean(11, obj.isRemunerado());
                 registro.setString(12, obj.getEstadoCondicion());
                 registro.setDouble(13, obj.getPrecioOriginal());
@@ -60,6 +70,15 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 registro.setDouble(15, obj.getPrecioOfertado());
                 registro.setString(16, obj.getOrganizacionOCivil());
                 registro.setString(17, obj.getTipoSoftwarOHardware());
+                registro.setString(18, obj.getConCosto());
+                registro.setDouble(19, obj.getCostoEnvio());
+                registro.setString(20, obj.getTipoDonacion());
+                registro.setString(21, obj.getDetalleEnvio());
+                registro.setString(22, obj.getOtrosDetalles());
+                registro.setString(23, obj.getEstadoConvocatoria());
+                registro.setInt(24, obj.getEdadMinima());
+                registro.setInt(25, obj.getEdadMaxima());
+                registro.setString(26, obj.getCertificado());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -118,7 +137,16 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                             + "precioEstimado=?, "
                             + "precioOfertado=?, "
                             + "organizacionOCivil=?, "
-                            + "tipoSoftHard=? "
+                            + "tipoSoftHard=?, "
+                            + "conCosto=?, "
+                            + "costoEnvio=?, "
+                            + "tipoDonacion=?, "
+                            + "detalleEnvio=?, "
+                            + "otrosDetalles=?, "
+                            + "estadoConvocatoria=?, "
+                            + "EdadMinima=?, "
+                            + "EdadMaxima=?, "
+                            + "certificado=? "
                             + "WHERE idRecursoTecnologico=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdCategoria());
@@ -130,7 +158,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     registro.setString(7, nvoObj.getEstadoPublicacion());
                     registro.setBoolean(8, nvoObj.isEstadoLogico());
                     registro.setTimestamp(9, nvoObj.getFechaPublicacion());
-                    registro.setTimestamp(10,nvoObj.getFechaAutorizacion());
+                    registro.setTimestamp(10, nvoObj.getFechaAutorizacion());
                     registro.setBoolean(11, nvoObj.isRemunerado());
                     registro.setString(12, nvoObj.getEstadoCondicion());
                     registro.setDouble(13, nvoObj.getPrecioOriginal());
@@ -138,7 +166,16 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     registro.setDouble(15, nvoObj.getPrecioOfertado());
                     registro.setString(16, nvoObj.getOrganizacionOCivil());
                     registro.setString(17, nvoObj.getTipoSoftwarOHardware());
-                    registro.setInt(18, id);
+                    registro.setString(18, nvoObj.getConCosto());
+                    registro.setDouble(19, nvoObj.getCostoEnvio());
+                    registro.setString(20, nvoObj.getTipoDonacion());
+                    registro.setString(21, nvoObj.getDetalleEnvio());
+                    registro.setString(22, nvoObj.getOtrosDetalles());
+                    registro.setString(23, nvoObj.getEstadoConvocatoria());
+                    registro.setInt(24, nvoObj.getEdadMinima());
+                    registro.setInt(25, nvoObj.getEdadMaxima());
+                    registro.setString(26, nvoObj.getCertificado());
+                    registro.setInt(27, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdRecursoTecnologico(id);
@@ -238,7 +275,16 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioEstimado, "
                         + "precioOfertado, "
                         + "organizacionOCivil, "
-                        + "tipoSoftHard "
+                        + "tipoSoftHard, "
+                        + "conCosto, "
+                        + "costoEnvio, "
+                        + "tipoDonacion, "
+                        + "detalleEnvio, "
+                        + "otrosDetalles, "
+                        + "estadoConvocatoria, "
+                        + "EdadMinima, "
+                        + "EdadMaxima, "
+                        + "certificado "
                         + "FROM RecursoTecnologico";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -263,6 +309,15 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setPrecioOriginal(rs.getDouble(16));
                     sol.setOrganizacionOCivil(rs.getString(17));
                     sol.setTipoSoftwarOHardware(rs.getString(18));
+                    sol.setConCosto(rs.getString(19));
+                    sol.setCostoEnvio(rs.getDouble(20));
+                    sol.setTipoDonacion(rs.getString(21));
+                    sol.setDetalleEnvio(rs.getString(22));
+                    sol.setOtrosDetalles(rs.getString(23));
+                    sol.setEstadoConvocatoria(rs.getString(24));
+                    sol.setEdadMinima(rs.getInt(25));
+                    sol.setEdadMinima(rs.getInt(26));
+                    sol.setCertificado(rs.getString(27));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -300,7 +355,16 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioEstimado, "
                         + "precioOfertado, "
                         + "organizacionOCivil, "
-                        + "tipoSoftHard "
+                        + "tipoSoftHard, "
+                        + "conCosto, "
+                        + "costoEnvio, "
+                        + "tipoDonacion, "
+                        + "detalleEnvio, "
+                        + "otrosDetalles, "
+                        + "estadoConvocatoria, "
+                        + "EdadMinima, "
+                        + "EdadMaxima, "
+                        + "certificado "
                         + "FROM RecursoTecnologico";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -325,6 +389,15 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     sol.setPrecioOriginal(rs.getDouble(16));
                     sol.setOrganizacionOCivil(rs.getString(17));
                     sol.setTipoSoftwarOHardware(rs.getString(18));
+                    sol.setConCosto(rs.getString(19));
+                    sol.setCostoEnvio(rs.getDouble(20));
+                    sol.setTipoDonacion(rs.getString(21));
+                    sol.setDetalleEnvio(rs.getString(22));
+                    sol.setOtrosDetalles(rs.getString(23));
+                    sol.setEstadoConvocatoria(rs.getString(24));
+                    sol.setEdadMinima(rs.getInt(25));
+                    sol.setEdadMinima(rs.getInt(26));
+                    sol.setCertificado(rs.getString(27));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
@@ -362,7 +435,16 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                         + "precioEstimado, "
                         + "precioOfertado, "
                         + "organizacionOCivil, "
-                        + "tipoSoftHard "
+                        + "tipoSoftHard, "
+                        + "conCosto, "
+                        + "costoEnvio, "
+                        + "tipoDonacion, "
+                        + "detalleEnvio, "
+                        + "otrosDetalles, "
+                        + "estadoConvocatoria, "
+                        + "EdadMinima, "
+                        + "EdadMaxima, "
+                        + "certificado "
                         + "FROM RecursoTecnologico"
                         + "WHERE idRecursoTecnologico=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -389,6 +471,15 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setPrecioOriginal(rs.getDouble(16));
                     response.setOrganizacionOCivil(rs.getString(17));
                     response.setTipoSoftwarOHardware(rs.getString(18));
+                    response.setConCosto(rs.getString(19));
+                    response.setCostoEnvio(rs.getDouble(20));
+                    response.setTipoDonacion(rs.getString(21));
+                    response.setDetalleEnvio(rs.getString(22));
+                    response.setOtrosDetalles(rs.getString(23));
+                    response.setEstadoConvocatoria(rs.getString(24));
+                    response.setEdadMinima(rs.getInt(25));
+                    response.setEdadMinima(rs.getInt(26));
+                    response.setCertificado(rs.getString(27));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

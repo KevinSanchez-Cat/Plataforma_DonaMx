@@ -56,6 +56,7 @@ public class EquipoComputacional {
     private String conMicrofono;
     private String conCamaraWeb;
     private Timestamp fechaCreacion;
+    private String tipoPantalla;
 
     public EquipoComputacional() {
     }
@@ -86,7 +87,7 @@ public class EquipoComputacional {
         this.estadoEquipo = estadoEquipo;
     }
 
-    public EquipoComputacional(int idEquipoComputacional, String nombre, int idRecursoTecnologico, String marca, int idSistemaOperativo, String modelo, String color, String memoriaRAM, String tipoRAM, String velocidadRAM, String capacidadMaxRAM, String estadoEquipo, String capDiscoDuro, String interfaceDiscoDuro, String resolucionPantalla, String tipoResolucion, String relacionAspecto, String tamanioPantalla, String conAntireflejo, String tarjetaGrafica, String marcaProcesador, String lineaProcesador, int cantidadNucleos, String velocidadProcesador, String tipoBateria, int duracionBateria, String puertosVideo, String puertosUSB, int cantidadRanurasRAM, int cantidadPuertosUSB, String conUSB, String conWifi, String conHDMI, String conBluetooth, String conSalidaAudifinos, String conPuertoEthernet, String conLectorTarjetaMemoriaSD, String conVGA, double peso, double ancho, double profundidad, double altura, String modoSonido, int cantidadParlantes, String conMicrofono, String conCamaraWeb, Timestamp fechaCreacion) {
+    public EquipoComputacional(int idEquipoComputacional, String nombre, int idRecursoTecnologico, String marca, int idSistemaOperativo, String modelo, String color, String memoriaRAM, String tipoRAM, String velocidadRAM, String capacidadMaxRAM, String estadoEquipo, String capDiscoDuro, String interfaceDiscoDuro, String resolucionPantalla, String tipoResolucion, String relacionAspecto, String tamanioPantalla, String conAntireflejo, String tarjetaGrafica, String marcaProcesador, String lineaProcesador, int cantidadNucleos, String velocidadProcesador, String tipoBateria, int duracionBateria, String puertosVideo, String puertosUSB, int cantidadRanurasRAM, int cantidadPuertosUSB, String conUSB, String conWifi, String conHDMI, String conBluetooth, String conSalidaAudifinos, String conPuertoEthernet, String conLectorTarjetaMemoriaSD, String conVGA, double peso, double ancho, double profundidad, double altura, String modoSonido, int cantidadParlantes, String conMicrofono, String conCamaraWeb, Timestamp fechaCreacion, String tipoPantalla) {
         this.idEquipoComputacional = idEquipoComputacional;
         this.nombre = nombre;
         this.idRecursoTecnologico = idRecursoTecnologico;
@@ -134,6 +135,15 @@ public class EquipoComputacional {
         this.conMicrofono = conMicrofono;
         this.conCamaraWeb = conCamaraWeb;
         this.fechaCreacion = fechaCreacion;
+        this.tipoPantalla = tipoPantalla;
+    }
+
+    public String getTipoPantalla() {
+        return tipoPantalla;
+    }
+
+    public void setTipoPantalla(String tipoPantalla) {
+        this.tipoPantalla = tipoPantalla;
     }
 
     public String getEstadoEquipo() {

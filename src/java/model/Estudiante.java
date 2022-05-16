@@ -24,7 +24,6 @@ public class Estudiante extends UsuarioGeneral {
     private String nivelEducativo;
     private String ocupacion;
     private String tipoEscuela;
-    private String gradoEscolar;
     private double promedioAnterior;
     private boolean estatusEscolar;
     private String intereses;
@@ -57,7 +56,7 @@ public class Estudiante extends UsuarioGeneral {
         this.ocupacion = ocupacion;
     }
 
-    public Estudiante(int idEstudiante, int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Estudiante(int idEstudiante, int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idEstudiante = idEstudiante;
         this.idUsuario = usuario;
@@ -74,14 +73,13 @@ public class Estudiante extends UsuarioGeneral {
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
         this.tipoEscuela = tipoEscuela;
-        this.gradoEscolar = gradoEscolar;
         this.promedioAnterior = promedioAnterior;
         this.estatusEscolar = estatusEscolar;
         this.intereses = intereses;
         this.habilidades = habilidades;
     }
 
-    public Estudiante(int idEstudiante, int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, String gradoEscolar, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, String curp, String estadoCivil, String nombreEscuela, String matricula, boolean regular, String tipoPeriodo, int totalPeriodos, int periodoActual, String periodo, double promedioGeneral, String validado) {
+    public Estudiante(int idEstudiante, int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela,  double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, String curp, String estadoCivil, String nombreEscuela, String matricula, boolean regular, String tipoPeriodo, int totalPeriodos, int periodoActual, String periodo, double promedioGeneral, String validado) {
         this.idEstudiante = idEstudiante;
         this.idUsuario = idUsuario;
         this.nombres = nombres;
@@ -97,7 +95,6 @@ public class Estudiante extends UsuarioGeneral {
         this.nivelEducativo = nivelEducativo;
         this.ocupacion = ocupacion;
         this.tipoEscuela = tipoEscuela;
-        this.gradoEscolar = gradoEscolar;
         this.promedioAnterior = promedioAnterior;
         this.estatusEscolar = estatusEscolar;
         this.intereses = intereses;
@@ -147,13 +144,6 @@ public class Estudiante extends UsuarioGeneral {
         this.promedioAnterior = promedioAnterior;
     }
 
-    public String getGradoEscolar() {
-        return gradoEscolar;
-    }
-
-    public void setGradoEscolar(String gradoEscolar) {
-        this.gradoEscolar = gradoEscolar;
-    }
 
     public String getTipoEscuela() {
         return tipoEscuela;
@@ -365,7 +355,7 @@ public class Estudiante extends UsuarioGeneral {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", usuario=" + idUsuario + ", nombres=" + nombres + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", presentacion=" + presentacion + ", numeroTelMovil=" + numeroTelMovil + ", numeroTelFijo=" + numeroTelFijo + ", lugarNacimiento=" + lugarNacimiento + ", nacionalidad=" + nacionalidad + ", nivelEducativo=" + nivelEducativo + ", ocupacion=" + ocupacion + ", tipoEscuela=" + tipoEscuela + ", gradoEscolar=" + gradoEscolar + ", promedioAnterior=" + promedioAnterior + ", estatusEscolar=" + estatusEscolar + ", intereses=" + intereses + ", habilidades=" + habilidades + '}';
+        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", idUsuario=" + idUsuario + ", nombres=" + nombres + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", presentacion=" + presentacion + ", numeroTelMovil=" + numeroTelMovil + ", numeroTelFijo=" + numeroTelFijo + ", lugarNacimiento=" + lugarNacimiento + ", nacionalidad=" + nacionalidad + ", nivelEducativo=" + nivelEducativo + ", ocupacion=" + ocupacion + ", tipoEscuela=" + tipoEscuela + ", promedioAnterior=" + promedioAnterior + ", estatusEscolar=" + estatusEscolar + ", intereses=" + intereses + ", habilidades=" + habilidades + ", curp=" + curp + ", estadoCivil=" + estadoCivil + ", nombreEscuela=" + nombreEscuela + ", matricula=" + matricula + ", regular=" + regular + ", tipoPeriodo=" + tipoPeriodo + ", totalPeriodos=" + totalPeriodos + ", periodoActual=" + periodoActual + ", periodo=" + periodo + ", promedioGeneral=" + promedioGeneral + ", validado=" + validado + '}';
     }
 
 }

@@ -12,7 +12,6 @@ public class Donacion {
     private int idDonacion;
     private int idDonatario;
     private int idDonador;
-    private int idArchivo;
     private int idRecursoTecnologico;
     private Timestamp fechaDonacion;  
     private String estadoDonacion;
@@ -27,10 +26,9 @@ public class Donacion {
     public Donacion() {
     }
 
-    public Donacion(int donatario, int donador, int archivo, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int donatario, int donador, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
         this.idDonatario = donatario;
         this.idDonador = donador;
-        this.idArchivo = archivo;
         this.idRecursoTecnologico = recursoTecnologico;
         this.fechaDonacion = fechaDonacion;
         this.estadoDonacion = estadoDonacion;
@@ -38,11 +36,10 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int donatario, int donador, int archivo, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int idDonacion, int donatario, int donador,int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
         this.idDonacion = idDonacion;
         this.idDonatario = donatario;
         this.idDonador = donador;
-        this.idArchivo = archivo;
         this.idRecursoTecnologico = recursoTecnologico;
         this.fechaDonacion = fechaDonacion;
         this.estadoDonacion = estadoDonacion;
@@ -50,11 +47,10 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int idDonatario, int idDonador, int idArchivo, int idRecursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
+    public Donacion(int idDonacion, int idDonatario, int idDonador, int idRecursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
         this.idDonacion = idDonacion;
         this.idDonatario = idDonatario;
         this.idDonador = idDonador;
-        this.idArchivo = idArchivo;
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.fechaDonacion = fechaDonacion;
         this.estadoDonacion = estadoDonacion;
@@ -147,17 +143,6 @@ public class Donacion {
         this.idRecursoTecnologico = idRecursoTecnologico;
     }
 
-    public int getIdArchivo() {
-        return idArchivo;
-    }
-
-    public void setIdArchivo(int idArchivo) {
-        this.idArchivo = idArchivo;
-    }
-
-    public void setLstArchivos(int archivo) {
-        this.idArchivo = archivo;
-    }
 
     public int getIdDonador() {
         return idDonador;
@@ -185,7 +170,7 @@ public class Donacion {
 
     @Override
     public String toString() {
-        return "Donacion{" + "idDonacion=" + idDonacion + ", donatario=" + idDonatario + ", donador=" + idDonador + ", archivo=" + idArchivo + ", recursoTecnologico=" + idRecursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + '}';
+        return "Donacion{" + "idDonacion=" + idDonacion + ", idDonatario=" + idDonatario + ", idDonador=" + idDonador + ", idRecursoTecnologico=" + idRecursoTecnologico + ", fechaDonacion=" + fechaDonacion + ", estadoDonacion=" + estadoDonacion + ", noConfirmacion=" + noConfirmacion + ", remunerado=" + remunerado + ", estadoPago=" + estadoPago + ", estadoEnvio=" + estadoEnvio + ", estadoEntrega=" + estadoEntrega + ", noSerie=" + noSerie + ", estadoPreparacion=" + estadoPreparacion + '}';
     }
 
 }

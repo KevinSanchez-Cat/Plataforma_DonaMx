@@ -58,8 +58,8 @@ public class Srv_inicio_sesion extends HttpServlet {
             ManipulaRol mRol = new ManipulaRol();
             Rol rol = mRol.encontrarId(respuesta.getResponseObject().getIdRol());
             session.setAttribute("rol", rol.getRol());
-           //reCaptcha
-          /*  String remoteAddr = request.getRemoteAddr();
+            //reCaptcha
+            /*  String remoteAddr = request.getRemoteAddr();
             ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
             reCaptcha.setPrivateKey("6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak");
 
@@ -72,7 +72,7 @@ public class Srv_inicio_sesion extends HttpServlet {
             } else {
                 System.out.print("Answer is wrong");
             }
-            */
+             */
             switch (rol.getRol()) {
                 case "DONADOR": {
                     //redirectServlet(request, response, "donador");

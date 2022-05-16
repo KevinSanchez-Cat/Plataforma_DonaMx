@@ -45,8 +45,6 @@ public class Modulo_Estudiante extends HttpServlet {
             ManipulaLocalidad mLocalidad = null;
             ManipulaRecursoTecnologico mRecursosTecnologicos = null;
             ManipulaEquipoComputacional mEquiposComputacionales = null;
-            ManipulaGaleria mGaleria = null;
-            ManipulaArchivo mArchivos = null;
             ManipulaSolicitud mSolicitudes = null;
             ManipulaDeseos mDeseos = null;
             ManipulaDonacion mDonaciones = null;
@@ -184,7 +182,6 @@ public class Modulo_Estudiante extends HttpServlet {
                                         request.setAttribute("estudiante_nivel_educativo", estudiante.getNivelEducativo());
                                         request.setAttribute("estudiante_ocupacion", estudiante.getOcupacion());
                                         request.setAttribute("estudiante_tipo_escuela", estudiante.getTipoEscuela());
-                                        request.setAttribute("estudiante_grado_escolar", estudiante.getGradoEscolar());
                                         request.setAttribute("estudiante_promedio_anterior", estudiante.getPromedioAnterior());
                                         request.setAttribute("estudiante_estatus_escolar", estudiante.isEstatusEscolar());
                                     }
@@ -203,7 +200,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                         request.setAttribute("estudiante_calle_interior", estudiante.getNivelEducativo());
                                         request.setAttribute("estudiante_calle_exterior", estudiante.getOcupacion());
                                         request.setAttribute("estudiante_calle_frontal", estudiante.getTipoEscuela());
-                                        request.setAttribute("estudiante_calle_trasera", estudiante.getGradoEscolar());
+                                        request.setAttribute("estudiante_calle_trasera", dir.getCalleTrasera());
                                         request.setAttribute("estudiante_calle_izquierda", estudiante.getPromedioAnterior());
                                         request.setAttribute("estudiante_calle_derecha", estudiante.isEstatusEscolar());
                                         request.setAttribute("estudiante_nombre_asentamiento", estudiante.isEstatusEscolar());

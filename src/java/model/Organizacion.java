@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class Organizacion extends UsuarioGeneral {
     private String apellidosContacto;
     private String cargo;
     private String donatariaAutorizada;
-    private String fechaDonatariaAutorizada;
+    private Timestamp fechaDonatariaAutorizada;
     private String cluni;
     private String noNotariaPublica;
     
@@ -213,11 +214,11 @@ public class Organizacion extends UsuarioGeneral {
         this.donatariaAutorizada = donatariaAutorizada;
     }
 
-    public String getFechaDonatariaAutorizada() {
+    public Timestamp getFechaDonatariaAutorizada() {
         return fechaDonatariaAutorizada;
     }
 
-    public void setFechaDonatariaAutorizada(String fechaDonatariaAutorizada) {
+    public void setFechaDonatariaAutorizada(Timestamp fechaDonatariaAutorizada) {
         this.fechaDonatariaAutorizada = fechaDonatariaAutorizada;
     }
 

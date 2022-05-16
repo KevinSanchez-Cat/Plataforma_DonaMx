@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.SistemaOperativo;
+import model.Noticia;
+import model.Paqueteria;
 import utils.GenericResponse;
 import utils.Logg;
 
@@ -15,24 +16,31 @@ import utils.Logg;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
+public class ManipulaPaqueteria implements Manipula<Paqueteria> {
+
     @Override
-    public GenericResponse<SistemaOperativo> registrar(SistemaOperativo obj) {
-        GenericResponse<SistemaOperativo> response = new GenericResponse<>();
+    public GenericResponse<Paqueteria> registrar(Paqueteria obj) {
+        GenericResponse<Paqueteria> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO SistemaOperativo ("
-                        + "sistemaOperativo,"
-                        + "version, "
-                        + "edicion, "
-                        + "tipo "
-                        + ") VALUES (?,?,?,?)";
+                String sql = "INSERT INTO Paqueteria ("
+                        + "idDonacion, "
+                        + "idVoluntario, "
+                        + "direccionOrigen, "
+                        + "direccionDestino, "
+                        + "fechaOrigen, "
+                        + "fechaDestino, "
+                        + "estadoPaquete "
+                        + ") VALUES (?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setString(1, obj.getSistemaOperativo());
-                registro.setString(2, obj.getVersion());
-                registro.setString(3, obj.getEdicion());
-                registro.setString(4, obj.getTipo());
+                registro.setInt(1, obj.getIdDonacion());
+                registro.setInt(2, obj.getIdVoluntario());
+                registro.setString(3, obj.getDireccionOrigen());
+                registro.setString(4, obj.getDireccionDestino());
+                registro.setTimestamp(5, obj.getFechaOrigen());
+                registro.setTimestamp(6, obj.getFechaDestino());
+
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -59,8 +67,8 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> actualizar(int id) {
-        GenericResponse<SistemaOperativo> response = new GenericResponse<>();
+    public GenericResponse<Paqueteria> actualizar(int id) {
+        GenericResponse<Paqueteria> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
@@ -68,34 +76,39 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> editar(int id, SistemaOperativo nvoObj) {
-        GenericResponse<SistemaOperativo> response = new GenericResponse<>();
+    public GenericResponse<Paqueteria> editar(int id, Paqueteria nvoObj) {
+        GenericResponse<Paqueteria> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
+
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE SistemaOperativo SET "
-                            + "sistemaOperativo=?, "
-                            + "version=?, "
-                            + "edicion=?, "
-                            + "tipo=? "
-                            + "WHERE idSistemaOperativo=?";
+                    String sql = "UPDATE Categoria SET "
+                            + "idDonacion=?, "
+                            + "idVoluntario=?, "
+                            + "direccionOrigen=?, "
+                            + "direccionDestino=?, "
+                            + "fechaOrigen=?, "
+                            + "fechaDestino=?, "
+                            + "estadoPaquete=? "
+                            + "WHERE idPatequeteria=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setString(1, nvoObj.getSistemaOperativo());
-                    registro.setString(2, nvoObj.getVersion());
-                    registro.setString(3, nvoObj.getEdicion());
-                    registro.setString(4, nvoObj.getTipo());
-                    registro.setInt(5, id);
+                    registro.setInt(1, nvoObj.getIdDonacion());
+                    registro.setInt(2, nvoObj.getIdVoluntario());
+                    registro.setString(3, nvoObj.getDireccionOrigen());
+                    registro.setString(4, nvoObj.getDireccionDestino());
+                    registro.setTimestamp(5, nvoObj.getFechaOrigen());
+                    registro.setTimestamp(6, nvoObj.getFechaDestino());
+                    registro.setInt(7, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
-                        nvoObj.setIdSistemaOperativo(id);
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
+                        response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
                         response.setResponseObject(nvoObj);
-                        response.setMensaje("Edición exitosa en la base de datos");
+                        response.setMensaje("Registro exitoso en la base de datos");
                     } else {
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
+                        response.setStatus(utils.Constantes.STATUS_REGISTRO_FALLIDO_BD);
                         response.setResponseObject(nvoObj);
-                        response.setMensaje("Edición fallido en la base de datos");
+                        response.setMensaje("Registro fallido en la base de datos");
                     }
                 } catch (SQLException ex) {
                     response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -119,15 +132,15 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> eliminar(int id) {
-        GenericResponse<SistemaOperativo> response = new GenericResponse<>();
+    public GenericResponse<Paqueteria> eliminar(int id) {
+        GenericResponse<Paqueteria> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            SistemaOperativo obj = encontrarId(id);
+            Paqueteria obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM SistemaOperativo "
-                            + "WHERE idSistemaOperativo=?";
+                    String sql = "DELETE FROM Paqueteria "
+                            + "WHERE idPaqueteria=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -162,28 +175,35 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public List<SistemaOperativo> getData() {
-        List<SistemaOperativo> response = new ArrayList<>();
+    public List<Paqueteria> getData() {
+        List<Paqueteria> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idSistemaOperativo, "
-                        + "sistemaOperativo, "
-                        + "version, "
-                        + "edicion, "
-                        + "tipo "
-                        + "FROM SistemaOperativo";
+                        + "idPaqueteria, "
+                        + "idDonacion, "
+                        + "idVoluntario, "
+                        + "direccionOrigen, "
+                        + "direccionDestino, "
+                        + "fechaOrigen, "
+                        + "fechaDestino, "
+                        + "estadoPaquete "
+                        + "FROM Paqueteria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new SistemaOperativo(rs.getInt(1), 
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5)
-                    ));
+                    Paqueteria sol = new Paqueteria();
+                    sol.setIdPaqueteria(rs.getInt(1));
+                    sol.setIdDonacion(rs.getInt(2));
+                    sol.setIdVoluntario(rs.getInt(3));
+                    sol.setDireccionOrigen(rs.getString(4));
+                    sol.setDireccionDestino(rs.getString(5));
+                    sol.setFechaOrigen(rs.getTimestamp(6));
+                    sol.setFechaDestino(rs.getTimestamp(7));
+                    sol.setEstadoPaquete(rs.getString(8));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -197,22 +217,35 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public List<SistemaOperativo> consultar(String... filtros) {
-        List<SistemaOperativo> response = new ArrayList<>();
+    public List<Paqueteria> consultar(String... filtros) {
+        List<Paqueteria> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "SELECT idSistemaOperativo, "
-                        + "sistemaOperativo, "
-                        + "version, "
-                        + "edicion, "
-                        + "tipo "
-                        + "FROM SistemaOperativo";
+                String sql = "SELECT "
+                        + "idPaqueteria, "
+                        + "idDonacion, "
+                        + "idVoluntario, "
+                        + "direccionOrigen, "
+                        + "direccionDestino, "
+                        + "fechaOrigen, "
+                        + "fechaDestino, "
+                        + "estadoPaquete "
+                        + "FROM Paqueteria";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    response.add(new SistemaOperativo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)));
+                    Paqueteria sol = new Paqueteria();
+                    sol.setIdPaqueteria(rs.getInt(1));
+                    sol.setIdDonacion(rs.getInt(2));
+                    sol.setIdVoluntario(rs.getInt(3));
+                    sol.setDireccionOrigen(rs.getString(4));
+                    sol.setDireccionDestino(rs.getString(5));
+                    sol.setFechaOrigen(rs.getTimestamp(6));
+                    sol.setFechaDestino(rs.getTimestamp(7));
+                    sol.setEstadoPaquete(rs.getString(8));
+                    response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
@@ -226,29 +259,38 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public SistemaOperativo encontrarId(int id) {
-        SistemaOperativo response = null;
+    public Paqueteria encontrarId(int id) {
+        Paqueteria response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "SELECT idSistemaOperativo, "
-                        + "sistemaOperativo, "
-                        + "version, "
-                        + "edicion, "
-                        + "tipo "
-                        + "FROM SistemaOperativo "
-                        + "WHERE idSistemaOperativo=?";
+                String sql = "SELECT "
+                        + "idPaqueteria, "
+                        + "idDonacion, "
+                        + "idVoluntario, "
+                        + "direccionOrigen, "
+                        + "direccionDestino, "
+                        + "fechaOrigen, "
+                        + "fechaDestino, "
+                        + "estadoPaquete "
+                        + "FROM Paqueteria "
+                        + "WHERE idPaqueteria=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new SistemaOperativo();
-                    response.setIdSistemaOperativo(rs.getInt(1));
-                    response.setSistemaOperativo(rs.getString(2));
-                    response.setVersion(rs.getString(3));
-                    response.setEdicion(rs.getString(4));
-                    response.setTipo(rs.getString(5));
+
+                    response = new Paqueteria();
+                    response.setIdPaqueteria(rs.getInt(1));
+                    response.setIdDonacion(rs.getInt(2));
+                    response.setIdVoluntario(rs.getInt(3));
+                    response.setDireccionOrigen(rs.getString(4));
+                    response.setDireccionDestino(rs.getString(5));
+                    response.setFechaOrigen(rs.getTimestamp(6));
+                    response.setFechaDestino(rs.getTimestamp(7));
+                    response.setEstadoPaquete(rs.getString(8));
+
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

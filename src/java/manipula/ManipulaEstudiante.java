@@ -42,13 +42,23 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "nivelEducativo, "
                         + "ocupacion, "
                         + "tipoEscuela, "
-                        + "gradoEscolar, "
                         + "promedioAnterior, "
                         + "estatusEscolar, "
                         + "intereses, "
                         + "habilidades, "
-                        + "estadoLogico "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + "estadoLogico, "
+                        + "curp, "
+                        + "estadoCivil, "
+                        + "nombreEscuela, "
+                        + "matricula, "
+                        + "regular, "
+                        + "tipoPeriodo, "
+                        + "totalPeriodos, "
+                        + "periodoActual, "
+                        + "periodo, "
+                        + "promedioGeneral, "
+                        + "validado "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdUsuario());
                 registro.setString(2, obj.getNombres());
@@ -64,12 +74,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                 registro.setString(12, obj.getNivelEducativo());
                 registro.setString(13, obj.getOcupacion());
                 registro.setString(14, obj.getTipoEscuela());
-                registro.setString(15, obj.getGradoEscolar());
-                registro.setDouble(16, obj.getPromedioAnterior());
-                registro.setBoolean(17, obj.isEstatusEscolar());
-                registro.setString(18, obj.getIntereses());
-                registro.setString(19, obj.getHabilidades());
-                registro.setBoolean(20, obj.isEstadoLogico());
+                registro.setDouble(15, obj.getPromedioAnterior());
+                registro.setBoolean(16, obj.isEstatusEscolar());
+                registro.setString(17, obj.getIntereses());
+                registro.setString(18, obj.getHabilidades());
+                registro.setBoolean(19, obj.isEstadoLogico());
+                registro.setString(20, obj.getCurp());
+                registro.setString(21, obj.getEstadoCivil());
+                registro.setString(22, obj.getNombreEscuela());
+                registro.setString(23, obj.getMatricula());
+                registro.setBoolean(24, obj.isRegular());
+                registro.setString(25, obj.getTipoPeriodo());
+                registro.setInt(26, obj.getTotalPeriodos());
+                registro.setInt(27, obj.getPeriodoActual());
+                registro.setString(28, obj.getPeriodo());
+                registro.setDouble(29, obj.getPromedioGeneral());
+                registro.setString(30, obj.getValidado());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -114,22 +134,35 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                             + "nivelEducativo=?, "
                             + "ocupacion=?, "
                             + "tipoEscuela=?, "
-                            + "gradoEscolar=?, "
                             + "promedioAnterior=?, "
                             + "estatusEscolar=?, "
                             + "intereses=?, "
                             + "habilidades=?, "
+                            + "nombreEscuela=?, "
+                            + "matricula=?, "
+                            + "regular=?, "
+                            + "tipoPeriodo=?, "
+                            + "totalPeriodos=?, "
+                            + "periodoActual=?, "
+                            + "periodo=?, "
+                            + "promedioGeneral=? "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setString(12, nvoObj.getNivelEducativo());
-                    registro.setString(13, nvoObj.getOcupacion());
-                    registro.setString(14, nvoObj.getTipoEscuela());
-                    registro.setString(15, nvoObj.getGradoEscolar());
-                    registro.setDouble(16, nvoObj.getPromedioAnterior());
-                    registro.setBoolean(17, nvoObj.isEstatusEscolar());
-                    registro.setString(18, nvoObj.getIntereses());
-                    registro.setString(19, nvoObj.getHabilidades());
-                    registro.setInt(21, id);
+                    registro.setString(1, nvoObj.getNivelEducativo());
+                    registro.setString(2, nvoObj.getOcupacion());
+                    registro.setString(3, nvoObj.getTipoEscuela());
+                    registro.setDouble(4, nvoObj.getPromedioAnterior());
+                    registro.setBoolean(5, nvoObj.isEstatusEscolar());
+                    registro.setString(6, nvoObj.getIntereses());
+                    registro.setString(7, nvoObj.getHabilidades());
+                    registro.setString(8, nvoObj.getNombreEscuela());
+                    registro.setString(9, nvoObj.getMatricula());
+                    registro.setBoolean(10, nvoObj.isRegular());
+                    registro.setString(11, nvoObj.getTipoPeriodo());
+                    registro.setInt(12, nvoObj.getTotalPeriodos());
+                    registro.setInt(13, nvoObj.getPeriodoActual());
+                    registro.setDouble(14, nvoObj.getPromedioGeneral());
+                    registro.setInt(15, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdEstudiante(id);
@@ -184,12 +217,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                             + "nivelEducativo=?, "
                             + "ocupacion=?, "
                             + "tipoEscuela=?, "
-                            + "gradoEscolar=?, "
                             + "promedioAnterior=?, "
                             + "estatusEscolar=?, "
                             + "intereses=?, "
                             + "habilidades=?, "
-                            + "estadoLogico=? "
+                            + "estadoLogico=?, "
+                            + "curp=?, "
+                            + "estadoCivil=?, "
+                            + "nombreEscuela=?, "
+                            + "matricula=?, "
+                            + "regular=?, "
+                            + "tipoPeriodo=?, "
+                            + "totalPeriodos=?, "
+                            + "periodoActual=?, "
+                            + "periodo=?, "
+                            + "promedioGeneral=?, "
+                            + "validado=? "
                             + "WHERE idEstudiante=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, nvoObj.getIdUsuario());
@@ -206,13 +249,23 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     registro.setString(12, nvoObj.getNivelEducativo());
                     registro.setString(13, nvoObj.getOcupacion());
                     registro.setString(14, nvoObj.getTipoEscuela());
-                    registro.setString(15, nvoObj.getGradoEscolar());
-                    registro.setDouble(16, nvoObj.getPromedioAnterior());
-                    registro.setBoolean(17, nvoObj.isEstatusEscolar());
-                    registro.setString(18, nvoObj.getIntereses());
-                    registro.setString(19, nvoObj.getHabilidades());
-                    registro.setBoolean(20, nvoObj.isEstadoLogico());
-                    registro.setInt(21, id);
+                    registro.setDouble(15, nvoObj.getPromedioAnterior());
+                    registro.setBoolean(16, nvoObj.isEstatusEscolar());
+                    registro.setString(17, nvoObj.getIntereses());
+                    registro.setString(18, nvoObj.getHabilidades());
+                    registro.setBoolean(19, nvoObj.isEstadoLogico());
+                    registro.setString(20, nvoObj.getCurp());
+                    registro.setString(21, nvoObj.getEstadoCivil());
+                    registro.setString(22, nvoObj.getNombreEscuela());
+                    registro.setString(23, nvoObj.getMatricula());
+                    registro.setBoolean(24, nvoObj.isRegular());
+                    registro.setString(25, nvoObj.getTipoPeriodo());
+                    registro.setInt(26, nvoObj.getTotalPeriodos());
+                    registro.setInt(27, nvoObj.getPeriodoActual());
+                    registro.setString(28, nvoObj.getPeriodo());
+                    registro.setDouble(29, nvoObj.getPromedioGeneral());
+                    registro.setString(30, nvoObj.getValidado());
+                    registro.setInt(31, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdEstudiante(id);
@@ -310,12 +363,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "nivelEducativo, "
                         + "ocupacion, "
                         + "tipoEscuela, "
-                        + "gradoEscolar, "
                         + "promedioAnterior, "
                         + "estatusEscolar, "
                         + "intereses, "
                         + "habilidades, "
-                        + "estadoLogico "
+                        + "estadoLogico, "
+                        + "curp, "
+                        + "estadoCivil, "
+                        + "nombreEscuela, "
+                        + "matricula, "
+                        + "regular, "
+                        + "tipoPeriodo, "
+                        + "totalPeriodos, "
+                        + "periodoActual, "
+                        + "periodo, "
+                        + "promedioGeneral, "
+                        + "validado "
                         + "FROM Estudiante";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -337,12 +400,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     est.setNivelEducativo(rs.getString(13));
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
-                    est.setGradoEscolar(rs.getString(16));
-                    est.setPromedioAnterior(rs.getDouble(17));
-                    est.setEstatusEscolar(rs.getBoolean(18));
-                    est.setIntereses(rs.getString(19));
-                    est.setHabilidades(rs.getString(20));
-                    est.setEstadoLogico(rs.getBoolean(21));
+                    est.setPromedioAnterior(rs.getDouble(16));
+                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setIntereses(rs.getString(18));
+                    est.setHabilidades(rs.getString(19));
+                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setCurp(rs.getString(21));
+                    est.setEstadoCivil(rs.getString(22));
+                    est.setNombreEscuela(rs.getString(23));
+                    est.setMatricula(rs.getString(24));
+                    est.setRegular(rs.getBoolean(25));
+                    est.setTipoPeriodo(rs.getString(26));
+                    est.setTotalPeriodos(rs.getInt(27));
+                    est.setPeriodoActual(rs.getInt(28));
+                    est.setPeriodo(rs.getString(29));
+                    est.setPromedioGeneral(rs.getDouble(30));
+                    est.setValidado(rs.getString(31));
                     response.add(est);
                 }
             } catch (SQLException ex) {
@@ -383,7 +456,18 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "estatusEscolar, "
                         + "intereses, "
                         + "habilidades, "
-                        + "estadoLogico "
+                        + "estadoLogico, "
+                        + "curp, "
+                        + "estadoCivil, "
+                        + "nombreEscuela, "
+                        + "matricula, "
+                        + "regular, "
+                        + "tipoPeriodo, "
+                        + "totalPeriodos, "
+                        + "periodoActual, "
+                        + "periodo, "
+                        + "promedioGeneral, "
+                        + "validado "
                         + "FROM Estudiante";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -405,12 +489,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     est.setNivelEducativo(rs.getString(13));
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
-                    est.setGradoEscolar(rs.getString(16));
-                    est.setPromedioAnterior(rs.getDouble(17));
-                    est.setEstatusEscolar(rs.getBoolean(18));
-                    est.setIntereses(rs.getString(19));
-                    est.setHabilidades(rs.getString(20));
-                    est.setEstadoLogico(rs.getBoolean(21));
+                    est.setPromedioAnterior(rs.getDouble(16));
+                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setIntereses(rs.getString(18));
+                    est.setHabilidades(rs.getString(19));
+                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setCurp(rs.getString(21));
+                    est.setEstadoCivil(rs.getString(22));
+                    est.setNombreEscuela(rs.getString(23));
+                    est.setMatricula(rs.getString(24));
+                    est.setRegular(rs.getBoolean(25));
+                    est.setTipoPeriodo(rs.getString(26));
+                    est.setTotalPeriodos(rs.getInt(27));
+                    est.setPeriodoActual(rs.getInt(28));
+                    est.setPeriodo(rs.getString(29));
+                    est.setPromedioGeneral(rs.getDouble(30));
+                    est.setValidado(rs.getString(31));
                     response.add(est);
                 }
             } catch (SQLException ex) {
@@ -446,12 +540,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "nivelEducativo, "
                         + "ocupacion, "
                         + "tipoEscuela, "
-                        + "gradoEscolar, "
                         + "promedioAnterior, "
                         + "estatusEscolar, "
                         + "intereses, "
                         + "habilidades, "
-                        + "estadoLogico "
+                        + "estadoLogico, "
+                        + "curp, "
+                        + "estadoCivil, "
+                        + "nombreEscuela, "
+                        + "matricula, "
+                        + "regular, "
+                        + "tipoPeriodo, "
+                        + "totalPeriodos, "
+                        + "periodoActual, "
+                        + "periodo, "
+                        + "promedioGeneral, "
+                        + "validado "
                         + "FROM Estudiante"
                         + "WHERE idEstudiante=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -475,12 +579,22 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     response.setNivelEducativo(rs.getString(13));
                     response.setOcupacion(rs.getString(14));
                     response.setTipoEscuela(rs.getString(15));
-                    response.setGradoEscolar(rs.getString(16));
-                    response.setPromedioAnterior(rs.getDouble(17));
-                    response.setEstatusEscolar(rs.getBoolean(18));
-                    response.setIntereses(rs.getString(19));
-                    response.setHabilidades(rs.getString(20));
-                    response.setEstadoLogico(rs.getBoolean(21));
+                    response.setPromedioAnterior(rs.getDouble(16));
+                    response.setEstatusEscolar(rs.getBoolean(17));
+                    response.setIntereses(rs.getString(18));
+                    response.setHabilidades(rs.getString(19));
+                    response.setEstadoLogico(rs.getBoolean(20));
+                    response.setCurp(rs.getString(21));
+                    response.setEstadoCivil(rs.getString(22));
+                    response.setNombreEscuela(rs.getString(23));
+                    response.setMatricula(rs.getString(24));
+                    response.setRegular(rs.getBoolean(25));
+                    response.setTipoPeriodo(rs.getString(26));
+                    response.setTotalPeriodos(rs.getInt(27));
+                    response.setPeriodoActual(rs.getInt(28));
+                    response.setPeriodo(rs.getString(29));
+                    response.setPromedioGeneral(rs.getDouble(30));
+                    response.setValidado(rs.getString(31));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

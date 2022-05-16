@@ -10,9 +10,9 @@ import java.util.Date;
 public class Solicitud {
 
     private int idSolicitud;
-    private int idUsuario;
+    private int idUsuarioDonatario;
+    private int idUsuarioDonador;
     private int idRecursoTecnologico;
-    private int idArchivo;
     private String estadoSolicitud;
     private Timestamp fechaSolicitud;
     private Timestamp fechaRespuesta;
@@ -21,21 +21,27 @@ public class Solicitud {
     }
 
     public Solicitud(int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Timestamp fechaSolicitud) {
-        this.idUsuario = idUsuario;
+        this.idUsuarioDonatario = idUsuario;
         this.idRecursoTecnologico = idRecursoTecnologico;
-        this.idArchivo = idArchivo;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
     }
 
     public Solicitud(int idSolicitud, int idUsuario, int idRecursoTecnologico, int idArchivo, String estadoSolicitud, Timestamp fechaSolicitud, Timestamp fechaRespuesta) {
         this.idSolicitud = idSolicitud;
-        this.idUsuario = idUsuario;
+        this.idUsuarioDonatario = idUsuario;
         this.idRecursoTecnologico = idRecursoTecnologico;
-        this.idArchivo = idArchivo;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaRespuesta = fechaRespuesta;
+    }
+
+    public int getIdUsuarioDonador() {
+        return idUsuarioDonador;
+    }
+
+    public void setIdUsuarioDonador(int idUsuarioDonador) {
+        this.idUsuarioDonador = idUsuarioDonador;
     }
 
     public Timestamp getFechaRespuesta() {
@@ -62,13 +68,6 @@ public class Solicitud {
         this.estadoSolicitud = estadoSolicitud;
     }
 
-    public int getIdArchivo() {
-        return idArchivo;
-    }
-
-    public void setIdArchivo(int idArchivo) {
-        this.idArchivo = idArchivo;
-    }
 
     public int getIdRecursoTecnologico() {
         return idRecursoTecnologico;
@@ -78,12 +77,12 @@ public class Solicitud {
         this.idRecursoTecnologico = idRecursoTecnologico;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdUsuarioDonatario() {
+        return idUsuarioDonatario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuarioDonatario(int idUsuarioDonatario) {
+        this.idUsuarioDonatario = idUsuarioDonatario;
     }
 
     public int getIdSolicitud() {
@@ -94,8 +93,4 @@ public class Solicitud {
         this.idSolicitud = idSolicitud;
     }
 
-    @Override
-    public String toString() {
-        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", idUsuario=" + idUsuario + ", idRecursoTecnologico=" + idRecursoTecnologico + ", idArchivo=" + idArchivo + ", estadoSolicitud=" + estadoSolicitud + ", fechaSolicitud=" + fechaSolicitud + ", fechaRespuesta=" + fechaRespuesta + '}';
-    }
 }

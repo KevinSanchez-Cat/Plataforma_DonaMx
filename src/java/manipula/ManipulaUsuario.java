@@ -10,6 +10,7 @@ import model.Direccion;
 import model.Donacion;
 import model.Estudiante;
 import model.Galeria;
+import model.GaleriaPerfil;
 import model.Intencion;
 import model.Notificacion;
 import model.Organizacion;
@@ -46,8 +47,9 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + "idRol, "
+                        + "token "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setString(1, obj.getNombreUsuario());
                 registro.setString(2, obj.getContraseniia());
@@ -64,6 +66,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 registro.setInt(13, obj.getConteoAccesosFallidos());
                 registro.setString(14, obj.getFoto());
                 registro.setInt(15, obj.getIdRol());
+                registro.setString(16, obj.getToken());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -161,7 +164,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                             + "autenticacionDosPasos=?, "
                             + "conteoAccesosFallidos=?, "
                             + "foto=?, "
-                            + "idRol=? "
+                            + "idRol=?, "
+                            + "token=? "
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setString(1, nvoObj.getNombreUsuario());
@@ -176,6 +180,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     registro.setString(10, nvoObj.getFoto());
                     registro.setInt(11, nvoObj.getIdRol());
                     registro.setInt(12, id);
+                    registro.setString(12, nvoObj.getToken());
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdUsuario(id);
@@ -272,7 +277,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
+                        + "idRol, "
+                        + "token "
                         + "FROM Usuario";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -294,6 +300,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     user.setConteoAccesosFallidos(rs.getInt(13));
                     user.setFoto(rs.getString(14));
                     user.setIdRol(rs.getInt(15));
+                    user.setToken(rs.getString(16));
                     response.add(user);
                 }
             } catch (SQLException ex) {
@@ -339,7 +346,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
+                        + "idRol, "
+                        + "token "
                         + "FROM Usuario "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -363,6 +371,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
+                    response.setToken(rs.getString(16));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -397,7 +406,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
+                        + "idRol, "
+                        + "token "
                         + "FROM Usuario "
                         + "WHERE correoElectronico=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -421,6 +431,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
+                    response.setToken(rs.getString(16));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -455,7 +466,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
+                        + "idRol, "
+                        + "token "
                         + "FROM Usuario "
                         + "WHERE nombreUsuario=? AND contrasenia=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -480,6 +492,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
+                    response.setToken(rs.getString(16));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -514,7 +527,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "autenticacionDosPasos, "
                         + "conteoAccesosFallidos, "
                         + "foto, "
-                        + "idRol "
+                        + "idRol, "
+                        + "token "
                         + "FROM Usuario "
                         + "WHERE nombreUsuario=? ";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -538,6 +552,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
+                    response.setToken(rs.getString(16));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -552,21 +567,21 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         return response;
     }
 
-    public List<Solicitud> getSolicitudes(int idUsuario) {
+    public List<Solicitud> getSolicitudesEnviadas(int idUsuario) {
         List<Solicitud> lstSolicitud = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
                         + "idSolicitud, "
-                        + "idUsuario, "
+                        + "idUsuarioDonatario, "
                         + "idRecurso, "
-                        + "idArchivo, "
                         + "estadoSolicitud, "
                         + "fechaSolicitud, "
-                        + "fechaRespuesta "
+                        + "fechaRespuesta, "
+                        + "idUsuarioDonador "
                         + "FROM Solicitud "
-                        + "WHERE idUsuario=?";
+                        + "WHERE idUsuarioDonatario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
                 ResultSet rs;
@@ -574,12 +589,12 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 while (rs.next()) {
                     Solicitud sol = new Solicitud();
                     sol.setIdSolicitud(rs.getInt(1));
-                    sol.setIdUsuario(rs.getInt(2));
+                    sol.setIdUsuarioDonatario(rs.getInt(2));
                     sol.setIdRecursoTecnologico(rs.getInt(3));
-                    sol.setIdArchivo(rs.getInt(4));
-                    sol.setEstadoSolicitud(rs.getString(5));
-                    sol.setFechaSolicitud(rs.getTimestamp(6));
-                    sol.setFechaRespuesta(rs.getTimestamp(7));
+                    sol.setEstadoSolicitud(rs.getString(4));
+                    sol.setFechaSolicitud(rs.getTimestamp(5));
+                    sol.setFechaRespuesta(rs.getTimestamp(6));
+                    sol.setIdUsuarioDonador(rs.getInt(7));
                     lstSolicitud.add(sol);
                 }
             } catch (SQLException ex) {
@@ -602,7 +617,6 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "idDonacion, "
                         + "idDonador, "
                         + "idDonatario, "
-                        + "idArchivo, "
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
@@ -619,12 +633,11 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdDonacion(rs.getInt(1));
                     sol.setIdDonador(rs.getInt(2));
                     sol.setIdDonatario(rs.getInt(3));
-                    sol.setIdArchivo(rs.getInt(4));
-                    sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getTimestamp(3));
-                    sol.setEstadoDonacion(rs.getString(7));
-                    sol.setNoConfirmacion(rs.getString(8));
-                    sol.setRemunerado(rs.getBoolean(9));
+                    sol.setIdRecursoTecnologico(rs.getInt(4));
+                    sol.setFechaDonacion(rs.getTimestamp(5));
+                    sol.setEstadoDonacion(rs.getString(6));
+                    sol.setNoConfirmacion(rs.getString(7));
+                    sol.setRemunerado(rs.getBoolean(8));
                     lstDonacion.add(sol);
                 }
             } catch (SQLException ex) {
@@ -647,12 +660,16 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "idDonacion, "
                         + "idDonador, "
                         + "idDonatario, "
-                        + "idArchivo, "
                         + "idRecurso, "
                         + "fechaDonacion, "
                         + "estadoDonacion, "
-                        + "noConfirmacion "
-                        + "remunerado "
+                        + "noConfirmacion, "
+                        + "remunerado, "
+                        + "estadoPago, "
+                        + "estadoEnvio, "
+                        + "estadoEntrega, "
+                        + "noSerie, "
+                        + "estadoPreparacion "
                         + "FROM Donacion "
                         + "WHERE idDonador=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -664,12 +681,16 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdDonacion(rs.getInt(1));
                     sol.setIdDonador(rs.getInt(2));
                     sol.setIdDonatario(rs.getInt(3));
-                    sol.setIdArchivo(rs.getInt(4));
-                    sol.setIdRecursoTecnologico(rs.getInt(5));
-                    sol.setFechaDonacion(rs.getTimestamp(6));
-                    sol.setEstadoDonacion(rs.getString(7));
-                    sol.setNoConfirmacion(rs.getString(8));
-                    sol.setRemunerado(rs.getBoolean(9));
+                    sol.setIdRecursoTecnologico(rs.getInt(4));
+                    sol.setFechaDonacion(rs.getTimestamp(5));
+                    sol.setEstadoDonacion(rs.getString(6));
+                    sol.setNoConfirmacion(rs.getString(7));
+                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setEstadoPago(rs.getString(9));
+                    sol.setEstadoEnvio(rs.getString(10));
+                    sol.setEstadoEntrega(rs.getString(11));
+                    sol.setNoSerie(rs.getString(12));
+                    sol.setEstadoPreparacion(rs.getString(13));
                     lstDonacion.add(sol);
                 }
             } catch (SQLException ex) {
@@ -683,8 +704,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         return lstDonacion;
     }
 
-    public List<Galeria> getGaleria(int idUsuario) {
-        List<Galeria> lstGaleria = new ArrayList<>();
+    public List<GaleriaPerfil> getFotoPerfil(int idUsuario) {
+        List<GaleriaPerfil> lstGaleria = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
@@ -695,14 +716,19 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "tamanio, "
                         + "extension, "
                         + "urlDestino "
-                        + "FROM Galeria "
+                        + "FROM GaleriaPerfil "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, idUsuario);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    lstGaleria.add(new Galeria(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+                    lstGaleria.add(new GaleriaPerfil(rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getString(3),
+                            rs.getDouble(4),
+                            rs.getString(5),
+                            rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
@@ -741,10 +767,10 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setIdUsuario(rs.getInt(2));
                     sol.setTituloIntencion(rs.getString(3));
                     sol.setDescripcion(rs.getString(4));
-                    sol.setFechaIntencion(Misc.transformDateTimeSqlJava(rs.getDate(5)));
+                    sol.setFechaIntencion(rs.getTimestamp(5));
                     sol.setEstadoIntencion(rs.getString(6));
                     sol.setRespuestaIntencion(rs.getString(6));
-                    sol.setFechaRespuesta(Misc.transformDateTimeSqlJava(rs.getDate(6)));
+                    sol.setFechaRespuesta(rs.getTimestamp(6));
                     lstIntencion.add(sol);
                 }
             } catch (SQLException ex) {
@@ -777,7 +803,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "calleIzquierda, "
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
-                        + "idUsuario "
+                        + "idUsuario, "
+                        + "codigo_postal "
                         + "FROM Direccion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -799,7 +826,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     dir.setCalleIzquierda(rs.getString(11));
                     dir.setTipoAsentamiento(rs.getString(12));
                     dir.setNombreAsentamiento(rs.getString(13));
-                    dir.setIdUsuario(rs.getInt(rs.getString(14)));
+                    dir.setIdUsuario(rs.getInt(14));
+                    dir.setCodigoPostal(rs.getString(15));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -833,7 +861,12 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    lstNotificacion.add(new Notificacion(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    lstNotificacion.add(new Notificacion(rs.getInt(1), 
+                            rs.getInt(2), 
+                            rs.getTimestamp(3), 
+                            rs.getString(4), 
+                            rs.getString(5),
+                            rs.getString(6)));
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
@@ -914,7 +947,18 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estadoLogico, "
                         + "rfc, "
                         + "tipooOrg, "
-                        + "autorizada "
+                        + "autorizada, "
+                        + "linkFacebook, "
+                        + "linkInstagram, "
+                        + "linkLinkedin, "
+                        + "linkTwiteer, "
+                        + "nombreContacto, "
+                        + "apellidosContacto, "
+                        + "cargo, "
+                        + "donatariaAutorizada, "
+                        + "fechaDonatariaAutorizada, "
+                        + "cluni, "
+                        + "noNotariaPublica "
                         + "FROM Organizacion "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -935,6 +979,17 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     org.setRfc(rs.getString(10));
                     org.setTipoOrganizacion(rs.getString(11));
                     org.setAutorizada(rs.getString(12));
+                    org.setLinkFacebook(rs.getString(13));
+                    org.setLinkInstragram(rs.getString(14));
+                    org.setLinkLinkedin(rs.getString(15));
+                    org.setLinkTwiteer(rs.getString(16));
+                    org.setNombreContacto(rs.getString(17));
+                    org.setAutorizada(rs.getString(18));
+                    org.setCargo(rs.getString(19));
+                    org.setDonatariaAutorizada(rs.getString(20));
+                    org.setFechaDonatariaAutorizada(rs.getTimestamp(21));
+                    org.setCluni(rs.getString(22));
+                    org.setNoNotariaPublica(rs.getString(23));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -975,7 +1030,18 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "estatusEscolar, "
                         + "intereses, "
                         + "habilidades, "
-                        + "estadoLogico "
+                        + "estadoLogico, "
+                        + "curp, "
+                        + "estadoCivil, "
+                        + "nombreEscuela, "
+                        + "matricula, "
+                        + "regular, "
+                        + "tipoPeriodo, "
+                        + "totalPeriodos, "
+                        + "periodoActual, "
+                        + "periodo, "
+                        + "promedioGeneral, "
+                        + "validado "
                         + "FROM Estudiante "
                         + "WHERE idUsuario=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -999,12 +1065,22 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     est.setNivelEducativo(rs.getString(13));
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
-                    est.setGradoEscolar(rs.getString(16));
-                    est.setPromedioAnterior(rs.getDouble(17));
-                    est.setEstatusEscolar(rs.getBoolean(18));
-                    est.setIntereses(rs.getString(19));
-                    est.setHabilidades(rs.getString(20));
-                    est.setEstadoLogico(rs.getBoolean(21));
+                    est.setPromedioAnterior(rs.getDouble(16));
+                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setIntereses(rs.getString(18));
+                    est.setHabilidades(rs.getString(19));
+                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setCurp(rs.getString(21));
+                    est.setEstadoCivil(rs.getString(22));
+                    est.setNombreEscuela(rs.getString(23));
+                    est.setMatricula(rs.getString(24));
+                    est.setRegular(rs.getBoolean(25));
+                    est.setTipoPeriodo(rs.getString(26));
+                    est.setTotalPeriodos(rs.getInt(27));
+                    est.setPeriodoActual(rs.getInt(28));
+                    est.setPeriodo(rs.getString(29));
+                    est.setPromedioGeneral(rs.getDouble(30));
+                    est.setValidado(rs.getString(31));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

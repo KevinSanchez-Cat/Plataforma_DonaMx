@@ -36,8 +36,9 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "calleIzquierda, "
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
-                        + "idUsuario"
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + "idUsuario, "
+                        + "codigo_postal "
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                 registro.setInt(1, obj.getIdEstado());
                 registro.setInt(2, obj.getIdMunicipio());
@@ -52,6 +53,7 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                 registro.setString(11, obj.getTipoAsentamiento());
                 registro.setString(12, obj.getNombreAsentamiento());
                 registro.setInt(13, obj.getIdUsuario());
+                registro.setString(14, obj.getCodigoPostal());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -107,7 +109,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                             + "calleIzquierda, "
                             + "tipoAsentamiento, "
                             + "nombreAsentamiento, "
-                            + "idUsuario"
+                            + "idUsuario, "
+                            + "codigo_postal "
                             + "WHERE idDireccion=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, obj.getIdEstado());
@@ -123,7 +126,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                     registro.setString(11, obj.getTipoAsentamiento());
                     registro.setString(12, obj.getNombreAsentamiento());
                     registro.setInt(13, obj.getIdUsuario());
-                    registro.setInt(14, id);
+                    registro.setString(14, obj.getCodigoPostal());
+                    registro.setInt(15, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         nvoObj.setIdDireccion(id);
@@ -219,7 +223,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "calleIzquierda, "
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
-                        + "idUsuario "
+                        + "idUsuario, "
+                        + "codigo_postal "
                         + "FROM Direccion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -239,7 +244,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                     dir.setCalleIzquierda(rs.getString(11));
                     dir.setTipoAsentamiento(rs.getString(12));
                     dir.setNombreAsentamiento(rs.getString(13));
-                    dir.setIdUsuario(rs.getInt(rs.getString(14)));
+                    dir.setIdUsuario(rs.getInt(14));
+                    dir.setCodigoPostal(rs.getString(15));
                     response.add(dir);
                 }
             } catch (SQLException ex) {
@@ -273,7 +279,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "calleIzquierda, "
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
-                        + "idUsuario "
+                        + "idUsuario, "
+                        + "codigo_postal "
                         + "FROM Direccion";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
@@ -293,7 +300,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                     dir.setCalleIzquierda(rs.getString(11));
                     dir.setTipoAsentamiento(rs.getString(12));
                     dir.setNombreAsentamiento(rs.getString(13));
-                    dir.setIdUsuario(rs.getInt(rs.getString(14)));
+                    dir.setIdUsuario(rs.getInt(14));
+                    dir.setCodigoPostal(rs.getString(15));
                     response.add(dir);
                 }
             } catch (SQLException ex) {
@@ -327,7 +335,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                         + "calleIzquierda, "
                         + "tipoAsentamiento, "
                         + "nombreAsentamiento, "
-                        + "idUsuario "
+                        + "idUsuario, "
+                        + "codigo_postal "
                         + "FROM Direccion "
                         + "WHERE idDireccion=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -349,7 +358,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
                     response.setCalleIzquierda(rs.getString(11));
                     response.setTipoAsentamiento(rs.getString(12));
                     response.setNombreAsentamiento(rs.getString(13));
-                    response.setIdUsuario(rs.getInt(rs.getString(14)));
+                    response.setIdUsuario(rs.getInt(14));
+                    response.setCodigoPostal(rs.getString(15));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

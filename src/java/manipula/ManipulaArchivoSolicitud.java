@@ -5,10 +5,10 @@ import config.conexion.IConexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import model.Solicitud;
+import model.Archivo;
+import model.ArchivoSolicitud;
 import utils.GenericResponse;
 import utils.Logg;
 import utils.Misc;
@@ -17,29 +17,31 @@ import utils.Misc;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class ManipulaSolicitud implements Manipula<Solicitud> {
+public class ManipulaArchivoSolicitud implements Manipula<ArchivoSolicitud> {
 
     @Override
-    public GenericResponse<Solicitud> registrar(Solicitud obj) {
-        GenericResponse<Solicitud> response = new GenericResponse<>();
+    public GenericResponse<ArchivoSolicitud> registrar(ArchivoSolicitud obj) {
+        GenericResponse<ArchivoSolicitud> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
-                String sql = "INSERT INTO Solicitud ("
+                String sql = "INSERT INTO ArchivoSolicitud ("
+                        + "nombreArchivo, "
+                        + "extension, "
+                        + "tamanio, "
+                        + "fechaCreacion, "
+                        + "urlDestino, "
                         + "idUsuario, "
-                        + "idRecurso, "
-                        + "estadoSolicitud, "
-                        + "fechaSolicitud, "
-                        + "fechaRespuesta, "
-                        + "idUsuarioDonador "
-                        + ") VALUES (?,?,?,?,?,?)";
+                        + "idSolicitud "
+                        + ") VALUES (?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setInt(1, obj.getIdUsuarioDonatario());
-                registro.setInt(2, obj.getIdRecursoTecnologico());
-                registro.setString(3, obj.getEstadoSolicitud());
-                registro.setTimestamp(4, obj.getFechaSolicitud());
-                registro.setTimestamp(5, obj.getFechaRespuesta());
-                registro.setInt(6, obj.getIdUsuarioDonador());
+                registro.setString(1, obj.getNombreArchivo());
+                registro.setString(2, obj.getExtension());
+                registro.setDouble(3, obj.getTamanio());
+                registro.setTimestamp(4, obj.getFechaCreacion());
+                registro.setString(5, obj.getUrlDestino());
+                registro.setInt(6, obj.getIdUsuario());
+                registro.setInt(7, obj.getIdSolicitud());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -66,95 +68,42 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> actualizar(int id) {
-        GenericResponse<Solicitud> response = new GenericResponse<>();
+    public GenericResponse<ArchivoSolicitud> actualizar(int id) {
+        GenericResponse<ArchivoSolicitud> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
         response.setResponseObject(null);
         return response;
     }
 
-    public GenericResponse<Solicitud> actualizar(int id, Timestamp fechaRespuesta, String estadoSolicitud) {
-        GenericResponse<Solicitud> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Solicitud sol = encontrarId(id);
-            if (sol != null) {
-                //AC->ACEPTADA
-                //RE->RECHAZADA
-                //FI->FINALIZADA
-                //PE->PENDIENTE
-                //CA->CANCELADA
-                sol.setEstadoSolicitud(estadoSolicitud);
-                sol.setFechaRespuesta(fechaRespuesta);
-
-                try {
-                    String sql = "UPDATE Solicitud SET "
-                            + "estadoSolicitud=?, "
-                            + "fechaRespuesta=? "
-                            + "WHERE idSolicitud=?";
-                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setString(1, sol.getEstadoSolicitud());
-                    registro.setTimestamp(2, sol.getFechaRespuesta());
-                    registro.setInt(3, id);
-                    int r = registro.executeUpdate();
-                    if (r > 0) {
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
-                        response.setResponseObject(sol);
-                        response.setMensaje("Edición exitosa en la base de datos");
-                    } else {
-                        response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_FALLIDA_BD);
-                        response.setResponseObject(null);
-                        response.setMensaje("Edición fallido en la base de datos");
-                    }
-                } catch (SQLException ex) {
-                    response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
-                    response.setResponseObject(null);
-                    response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
-                } finally {
-                    conexionDB.desconectar();
-                }
-            } else {
-                response.setStatus(utils.Constantes.STATUS_NO_DATA);
-                response.setResponseObject(null);
-                response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
-            }
-        } else {
-            response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
-            response.setResponseObject(null);
-            response.setMensaje("Error de conexión a la base de datos");
-        }
-
-        return response;
-    }
-
     @Override
-    public GenericResponse<Solicitud> editar(int id, Solicitud nvoObj) {
-        GenericResponse<Solicitud> response = new GenericResponse<>();
+    public GenericResponse<ArchivoSolicitud> editar(int id, ArchivoSolicitud nvoObj) {
+        GenericResponse<ArchivoSolicitud> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             if (encontrarId(id) != null) {
                 try {
-                    String sql = "UPDATE Solicitud SET "
+                    String sql = "UPDATE ArchivoSolicitud SET "
+                            + "nombreArchivo=?, "
+                            + "extension=?, "
+                            + "tamanio=?, "
+                            + "fechaCreacion=?, "
+                            + "urlDestino=?, "
                             + "idUsuario=?, "
-                            + "idRecurso=?, "
-                            + "estadoSolicitud=?, "
-                            + "fechaSolicitud=?, "
-                            + "fechaRespuesta=?, "
-                            + "idUsuarioDonador=? "
-                            + "WHERE idSolicitud=?";
+                            + "idSolicitud=? "
+                            + "WHERE idArchivo=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setInt(1, nvoObj.getIdUsuarioDonatario());
-                    registro.setInt(2, nvoObj.getIdRecursoTecnologico());
-                    registro.setString(3, nvoObj.getEstadoSolicitud());
-                    registro.setTimestamp(4, nvoObj.getFechaSolicitud());
-                    registro.setTimestamp(5, nvoObj.getFechaRespuesta());
-                    registro.setInt(6, nvoObj.getIdUsuarioDonador());
-                    registro.setInt(7, id);
+                    registro.setString(1, nvoObj.getNombreArchivo());
+                    registro.setString(2, nvoObj.getExtension());
+                    registro.setDouble(3, nvoObj.getTamanio());
+                    registro.setTimestamp(4, nvoObj.getFechaCreacion());
+                    registro.setString(5, nvoObj.getUrlDestino());
+                    registro.setInt(6, nvoObj.getIdUsuario());
+                    registro.setInt(7, nvoObj.getIdSolicitud());
+                    registro.setInt(8, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
-                        nvoObj.setIdSolicitud(id);
+                        nvoObj.setIdArchivo(id);
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
                         response.setResponseObject(nvoObj);
                         response.setMensaje("Edición exitosa en la base de datos");
@@ -185,15 +134,15 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> eliminar(int id) {
-        GenericResponse<Solicitud> response = new GenericResponse<>();
+    public GenericResponse<ArchivoSolicitud> eliminar(int id) {
+        GenericResponse<ArchivoSolicitud> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-            Solicitud obj = encontrarId(id);
+            ArchivoSolicitud obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM Solicitud "
-                            + "WHERE idSolicitud=?";
+                    String sql = "DELETE FROM ArchivoSolicitud "
+                            + "WHERE idArchivo=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
                     int r = registro.executeUpdate();
@@ -228,38 +177,39 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public List<Solicitud> getData() {
-        List<Solicitud> response = new ArrayList<>();
+    public List<ArchivoSolicitud> getData() {
+        List<ArchivoSolicitud> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idSolicitud, "
+                        + "idArchivo, "
+                        + "nombreArchivo, "
+                        + "extension, "
+                        + "tamanio, "
+                        + "fechaCreacion, "
+                        + "urlDestino, "
                         + "idUsuario, "
-                        + "idRecurso, "
-                        + "estadoSolicitud, "
-                        + "fechaSolicitud, "
-                        + "fechaRespuesta, "
-                        + "idUsuarioDonador "
-                        + "FROM Solicitud";
+                        + "idSolicitud "
+                        + "FROM ArchivoSolicitud";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    Solicitud sol = new Solicitud();
-                    sol.setIdSolicitud(rs.getInt(1));
-                    sol.setIdUsuarioDonatario(rs.getInt(2));
-                    sol.setIdRecursoTecnologico(rs.getInt(3));
-                    sol.setEstadoSolicitud(rs.getString(4));
-                    sol.setFechaSolicitud(rs.getTimestamp(5));
-                    sol.setFechaRespuesta(rs.getTimestamp(6));
-                    sol.setIdUsuarioDonador(rs.getInt(7));
+                    ArchivoSolicitud sol = new ArchivoSolicitud();
+                    sol.setIdArchivo(rs.getInt(1));
+                    sol.setNombreArchivo(rs.getString(2));
+                    sol.setExtension(rs.getString(3));
+                    sol.setTamanio(rs.getDouble(4));
+                    sol.setFechaCreacion(rs.getTimestamp(5));
+                    sol.setUrlDestino(rs.getString(6));
+                    sol.setIdUsuario(rs.getInt(7));
+                    sol.setIdSolicitud(rs.getInt(8));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
                 conexionDB.desconectar();
             }
         } else {
@@ -269,38 +219,39 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public List<Solicitud> consultar(String... filtros) {
-        List<Solicitud> response = new ArrayList<>();
+    public List<ArchivoSolicitud> consultar(String... filtros) {
+        List<ArchivoSolicitud> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idSolicitud, "
+                        + "idArchivo, "
+                        + "nombreArchivo, "
+                        + "extension, "
+                        + "tamanio, "
+                        + "fechaCreacion, "
+                        + "urlDestino, "
                         + "idUsuario, "
-                        + "idRecurso, "
-                        + "estadoSolicitud, "
-                        + "fechaSolicitud, "
-                        + "fechaRespuesta, "
-                        + "idUsuarioDonador "
-                        + "FROM Solicitud";
+                        + "idSolicitud "
+                        + "FROM ArchivoSolicitud";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    Solicitud sol = new Solicitud();
-                    sol.setIdSolicitud(rs.getInt(1));
-                    sol.setIdUsuarioDonatario(rs.getInt(2));
-                    sol.setIdRecursoTecnologico(rs.getInt(3));
-                    sol.setEstadoSolicitud(rs.getString(4));
-                    sol.setFechaSolicitud(rs.getTimestamp(5));
-                    sol.setFechaRespuesta(rs.getTimestamp(6));
-                    sol.setIdUsuarioDonador(rs.getInt(7));
+                    ArchivoSolicitud sol = new ArchivoSolicitud();
+                    sol.setIdArchivo(rs.getInt(1));
+                    sol.setNombreArchivo(rs.getString(2));
+                    sol.setExtension(rs.getString(3));
+                    sol.setTamanio(rs.getDouble(4));
+                    sol.setFechaCreacion(rs.getTimestamp(5));
+                    sol.setUrlDestino(rs.getString(6));
+                    sol.setIdUsuario(rs.getInt(7));
+                    sol.setIdSolicitud(rs.getInt(8));
                     response.add(sol);
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
                 conexionDB.desconectar();
             }
         } else {
@@ -310,34 +261,36 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public Solicitud encontrarId(int id) {
-        Solicitud response = null;
+    public ArchivoSolicitud encontrarId(int id) {
+        ArchivoSolicitud response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "SELECT "
-                        + "idSolicitud, "
+                        + "idArchivo, "
+                        + "nombreArchivo, "
+                        + "extension, "
+                        + "tamanio, "
+                        + "fechaCreacion, "
+                        + "urlDestino, "
                         + "idUsuario, "
-                        + "idRecurso, "
-                        + "estadoSolicitud, "
-                        + "fechaSolicitud, "
-                        + "fechaRespuesta, "
-                        + "idUsuarioDonador "
-                        + "FROM Solicitud "
-                        + "WHERE idSolicitud=?";
+                        + "idSolicitud "
+                        + "FROM ArchivoSolicitud "
+                        + "WHERE idArchivo=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    response = new Solicitud();
-                    response.setIdSolicitud(rs.getInt(1));
-                    response.setIdUsuarioDonatario(rs.getInt(2));
-                    response.setIdRecursoTecnologico(rs.getInt(3));
-                    response.setEstadoSolicitud(rs.getString(4));
-                    response.setFechaSolicitud(rs.getTimestamp(5));
-                    response.setFechaRespuesta(rs.getTimestamp(6));
-                    response.setIdUsuarioDonador(rs.getInt(7));
+                    response = new ArchivoSolicitud();
+                    response.setIdArchivo(rs.getInt(1));
+                    response.setNombreArchivo(rs.getString(2));
+                    response.setExtension(rs.getString(3));
+                    response.setTamanio(rs.getDouble(4));
+                    response.setFechaCreacion(rs.getTimestamp(5));
+                    response.setUrlDestino(rs.getString(6));
+                    response.setIdUsuario(rs.getInt(7));
+                    response.setIdSolicitud(rs.getInt(8));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
@@ -351,5 +304,4 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
         }
         return response;
     }
-
 }
