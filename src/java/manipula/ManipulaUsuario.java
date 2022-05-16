@@ -33,6 +33,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         if (conexionDB.conectar() == 1) {
             try {
                 String sql = "INSERT INTO Usuario ("
+                        + "nombre, "
+                        + "apellido, "
                         + "nombreUsuario, "
                         + "contrasenia, "
                         + "fechaCreacion, "
@@ -49,24 +51,26 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "foto, "
                         + "idRol, "
                         + "token "
-                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                registro.setString(1, obj.getNombreUsuario());
-                registro.setString(2, obj.getContraseniia());
-                registro.setTimestamp(3, obj.getFechaCreacion());
-                registro.setTimestamp(4, obj.getUltimaConexion());
-                registro.setString(5, obj.getEstadoCuenta());
-                registro.setBoolean(6, obj.isEstadoLogico());
-                registro.setBoolean(7, obj.isConectado());
-                registro.setString(8, obj.getCorreoElectronico());
-                registro.setBoolean(9, obj.isCorreoConfirmado());
-                registro.setInt(10, obj.getNumeroCelular());
-                registro.setBoolean(11, obj.isNumeroCelularConfirmado());
-                registro.setBoolean(12, obj.isAutenticacionDosPasos());
-                registro.setInt(13, obj.getConteoAccesosFallidos());
-                registro.setString(14, obj.getFoto());
-                registro.setInt(15, obj.getIdRol());
-                registro.setString(16, obj.getToken());
+                registro.setString(1, obj.getNombre());
+                registro.setString(2, obj.getApellido());
+                registro.setString(3, obj.getNombreUsuario());
+                registro.setString(4, obj.getContraseniia());
+                registro.setTimestamp(5, obj.getFechaCreacion());
+                registro.setTimestamp(6, obj.getUltimaConexion());
+                registro.setString(7, obj.getEstadoCuenta());
+                registro.setInt(8, obj.isEstadoLogico());
+                registro.setInt(9, obj.isConectado());
+                registro.setString(10, obj.getCorreoElectronico());
+                registro.setInt(11, obj.isCorreoConfirmado());
+                registro.setInt(12, obj.getNumeroCelular());
+                registro.setInt(13, obj.isNumeroCelularConfirmado());
+                registro.setInt(14, obj.isAutenticacionDosPasos());
+                registro.setInt(15, obj.getConteoAccesosFallidos());
+                registro.setString(16, obj.getFoto());
+                registro.setInt(17, obj.getIdRol());
+                registro.setString(18, obj.getToken());
                 int r = registro.executeUpdate();
                 if (r > 0) {
                     response.setStatus(utils.Constantes.STATUS_REGISTRO_EXITOSO_BD);
@@ -99,10 +103,10 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         if (conexionDB.conectar() == 1) {
             Usuario obj = encontrarId(id);
             if (obj != null) {
-                if (obj.isConectado()) {
-                    obj.setConectado(false);
+                if (obj.isConectado()==1) {
+                    obj.setConectado(0);
                 } else {
-                    obj.setConectado(true);
+                    obj.setConectado(1);
                 }
                 obj.setUltimaConexion(Misc.getDateTimeActualSQL());
                 try {
@@ -112,7 +116,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                             + "WHERE idUsuario=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setTimestamp(1, obj.getUltimaConexion());
-                    registro.setBoolean(2, obj.isConectado());
+                    registro.setInt(2, obj.isConectado());
                     registro.setInt(3, id);
                     int r = registro.executeUpdate();
                     if (r > 0) {
@@ -170,12 +174,12 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setString(1, nvoObj.getNombreUsuario());
                     registro.setString(2, nvoObj.getEstadoCuenta());
-                    registro.setBoolean(3, nvoObj.isEstadoLogico());
+                    registro.setInt(3, nvoObj.isEstadoLogico());
                     registro.setString(4, nvoObj.getCorreoElectronico());
-                    registro.setBoolean(5, nvoObj.isCorreoConfirmado());
+                    registro.setInt(5, nvoObj.isCorreoConfirmado());
                     registro.setInt(6, nvoObj.getNumeroCelular());
-                    registro.setBoolean(7, nvoObj.isNumeroCelularConfirmado());
-                    registro.setBoolean(8, nvoObj.isAutenticacionDosPasos());
+                    registro.setInt(7, nvoObj.isNumeroCelularConfirmado());
+                    registro.setInt(8, nvoObj.isAutenticacionDosPasos());
                     registro.setInt(9, nvoObj.getConteoAccesosFallidos());
                     registro.setString(10, nvoObj.getFoto());
                     registro.setInt(11, nvoObj.getIdRol());
@@ -290,13 +294,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     user.setFechaCreacion(rs.getTimestamp(3));
                     user.setUltimaConexion(rs.getTimestamp(4));
                     user.setEstadoCuenta(rs.getString(5));
-                    user.setEstadoLogico(rs.getBoolean(6));
-                    user.setConectado(rs.getBoolean(7));
+                    user.setEstadoLogico(rs.getInt(6));
+                    user.setConectado(rs.getInt(7));
                     user.setCorreoElectronico(rs.getString(8));
-                    user.setCorreoConfirmado(rs.getBoolean(9));
+                    user.setCorreoConfirmado(rs.getInt(9));
                     user.setNumeroCelular(rs.getInt(10));
-                    user.setNumeroCelularConfirmado(rs.getBoolean(11));
-                    user.setAutenticacionDosPasos(rs.getBoolean(12));
+                    user.setNumeroCelularConfirmado(rs.getInt(11));
+                    user.setAutenticacionDosPasos(rs.getInt(12));
                     user.setConteoAccesosFallidos(rs.getInt(13));
                     user.setFoto(rs.getString(14));
                     user.setIdRol(rs.getInt(15));
@@ -361,13 +365,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setFechaCreacion(rs.getTimestamp(3));
                     response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
-                    response.setEstadoLogico(rs.getBoolean(6));
-                    response.setConectado(rs.getBoolean(7));
+                    response.setEstadoLogico(rs.getInt(6));
+                    response.setConectado(rs.getInt(7));
                     response.setCorreoElectronico(rs.getString(8));
-                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setCorreoConfirmado(rs.getInt(9));
                     response.setNumeroCelular(rs.getInt(10));
-                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
-                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setNumeroCelularConfirmado(rs.getInt(11));
+                    response.setAutenticacionDosPasos(rs.getInt(12));
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
@@ -421,13 +425,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setFechaCreacion(rs.getTimestamp(3));
                     response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
-                    response.setEstadoLogico(rs.getBoolean(6));
-                    response.setConectado(rs.getBoolean(7));
+                    response.setEstadoLogico(rs.getInt(6));
+                    response.setConectado(rs.getInt(7));
                     response.setCorreoElectronico(rs.getString(8));
-                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setCorreoConfirmado(rs.getInt(9));
                     response.setNumeroCelular(rs.getInt(10));
-                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
-                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setNumeroCelularConfirmado(rs.getInt(11));
+                    response.setAutenticacionDosPasos(rs.getInt(12));
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
@@ -469,7 +473,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "idRol, "
                         + "token "
                         + "FROM Usuario "
-                        + "WHERE nombreUsuario=? AND contrasenia=?";
+                        + "WHERE correoElectronico=? AND contrasenia=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setString(1, nombre);
                 ps.setString(2, contrasenia);
@@ -482,13 +486,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setFechaCreacion(rs.getTimestamp(3));
                     response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
-                    response.setEstadoLogico(rs.getBoolean(6));
-                    response.setConectado(rs.getBoolean(7));
+                    response.setEstadoLogico(rs.getInt(6));
+                    response.setConectado(rs.getInt(7));
                     response.setCorreoElectronico(rs.getString(8));
-                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setCorreoConfirmado(rs.getInt(9));
                     response.setNumeroCelular(rs.getInt(10));
-                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
-                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setNumeroCelularConfirmado(rs.getInt(11));
+                    response.setAutenticacionDosPasos(rs.getInt(12));
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
@@ -542,13 +546,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setFechaCreacion(rs.getTimestamp(3));
                     response.setUltimaConexion(rs.getTimestamp(4));
                     response.setEstadoCuenta(rs.getString(5));
-                    response.setEstadoLogico(rs.getBoolean(6));
-                    response.setConectado(rs.getBoolean(7));
+                    response.setEstadoLogico(rs.getInt(6));
+                    response.setConectado(rs.getInt(7));
                     response.setCorreoElectronico(rs.getString(8));
-                    response.setCorreoConfirmado(rs.getBoolean(9));
+                    response.setCorreoConfirmado(rs.getInt(9));
                     response.setNumeroCelular(rs.getInt(10));
-                    response.setNumeroCelularConfirmado(rs.getBoolean(11));
-                    response.setAutenticacionDosPasos(rs.getBoolean(12));
+                    response.setNumeroCelularConfirmado(rs.getInt(11));
+                    response.setAutenticacionDosPasos(rs.getInt(12));
                     response.setConteoAccesosFallidos(rs.getInt(13));
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
@@ -637,7 +641,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setFechaDonacion(rs.getTimestamp(5));
                     sol.setEstadoDonacion(rs.getString(6));
                     sol.setNoConfirmacion(rs.getString(7));
-                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setRemunerado(rs.getInt(8));
                     lstDonacion.add(sol);
                 }
             } catch (SQLException ex) {
@@ -685,7 +689,7 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     sol.setFechaDonacion(rs.getTimestamp(5));
                     sol.setEstadoDonacion(rs.getString(6));
                     sol.setNoConfirmacion(rs.getString(7));
-                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setRemunerado(rs.getInt(8));
                     sol.setEstadoPago(rs.getString(9));
                     sol.setEstadoEnvio(rs.getString(10));
                     sol.setEstadoEntrega(rs.getString(11));
@@ -969,13 +973,13 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     org = new Organizacion();
                     org.setIdOrganizacion(rs.getInt(1));
                     org.setIdUsuario(rs.getInt(2));
-                    org.setReciboDeducible(rs.getBoolean(3));
+                    org.setReciboDeducible(rs.getInt(3));
                     org.setRazonSocial(rs.getString(4));
                     org.setNumeroTelFijo(rs.getInt(5));
                     org.setNumeroTelMovil(rs.getInt(6));
                     org.setEmail(rs.getString(7));
                     org.setSitioWeb(rs.getString(8));
-                    org.setEstadoLogico(rs.getBoolean(9));
+                    org.setEstadoLogico(rs.getInt(9));
                     org.setRfc(rs.getString(10));
                     org.setTipoOrganizacion(rs.getString(11));
                     org.setAutorizada(rs.getString(12));
@@ -1025,7 +1029,6 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "nivelEducativo, "
                         + "ocupacion, "
                         + "tipoEscuela, "
-                        + "gradoEscolar, "
                         + "promedioAnterior, "
                         + "estatusEscolar, "
                         + "intereses, "
@@ -1066,15 +1069,15 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
                     est.setPromedioAnterior(rs.getDouble(16));
-                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setEstatusEscolar(rs.getInt(17));
                     est.setIntereses(rs.getString(18));
                     est.setHabilidades(rs.getString(19));
-                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setEstadoLogico(rs.getInt(20));
                     est.setCurp(rs.getString(21));
                     est.setEstadoCivil(rs.getString(22));
                     est.setNombreEscuela(rs.getString(23));
                     est.setMatricula(rs.getString(24));
-                    est.setRegular(rs.getBoolean(25));
+                    est.setRegular(rs.getInt(25));
                     est.setTipoPeriodo(rs.getString(26));
                     est.setTotalPeriodos(rs.getInt(27));
                     est.setPeriodoActual(rs.getInt(28));

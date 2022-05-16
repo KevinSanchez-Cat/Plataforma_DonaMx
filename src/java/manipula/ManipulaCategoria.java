@@ -286,10 +286,10 @@ public class ManipulaCategoria implements Manipula<Categoria> {
                     recurso.setCantidadStock(rs.getInt(6));
                     recurso.setAutorizado(rs.getString(7));
                     recurso.setEstadoPublicacion(rs.getString(8));
-                    recurso.setEstadoLogico(rs.getBoolean(9));
+                    recurso.setEstadoLogico(rs.getInt(9));
                     recurso.setFechaPublicacion(rs.getTimestamp(10));
                     recurso.setFechaAutorizacion(rs.getTimestamp(11));
-                    recurso.setRemunerado(rs.getBoolean(12));
+                    recurso.setRemunerado(rs.getInt(12));
                     recurso.setEstadoCondicion(rs.getString(13));
                     recurso.setPrecioOriginal(rs.getDouble(14));
                     recurso.setPrecioEstimado(rs.getDouble(15));

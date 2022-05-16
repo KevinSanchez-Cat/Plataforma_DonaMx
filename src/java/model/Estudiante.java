@@ -25,14 +25,14 @@ public class Estudiante extends UsuarioGeneral {
     private String ocupacion;
     private String tipoEscuela;
     private double promedioAnterior;
-    private boolean estatusEscolar;
+    private int estatusEscolar;
     private String intereses;
     private String habilidades;
     private String curp;
     private String estadoCivil;
     private String nombreEscuela;
     private String matricula;
-    private boolean regular;
+    private int regular;
     private String tipoPeriodo;
     private int totalPeriodos;
     private int periodoActual;
@@ -56,7 +56,7 @@ public class Estudiante extends UsuarioGeneral {
         this.ocupacion = ocupacion;
     }
 
-    public Estudiante(int idEstudiante, int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Estudiante(int idEstudiante, int usuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela, double promedioAnterior, int estatusEscolar, String intereses, String habilidades, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, int estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idEstudiante = idEstudiante;
         this.idUsuario = usuario;
@@ -79,7 +79,7 @@ public class Estudiante extends UsuarioGeneral {
         this.habilidades = habilidades;
     }
 
-    public Estudiante(int idEstudiante, int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela,  double promedioAnterior, boolean estatusEscolar, String intereses, String habilidades, String curp, String estadoCivil, String nombreEscuela, String matricula, boolean regular, String tipoPeriodo, int totalPeriodos, int periodoActual, String periodo, double promedioGeneral, String validado) {
+    public Estudiante(int idEstudiante, int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, String presentacion, int numeroTelMovil, int numeroTelFijo, String lugarNacimiento, String nacionalidad, String nivelEducativo, String ocupacion, String tipoEscuela,  double promedioAnterior, int estatusEscolar, String intereses, String habilidades, String curp, String estadoCivil, String nombreEscuela, String matricula, int regular, String tipoPeriodo, int totalPeriodos, int periodoActual, String periodo, double promedioGeneral, String validado) {
         this.idEstudiante = idEstudiante;
         this.idUsuario = idUsuario;
         this.nombres = nombres;
@@ -128,11 +128,11 @@ public class Estudiante extends UsuarioGeneral {
         this.intereses = intereses;
     }
 
-    public boolean isEstatusEscolar() {
+    public int isEstatusEscolar() {
         return estatusEscolar;
     }
 
-    public void setEstatusEscolar(boolean estatusEscolar) {
+    public void setEstatusEscolar(int estatusEscolar) {
         this.estatusEscolar = estatusEscolar;
     }
 
@@ -297,11 +297,11 @@ public class Estudiante extends UsuarioGeneral {
         this.matricula = matricula;
     }
 
-    public boolean isRegular() {
+    public int isRegular() {
         return regular;
     }
 
-    public void setRegular(boolean regular) {
+    public void setRegular(int regular) {
         this.regular = regular;
     }
 

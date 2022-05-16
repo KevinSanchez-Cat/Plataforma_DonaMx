@@ -34,10 +34,6 @@
         <servlet-class>controller.estudiante.Srv_estudiante</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>srv_galeria</servlet-name>
-        <servlet-class>controller.galeria.Srv_galeria</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>srv_lista_deseos</servlet-name>
         <servlet-class>controller.listaDeseos.Srv_lista_deseos</servlet-class>
     </servlet>
@@ -146,10 +142,6 @@
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>srv_archivo</servlet-name>
-        <url-pattern>/srv_archivo</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>srv_catalogo</servlet-name>
         <url-pattern>/srv_catalogo</url-pattern>
     </servlet-mapping>
@@ -176,10 +168,6 @@
     <servlet-mapping>
         <servlet-name>srv_estudiante</servlet-name>
         <url-pattern>/srv_estudiante</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>srv_galeria</servlet-name>
-        <url-pattern>/srv_galeria</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>srv_lista_deseos</servlet-name>

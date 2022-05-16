@@ -13,7 +13,7 @@ public class UsuarioGeneral {
     private List<Donacion> lstDonaciones;
     private List<Solicitud> lstSolicitudes;
     private List<Notificacion> lstNotificaciones;
-    private boolean estadoLogico;
+    private int estadoLogico;
     private String fechaCreacion;
     private String fotoUsuario;
 
@@ -21,11 +21,11 @@ public class UsuarioGeneral {
         this.lstDonaciones = new ArrayList<>();
         this.lstSolicitudes = new ArrayList<>();
         this.lstNotificaciones = new ArrayList<>();
-        this.estadoLogico = true;
+        this.estadoLogico = 1;
         this.direccion = new Direccion();
     }
 
-    public UsuarioGeneral(Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public UsuarioGeneral(Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, int estadoLogico, String fechaCreacion, String fotoUsuario) {
         this.direccion = direccion;
         this.lstDonaciones = lstDonaciones;
         this.lstSolicitudes = lstSolicitudes;
@@ -67,11 +67,11 @@ public class UsuarioGeneral {
         this.lstNotificaciones = lstNotificaciones;
     }
 
-    public boolean isEstadoLogico() {
+    public int isEstadoLogico() {
         return estadoLogico;
     }
 
-    public void setEstadoLogico(boolean estadoLogico) {
+    public void setEstadoLogico(int estadoLogico) {
         this.estadoLogico = estadoLogico;
     }
 

@@ -75,15 +75,15 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                 registro.setString(13, obj.getOcupacion());
                 registro.setString(14, obj.getTipoEscuela());
                 registro.setDouble(15, obj.getPromedioAnterior());
-                registro.setBoolean(16, obj.isEstatusEscolar());
+                registro.setInt(16, obj.isEstatusEscolar());
                 registro.setString(17, obj.getIntereses());
                 registro.setString(18, obj.getHabilidades());
-                registro.setBoolean(19, obj.isEstadoLogico());
+                registro.setInt(19, obj.isEstadoLogico());
                 registro.setString(20, obj.getCurp());
                 registro.setString(21, obj.getEstadoCivil());
                 registro.setString(22, obj.getNombreEscuela());
                 registro.setString(23, obj.getMatricula());
-                registro.setBoolean(24, obj.isRegular());
+                registro.setInt(24, obj.isRegular());
                 registro.setString(25, obj.getTipoPeriodo());
                 registro.setInt(26, obj.getTotalPeriodos());
                 registro.setInt(27, obj.getPeriodoActual());
@@ -152,12 +152,12 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     registro.setString(2, nvoObj.getOcupacion());
                     registro.setString(3, nvoObj.getTipoEscuela());
                     registro.setDouble(4, nvoObj.getPromedioAnterior());
-                    registro.setBoolean(5, nvoObj.isEstatusEscolar());
+                    registro.setInt(5, nvoObj.isEstatusEscolar());
                     registro.setString(6, nvoObj.getIntereses());
                     registro.setString(7, nvoObj.getHabilidades());
                     registro.setString(8, nvoObj.getNombreEscuela());
                     registro.setString(9, nvoObj.getMatricula());
-                    registro.setBoolean(10, nvoObj.isRegular());
+                    registro.setInt(10, nvoObj.isRegular());
                     registro.setString(11, nvoObj.getTipoPeriodo());
                     registro.setInt(12, nvoObj.getTotalPeriodos());
                     registro.setInt(13, nvoObj.getPeriodoActual());
@@ -250,15 +250,15 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     registro.setString(13, nvoObj.getOcupacion());
                     registro.setString(14, nvoObj.getTipoEscuela());
                     registro.setDouble(15, nvoObj.getPromedioAnterior());
-                    registro.setBoolean(16, nvoObj.isEstatusEscolar());
+                    registro.setInt(16, nvoObj.isEstatusEscolar());
                     registro.setString(17, nvoObj.getIntereses());
                     registro.setString(18, nvoObj.getHabilidades());
-                    registro.setBoolean(19, nvoObj.isEstadoLogico());
+                    registro.setInt(19, nvoObj.isEstadoLogico());
                     registro.setString(20, nvoObj.getCurp());
                     registro.setString(21, nvoObj.getEstadoCivil());
                     registro.setString(22, nvoObj.getNombreEscuela());
                     registro.setString(23, nvoObj.getMatricula());
-                    registro.setBoolean(24, nvoObj.isRegular());
+                    registro.setInt(24, nvoObj.isRegular());
                     registro.setString(25, nvoObj.getTipoPeriodo());
                     registro.setInt(26, nvoObj.getTotalPeriodos());
                     registro.setInt(27, nvoObj.getPeriodoActual());
@@ -401,15 +401,15 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
                     est.setPromedioAnterior(rs.getDouble(16));
-                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setEstatusEscolar(rs.getInt(17));
                     est.setIntereses(rs.getString(18));
                     est.setHabilidades(rs.getString(19));
-                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setEstadoLogico(rs.getInt(20));
                     est.setCurp(rs.getString(21));
                     est.setEstadoCivil(rs.getString(22));
                     est.setNombreEscuela(rs.getString(23));
                     est.setMatricula(rs.getString(24));
-                    est.setRegular(rs.getBoolean(25));
+                    est.setRegular(rs.getInt(25));
                     est.setTipoPeriodo(rs.getString(26));
                     est.setTotalPeriodos(rs.getInt(27));
                     est.setPeriodoActual(rs.getInt(28));
@@ -451,7 +451,6 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                         + "nivelEducativo, "
                         + "ocupacion, "
                         + "tipoEscuela, "
-                        + "gradoEscolar, "
                         + "promedioAnterior, "
                         + "estatusEscolar, "
                         + "intereses, "
@@ -490,15 +489,15 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     est.setOcupacion(rs.getString(14));
                     est.setTipoEscuela(rs.getString(15));
                     est.setPromedioAnterior(rs.getDouble(16));
-                    est.setEstatusEscolar(rs.getBoolean(17));
+                    est.setEstatusEscolar(rs.getInt(17));
                     est.setIntereses(rs.getString(18));
                     est.setHabilidades(rs.getString(19));
-                    est.setEstadoLogico(rs.getBoolean(20));
+                    est.setEstadoLogico(rs.getInt(20));
                     est.setCurp(rs.getString(21));
                     est.setEstadoCivil(rs.getString(22));
                     est.setNombreEscuela(rs.getString(23));
                     est.setMatricula(rs.getString(24));
-                    est.setRegular(rs.getBoolean(25));
+                    est.setRegular(rs.getInt(25));
                     est.setTipoPeriodo(rs.getString(26));
                     est.setTotalPeriodos(rs.getInt(27));
                     est.setPeriodoActual(rs.getInt(28));
@@ -580,15 +579,15 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
                     response.setOcupacion(rs.getString(14));
                     response.setTipoEscuela(rs.getString(15));
                     response.setPromedioAnterior(rs.getDouble(16));
-                    response.setEstatusEscolar(rs.getBoolean(17));
+                    response.setEstatusEscolar(rs.getInt(17));
                     response.setIntereses(rs.getString(18));
                     response.setHabilidades(rs.getString(19));
-                    response.setEstadoLogico(rs.getBoolean(20));
+                    response.setEstadoLogico(rs.getInt(20));
                     response.setCurp(rs.getString(21));
                     response.setEstadoCivil(rs.getString(22));
                     response.setNombreEscuela(rs.getString(23));
                     response.setMatricula(rs.getString(24));
-                    response.setRegular(rs.getBoolean(25));
+                    response.setRegular(rs.getInt(25));
                     response.setTipoPeriodo(rs.getString(26));
                     response.setTotalPeriodos(rs.getInt(27));
                     response.setPeriodoActual(rs.getInt(28));

@@ -11,26 +11,28 @@ public class Usuario {
 
     private int idUsuario;
     private String nombreUsuario;
+    private String nombre;
+    private String apellido;
     private String contraseniia;
     private Timestamp ultimaConexion;//DATE TIME
     private String estadoCuenta;
-    private boolean conectado;
+    private int conectado;
     private String correoElectronico;
-    private boolean correoConfirmado;
+    private int correoConfirmado;
     private int numeroCelular;
-    private boolean autenticacionDosPasos;
+    private int autenticacionDosPasos;
     private int conteoAccesosFallidos;
-    private boolean estadoLogico;
+    private int estadoLogico;
     private Timestamp fechaCreacion;
     private int idRol;
     private String foto;
-    private boolean numeroCelularConfirmado;
+    private int numeroCelularConfirmado;
     private String token;
 
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, boolean estadoLogico, Timestamp fechaCreacion, int idRol) {
+    public Usuario(String nombreUsuario, String contraseniia, String estadoCuenta, String correoElectronico, int numeroCelular, int estadoLogico, Timestamp fechaCreacion, int idRol) {
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
         this.estadoCuenta = estadoCuenta;
@@ -42,7 +44,7 @@ public class Usuario {
         this.idRol = idRol;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Timestamp fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, int conectado, String correoElectronico, int correoConfirmado, int numeroCelular, int autenticacionDosPasos, int conteoAccesosFallidos, int estadoLogico, Timestamp fechaCreacion, int idRol, String foto, int numeroCelularConfirmado) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -61,7 +63,7 @@ public class Usuario {
         this.numeroCelularConfirmado = numeroCelularConfirmado;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, boolean conectado, String correoElectronico, boolean correoConfirmado, int numeroCelular, boolean autenticacionDosPasos, int conteoAccesosFallidos, boolean estadoLogico, Timestamp fechaCreacion, int idRol, String foto, boolean numeroCelularConfirmado, String token) {
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniia, Timestamp ultimaConexion, String estadoCuenta, int conectado, String correoElectronico, int correoConfirmado, int numeroCelular, int autenticacionDosPasos, int conteoAccesosFallidos, int estadoLogico, Timestamp fechaCreacion, int idRol, String foto, int numeroCelularConfirmado, String token) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contraseniia = contraseniia;
@@ -81,6 +83,22 @@ public class Usuario {
         this.token = token;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public int getIdRol() {
         return idRol;
     }
@@ -89,11 +107,11 @@ public class Usuario {
         this.idRol = idRol;
     }
 
-    public boolean isNumeroCelularConfirmado() {
+    public int isNumeroCelularConfirmado() {
         return numeroCelularConfirmado;
     }
 
-    public void setNumeroCelularConfirmado(boolean numeroCelularConfirmado) {
+    public void setNumeroCelularConfirmado(int numeroCelularConfirmado) {
         this.numeroCelularConfirmado = numeroCelularConfirmado;
     }
 
@@ -105,11 +123,11 @@ public class Usuario {
         this.foto = foto;
     }
 
-    public boolean isEstadoLogico() {
+    public int isEstadoLogico() {
         return estadoLogico;
     }
 
-    public void setEstadoLogico(boolean estadoLogico) {
+    public void setEstadoLogico(int estadoLogico) {
         this.estadoLogico = estadoLogico;
     }
 
@@ -137,11 +155,11 @@ public class Usuario {
         this.conteoAccesosFallidos = conteoAccesosFallidos;
     }
 
-    public boolean isAutenticacionDosPasos() {
+    public int isAutenticacionDosPasos() {
         return autenticacionDosPasos;
     }
 
-    public void setAutenticacionDosPasos(boolean autenticacionDosPasos) {
+    public void setAutenticacionDosPasos(int autenticacionDosPasos) {
         this.autenticacionDosPasos = autenticacionDosPasos;
     }
 
@@ -153,11 +171,11 @@ public class Usuario {
         this.numeroCelular = numeroCelular;
     }
 
-    public boolean isCorreoConfirmado() {
+    public int isCorreoConfirmado() {
         return correoConfirmado;
     }
 
-    public void setCorreoConfirmado(boolean correoConfirmado) {
+    public void setCorreoConfirmado(int correoConfirmado) {
         this.correoConfirmado = correoConfirmado;
     }
 
@@ -169,11 +187,11 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
     }
 
-    public boolean isConectado() {
+    public int isConectado() {
         return conectado;
     }
 
-    public void setConectado(boolean conectado) {
+    public void setConectado(int conectado) {
         this.conectado = conectado;
     }
 

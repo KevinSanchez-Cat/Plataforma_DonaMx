@@ -23,6 +23,14 @@ public class Prb {
         Rol role7 = new Rol(0, "DONADOR");
         Rol role8 = new Rol(0, "DONATARIO");
 
+        m.registrar(role1);
+        m.registrar(role2);
+        m.registrar(role3);
+        m.registrar(role4);
+        m.registrar(role5);
+        m.registrar(role6);
+        m.registrar(role7);
+        m.registrar(role8);
         List<Rol> lst = m.getData();
         lst.forEach(System.out::println);
         

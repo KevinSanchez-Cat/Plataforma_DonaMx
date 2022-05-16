@@ -60,7 +60,9 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                     //Usuario
                     Usuario user = (Usuario) session.getAttribute("user");
                     ManipulaUsuario mUsuario = new ManipulaUsuario();
+                    System.out.println(user);
                     Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                    System.out.println("usuario" + usuario);
                     ManipulaRol mRol = new ManipulaRol();
                     Rol r = mRol.encontrarRol("DONATARIO");
                     usuario.setRol(r.getIdRol());
@@ -114,25 +116,31 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
         if (s != null) {
             if (s.equals("on")) {
                 String email = request.getParameter("email");
-                String username = request.getParameter("username");
+                String name = request.getParameter("name");
+                String lastname = request.getParameter("lastname");
                 String password = request.getParameter("password");
                 String confirmar_password = request.getParameter("confirmar_password");
+
+                System.out.println(email + " " + name + " " + lastname + " " + password + " " + confirmar_password);
                 if (password.equals(confirmar_password)) {
                     String passwordCifrado = utils.Hash.sha1(password);
 
                     Usuario user = new Usuario();
-                    user.setNombreUsuario(username);
+                    user.setNombre(name);
+                    user.setApellido(lastname);
+                    String username2 = name + " " + lastname.substring(0, 1) + " " + UUID.randomUUID().toString().replace("-", "");
+                    user.setNombreUsuario(username2);
                     user.setContraseniia(passwordCifrado);
                     user.setFechaCreacion(utils.Misc.getDateTimeActualSQL());
                     user.setUltimaConexion(utils.Misc.getDateTimeActualSQL());
                     user.setEstadoCuenta("C");
-                    user.setEstadoLogico(true);
-                    user.setConectado(false);
+                    user.setEstadoLogico(1);
+                    user.setConectado(0);
                     user.setCorreoElectronico(email);
-                    user.setCorreoConfirmado(false);
+                    user.setCorreoConfirmado(0);
                     user.setNumeroCelular(-1);
-                    user.setNumeroCelularConfirmado(false);
-                    user.setAutenticacionDosPasos(false);
+                    user.setNumeroCelularConfirmado(0);
+                    user.setAutenticacionDosPasos(0);
                     user.setConteoAccesosFallidos(0);
                     user.setFoto("");
                     user.setToken(generarToken());
@@ -141,10 +149,10 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                     user.setIdRol(rol.getIdRol());
 
                     GenericResponse<Usuario> registrar = ManipulaAutenticacion.registrar(user);
-                    if (registrar.getStatus() != utils.Constantes.STATUS_NOT_ACCEPTABLE
-                            || registrar.getStatus() != utils.Constantes.STATUS_CONEXION_FALLIDA_BD) {
+                    System.out.println(registrar.getResponseObject());
+                    if (registrar.getResponseObject() != null) {
                         HttpSession session = request.getSession(true);
-                        session.setAttribute("username", user.getNombreUsuario());
+                        session.setAttribute("username", user.getNombre() + " " + user.getApellido());
                         session.setAttribute("user", user);
                         session.setAttribute("rol", "PENDIENTE");
                         redirectView(request, response, "/destino.jsp");
@@ -153,24 +161,28 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
                         System.out.println("Registro fallido " + registrar.getMensaje());
                         HttpSession session = request.getSession();
                         session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                        request.setAttribute("respuesta", "Ups! Hubo un error en el registro");
                         redirectView(request, response, "/registrarse.jsp");
                     }
                 } else {
                     //Las contraseñas no son iguales
                     HttpSession session = request.getSession();
                     session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                    request.setAttribute("respuesta", "Las contraseñas no son iguales");
                     redirectView(request, response, "/registrarse.jsp");
                 }
             } else {
                 //Tiene que aceptar los terminos y condiciones
                 HttpSession session = request.getSession();
                 session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                request.setAttribute("respuesta", "Tiene que aceptar los terminos y condiciones");
                 redirectView(request, response, "/registrarse.jsp");
             }
         } else {
             //Tiene que aceptar los terminos y condiciones
             HttpSession session = request.getSession();
             session.invalidate();//para invalidar manualmente la sessión si hay una creada
+            request.setAttribute("respuesta", "Tiene que aceptar los terminos y condiciones");
             redirectView(request, response, "/registrarse.jsp");
         }
     }
@@ -199,8 +211,8 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
         //cuando elimina datos de session
         Logg.info("Elimino " + event.getName() + "  " + event.getValue() + " en la session " + event.getSession());
     }
-    
-    private String generarToken(){
+
+    private String generarToken() {
         String uuidw = UUID.randomUUID().toString().replace("-", "");
         return uuidw;
     }

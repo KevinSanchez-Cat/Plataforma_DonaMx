@@ -16,7 +16,7 @@ public class Donacion {
     private Timestamp fechaDonacion;  
     private String estadoDonacion;
     private String noConfirmacion;
-    private boolean remunerado;
+    private int remunerado;
     private String estadoPago;
     private String estadoEnvio;
     private String estadoEntrega;
@@ -26,7 +26,7 @@ public class Donacion {
     public Donacion() {
     }
 
-    public Donacion(int donatario, int donador, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int donatario, int donador, int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, int remunerado) {
         this.idDonatario = donatario;
         this.idDonador = donador;
         this.idRecursoTecnologico = recursoTecnologico;
@@ -36,7 +36,7 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int donatario, int donador,int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado) {
+    public Donacion(int idDonacion, int donatario, int donador,int recursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, int remunerado) {
         this.idDonacion = idDonacion;
         this.idDonatario = donatario;
         this.idDonador = donador;
@@ -47,7 +47,7 @@ public class Donacion {
         this.remunerado = remunerado;
     }
 
-    public Donacion(int idDonacion, int idDonatario, int idDonador, int idRecursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, boolean remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
+    public Donacion(int idDonacion, int idDonatario, int idDonador, int idRecursoTecnologico, Timestamp fechaDonacion, String estadoDonacion, String noConfirmacion, int remunerado, String estadoPago, String estadoEnvio, String estadoEntrega, String noSerie, String estadoPreparacion) {
         this.idDonacion = idDonacion;
         this.idDonatario = idDonatario;
         this.idDonador = idDonador;
@@ -103,11 +103,11 @@ public class Donacion {
         this.estadoPreparacion = estadoPreparacion;
     }
 
-    public boolean getRemunerado() {
+    public int getRemunerado() {
         return remunerado;
     }
 
-    public void setRemunerado(boolean remunerado) {
+    public void setRemunerado(int remunerado) {
         this.remunerado = remunerado;
     }
 

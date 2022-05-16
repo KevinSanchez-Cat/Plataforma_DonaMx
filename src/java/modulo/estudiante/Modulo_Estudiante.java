@@ -105,7 +105,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                                     //saber que es para mostrar la información correcta
                                                     EquipoComputacional equipoComuto = null;
                                                     if (recTec != null) {
-                                                        mEquiposComputacionales=new ManipulaEquipoComputacional();
+                                                        mEquiposComputacionales = new ManipulaEquipoComputacional();
                                                         equipoComuto = mEquiposComputacionales.encontrarIdRecurso(recTec.getIdRecursoTecnologico());
                                                         if (equipoComuto != null) {
                                                             dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/equipo_computacional_categoria.jsp");

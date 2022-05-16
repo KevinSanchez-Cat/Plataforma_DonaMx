@@ -45,7 +45,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                 registro.setTimestamp(4, obj.getFechaDonacion());
                 registro.setString(5, obj.getEstadoDonacion());
                 registro.setString(6, obj.getNoConfirmacion());
-                registro.setBoolean(7, obj.getRemunerado());
+                registro.setInt(7, obj.getRemunerado());
                 registro.setString(8, obj.getEstadoPago());
                 registro.setString(9, obj.getEstadoEnvio());
                 registro.setString(10, obj.getEstadoEntrega());
@@ -238,7 +238,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     registro.setTimestamp(4, nvoObj.getFechaDonacion());
                     registro.setString(5, nvoObj.getEstadoDonacion());
                     registro.setString(6, nvoObj.getNoConfirmacion());
-                    registro.setBoolean(7, nvoObj.getRemunerado());
+                    registro.setInt(7, nvoObj.getRemunerado());
                     registro.setString(8, nvoObj.getEstadoPago());
                     registro.setString(9, nvoObj.getEstadoEnvio());
                     registro.setString(10, nvoObj.getEstadoEntrega());
@@ -353,7 +353,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setFechaDonacion(rs.getTimestamp(5));
                     sol.setEstadoDonacion(rs.getString(6));
                     sol.setNoConfirmacion(rs.getString(7));
-                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setRemunerado(rs.getInt(8));
                     sol.setEstadoPago(rs.getString(9));
                     sol.setEstadoEnvio(rs.getString(10));
                     sol.setEstadoEntrega(rs.getString(11));
@@ -405,7 +405,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     sol.setFechaDonacion(rs.getTimestamp(5));
                     sol.setEstadoDonacion(rs.getString(6));
                     sol.setNoConfirmacion(rs.getString(7));
-                    sol.setRemunerado(rs.getBoolean(8));
+                    sol.setRemunerado(rs.getInt(8));
                     sol.setEstadoPago(rs.getString(9));
                     sol.setEstadoEnvio(rs.getString(10));
                     sol.setEstadoEntrega(rs.getString(11));
@@ -460,7 +460,7 @@ public class ManipulaDonacion implements Manipula<Donacion> {
                     response.setFechaDonacion(rs.getTimestamp(5));
                     response.setEstadoDonacion(rs.getString(6));
                     response.setNoConfirmacion(rs.getString(7));
-                    response.setRemunerado(rs.getBoolean(8));
+                    response.setRemunerado(rs.getInt(8));
                     response.setEstadoPago(rs.getString(9));
                     response.setEstadoEnvio(rs.getString(10));
                     response.setEstadoEntrega(rs.getString(11));

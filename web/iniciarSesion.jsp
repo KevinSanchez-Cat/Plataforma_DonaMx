@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--@ page import="net.tanesha.recaptcha.ReCaptcha" --%>
 <%--@ page import="net.tanesha.recaptcha.ReCaptchaFactory" --%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +42,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <%@ page import="controller.inicio.Srv_inicio_sesion" %>
@@ -134,7 +136,15 @@
         <main>
             <section class=""><!-- section register d-flex flex-column align-items-center justify-content-center py-4
                 -->
+
                 <div class="container">
+                    <c:if test="${not empty respuesta}">
+
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            ${respuesta}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </c:if>
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                             <div class="card mb-3">
@@ -146,17 +156,20 @@
                                     <form action="Srv_inicio_sesion" id="form-inicio-sesion" method="post" 
                                           class="row g-3 needs-validation" novalidate>
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Usuario</label>
+                                            <label for="yourUsername" class="form-label">Correo electronico</label>
                                             <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-envelope-fill"></i></span>
                                                 <input type="text" name="username" class="form-control" id="yourUsername" required>
                                                 <div class="invalid-feedback">¡Ingresa tu correo electronico!</div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Contraseña</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                            <div class="invalid-feedback">¡Ingresa tu contraseña!</div>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                                                <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                                <div class="invalid-feedback">¡Ingresa tu contraseña!</div>
+                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
@@ -164,12 +177,12 @@
                                                 <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
                                             </div>
                                         </div>
-                                       <%--
-                                            ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW", "6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak", false);
-                                            out.print(c.createRecaptchaHtml(null, null));
+                                        <%--
+                                             ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW", "6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak", false);
+                                             out.print(c.createRecaptchaHtml(null, null));
                                         --%>
-                                     <!-- <div class="g-recaptcha" data-sitekey="6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW"></div>
-                                       --> <div class="col-12">
+                                        <!-- <div class="g-recaptcha" data-sitekey="6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW"></div>
+                                        --> <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Ingresar</button>
                                         </div>
                                         <div class="col-12">

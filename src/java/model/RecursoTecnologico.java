@@ -16,10 +16,10 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     private int cantidadStock;
     private String autorizado; //Pendiente, Autorizado, No autorizado
     private String estadoPublicacion;
-    private boolean estadoLogico;
+    private int estadoLogico;
     private Timestamp fechaPublicacion;
     private Timestamp fechaAutorizacion;   
-    private boolean remunerado;
+    private int remunerado;
     private String estadoCondicion;
     private double precioOriginal;
     private double precioEstimado;
@@ -39,7 +39,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
     public RecursoTecnologico() {
     }
 
-    public RecursoTecnologico(int idCategoria, String organizacionOCivil, int idUsuario, int cantidadStock, String estadoPublicacion, boolean estadoLogico, boolean remunerado, String tipoSoftwarOHardware, String nombreRecurso) {
+    public RecursoTecnologico(int idCategoria, String organizacionOCivil, int idUsuario, int cantidadStock, String estadoPublicacion, int estadoLogico, int remunerado, String tipoSoftwarOHardware, String nombreRecurso) {
         this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
         this.idUsuario = idUsuario;
@@ -51,7 +51,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.nombreRecurso = nombreRecurso;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso) {
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, int estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, int remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso) {
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
@@ -72,7 +72,7 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.nombreRecurso = nombreRecurso;
     }
 
-    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, boolean estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, boolean remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso, String certificado, int edadMinima, int edadMaxima, String estadoConvocatoria, String otrosDetalles, String detalleEnvio, double costoEnvio, String conCosto) {
+    public RecursoTecnologico(int idRecursoTecnologico, int idCategoria, String organizacionOCivil, int idDonador, int idUsuario, int cantidadStock, String autorizado, String estadoPublicacion, int estadoLogico, Timestamp fechaPublicacion, Timestamp fechaAutorizacion, int remunerado, String estadoCondicion, double precioOriginal, double precioEstimado, double precioOfertado, String tipoSoftwarOHardware, String nombreRecurso, String certificado, int edadMinima, int edadMaxima, String estadoConvocatoria, String otrosDetalles, String detalleEnvio, double costoEnvio, String conCosto) {
         this.idRecursoTecnologico = idRecursoTecnologico;
         this.idCategoria = idCategoria;
         this.organizacionOCivil = organizacionOCivil;
@@ -157,11 +157,11 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.estadoCondicion = estadoCondicion;
     }
 
-    public boolean isRemunerado() {
+    public int isRemunerado() {
         return remunerado;
     }
 
-    public void setRemunerado(boolean remunerado) {
+    public void setRemunerado(int remunerado) {
         this.remunerado = remunerado;
     }
 
@@ -181,11 +181,11 @@ public class RecursoTecnologico { //-->> SE TRATA COMO ALMACEN
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public boolean isEstadoLogico() {
+    public int isEstadoLogico() {
         return estadoLogico;
     }
 
-    public void setEstadoLogico(boolean estadoLogico) {
+    public void setEstadoLogico(int estadoLogico) {
         this.estadoLogico = estadoLogico;
     }
 

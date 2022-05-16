@@ -11,7 +11,7 @@ public class Organizacion extends UsuarioGeneral {
 
     private int idOrganizacion;
     private int idUsuario;
-    private boolean reciboDeducible;
+    private int reciboDeducible;
     private String razonSocial;
     private String rfc;
     private int numeroTelFijo;
@@ -36,7 +36,7 @@ public class Organizacion extends UsuarioGeneral {
         super();
     }
 
-    public Organizacion(int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
+    public Organizacion(int usuario, int reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
         this.idUsuario = usuario;
         this.reciboDeducible = reciboDeducible;
         this.razonSocial = razonSocial;
@@ -47,7 +47,7 @@ public class Organizacion extends UsuarioGeneral {
         this.tipoOrganizacion = tipoOrganizacion;
     }
 
-    public Organizacion(int idOrganizacion, int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Organizacion(int idOrganizacion, int usuario, int reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, int estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idOrganizacion = idOrganizacion;
         this.idUsuario = usuario;
@@ -126,11 +126,11 @@ public class Organizacion extends UsuarioGeneral {
         this.razonSocial = razonSocial;
     }
 
-    public boolean isReciboDeducible() {
+    public int isReciboDeducible() {
         return reciboDeducible;
     }
 
-    public void setReciboDeducible(boolean reciboDeducible) {
+    public void setReciboDeducible(int reciboDeducible) {
         this.reciboDeducible = reciboDeducible;
     }
 

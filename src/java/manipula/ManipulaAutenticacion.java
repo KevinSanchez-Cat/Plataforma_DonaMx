@@ -44,13 +44,13 @@ public class ManipulaAutenticacion {
             ManipulaUsuario m = new ManipulaUsuario();
             Usuario respuesta = m.encontrarStatus(user, contrasenia);
             if (respuesta != null) {
-                if (respuesta.isConectado()) {
+                if (respuesta.isConectado()==1) {
                     response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
                     response.setResponseObject(respuesta);
                     response.setMensaje("Usuario ya conectado");
                     conexionDB.desconectar();
                 } else {
-                    respuesta.setConectado(true);
+                    respuesta.setConectado(1);
                     respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
                     try {
                         String sql = "UPDATE Usuario SET "
@@ -59,7 +59,7 @@ public class ManipulaAutenticacion {
                                 + "WHERE idUsuario=?";
                         PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                         registro.setTimestamp(1, respuesta.getUltimaConexion());
-                        registro.setBoolean(2, respuesta.isConectado());
+                        registro.setInt(2, respuesta.isConectado());
                         registro.setInt(3, respuesta.getIdUsuario());
                         int r = registro.executeUpdate();
                         if (r > 0) {
@@ -100,8 +100,8 @@ public class ManipulaAutenticacion {
                 ManipulaUsuario m = new ManipulaUsuario();
                 Usuario respuesta = m.encontrarStatus(usuario.getNombreUsuario());
                 if (respuesta != null) {
-                    if (respuesta.isConectado()) {
-                        respuesta.setConectado(false);
+                    if (respuesta.isConectado()==1) {
+                        respuesta.setConectado(0);
                         respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
                         try {
                             String sql = "UPDATE Usuario SET "
@@ -110,7 +110,7 @@ public class ManipulaAutenticacion {
                                     + "WHERE idUsuario=?";
                             PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                             registro.setTimestamp(1, respuesta.getUltimaConexion());
-                            registro.setBoolean(2, respuesta.isConectado());
+                            registro.setInt(2, respuesta.isConectado());
                             registro.setInt(3, respuesta.getIdUsuario());
                             int r = registro.executeUpdate();
                             if (r > 0) {

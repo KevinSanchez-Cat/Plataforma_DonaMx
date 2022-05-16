@@ -52,7 +52,7 @@ public class Srv_inicio_sesion extends HttpServlet {
         if (respuesta.getResponseObject() != null) {
 
             HttpSession session = request.getSession();
-            session.setAttribute("username", respuesta.getResponseObject().getNombreUsuario());
+            session.setAttribute("username", respuesta.getResponseObject().getNombre()+" "+respuesta.getResponseObject().getApellido());
             session.setAttribute("user", respuesta.getResponseObject());
             session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
             ManipulaRol mRol = new ManipulaRol();
@@ -103,6 +103,7 @@ public class Srv_inicio_sesion extends HttpServlet {
 
         } else {
             //no se pudo conectar
+            request.setAttribute("respuesta", "Datos incorrectos, intentelo de nuevo");
             redirectView(request, response, "/iniciarSesion.jsp");
         }
 
