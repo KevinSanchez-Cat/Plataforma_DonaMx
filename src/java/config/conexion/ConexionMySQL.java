@@ -19,13 +19,25 @@ public class ConexionMySQL extends IConexion {
     @Override
     public final void init() {
         super.init();
+        
+        setHost("etacarinae.e-novanet.mx");
+        setPort("3306");
+        setUser("donamx_KevinIvan");
+        setPassword("zhQg4dJB.Kgc_ksM");
+        setBd("donamx_bd_donamx");
+        setUrl("jdbc:mysql");
+        
+       
+        
+    }
+    /*
         setHost("localhost");
         setPort("3306");
         setUser("KevinIvan");
         setPassword("zhQg4dJB.Kgc_ksM");
         setBd("bd_donamx");
-        setUrl("jdbc:mysql");
-    }
+        setUrl("jdbc:mysql");  
+    */
 
     @Override
     public int conectar() {

@@ -4,10 +4,7 @@
         <servlet-name>index</servlet-name>
         <servlet-class>controller.home.index</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>srv_archivo</servlet-name>
-        <servlet-class>controller.archivo.Srv_archivo</servlet-class>
-    </servlet>
+  
     <servlet>
         <servlet-name>srv_catalogo</servlet-name>
         <servlet-class>controller.catalogo.Srv_catalogo</servlet-class>
@@ -35,10 +32,6 @@
     <servlet>
         <servlet-name>srv_estudiante</servlet-name>
         <servlet-class>controller.estudiante.Srv_estudiante</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>srv_galeria</servlet-name>
-        <servlet-class>controller.galeria.Srv_galeria</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>srv_lista_deseos</servlet-name>
@@ -88,13 +81,65 @@
         <servlet-name>Srv_usuario</servlet-name>
         <servlet-class>controller.usuario.Srv_usuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>contacto</servlet-name>
+        <servlet-class>controller.home.contacto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_dashboard</servlet-name>
+        <servlet-class>controller.dashboard.Srv_dashboard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_inicio</servlet-name>
+        <servlet-class>controller.inicio.Srv_inicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_contacto</servlet-name>
+        <servlet-class>controller.inicio.Srv_contacto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_registro</servlet-name>
+        <servlet-class>controller.inicio.Srv_registro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_inicio_sesion</servlet-name>
+        <servlet-class>controller.inicio.Srv_inicio_sesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_voluntario</servlet-name>
+        <servlet-class>controller.voluntario.Srv_voluntario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Srv_administrador</servlet-name>
+        <servlet-class>controller.administrador.Srv_administrador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modulo_Estudiante</servlet-name>
+        <servlet-class>modulo.estudiante.Modulo_Estudiante</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modulo_Administrador</servlet-name>
+        <servlet-class>modulo.administrador.Modulo_Administrador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modulo_Donador</servlet-name>
+        <servlet-class>modulo.donador.Modulo_Donador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modulo_Voluntario</servlet-name>
+        <servlet-class>modulo.voluntario.Modulo_Voluntario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>excepciones.Error</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Autenticacion</servlet-name>
+        <servlet-class>excepciones.Autenticacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>srv_archivo</servlet-name>
-        <url-pattern>/srv_archivo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>srv_catalogo</servlet-name>
@@ -123,10 +168,6 @@
     <servlet-mapping>
         <servlet-name>srv_estudiante</servlet-name>
         <url-pattern>/srv_estudiante</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>srv_galeria</servlet-name>
-        <url-pattern>/srv_galeria</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>srv_lista_deseos</servlet-name>
@@ -176,9 +217,80 @@
         <servlet-name>Srv_usuario</servlet-name>
         <url-pattern>/Srv_usuario</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contacto</servlet-name>
+        <url-pattern>/contacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_dashboard</servlet-name>
+        <url-pattern>/Srv_dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_inicio</servlet-name>
+        <url-pattern>/home.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_contacto</servlet-name>
+        <url-pattern>/Srv_contacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_registro</servlet-name>
+        <url-pattern>/Srv_registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_inicio_sesion</servlet-name>
+        <url-pattern>/Srv_inicio_sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_voluntario</servlet-name>
+        <url-pattern>/Srv_voluntario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Srv_administrador</servlet-name>
+        <url-pattern>/Srv_administrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modulo_Estudiante</servlet-name>
+        <url-pattern>/estudiante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modulo_Administrador</servlet-name>
+        <url-pattern>/administrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modulo_Donador</servlet-name>
+        <url-pattern>/donador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modulo_Voluntario</servlet-name>
+        <url-pattern>/voluntario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autenticacion</servlet-name>
+        <url-pattern>/autenticacion</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>
+            /views/templates/errores/page404.jsp
+        </location>
+    </error-page>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>
+                /
+            </form-login-page>
+            <form-error-page>
+                /error.html
+            </form-error-page>
+        </form-login-config>
+    </login-config>
 </web-app>

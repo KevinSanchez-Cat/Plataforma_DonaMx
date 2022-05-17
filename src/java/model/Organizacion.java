@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ public class Organizacion extends UsuarioGeneral {
 
     private int idOrganizacion;
     private int idUsuario;
-    private boolean reciboDeducible;
+    private int reciboDeducible;
     private String razonSocial;
     private String rfc;
     private int numeroTelFijo;
@@ -19,12 +20,23 @@ public class Organizacion extends UsuarioGeneral {
     private String sitioWeb;
     private String tipoOrganizacion;
     private String autorizada;
-
+    private String linkFacebook;
+    private String linkInstragram;
+    private String linkLinkedin;
+    private String linkTwiteer;
+    private String nombreContacto;
+    private String apellidosContacto;
+    private String cargo;
+    private String donatariaAutorizada;
+    private Timestamp fechaDonatariaAutorizada;
+    private String cluni;
+    private String noNotariaPublica;
+    
     public Organizacion() {
         super();
     }
 
-    public Organizacion(int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
+    public Organizacion(int usuario, int reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String tipoOrganizacion) {
         this.idUsuario = usuario;
         this.reciboDeducible = reciboDeducible;
         this.razonSocial = razonSocial;
@@ -35,7 +47,7 @@ public class Organizacion extends UsuarioGeneral {
         this.tipoOrganizacion = tipoOrganizacion;
     }
 
-    public Organizacion(int idOrganizacion, int usuario, boolean reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, boolean estadoLogico, String fechaCreacion, String fotoUsuario) {
+    public Organizacion(int idOrganizacion, int usuario, int reciboDeducible, String razonSocial, String rfc, int numeroTelFijo, int numeroTelMovil, String email, String sitioWeb, String tipoOrganizacion, String autorizada, Direccion direccion, List<Donacion> lstDonaciones, List<Solicitud> lstSolicitudes, List<Notificacion> lstNotificaciones, int estadoLogico, String fechaCreacion, String fotoUsuario) {
         super(direccion, lstDonaciones, lstSolicitudes, lstNotificaciones, estadoLogico, fechaCreacion, fotoUsuario);
         this.idOrganizacion = idOrganizacion;
         this.idUsuario = usuario;
@@ -50,207 +62,184 @@ public class Organizacion extends UsuarioGeneral {
         this.autorizada = autorizada;
     }
 
-    /**
-     * Get the value of autorizada
-     *
-     * @return the value of autorizada
-     */
     public String getAutorizada() {
         return autorizada;
     }
 
-    /**
-     * Set the value of autorizada
-     *
-     * @param autorizada new value of autorizada
-     */
     public void setAutorizada(String autorizada) {
         this.autorizada = autorizada;
     }
 
-    /**
-     * Get the value of tipoOrganizacion
-     *
-     * @return the value of tipoOrganizacion
-     */
     public String getTipoOrganizacion() {
         return tipoOrganizacion;
     }
 
-    /**
-     * Set the value of tipoOrganizacion
-     *
-     * @param tipoOrganizacion new value of tipoOrganizacion
-     */
     public void setTipoOrganizacion(String tipoOrganizacion) {
         this.tipoOrganizacion = tipoOrganizacion;
     }
 
-    /**
-     * Get the value of sitioWeb
-     *
-     * @return the value of sitioWeb
-     */
     public String getSitioWeb() {
         return sitioWeb;
     }
 
-    /**
-     * Set the value of sitioWeb
-     *
-     * @param sitioWeb new value of sitioWeb
-     */
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
     }
 
-    /**
-     * Get the value of email
-     *
-     * @return the value of email
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * Set the value of email
-     *
-     * @param email new value of email
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * Get the value of numeroTelMovil
-     *
-     * @return the value of numeroTelMovil
-     */
     public int getNumeroTelMovil() {
         return numeroTelMovil;
     }
 
-    /**
-     * Set the value of numeroTelMovil
-     *
-     * @param numeroTelMovil new value of numeroTelMovil
-     */
     public void setNumeroTelMovil(int numeroTelMovil) {
         this.numeroTelMovil = numeroTelMovil;
     }
 
-    /**
-     * Get the value of numeroTelFijo
-     *
-     * @return the value of numeroTelFijo
-     */
     public int getNumeroTelFijo() {
         return numeroTelFijo;
     }
 
-    /**
-     * Set the value of numeroTelFijo
-     *
-     * @param numeroTelFijo new value of numeroTelFijo
-     */
     public void setNumeroTelFijo(int numeroTelFijo) {
         this.numeroTelFijo = numeroTelFijo;
     }
 
-    /**
-     * Get the value of rfc
-     *
-     * @return the value of rfc
-     */
     public String getRfc() {
         return rfc;
     }
 
-    /**
-     * Set the value of rfc
-     *
-     * @param rfc new value of rfc
-     */
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
 
-    /**
-     * Get the value of razonSocial
-     *
-     * @return the value of razonSocial
-     */
     public String getRazonSocial() {
         return razonSocial;
     }
 
-    /**
-     * Set the value of razonSocial
-     *
-     * @param razonSocial new value of razonSocial
-     */
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
 
-    /**
-     * Get the value of reciboDeducible
-     *
-     * @return the value of reciboDeducible
-     */
-    public boolean isReciboDeducible() {
+    public int isReciboDeducible() {
         return reciboDeducible;
     }
 
-    /**
-     * Set the value of reciboDeducible
-     *
-     * @param reciboDeducible new value of reciboDeducible
-     */
-    public void setReciboDeducible(boolean reciboDeducible) {
+    public void setReciboDeducible(int reciboDeducible) {
         this.reciboDeducible = reciboDeducible;
     }
 
-    /**
-     * Get the value of idUsuario
-     *
-     * @return the value of idUsuario
-     */
     public int getIdUsuario() {
         return idUsuario;
     }
 
-    /**
-     * Set the value of idUsuario
-     *
-     * @param idUsuario new value of idUsuario
-     */
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    /**
-     * Get the value of idOrganizacion
-     *
-     * @return the value of idOrganizacion
-     */
     public int getIdOrganizacion() {
         return idOrganizacion;
     }
 
-    /**
-     * Set the value of idOrganizacion
-     *
-     * @param idOrganizacion new value of idOrganizacion
-     */
     public void setIdOrganizacion(int idOrganizacion) {
         this.idOrganizacion = idOrganizacion;
+    }
+
+    public String getLinkFacebook() {
+        return linkFacebook;
+    }
+
+    public void setLinkFacebook(String linkFacebook) {
+        this.linkFacebook = linkFacebook;
+    }
+
+    public String getLinkInstragram() {
+        return linkInstragram;
+    }
+
+    public void setLinkInstragram(String linkInstragram) {
+        this.linkInstragram = linkInstragram;
+    }
+
+    public String getLinkLinkedin() {
+        return linkLinkedin;
+    }
+
+    public void setLinkLinkedin(String linkLinkedin) {
+        this.linkLinkedin = linkLinkedin;
+    }
+
+    public String getLinkTwiteer() {
+        return linkTwiteer;
+    }
+
+    public void setLinkTwiteer(String linkTwiteer) {
+        this.linkTwiteer = linkTwiteer;
+    }
+
+    public String getNombreContacto() {
+        return nombreContacto;
+    }
+
+    public void setNombreContacto(String nombreContacto) {
+        this.nombreContacto = nombreContacto;
+    }
+
+    public String getApellidosContacto() {
+        return apellidosContacto;
+    }
+
+    public void setApellidosContacto(String apellidosContacto) {
+        this.apellidosContacto = apellidosContacto;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getDonatariaAutorizada() {
+        return donatariaAutorizada;
+    }
+
+    public void setDonatariaAutorizada(String donatariaAutorizada) {
+        this.donatariaAutorizada = donatariaAutorizada;
+    }
+
+    public Timestamp getFechaDonatariaAutorizada() {
+        return fechaDonatariaAutorizada;
+    }
+
+    public void setFechaDonatariaAutorizada(Timestamp fechaDonatariaAutorizada) {
+        this.fechaDonatariaAutorizada = fechaDonatariaAutorizada;
+    }
+
+    public String getCluni() {
+        return cluni;
+    }
+
+    public void setCluni(String cluni) {
+        this.cluni = cluni;
+    }
+
+    public String getNoNotariaPublica() {
+        return noNotariaPublica;
+    }
+
+    public void setNoNotariaPublica(String noNotariaPublica) {
+        this.noNotariaPublica = noNotariaPublica;
     }
 
     @Override
     public String toString() {
         return "Organizacion{" + "idOrganizacion=" + idOrganizacion + ", usuario=" + idUsuario + ", reciboDeducible=" + reciboDeducible + ", razonSocial=" + razonSocial + ", rfc=" + rfc + ", numeroTelFijo=" + numeroTelFijo + ", numeroTelMovil=" + numeroTelMovil + ", email=" + email + ", sitioWeb=" + sitioWeb + ", tipoOrganizacion=" + tipoOrganizacion + ", autorizada=" + autorizada + '}';
     }
-
 }

@@ -1,8 +1,16 @@
-
 package utils;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -29,19 +37,22 @@ public class Logg {
     public static String loggSubrayadoAzulTurquesa = "\033[46m";
     public static String loggSubrayadoGris = "\033[47m";
 
-      public static void exito(String message) {
+    public static void exito(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
         System.out.println(Logg.loggVerdeLimon + "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+
     }
-      
+
     public static void debug(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
         System.out.println("DEBUG [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
+
     }
 
     public static void info(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
         System.out.println(Logg.loggAzulRey + "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+
     }
 
     public static void advertencia(String message) {
@@ -51,7 +62,6 @@ public class Logg {
 
     public static void error(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
-        System.out.println(Logg.loggRojo + "ERROR [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
     }
 
     public static void fatal(String message) {
