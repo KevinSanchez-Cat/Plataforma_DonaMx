@@ -7,8 +7,14 @@ package modulo.estudiante;
 
 import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import java.io.IOException;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ServiceLoader;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -269,12 +275,33 @@ public class Modulo_Estudiante extends HttpServlet implements ServletContextList
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-
+        Iterator<Driver> driversIterator = ServiceLoader.load(Driver.class).iterator();
+        while (driversIterator.hasNext()) {
+            try {
+                // Instantiates the driver
+                driversIterator.next();
+            } catch (Throwable t) {
+                sce.getServletContext().log("JDBC Driver registration failure.", t);
+            }
+        }
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        AbandonedConnectionCleanupThread.checkedShutdown();
+        // AbandonedConnectionCleanupThread.checkedShutdown();
+        final ClassLoader cl = sce.getServletContext().getClassLoader();
+        final Enumeration<Driver> drivers = DriverManager.getDrivers();
+        while (drivers.hasMoreElements()) {
+            final Driver driver = drivers.nextElement();
+            // We deregister only the classes loaded by this application's classloader
+            if (driver.getClass().getClassLoader() == cl) {
+                try {
+                    DriverManager.deregisterDriver(driver);
+                } catch (SQLException e) {
+                    sce.getServletContext().log("JDBC Driver deregistration failure.", e);
+                }
+            }
+        }
     }
 
     @Override
