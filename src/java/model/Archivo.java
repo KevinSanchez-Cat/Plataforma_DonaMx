@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,14 +13,14 @@ public class Archivo {
     private String nombreArchivo;
     private String extension;
     private double tamanio;
-    private Date fechaCreacion;//DATE TIME   
+    private Timestamp fechaCreacion;//DATE TIME   
     private String urlDestino;
     private int idUsuario;
 
     public Archivo() {
     }
 
-    public Archivo(String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public Archivo(String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
         this.tamanio = tamanio;
@@ -28,7 +29,7 @@ public class Archivo {
         this.idUsuario = usuario;
     }
 
-    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Date fechaCreacion, String urlDestino, int usuario) {
+    public Archivo(int idArchivo, String nombreArchivo, String extension, double tamanio, Timestamp fechaCreacion, String urlDestino, int usuario) {
         this.idArchivo = idArchivo;
         this.nombreArchivo = nombreArchivo;
         this.extension = extension;
@@ -38,128 +39,58 @@ public class Archivo {
         this.idUsuario = usuario;
     }
 
-    /**
-     * Get the value of idUsuario
-     *
-     * @return the value of idUsuario
-     */
     public int getIdUsuario() {
         return idUsuario;
     }
 
-    /**
-     * Set the value of idUsuario
-     *
-     * @param idUsuario new value of idUsuario
-     */
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    /**
-     * Get the value of urlDestino
-     *
-     * @return the value of urlDestino
-     */
     public String getUrlDestino() {
         return urlDestino;
     }
 
-    /**
-     * Set the value of urlDestino
-     *
-     * @param urlDestino new value of urlDestino
-     */
     public void setUrlDestino(String urlDestino) {
         this.urlDestino = urlDestino;
     }
 
-    /**
-     * Get the value of fechaCreacion
-     *
-     * @return the value of fechaCreacion
-     */
-    public Date getFechaCreacion() {
+    public Timestamp getFechaCreacion() {
         return fechaCreacion;
     }
 
-    /**
-     * Set the value of fechaCreacion
-     *
-     * @param fechaCreacion new value of fechaCreacion
-     */
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    /**
-     * Get the value of tamanio
-     *
-     * @return the value of tamanio
-     */
     public double getTamanio() {
         return tamanio;
     }
 
-    /**
-     * Set the value of tamanio
-     *
-     * @param tamanio new value of tamanio
-     */
     public void setTamanio(double tamanio) {
         this.tamanio = tamanio;
     }
 
-    /**
-     * Get the value of extension
-     *
-     * @return the value of extension
-     */
     public String getExtension() {
         return extension;
     }
 
-    /**
-     * Set the value of extension
-     *
-     * @param extension new value of extension
-     */
     public void setExtension(String extension) {
         this.extension = extension;
     }
 
-    /**
-     * Get the value of nombreArchivo
-     *
-     * @return the value of nombreArchivo
-     */
     public String getNombreArchivo() {
         return nombreArchivo;
     }
 
-    /**
-     * Set the value of nombreArchivo
-     *
-     * @param nombreArchivo new value of nombreArchivo
-     */
     public void setNombreArchivo(String nombreArchivo) {
         this.nombreArchivo = nombreArchivo;
     }
 
-    /**
-     * Get the value of idArchivo
-     *
-     * @return the value of idArchivo
-     */
     public int getIdArchivo() {
         return idArchivo;
     }
 
-    /**
-     * Set the value of idArchivo
-     *
-     * @param idArchivo new value of idArchivo
-     */
     public void setIdArchivo(int idArchivo) {
         this.idArchivo = idArchivo;
     }

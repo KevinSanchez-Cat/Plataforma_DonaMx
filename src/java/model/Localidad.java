@@ -9,9 +9,7 @@ public class Localidad {
     private int idLocalidad;
     private String localidad;
     private int codigoPostal;
-
     private int idMunicipio;
-
     
     public Localidad() {
     }
@@ -29,75 +27,34 @@ public class Localidad {
         this.idMunicipio = idMunicipio;
     }
 
-
-    /**
-     * Get the value of idMunicipio
-     *
-     * @return the value of idMunicipio
-     */
     public int getIdMunicipio() {
         return idMunicipio;
     }
 
-    /**
-     * Set the value of idMunicipio
-     *
-     * @param idMunicipio new value of idMunicipio
-     */
     public void setIdMunicipio(int idMunicipio) {
         this.idMunicipio = idMunicipio;
     }
 
-    /**
-     * Get the value of codigoPostal
-     *
-     * @return the value of codigoPostal
-     */
     public int getCodigoPostal() {
         return codigoPostal;
     }
 
-    /**
-     * Set the value of codigoPostal
-     *
-     * @param codigoPostal new value of codigoPostal
-     */
     public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
-    /**
-     * Get the value of localidad
-     *
-     * @return the value of localidad
-     */
     public String getLocalidad() {
         return localidad;
     }
 
-    /**
-     * Set the value of localidad
-     *
-     * @param localidad new value of localidad
-     */
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
 
-    /**
-     * Get the value of idLocalidad
-     *
-     * @return the value of idLocalidad
-     */
     public int getIdLocalidad() {
         return idLocalidad;
     }
 
-    /**
-     * Set the value of idLocalidad
-     *
-     * @param idLocalidad new value of idLocalidad
-     */
     public void setIdLocalidad(int idLocalidad) {
         this.idLocalidad = idLocalidad;
     }

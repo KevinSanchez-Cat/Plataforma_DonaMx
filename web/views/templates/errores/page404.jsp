@@ -11,27 +11,29 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Error 404</title>
-        <link rel="stylesheet" media="all" href="../../../css/estilosPage404/styles.css" />
+        <link href="assets/img/imagenes/Logo_1.png" rel="icon">
+        <link href="assets/img/imagenes/Logo_1.png" rel="apple-touch-icon">
+        <link rel="stylesheet" media="all" href="assets/css/estilosPage404/styles.css" />
     </head>
     <body class="bg-purple">
         <div class="stars">
             <div class="custom-navbar">
                 <div class="brand-logo">
-                    <img src="../../../content/imagenes/logotipodonamx.png" width="120px">
+                    <img src="assets/img/imagenes/logotipodonamx.png" width="120px">
                 </div>
             </div>
             <div class="central-body">
-                <img class="image-404" src="../../../content/imagenes/404.svg" width="300px">
-                <a href="#" class="btn-go-home" target="_blank">Regresar al Inicio</a>
+                <img class="image-404" src="assets/img/imagenes/404.png" width="500px">
+                <a href="javascript:history.back()" class="btn-go-home">Regresar a estar seguro</a>
             </div>
             <div class="objects">
-                <img class="object_rocket" src="../../../content/imagenes/rocket.svg" width="40px">
+                <img class="object_rocket" src="assets/img/imagenes/rocket.svg" width="40px">
                 <div class="earth-moon">
-                    <img class="object_earth" src="../../../content/imagenes/earth.svg" width="100px">
-                    <img class="object_moon" src="../../../content/imagenes/moon.svg" width="80px">
+                    <img class="object_earth" src="assets/img/imagenes/earth.svg" width="100px">
+                    <img class="object_moon" src="assets/img/imagenes/moon.svg" width="80px">
                 </div>
                 <div class="box_astronaut">
-                    <img class="object_astronaut" src="../../../content/imagenes/astronaut.svg" width="140px">
+                    <img class="object_astronaut" src="assets/img/imagenes/astronaut.svg" width="140px">
                 </div>
             </div>
             <div class="glowing_stars">

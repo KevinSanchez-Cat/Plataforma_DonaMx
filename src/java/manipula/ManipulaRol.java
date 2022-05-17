@@ -16,15 +16,13 @@ import utils.Logg;
  * @author Kevin Ivan Sanchez Valdin
  */
 public class ManipulaRol implements Manipula<Rol> {
-
     @Override
     public GenericResponse<Rol> registrar(Rol obj) {
         GenericResponse<Rol> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
-                String sql = "INSERT INTO rol ("
+                String sql = "INSERT INTO Rol ("
                         + "rol"
                         + ") VALUES (?)";
                 PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
@@ -69,18 +67,15 @@ public class ManipulaRol implements Manipula<Rol> {
         GenericResponse<Rol> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             Rol obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "UPDATE rol SET "
-                            + "rol=?"
+                    String sql = "UPDATE Rol SET "
+                            + "rol=? "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-
                     registro.setString(1, nvoObj.getRol());
                     registro.setInt(2, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         obj.setRol(nvoObj.getRol());
@@ -103,6 +98,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -115,17 +111,15 @@ public class ManipulaRol implements Manipula<Rol> {
     @Override
     public GenericResponse<Rol> eliminar(int id) {
         GenericResponse<Rol> response = new GenericResponse<>();
-
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             Rol obj = encontrarId(id);
             if (obj != null) {
                 try {
-                    String sql = "DELETE FROM rol "
+                    String sql = "DELETE FROM Rol "
                             + "WHERE idRol=?";
                     PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
                     registro.setInt(1, id);
-
                     int r = registro.executeUpdate();
                     if (r > 0) {
                         response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
@@ -147,6 +141,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
+                conexionDB.desconectar();
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -161,13 +156,14 @@ public class ManipulaRol implements Manipula<Rol> {
         List<Rol> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
-
             try {
-                String sql = "SELECT idRol, rol FROM rol";
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM Rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
-
                 while (rs.next()) {
                     response.add(new Rol(rs.getInt(1), rs.getString(2)));
                 }
@@ -186,18 +182,18 @@ public class ManipulaRol implements Manipula<Rol> {
     public List<Rol> consultar(String... filtros) {
         List<Rol> response = new ArrayList<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
-                String sql = "SELECT idRol, rol FROM rol";
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM Rol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     response.add(new Rol(rs.getInt(1), rs.getString(2)));
                 }
-
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
@@ -213,16 +209,46 @@ public class ManipulaRol implements Manipula<Rol> {
     public Rol encontrarId(int id) {
         Rol response = null;
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-
         if (conexionDB.conectar() == 1) {
-
             try {
-                String sql = "SELECT idRol, rol "
-                        + "FROM rol "
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM Rol "
                         + "WHERE idRol=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ps.setInt(1, id);
-
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    response = new Rol();
+                    response.setIdRol(rs.getInt(1));
+                    response.setRol(rs.getString(2));
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
+    public Rol encontrarRol(String rol) {
+        Rol response = null;
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            try {
+                String sql = "SELECT "
+                        + "idRol, "
+                        + "rol "
+                        + "FROM Rol "
+                        + "WHERE rol=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setString(1, rol);
                 ResultSet rs;
                 rs = ps.executeQuery();
                 if (rs.next()) {

@@ -14,7 +14,7 @@ public class Hash {
      * @param hashType metodo de cifrado
      * @return una nueva cadena, cifrada
      */
-    public static String getHash(String txt, String hashType) {
+    private static String getHash(String txt, String hashType) {
 
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance(hashType);

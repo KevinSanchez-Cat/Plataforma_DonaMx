@@ -1,6 +1,8 @@
 
 package utils;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Kevin Ivan Sanchez Valdin
@@ -9,7 +11,9 @@ public class Constantes {
 
     public static final String RUTA_PRINCIPAL_APP = "/index.jsp";
     public static final String CONTENT_TYPE_JSON = "application/json";
-
+    
+    public static Connection conectionBD=null;
+    
     //CONSTANTES DE STATUS
     public static final int LOGIC_DEFAULT = 0;
     public static final int LOGIC_SUCCESS = 1;
