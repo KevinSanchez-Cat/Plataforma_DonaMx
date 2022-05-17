@@ -5,15 +5,20 @@
  */
 package modulo.estudiante;
 
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 import manipula.*;
 import model.*;
 
@@ -21,7 +26,7 @@ import model.*;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class Modulo_Estudiante extends HttpServlet {
+public class Modulo_Estudiante extends HttpServlet implements ServletContextListener, HttpSessionBindingListener {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -224,10 +229,6 @@ public class Modulo_Estudiante extends HttpServlet {
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/notificaciones.jsp");
 
                                     break;
-
-                                case "encuesta_socieconomica":
-                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/encuesta_socieconomica.jsp");
-                                    break;
                                 case "cambiar_contrasenia":
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/cambiar_contrasenia.jsp");
                                     break;
@@ -264,6 +265,27 @@ public class Modulo_Estudiante extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        AbandonedConnectionCleanupThread.checkedShutdown();
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        System.out.println("Se quito un atributo a la sesion" + event.getSession());
+
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        System.out.println("Se agrego un atributo a la sesion" + event.getSession());
     }
 
 }

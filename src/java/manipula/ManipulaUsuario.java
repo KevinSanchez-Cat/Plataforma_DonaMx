@@ -471,7 +471,9 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                         + "conteoAccesosFallidos, "
                         + "foto, "
                         + "idRol, "
-                        + "token "
+                        + "token, "
+                        + "nombre, "
+                        + "apellido "
                         + "FROM Usuario "
                         + "WHERE correoElectronico=? AND contrasenia=?";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
@@ -497,6 +499,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                     response.setFoto(rs.getString(14));
                     response.setIdRol(rs.getInt(15));
                     response.setToken(rs.getString(16));
+                    response.setNombre(rs.getString(17));
+                    response.setApellido(rs.getString(18));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }

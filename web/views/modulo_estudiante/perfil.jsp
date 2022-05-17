@@ -140,8 +140,9 @@
                                                     <label for="seleccionArchivos" class="subir">
                                                         <i class="bi bi-upload"></i> Subir imagen
                                                     </label>
-                                                    <input id="seleccionArchivos"  onchange='cambiar()' type="file" style='display: none;'  accept="image/*" />
+                                                    <input id="seleccionArchivos"  type="file" style='display: none;'  accept="image/*" />
                                                 </div>
+                                                <div id="info-imagen"></div>
                                                 <div class="col-md-6">
                                                     <a href="#" class="btn btn-danger btn-sm" title="Eliminar imagen de perfil">
                                                         <i class="bi bi-trash"></i>

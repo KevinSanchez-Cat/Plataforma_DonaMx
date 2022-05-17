@@ -33,79 +33,80 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ser = request.getParameter("ser");
-        HttpSession session = request.getSession();
-        if (ser != null) {
-            switch (ser) {
-                case "donador": {
-                    try {
-                        Usuario user = (Usuario) session.getAttribute("user");
-                        ManipulaUsuario mUsuario = new ManipulaUsuario();
-                        Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                        ManipulaRol mRol = new ManipulaRol();
-                        Rol r = mRol.encontrarRol("DONADOR");
+        HttpSession session = request.getSession(false);
+        Usuario user;
+        Usuario usuario;
+        ManipulaUsuario mUsuario;
+        ManipulaRol mRol;
+        Rol r;
+        
+        if(session!=null){
+            if (ser != null) {
+                switch (ser) {
+                    case "donador":
+                        user = (Usuario) session.getAttribute("user");
+                        mUsuario = new ManipulaUsuario();
+                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                        mRol = new ManipulaRol();
+                        r = mRol.encontrarRol("DONADOR");
                         usuario.setRol(r.getIdRol());
                         mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
                         session.setAttribute("rol", "DONADOR");
                         session.setAttribute("idUser", usuario.getIdUsuario());
                         session.setAttribute("usuario", usuario);
                         response.sendRedirect("donador");
-                    } catch (IOException e) {
-                        System.out.println("Error");
-                    }
 
-                }
-                break;
-                case "donatario": {
-                    session.setAttribute("rol", "DONATARIO");
-                    //Usuario
-                    Usuario user = (Usuario) session.getAttribute("user");
-                    ManipulaUsuario mUsuario = new ManipulaUsuario();
-                    System.out.println(user);
-                    Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                    System.out.println("usuario" + usuario);
-                    ManipulaRol mRol = new ManipulaRol();
-                    Rol r = mRol.encontrarRol("DONATARIO");
-                    usuario.setRol(r.getIdRol());
-                    mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);
-                    session.setAttribute("idUser", usuario.getIdUsuario());
-                    response.sendRedirect("estudiante");
+                        break;
+                    case "donatario":
+                        session.setAttribute("rol", "DONATARIO");
+                        //Usuario
+                        user = (Usuario) session.getAttribute("user");
+                        mUsuario = new ManipulaUsuario();
+                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                        mRol = new ManipulaRol();
+                        r = mRol.encontrarRol("DONATARIO");
+                        usuario.setRol(r.getIdRol());
+                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
+                        session.setAttribute("usuario", usuario);
+                        session.setAttribute("idUser", usuario.getIdUsuario());
+                        response.sendRedirect("estudiante");
 
-                }
-                break;
-                case "voluntario": {
-                    session.setAttribute("rol", "VOLUNTARIO");
-                    Usuario user = (Usuario) session.getAttribute("user");
-                    ManipulaUsuario mUsuario = new ManipulaUsuario();
-                    Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                    ManipulaRol mRol = new ManipulaRol();
-                    Rol r = mRol.encontrarRol("VOLUNTARIO");
-                    usuario.setRol(r.getIdRol());
-                    mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);
-                    session.setAttribute("idUser", usuario.getIdUsuario());
-                    response.sendRedirect("voluntario");
-                }
-                break;
-                default:
-                    session.setAttribute("rol", "PENDIENTE");
-                    Usuario user = (Usuario) session.getAttribute("user");
-                    ManipulaUsuario mUsuario = new ManipulaUsuario();
-                    Usuario usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                    ManipulaRol mRol = new ManipulaRol();
-                    Rol r = mRol.encontrarRol("PENDIENTE");
-                    usuario.setRol(r.getIdRol());
-                    mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                    session.setAttribute("usuario", usuario);
-                    session.setAttribute("idUser", usuario.getIdUsuario());
+                        break;
+                    case "voluntario":
+                        session.setAttribute("rol", "VOLUNTARIO");
+                        user = (Usuario) session.getAttribute("user");
+                        mUsuario = new ManipulaUsuario();
+                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                        mRol = new ManipulaRol();
+                        r = mRol.encontrarRol("VOLUNTARIO");
+                        usuario.setRol(r.getIdRol());
+                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
+                        session.setAttribute("usuario", usuario);
+                        session.setAttribute("idUser", usuario.getIdUsuario());
+                        response.sendRedirect("voluntario");
 
-                    redirectView(request, response, "/destino.jsp");
-                    break;
+                        break;
+                    default:
+                        session.setAttribute("rol", "PENDIENTE");
+                        user = (Usuario) session.getAttribute("user");
+                        mUsuario = new ManipulaUsuario();
+                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
+                        mRol = new ManipulaRol();
+                        r = mRol.encontrarRol("PENDIENTE");
+                        usuario.setRol(r.getIdRol());
+                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
+                        session.setAttribute("usuario", usuario);
+                        session.setAttribute("idUser", usuario.getIdUsuario());
+
+                        redirectView(request, response, "/destino.jsp");
+                        break;
+                }
+            } else {
+                session.setAttribute("rol", "PENDIENTE");
+                redirectView(request, response, "/destino.jsp");
             }
-        } else {
-            session.setAttribute("rol", "PENDIENTE");
-            redirectView(request, response, "/destino.jsp");
         }
+        
 
     }
 

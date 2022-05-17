@@ -7,6 +7,30 @@
 (function () {
     "use strict";
 
+
+    const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
+            $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+
+// Escuchar cuando cambie
+    $seleccionArchivos.addEventListener("change", () => {
+        // Los archivos seleccionados, pueden ser muchos o uno
+        const archivos = $seleccionArchivos.files;
+        // Si no hay archivos salimos de la función y quitamos la imagen
+        if (!archivos || !archivos.length) {
+            $imagenPrevisualizacion.src = "assets/img/user_default.png";
+            document.getElementById('info-imagen').innerHTML = "";
+            return;
+        }
+        // Ahora tomamos el primer archivo, el cual vamos a previsualizar
+        const primerArchivo = archivos[0];
+        // Lo convertimos a un objeto de tipo objectURL
+        const objectURL = URL.createObjectURL(primerArchivo);
+        // Y a la fuente de la imagen le ponemos el objectURL
+        $imagenPrevisualizacion.src = objectURL;
+
+        var pdrs = document.getElementById('seleccionArchivos').files[0].name;
+        document.getElementById('info-imagen').innerHTML = pdrs;
+    });
     /**
      * Easy selector helper function
      */
@@ -294,7 +318,7 @@
 
                     form.classList.add('was-validated')
                 }, false)
-            })
+            });
 
     /**
      * Initiate Datatables
@@ -302,7 +326,7 @@
     const datatables = select('.datatable', true)
     datatables.forEach(datatable => {
         new simpleDatatables.DataTable(datatable);
-    })
+    });
 
     /**
      * Autoresize echart charts
@@ -317,52 +341,6 @@
             }).observe(mainContainer);
         }, 200);
     }
-    const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
-            $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
 
-// Escuchar cuando cambie
-    $seleccionArchivos.addEventListener("change", () => {
-        // Los archivos seleccionados, pueden ser muchos o uno
-        const archivos = $seleccionArchivos.files;
-        // Si no hay archivos salimos de la función y quitamos la imagen
-        if (!archivos || !archivos.length) {
-            $imagenPrevisualizacion.src = "";
-            return;
-        }
-        // Ahora tomamos el primer archivo, el cual vamos a previsualizar
-        const primerArchivo = archivos[0];
-        // Lo convertimos a un objeto de tipo objectURL
-        const objectURL = URL.createObjectURL(primerArchivo);
-        // Y a la fuente de la imagen le ponemos el objectURL
-        $imagenPrevisualizacion.src = objectURL;
 
-        var pdrs = document.getElementById('seleccionArchivos').files[0].name;
-        document.getElementById('info-imagen').innerHTML = pdrs;
-    });
-
-    /*====================================
-     Free To Use For Personal And Commercial Usage
-     Author: http://binarytheme.com
-     License: Open source - MIT
-     Please visit http://opensource.org/licenses/MIT for more Full Deatils of license.
-     Share Us if You Like our work 
-     Enjoy Our Codes For Free always.
-     ======================================*/
-//horizontal wizrd code section
-    $(function () {
-        $("#wizard").steps({
-            headerTag: "h2",
-            bodyTag: "section",
-            transitionEffect: "slideLeft"
-        });
-    });
-//vertical wizrd  code section
-    $(function () {
-        $("#wizardV").steps({
-            headerTag: "h2",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            stepsOrientation: "vertical"
-        });
-    });
 })();

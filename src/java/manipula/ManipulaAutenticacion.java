@@ -37,12 +37,12 @@ public class ManipulaAutenticacion {
         return response;
     }
 
-    public static GenericResponse<Usuario> iniciarSesionUsuario(String user, String contrasenia) {
+    public static GenericResponse<Usuario> iniciarSesionUsuario(String email, String contrasenia) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
         if (conexionDB.conectar() == 1) {
             ManipulaUsuario m = new ManipulaUsuario();
-            Usuario respuesta = m.encontrarStatus(user, contrasenia);
+            Usuario respuesta = m.encontrarStatus(email, contrasenia);
             if (respuesta != null) {
                 if (respuesta.isConectado()==1) {
                     response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
