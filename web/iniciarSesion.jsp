@@ -154,7 +154,7 @@
                                         <p class="text-center small">Ingrese su usuario y contraseña para iniciar sesión</p>
                                     </div>
                                     <form action="Srv_inicio_sesion" id="form-inicio-sesion" method="post" 
-                                          class="row g-3 needs-validation" novalidate>
+                                          class="row g-3 needs-validation" novalidate autocomplete="on">
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Correo electronico</label>
                                             <div class="input-group has-validation">

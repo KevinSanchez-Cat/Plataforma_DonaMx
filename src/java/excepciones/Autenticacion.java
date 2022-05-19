@@ -32,7 +32,6 @@ public class Autenticacion extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciarSesion.jsp");
         dispatcher.forward(request, response);
-        System.out.println("No autenticado");
     }
 
     /**
@@ -48,7 +47,6 @@ public class Autenticacion extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciarSesion.jsp");
         dispatcher.forward(request, response);
-        System.out.println("No autenticado");
     }
 
     /**

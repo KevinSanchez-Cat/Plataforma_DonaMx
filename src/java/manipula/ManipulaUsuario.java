@@ -1521,4 +1521,40 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         }
         return status;
     }
+
+    public boolean changePerfil(IConexion conexionDB, int idUsuario, String perNombre, String perApellido) {
+        boolean status = false;
+        if (conexionDB.getConexion() != null) {
+            Usuario obj = encontrarId(conexionDB, idUsuario);
+            if (obj != null) {
+                try {
+                    String sql = "UPDATE Usuario SET "
+                            + "nombre=?, "
+                            + "apellido=? "
+                            + "WHERE idUsuario=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setString(1, perNombre);
+                    registro.setString(2, perApellido);
+                    registro.setInt(3, idUsuario);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        status = true;
+                        Logg.exito("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
+
+    }
 }

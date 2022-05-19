@@ -37,7 +37,7 @@ import utils.Logg;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class Modulo_Estudiante extends HttpServlet implements ServletContextListener, HttpSessionBindingListener {
+public class Modulo_Estudiante extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -266,24 +266,165 @@ public class Modulo_Estudiante extends HttpServlet implements ServletContextList
             throws ServletException, IOException {
         String formulario = request.getParameter("form");
         RequestDispatcher dispatcher;
+        String msg = "";
         if (formulario != null) {
             switch (formulario) {
                 case "FORMULARIO-INFORMACION_PERSONAL":
+                    try {
+                    int infPerIdUser = Integer.parseInt(request.getParameter("est-infPerIdUser"));
+                    String infPerNombres = request.getParameter("est-infPerNombres");
+                    String infPerApellidoPaterno = request.getParameter("est-infPerApellidoPaterno");
+                    String infPerApellidoMaterno = request.getParameter("est-infPerApellidoMaterno");
+                    String infPerFechaNacimiento = request.getParameter("est-infPerFechaNacimiento");
+                    String infPerGenero = request.getParameter("est-infPerGenero");
+                    String infPerTelMovil = request.getParameter("est-infPerTelMovil");
+                    String infPerTelFijo = request.getParameter("est-infPerTelFijo");
+                    String infPerLugarNac = request.getParameter("est-infPerLugarNac");
+                    String infPerNacionalidad = request.getParameter("est-infPerNacionalidad");
+                    String infPerIntereses = request.getParameter("est-infPerIntereses");
+                    String infPerHabilidades = request.getParameter("est-infPerHabilidades");
+                    String infPerCurp = request.getParameter("est-infPerCurp");
+                    String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
+                    boolean b = formInfoPersonal(infPerIdUser,
+                            infPerNombres,
+                            infPerApellidoPaterno,
+                            infPerApellidoMaterno,
+                            infPerFechaNacimiento,
+                            infPerGenero,
+                            infPerTelMovil,
+                            infPerTelFijo,
+                            infPerLugarNac,
+                            infPerNacionalidad,
+                            infPerIntereses,
+                            infPerHabilidades,
+                            infPerCurp,
+                            infPerEstadoCivil
+                    );
+
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                } catch (NumberFormatException e) {
+                    msg = "Datos no actualizados...";
+                }
+                response.sendRedirect("estudiante?page=informacion_personal");
+                break;
+                case "FORMULARIO-INFORMACION_ESCOLAR":
+                    try {
+                    int infoEscIdUser = Integer.parseInt(request.getParameter("est-infoEscIdUser"));
+                    String infEscMatriculaEscuela = request.getParameter("est-infEscMatriculaEscuela");
+                    String infEscNivEduactivo = request.getParameter("est-infEscNivEduactivo");
+                    String infEscTipoEscuela = request.getParameter("est-infEscTipoEscuela");
+                    String infEscPromAnterior = request.getParameter("est-infEscPromAnterior");
+                    String infEscPromGeneral = request.getParameter("est-infEscPromGeneral");
+                    String infEscEstatusEscolar = request.getParameter("est-infEscEstatusEscolar");
+                    String infEscNombreEscuela = request.getParameter("est-infEscNombreEscuela");
+                    String infEscMatricula = request.getParameter("est-infEscMatricula");
+                    String infEscRegular = request.getParameter("est-infEscRegular");
+                    String infEscTipoPeriodo = request.getParameter("est-infEscTipoPeriodo");
+                    String infEscTotalPeriodos = request.getParameter("est-infEscTotalPeriodos");
+                    String infEscActualPeriodo = request.getParameter("est-infEscActualPeriodo");
+                    String infEscOcupacion = "Estudiante";
+                    boolean b = formInfoEscolar(infoEscIdUser,
+                            infEscMatriculaEscuela,
+                            infEscNivEduactivo,
+                            infEscTipoEscuela,
+                            infEscPromAnterior,
+                            infEscPromGeneral,
+                            infEscEstatusEscolar,
+                            infEscNombreEscuela,
+                            infEscMatricula,
+                            infEscRegular,
+                            infEscTipoPeriodo,
+                            infEscTotalPeriodos,
+                            infEscActualPeriodo,
+                            infEscOcupacion);
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                } catch (NumberFormatException e) {
+                    msg = "Datos no actualizados...";
+                }
+                response.sendRedirect("estudiante?page=informacion_escolar");
+                break;
+                case "FORMULARIO-INFORMACION_DOMICILIARIA":
+                     try {
+                    int infDomIdUser = Integer.parseInt(request.getParameter("est-infDomIdUser"));
+                    String infDomIdEstado = request.getParameter("est-infDomIdEstado");
+                    String infDomIdMunicipio = request.getParameter("est-infDomIdMunicipio");
+                    String infDomIdocalidad = request.getParameter("est-infDomIdocalidad");
+                    String infDomReferencias = request.getParameter("est-infDomReferencias");
+                    String infDomCalleInterna = request.getParameter("est-infDomCalleInterna");
+                    String infDomCalleExterna = request.getParameter("est-infDomCalleExterna");
+                    String infDomCalleFrontal = request.getParameter("est-infDomCalleFrontal");
+                    String infDomCalleTrasera = request.getParameter("est-infDomCalleTrasera");
+                    String infDomCalleIzquierda = request.getParameter("est-infDomCalleIzquierda");
+                    String infDomCalleDerecha = request.getParameter("est-infDomCalleDerecha");
+                    String infDomCodigoPostal = request.getParameter("est-infDomCodigoPostal");
+                    String infDomNombreAsentamiento = request.getParameter("est-infDomNombreAsentamiento");
+                    String infDomTipoAsentamiento = request.getParameter("est-infDomTipoAsentamiento");
+
+                    boolean b = formInfoDomiciliaria(infDomIdUser, infDomIdEstado, infDomIdMunicipio,
+                            infDomIdocalidad, infDomReferencias, infDomCalleInterna,
+                            infDomCalleExterna, infDomCalleFrontal, infDomCalleTrasera, infDomCalleIzquierda,
+                            infDomCalleDerecha, infDomCodigoPostal, infDomNombreAsentamiento, infDomTipoAsentamiento);
+
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                } catch (NumberFormatException e) {
+                    msg = "Datos no actualizados...";
+                }
+                response.sendRedirect("estudiante?page=informacion_domiciliaria");
+                break;
+                case "FORMULARIO-PERFIL":
+                    try {
+                    int idUsuario = Integer.parseInt(request.getParameter("est-perIdUser"));
+                    String perNombre = request.getParameter("est-perNombre");
+                    String perApellido = request.getParameter("est-perApellido");
+                    boolean b = formPerfil(idUsuario, perNombre, perApellido);
+
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                } catch (NumberFormatException e) {
+                    msg = "Datos no actualizados...";
+                }
+
+                response.sendRedirect("estudiante?page=perfil");
+                break;
+                case "FORMULARIO-CAMBIAR-CONTRASENIA":
+                    try {
+                    int camConIdUser = Integer.parseInt(request.getParameter("est-camConIdUser"));
+                    String camConContraseniaActual = request.getParameter("est-camConContraseniaActual");
+                    String camConContraseniaNueva = request.getParameter("est-camConContraseniaNueva");
+                    String camConContraseniaNuevaConfirmar = request.getParameter("est-camConContraseniaNuevaConfirmar");
+                    boolean b = formCambiarContrasenia(camConIdUser, camConContraseniaActual, camConContraseniaNueva,
+                            camConContraseniaNuevaConfirmar);
+
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                } catch (NumberFormatException e) {
+                    msg = "Datos no actualizados...";
+                }
+                response.sendRedirect("estudiante?page=cambiar_contrasenia");
+                break;
+                case "FORMULARIO-SOLICITAR":
 
                     break;
-                case "FORMULARIO-INFORMACION_ESCOLAR":
-                    break;
-                case "FORMULARIO-INFORMACION_DOMICILIARIA":
-                    break;
-                case "FORMULARIO-PERFIL":
-                    break;
-                case "FORMULARIO-CAMBIAR-CONTRASENIA":
-                  
-                    
-                    break;
-                case "FORMULARIO-SOLICITAR":
-                    break;
                 case "FORMULARIO-GUARDAR":
+
                     break;
                 default:
                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
@@ -295,48 +436,6 @@ public class Modulo_Estudiante extends HttpServlet implements ServletContextList
             dispatcher.forward(request, response);
         }
 
-    }
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        Iterator<Driver> driversIterator = ServiceLoader.load(Driver.class).iterator();
-        while (driversIterator.hasNext()) {
-            try {
-                // Instantiates the driver
-                driversIterator.next();
-            } catch (Throwable t) {
-                sce.getServletContext().log("JDBC Driver registration failure.", t);
-            }
-        }
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        // AbandonedConnectionCleanupThread.checkedShutdown();
-        final ClassLoader cl = sce.getServletContext().getClassLoader();
-        final Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()) {
-            final Driver driver = drivers.nextElement();
-            // We deregister only the classes loaded by this application's classloader
-            if (driver.getClass().getClassLoader() == cl) {
-                try {
-                    DriverManager.deregisterDriver(driver);
-                } catch (SQLException e) {
-                    sce.getServletContext().log("JDBC Driver deregistration failure.", e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void valueBound(HttpSessionBindingEvent event) {
-        System.out.println("Se quito un atributo a la sesion" + event.getSession());
-
-    }
-
-    @Override
-    public void valueUnbound(HttpSessionBindingEvent event) {
-        System.out.println("Se agrego un atributo a la sesion" + event.getSession());
     }
 
     private List<Noticia> processHome(List<Noticia> lstNoticias) {
@@ -490,6 +589,65 @@ public class Modulo_Estudiante extends HttpServlet implements ServletContextList
             Logg.error("Conexión fallida con la base de datos");
         }
         return lstSolicitudes;
+    }
+
+    private boolean formPerfil(int idUsuario, String perNombre, String perApellido) {
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+
+        boolean b = false;
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                b = mUsuario.changePerfil(conexionDB, idUsuario, perNombre, perApellido);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+
+        return b;
+    }
+
+    private boolean formInfoPersonal(int infPerIdUser, String infPerNombres,
+            String infPerApellidoPaterno, String infPerApellidoMaterno,
+            String infPerFechaNacimiento, String infPerGenero,
+            String infPerTelMovil,
+            String infPerTelFijo, String infPerLugarNac,
+            String infPerNacionalidad, String infPerIntereses,
+            String infPerHabilidades, String infPerCurp, String infPerEstadoCivil) {
+
+        boolean b = false;
+
+        return b;
+    }
+
+    private boolean formInfoEscolar(int infoEscIdUser, String infEscMatriculaEscuela,
+            String infEscNivEduactivo, String infEscTipoEscuela,
+            String infEscPromAnterior, String infEscPromGeneral,
+            String infEscEstatusEscolar, String infEscNombreEscuela,
+            String infEscMatricula, String infEscRegular,
+            String infEscTipoPeriodo, String infEscTotalPeriodos,
+            String infEscActualPeriodo, String infEscOcupacion) {
+        boolean b = false;
+
+        return b;
+    }
+
+    private boolean formInfoDomiciliaria(int infDomIdUser, String infDomIdEstado,
+            String infDomIdMunicipio, String infDomIdocalidad, String infDomReferencias,
+            String infDomCalleInterna, String infDomCalleExterna, String infDomCalleFrontal,
+            String infDomCalleTrasera, String infDomCalleIzquierda, String infDomCalleDerecha,
+            String infDomCodigoPostal, String infDomNombreAsentamiento, String infDomTipoAsentamiento) {
+        boolean b = false;
+
+        return b;
+    }
+
+    private boolean formCambiarContrasenia(int camConIdUser, String camConContraseniaActual,
+            String camConContraseniaNueva, String camConContraseniaNuevaConfirmar) {
+        boolean b = false;
+
+        return b;
     }
 
 }

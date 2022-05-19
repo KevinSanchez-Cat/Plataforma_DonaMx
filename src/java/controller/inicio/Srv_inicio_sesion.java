@@ -10,6 +10,7 @@ import config.conexion.IConexion;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,7 @@ public class Srv_inicio_sesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iniciar_session.jsp");
         dispatcher.forward(request, response);
     }
@@ -37,6 +39,7 @@ public class Srv_inicio_sesion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
         //  if (session != null) {
 //            if (request.isRequestedSessionIdValid()) {
 //                if (request.isRequestedSessionIdFromCookie()) {
@@ -47,8 +50,7 @@ public class Srv_inicio_sesion extends HttpServlet {
 //                //registra un error de session
 //            }
         //}
-        
-        
+            
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String password_cifrado = utils.Hash.sha1(password);
@@ -58,6 +60,7 @@ public class Srv_inicio_sesion extends HttpServlet {
             if (respuesta.getResponseObject() != null) {
 
                 HttpSession session = request.getSession();
+                
                 session.setAttribute("username", respuesta.getResponseObject().getNombre() + " " + respuesta.getResponseObject().getApellido());
                 session.setAttribute("user", respuesta.getResponseObject());
                 session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());

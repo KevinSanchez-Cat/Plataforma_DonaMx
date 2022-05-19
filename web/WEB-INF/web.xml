@@ -282,6 +282,9 @@
             /views/templates/errores/page404.jsp
         </location>
     </error-page>
+    <listener>
+        <listener-class>config.listener.Config</listener-class>
+    </listener> 
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>

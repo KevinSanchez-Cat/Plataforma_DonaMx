@@ -34,10 +34,8 @@
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet"/>
         <!-- Template Main CSS File -->
         <link href="assets/css/style_panel_admin.css" rel="stylesheet"/>
-
     </head>
     <body>
-
         <%
             //HttpSession session2 = request.getSession(false);
             java.util.List<model.Deseo> lstDeseos = new java.util.ArrayList<>();
@@ -58,7 +56,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                        <span class="d-none d-lg-block">DonaMx</span>
+                    <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -104,7 +102,6 @@
                                 Tienes  <%= numNotificaciones%> notificaciones
                                 <a href="estudiante?page=notificaciones"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
                             </li>
-
                             <c:forEach var="notificacion" items="${lstNotificaciones}">
                                 <li>
                                     <hr class="dropdown-divider">
@@ -121,10 +118,9 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown pe-3">
-
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -219,7 +215,6 @@
                         <i class="bi bi-heart"></i><span>Lista de deseos</span>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link collapsed"  href="estudiante?page=solicitudes">
                         <i class="bi bi-book"></i><span>Solictudes</span>
@@ -232,10 +227,9 @@
                         <span>Perfil</span>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
-                        <i class="bi bi-bell-fill"></i>
+                        <i class="bi bi-bell"></i>
                         <span>Notificaciones</span>
                     </a>
                 </li> 
@@ -265,6 +259,12 @@
                     </nav>
                 </div>
                 <section class="section">
+                    <c:if test="${not empty respuesta}">
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            ${respuesta}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </c:if>
                     <div class="card ">
                         <div class="card-header hstack gap-3 bg-flaty-blue text-white">
                             Cuenta
@@ -274,79 +274,114 @@
                         </div>
                         <div class="card-body">
                             <br>
-                            <form action="estudiante" method="POST" class=" needs-validation">
-                                 <input type="hidden" class="form-control"  name="form" id="form" value="FORMULARIO-PERFIL" required>
-                              
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="profileImage" class="form-label">Imagen de perfil</label>
-                                        <div class="col-md-12 col-lg-12">
-                                            <img alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacionDonatario" width="100%">
-                                            <br><br>
-                                            <div id='info-imagen-Donatario'></div>
-                                            <br><br>
-                                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                                <div >
-                                                    <label for="seleccionArchivosDonatario" class="subirDonatario">
-                                                        <i class="bi bi-upload"></i> Subir imagen
-                                                    </label>
-                                                    <input id="seleccionArchivosDonatario"  type="file" style='display: none;'  accept="image/*" />
-                                                </div>
-                                                <div >
-                                                    <a href="#" class="btn btn-danger btn-sm" title="Eliminar imagen de perfil">
-                                                        <i class="bi bi-trash"></i> Eliminar imagen
-                                                    </a>
-                                                </div>
+                            <div class="row gap-0 ">
+                                <div class="col col-12 col-sm-12 col-md-4 position-relative">
+                                    <label for="profileImage" class="form-label">Imagen de perfil</label>
+                                    <div  >
+                                        <div class="d-flex justify-content-center">
+                                            <img class="" alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacionDonatario" width="50%">
+                                        </div>
+                                        <br>
+                                        <div  id='info-imagen-Donatario'></div>
+                                        <br>
+                                        <div class="d-grid gap-2 d-flex justify-content-center">
+                                            <div >
+                                                <label for="seleccionArchivosDonatario" class="subirDonatario">
+                                                    <i class="bi bi-upload"></i> Subir imagen
+                                                </label>
+                                                <input id="seleccionArchivosDonatario"  type="file" style='display: none;'  accept="image/*" />
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-danger" title="Eliminar imagen de perfil" type="submit"><i class="bi bi-trash"></i> Eliminar imagen</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <br/>
+                                </div>
+                                <div class="col col-12 col-sm-12 col-md-8 position-relative">
+                                    <form action="estudiante" method="POST" class=" needs-validation" >
+                                        <input type="hidden" class="form-control"  name="form" id="est-perForm" value="FORMULARIO-PERFIL" required>
+                                        <input type="hidden" class="form-control"  name="form" id="est-perIdUser" value="<% if (usuario != null) {
+                                                out.print(usuario.getIdUsuario());
+                                            } else {
+                                                out.print("");
+                                            } %>" required>
                                         <div class="row g-3">
-                                            <div class="col-md-6 position-relative">
-                                                <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
+                                            <div class="col-sm-8 col-md-8 position-relative">
+                                                <label for="est-perNombreUser" class="form-label">Identificador de usuario * </label>
                                                 <div class="input-group has-validation">
-                                                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                                                    <input type="text" class="form-control" id="nombre_usuario" value="<% if(usuario!=null){ out.print(usuario.getCorreoElectronico()); }else{out.print("");} %>" required>
-                                                    <div class="valid-tooltip">
-                                                        Se mira bien!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 position-relative">
-                                                <label for="validationTooltip02" class="form-label">Dirección de correo eléctronico</label>
-                                                <div class="input-group has-validation">
-                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <span class="input-group-text" ><i class="bx bx-id-card"></i></span>
+                                                    <input type="text" autofocus="false" disabled="true" readonly="true" class="form-control" id="est-perNombreUser" value="<% if (usuario != null) {
+                                                            out.print(usuario.getNombreUsuario());
+                                                        } else {
+                                                            out.print("");
+                                                        } %>" required>
                                                     <div class="valid-tooltip">
                                                         Se mira bien!
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row g-0">
-                                            <div class="col-md-12 position-relative">
-                                                <label for="validationTooltipUsername" class="form-label">Presentación</label>
-                                                <div class="input-group">
-                                                    <textarea type="text" class="form-control" id="validationTooltipUsername"
-                                                              aria-describedby="validationTooltipUsernamePrepend" 
-                                                              class="form-control" id="about" rows="7" cols="1">
-
-                                                    </textarea>
+                                        <div class="row g-3">
+                                            <div class="col-md-4 position-relative">
+                                                <label for="est-perNombre" class="form-label">Nombre * </label>
+                                                <div class="input-group has-validation">
+                                                    <span class="input-group-text" ><i class="bx bx-user"></i></span>
+                                                    <input type="text" class="form-control" id="est-perNombre" value="<% if (usuario != null) {
+                                                            out.print(usuario.getNombre());
+                                                        } else {
+                                                            out.print("");
+                                                        } %>" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                                <label for="est-perApellido" class="form-label">Apellido * </label>
+                                                <div class="input-group has-validation">
+                                                    <span class="input-group-text" ><i class="bx bx-user-check"></i></span>
+                                                    <input type="text" class="form-control" id="est-perApellido" value="<% if (usuario != null) {
+                                                            out.print(usuario.getApellido());
+                                                        } else {
+                                                            out.print("");
+                                                        }%>" required>
+                                                    <div class="valid-tooltip">
+                                                        Se mira bien!
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
+                                        <div class="col-md-12 position-relative">
+                                            <label for="est-perEmail" class="form-label">Dirección de correo eléctronico *</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" ><i class="bx bx-envelope"></i></span>
+                                                <input type="text" readonly="true" disabled="true" class="form-control" id="est-perEmail" value="<% if (usuario != null) {
+                                                        out.print(usuario.getCorreoElectronico());
+                                                    } else {
+                                                        out.print("");
+                                                    }%>" required>
+                                                <div class="valid-tooltip">
+                                                    Se mira bien!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="col-12 text-end position-relative">
+                                            <button class="btn btn-success" type="submit"><i class="bx bx-save"></i> Guardar</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-12 text-end">
-                                    <button class="btn btn-success" type="submit">Guardar</button>
-                                </div>
-                            </form>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            Todos los campos con * son obligatorios
                         </div>
                     </div>
                 </section>
             </section>
         </main>
-       <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/quill/quill.min.js"></script>
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
@@ -354,8 +389,6 @@
         <script src="assets/js/main_panel_admin.js"></script>
         <script src="assets/js/script_perfil.js"></script>
         <script src="assets/js/funciones_donatario.js"></script>
-
-
     </body>
 </html>
 
