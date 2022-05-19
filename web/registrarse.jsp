@@ -122,77 +122,75 @@
             </div>
         </header>
         <main>
-            <section class="">
-                <div class="container">
-                    <c:if test="${not empty respuesta}">
+            <section class="container">
+                <c:if test="${not empty respuesta}">
 
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${respuesta}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </c:if>
-                    <section class=""><!--section register d-flex flex-column align-items-center justify-content-center py-4 -->
-                        <div class="container">
-                            <div class="row justify-content-center"> <!-- justify-content-center --> <!--para centrar horizontalmente -->
-                                <div class="col-lg-5 col-md-5 d-flex flex-column align-items-center justify-content-center">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <div class="pt-4 pb-2">
-                                                <h5 class="card-title text-center pb-0 fs-4">Crea una cuenta</h5>
-                                                <p class="text-center small">Ingresa tus detalles personales para crear una cuenta.</p>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        ${respuesta}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </c:if>
+                <section class=""><!--section register d-flex flex-column align-items-center justify-content-center py-4 -->
+                    <div class="container">
+                        <div class="row justify-content-center"> <!-- justify-content-center --> <!--para centrar horizontalmente -->
+                            <div class="col col-12 col-sm-12 col-md-8 col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="pt-4 pb-2">
+                                            <h5 class="card-title text-center pb-0 fs-4">Crea una cuenta</h5>
+                                            <p class="text-center small">Ingresa tus detalles personales para crear una cuenta.</p>
+                                        </div>
+
+                                        <form action="Srv_registro" id="form-registro" method="post"
+                                              class="row g-3 needs-validation" novalidate>
+                                            <div class="col-6">
+                                                <label for="yourName" class="form-label">Nombre</label>
+                                                <input type="text" name="name" class="form-control" id="yourName" required>
+                                                <div class="invalid-feedback">Por favor, ingresa un nombre</div>
                                             </div>
 
-                                            <form action="Srv_registro" id="form-registro" method="post"
-                                                  class="row g-3 needs-validation" novalidate>
-                                                <div class="col-6">
-                                                    <label for="yourName" class="form-label">Nombre</label>
-                                                    <input type="text" name="name" class="form-control" id="yourName" required>
-                                                    <div class="invalid-feedback">Por favor, ingresa un nombre</div>
-                                                </div>
+                                            <div class="col-6">
+                                                <label for="yourLastName" class="form-label">Apellido</label>
+                                                <input type="text" name="lastname" class="form-control" id="yourLastName" required>
+                                                <div class="invalid-feedback">Por favor, ingresa su apellido</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="yourEmail" class="form-label">Correo eléctronico</label>
 
-                                                <div class="col-6">
-                                                    <label for="yourLastName" class="form-label">Apellido</label>
-                                                    <input type="text" name="lastname" class="form-control" id="yourLastName" required>
-                                                    <div class="invalid-feedback">Por favor, ingresa su apellido</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="yourEmail" class="form-label">Correo eléctronico</label>
+                                                <input type="email" name="email" class="form-control" id="yourEmail" required>
+                                                <div class="invalid-feedback">¡Por favor, ingrese un correo electronico!</div>
+                                            </div>
 
-                                                    <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                                    <div class="invalid-feedback">¡Por favor, ingrese un correo electronico!</div>
+                                            <div class="col-12">
+                                                <label for="yourPassword" class="form-label">Contraseña</label>
+                                                <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                                <div class="invalid-feedback">¡Por favor, ingrese una contraseña!</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="yourConfirmPassword" class="form-label">Confirme la contraseña</label>
+                                                <input type="password" name="confirmar_password" class="form-control" id="yourConfirmPassword" required>
+                                                <div class="invalid-feedback">¡Por favor, ingrese una contraseña!</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms" required>
+                                                    <label class="form-check-label" for="acceptTerms">He leído y acepto los <a href="terminosycondiciones.jsp" target="_blank"  rel="noopener noreferrer" >terminos y condiciones</a></label>
+                                                    <div class="invalid-feedback">You must agree before submitting.</div>
                                                 </div>
-
-                                                <div class="col-12">
-                                                    <label for="yourPassword" class="form-label">Contraseña</label>
-                                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                                    <div class="invalid-feedback">¡Por favor, ingrese una contraseña!</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="yourConfirmPassword" class="form-label">Confirme la contraseña</label>
-                                                    <input type="password" name="confirmar_password" class="form-control" id="yourConfirmPassword" required>
-                                                    <div class="invalid-feedback">¡Por favor, ingrese una contraseña!</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms" required>
-                                                        <label class="form-check-label" for="acceptTerms">He leído y acepto los <a href="terminosycondiciones.jsp" target="_blank"  rel="noopener noreferrer" >terminos y condiciones</a></label>
-                                                        <div class="invalid-feedback">You must agree before submitting.</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
-                                                </div>
-                                                <div class="col-12">
-                                                    <p class="small mb-0">¿Ya tienes una cuenta? <a href="iniciarSesion.jsp">Inicia sesión</a></p>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary w-100" type="submit">Crear cuenta</button>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="small mb-0">¿Ya tienes una cuenta? <a href="iniciarSesion.jsp">Inicia sesión</a></p>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </section>
         </main>
         <%@include  file="views/templates/footer/footer_principal.jsp" %>

@@ -30,18 +30,18 @@
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="assets/css/style_panel_admin.css" rel="stylesheet">
-        
+
     </head>
     <body>
-         <%
-               java.util.List<model.Notificacion> lstNotificaciones = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
-               
-                int numNotificaciones = 0;
-               
-                if (lstNotificaciones != null) {
-                    numNotificaciones = lstNotificaciones.size();
-                }
-            %>
+        <%
+            java.util.List<model.Notificacion> lstNotificaciones = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
+
+            int numNotificaciones = 0;
+
+            if (lstNotificaciones != null) {
+                numNotificaciones = lstNotificaciones.size();
+            }
+        %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="administrador" class="logo d-flex align-items-center">
@@ -52,7 +52,7 @@
             </div>
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                   
+
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
@@ -120,10 +120,11 @@
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/quill/quill.min.js"></script>
-          <script src="assets/vendor/chart.js/chart.min.js"></script>
+        <script src="assets/vendor/chart.js/chart.min.js"></script>
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/js/main_panel_admin.js"></script>
-          <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+            <script src="assets/js/funciones_administrador.js"></script>
     </body>
 </html>

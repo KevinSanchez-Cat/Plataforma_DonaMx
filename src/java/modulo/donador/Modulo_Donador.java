@@ -5,7 +5,12 @@
  */
 package modulo.donador;
 
+import config.conexion.ConexionFactory;
+import config.conexion.IConexion;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import manipula.ManipulaUsuario;
 import model.Notificacion;
 import model.Usuario;
+import utils.Logg;
 
 /**
  *
@@ -39,12 +45,9 @@ public class Modulo_Donador extends HttpServlet {
 
                         ManipulaUsuario mUsuario = new ManipulaUsuario();
                         int idUser = (int) session.getAttribute("idUser");
-                        List<Notificacion> lstNotificaciones = mUsuario.getNotificacion(idUser);
+                        List<Notificacion> lstNotificaciones = new ArrayList<>();
 
-                        if (lstNotificaciones == null) {
-                            lstNotificaciones = new ArrayList<>();
-                        } else {
-                        }
+                        infoPrincipal(idUser, lstNotificaciones);
                         request.setAttribute("lstNotificaciones", lstNotificaciones);
 
                         if (page == null) {
@@ -256,11 +259,17 @@ public class Modulo_Donador extends HttpServlet {
                                 }
                                 break;
                                 case "cerrar_sesion": {
-                                    Usuario user = (Usuario) session.getAttribute("user");
-                                    manipula.ManipulaAutenticacion.cerrarSesionUsuario(user);
-                                    session.invalidate();
-                                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-                                    dispatcher.forward(request, response);
+                                    IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+                                    if (conexionDB.conectar() == 1) {
+                                        Usuario user = (Usuario) session.getAttribute("user");
+                                        manipula.ManipulaAutenticacion.cerrarSesionUsuario(conexionDB, user);
+                                        conexionDB.desconectar();
+                                        session.invalidate();
+                                        response.sendRedirect("home.do");
+                                    } else {
+                                        session.invalidate();
+                                        response.sendRedirect("home.do");
+                                    }
                                 }
                                 break;
                                 default: {
@@ -298,5 +307,49 @@ public class Modulo_Donador extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/modulo_donador/home.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void infoPrincipal(int idUser, List<Notificacion> lstNotificaciones) {
+
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+
+            if (conexionDB.getConexion() != null) {
+                try {
+                    String sql = "SELECT "
+                            + "idNotificacion, "
+                            + "idUsuarioDestino, "
+                            + "fechaNotificacion, "
+                            + "estadoVisualizacion, "
+                            + "prioridad, "
+                            + "mensaje "
+                            + "FROM Notificacion "
+                            + "WHERE idUsuarioDestino=?";
+                    PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                    ps.setInt(1, idUser);
+                    ResultSet rs;
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        lstNotificaciones.add(new Notificacion(rs.getInt(1),
+                                rs.getInt(2),
+                                rs.getTimestamp(3),
+                                rs.getString(4),
+                                rs.getString(5),
+                                rs.getString(6)));
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
+                }
+            } else {
+
+            }
+
+            if (conexionDB.getConexion() != null) {
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+
     }
 }

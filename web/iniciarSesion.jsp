@@ -171,12 +171,6 @@
                                                 <div class="invalid-feedback">¡Ingresa tu contraseña!</div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
-                                            </div>
-                                        </div>
                                         <%--
                                              ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW", "6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak", false);
                                              out.print(c.createRecaptchaHtml(null, null));

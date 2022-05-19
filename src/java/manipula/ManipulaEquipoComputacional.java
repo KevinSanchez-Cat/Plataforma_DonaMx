@@ -18,10 +18,10 @@ import utils.Logg;
 public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional> {
 
     @Override
-    public GenericResponse<EquipoComputacional> registrar(EquipoComputacional obj) {
+    public GenericResponse<EquipoComputacional> registrar(IConexion conexionDB, EquipoComputacional obj) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             try {
                 String sql = "INSERT INTO EquipoComputacional ("
                         + "idRecurso, "
@@ -133,7 +133,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -144,7 +144,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> actualizar(int id) {
+    public GenericResponse<EquipoComputacional> actualizar(IConexion conexionDB, int id) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -153,11 +153,11 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> editar(int id, EquipoComputacional nvoObj) {
+    public GenericResponse<EquipoComputacional> editar(IConexion conexionDB, int id, EquipoComputacional nvoObj) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+
+        if (conexionDB.getConexion() != null) {
+            if (encontrarId(conexionDB, id) != null) {
                 try {
                     String sql = "UPDATE EquipoComputacional SET "
                             + "idRecurso=?, "
@@ -271,13 +271,13 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -288,11 +288,11 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public GenericResponse<EquipoComputacional> eliminar(int id) {
+    public GenericResponse<EquipoComputacional> eliminar(IConexion conexionDB, int id) {
         GenericResponse<EquipoComputacional> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            EquipoComputacional obj = encontrarId(id);
+
+        if (conexionDB.getConexion() != null) {
+            EquipoComputacional obj = encontrarId(conexionDB, id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM EquipoComputacional "
@@ -314,13 +314,13 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -331,10 +331,10 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public List<EquipoComputacional> getData() {
+    public List<EquipoComputacional> getData(IConexion conexionDB) {
         List<EquipoComputacional> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             try {
                 String sql = "SELECT "
                         + "idEquipoComputacional, "
@@ -442,7 +442,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -451,10 +451,10 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public List<EquipoComputacional> consultar(String... filtros) {
+    public List<EquipoComputacional> consultar(IConexion conexionDB, String... filtros) {
         List<EquipoComputacional> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             try {
                 String sql = "SELECT "
                         + "idEquipoComputacional, "
@@ -562,7 +562,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -571,10 +571,10 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
     }
 
     @Override
-    public EquipoComputacional encontrarId(int id) {
+    public EquipoComputacional encontrarId(IConexion conexionDB, int id) {
         EquipoComputacional response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             try {
                 String sql = "SELECT "
                         + "idEquipoComputacional, "
@@ -685,7 +685,7 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -693,10 +693,10 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
         return response;
     }
 
-    public EquipoComputacional encontrarIdRecurso(int idRecursoTecnologico) {
+    public EquipoComputacional encontrarIdRecurso(IConexion conexionDB, int idRecursoTecnologico) {
         EquipoComputacional response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             try {
                 String sql = "SELECT "
                         + "idEquipoComputacional, "
@@ -765,18 +765,231 @@ public class ManipulaEquipoComputacional implements Manipula<EquipoComputacional
                     response.setTipoRAM(rs.getString(9));
                     response.setVelocidadRAM(rs.getString(10));
                     response.setCapacidadMaxRAM(rs.getString(11));
+                    response.setEstadoEquipo(rs.getString(12));
+                    response.setCapDiscoDuro(rs.getString(13));
+                    response.setInterfaceDiscoDuro(rs.getString(14));
+                    response.setResolucionPantalla(rs.getString(15));
+                    response.setTipoResolucion(rs.getString(16));
+                    response.setTamanioPantalla(rs.getString(17));
+                    response.setRelacionAspecto(rs.getString(18));
+                    response.setTipoPantalla(rs.getString(19));
+                    response.setConAntireflejo(rs.getString(20));
+                    response.setTarjetaGrafica(rs.getString(21));
+                    response.setMarcaProcesador(rs.getString(22));
+                    response.setCantidadNucleos(rs.getInt(23));
+                    response.setVelocidadProcesador(rs.getString(24));
+                    response.setTipoBateria(rs.getString(25));
+                    response.setDuracionBateria(rs.getInt(26));
+                    response.setPuertosVideo(rs.getString(27));
+                    response.setPuertosUSB(rs.getString(28));
+                    response.setCantidadRanurasRAM(rs.getInt(29));
+                    response.setCantidadPuertosUSB(rs.getInt(30));
+                    response.setConUSB(rs.getString(31));
+                    response.setConWifi(rs.getString(32));
+                    response.setConHDMI(rs.getString(33));
+                    response.setConBluetooth(rs.getString(34));
+                    response.setConSalidaAudifinos(rs.getString(35));
+                    response.setConPuertoEthernet(rs.getString(36));
+                    response.setConLectorTarjetaMemoriaSD(rs.getString(37));
+                    response.setConVGA(rs.getString(38));
+                    response.setPeso(rs.getDouble(39));
+                    response.setAncho(rs.getDouble(40));
+                    response.setProfundidad(rs.getDouble(41));
+                    response.setAltura(rs.getDouble(42));
+                    response.setModoSonido(rs.getString(43));
+                    response.setCantidadParlantes(rs.getInt(44));
+                    response.setConMicrofono(rs.getString(45));
+                    response.setConCamaraWeb(rs.getString(46));
+                    response.setFechaCreacion(rs.getTimestamp(47));
                 } else {
                     Logg.error("No se encontro ningun registro");
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
         }
         return response;
+    }
 
+    public List<EquipoComputacional> getEquiposComputacionalesDonados(IConexion conexionDB) {
+        List<EquipoComputacional> lstEquiposDonados = new ArrayList<>();
+        EquipoComputacional equipo;
+        if (conexionDB.getConexion() != null) {
+            try {
+                String sql = "SELECT "
+                        + "equipo.idEquipoComputacional, "
+                        + "equipo.nombre, "
+                        + "equipo.marca, "
+                        + "equipo.idSistemaOperativo, "
+                        + "recurso.idDonador, "
+                        + "recurso.idUsuario, "
+                        + "recurso.estadoCondicion, "
+                        + "recurso.organizacionOCivil, "
+                        + "recurso.certificado "
+                        + "FROM EquipoComputacional  equipo"
+                        + "INNER JOIN RecursoTecnologico  recurso"
+                        + "ON equipo.idRecurso= recurso.idRecurso "
+                        + "WHERE recurso.remunerado=0 AND recurso.autorizado='SI' AND recurso.estadoLogico=1";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    equipo = new EquipoComputacional();
+                    equipo.setIdEquipoComputacional(rs.getInt(1));
+                    equipo.setNombre(rs.getString(2));
+                    equipo.setMarca(rs.getString(3));
+                    equipo.setIdSistemaOperativo(rs.getInt(4));
+                    equipo.setIdDonador(rs.getInt(5));
+                    equipo.setIdUsuario(rs.getInt(6));
+                    equipo.setEstadoCondicion(rs.getString(7));
+                    equipo.setOrganizacionOCivil(rs.getString(8));
+                    equipo.setCertificado(rs.getString(9));
+                    lstEquiposDonados.add(equipo);
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstEquiposDonados;
+    }
+
+    public List<EquipoComputacional> getEquiposComputacionalesRemunerados(IConexion conexionDB) {
+        List<EquipoComputacional> lstEquiposRemunerados = new ArrayList<>();
+        EquipoComputacional equipo;
+        if (conexionDB.getConexion() != null) {
+            try {
+                String sql = "SELECT "
+                        + "equipo.idEquipoComputacional, "
+                        + "equipo.nombre, "
+                        + "equipo.marca, "
+                        + "equipo.idSistemaOperativo, "
+                        + "recurso.idDonador, "
+                        + "recurso.idUsuario, "
+                        + "recurso.estadoCondicion, "
+                        + "recurso.organizacionOCivil, "
+                        + "recurso.certificado, "
+                        + "recurso.precioOfertado "
+                        + "FROM EquipoComputacional  equipo"
+                        + "INNER JOIN RecursoTecnologico  recurso"
+                        + "ON equipo.idRecurso= recurso.idRecurso "
+                        + "WHERE recurso.remunerado=1 AND recurso.autorizado='SI' AND recurso.estadoLogico=1";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    equipo = new EquipoComputacional();
+                    equipo.setIdEquipoComputacional(rs.getInt(1));
+                    equipo.setNombre(rs.getString(2));
+                    equipo.setMarca(rs.getString(3));
+                    equipo.setIdSistemaOperativo(rs.getInt(4));
+                    equipo.setIdDonador(rs.getInt(5));
+                    equipo.setIdUsuario(rs.getInt(6));
+                    equipo.setEstadoCondicion(rs.getString(7));
+                    equipo.setOrganizacionOCivil(rs.getString(8));
+                    equipo.setCertificado(rs.getString(9));
+                    equipo.setPrecioOfertado(rs.getDouble(10));
+                    lstEquiposRemunerados.add(equipo);
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos");
+            } finally {
+
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstEquiposRemunerados;
+    }
+
+    public EquipoComputacional getEquipoComputacionalInfo() {
+        String sql = "SELECT "
+                + "equipo.idEquipoComputacional, "
+                + "equipo.idRecurso, "
+                + "equipo.nombre, "
+                + "equipo.marca, "
+                + "equipo.idSistemaOperativo, "
+                + "equipo.modelo, "
+                + "equipo.color, "
+                + "equipo.memoriaRam, "
+                + "equipo.tipoRam, "
+                + "equipo.velocidadRam, "
+                + "equipo.capacidadMaximaRam, "
+                + "equipo.estadoEquipo, "
+                + "equipo.capDiscoDuro, "
+                + "equipo.interfaceDiscoDuro, "
+                + "equipo.resolucionPantalla, "
+                + "equipo.tipoResolucion, "
+                + "equipo.tamanioPantalla, "
+                + "equipo.relacionAspecto, "
+                + "equipo.tipoPantalla, "
+                + "equipo.conAntireflejo, "
+                + "equipo.tarjetaGrafica, "
+                + "equipo.marcaProcesador, "
+                + "equipo.cantidadNucleos, "
+                + "equipo.velocidadProcesador, "
+                + "equipo.tipoBateria, "
+                + "equipo.duracionBateria, "
+                + "equipo.puertosVideo, "
+                + "equipo.puertosUSB, "
+                + "equipo.cantidadRanurasRAM, "
+                + "equipo.cantidadTotalPuertosUSB, "
+                + "equipo.conUSB, "
+                + "equipo.conWifi, "
+                + "equipo.conHDMI, "
+                + "equipo.conBluetooth, "
+                + "equipo.conSalidaAudifonos, "
+                + "equipo.conPuertoEthernet, "
+                + "equipo.conLectorTarjetaMemoriaSD, "
+                + "equipo.conVGA, "
+                + "equipo.peso, "
+                + "equipo.ancho, "
+                + "equipo.profundidad, "
+                + "equipo.altura, "
+                + "equipo.modoSonido, "
+                + "equipo.cantidadParlantes, "
+                + "equipo.conMicrofono, "
+                + "equipo.conCamaraWeb, "
+                + "equipo.fechaCreacion, "
+                + "recurso.idCategoria, "
+                + "recurso.idDonador, "
+                + "recurso.idUsuario, "
+                + "recurso.cantidadStock, "
+                + "recurso.autorizado, "
+                + "recurso.estadoPublicacion, "
+                + "recurso.estadoLogico, "
+                + "recurso.fechaPublicacion, "
+                + "recurso.fechaAutorizacion, "
+                + "recurso.remunerado, "
+                + "recurso.estadoCondicion, "
+                + "recurso.precioOriginal, "
+                + "recurso.precioEstimado, "
+                + "recurso.precioOfertado, "
+                + "recurso.organizacionOCivil, "
+                + "recurso.tipoSoftHard, "
+                + "recurso.conCosto, "
+                + "recurso.costoEnvio, "
+                + "recurso.tipoDonacion, "
+                + "recurso.otrosDetalles, "
+                + "recurso.estadoConvocatoria, "
+                + "recurso.EdadMaxima, "
+                + "recurso.EdadMinima, "
+                + "recurso.certificado "
+                + "FROM EquipoComputacional  equipo"
+                + "INNER JOIN RecursoTecnologico  recurso"
+                + "ON equipo.idRecurso= recurso.idRecurso "
+                + "WHERE recurso.remunerado=0 AND recurso.autorizado='SI' AND recurso.estadoLogico=1";
+        return null;
     }
 }

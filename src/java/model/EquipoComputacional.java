@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class EquipoComputacional {
+public class EquipoComputacional extends RecursoTecnologico {
 
     private int idEquipoComputacional;
     private String nombre;

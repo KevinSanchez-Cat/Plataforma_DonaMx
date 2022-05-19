@@ -5,6 +5,8 @@
  */
 package controller.inicio;
 
+import config.conexion.ConexionFactory;
+import config.conexion.IConexion;
 import java.io.IOException;
 import java.util.UUID;
 import javax.servlet.RequestDispatcher;
@@ -39,74 +41,82 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
         ManipulaUsuario mUsuario;
         ManipulaRol mRol;
         Rol r;
-        
-        if(session!=null){
+
+        if (session != null) {
             if (ser != null) {
-                switch (ser) {
-                    case "donador":
-                        user = (Usuario) session.getAttribute("user");
-                        mUsuario = new ManipulaUsuario();
-                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                        mRol = new ManipulaRol();
-                        r = mRol.encontrarRol("DONADOR");
-                        usuario.setRol(r.getIdRol());
-                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                        session.setAttribute("rol", "DONADOR");
-                        session.setAttribute("idUser", usuario.getIdUsuario());
-                        session.setAttribute("usuario", usuario);
-                        response.sendRedirect("donador");
+                IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+                if (conexionDB.conectar() == 1) {
+                    switch (ser) {
+                        case "donador":
+                            user = (Usuario) session.getAttribute("user");
+                            mUsuario = new ManipulaUsuario();
+                            usuario = mUsuario.encontrarCorreo(conexionDB, user.getCorreoElectronico());
+                            mRol = new ManipulaRol();
+                            r = mRol.encontrarRol(conexionDB, "DONADOR");
+                            usuario.setRol(r.getIdRol());
+                            mUsuario.changeRol(conexionDB, usuario.getIdUsuario(), r.getIdRol());
+                            session.setAttribute("rol", "DONADOR");
+                            session.setAttribute("idUser", usuario.getIdUsuario());
+                            session.setAttribute("usuario", usuario);
+                            response.sendRedirect("donador");
 
-                        break;
-                    case "donatario":
-                        session.setAttribute("rol", "DONATARIO");
-                        //Usuario
-                        user = (Usuario) session.getAttribute("user");
-                        mUsuario = new ManipulaUsuario();
-                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                        mRol = new ManipulaRol();
-                        r = mRol.encontrarRol("DONATARIO");
-                        usuario.setRol(r.getIdRol());
-                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                        session.setAttribute("usuario", usuario);
-                        session.setAttribute("idUser", usuario.getIdUsuario());
-                        response.sendRedirect("estudiante");
+                            break;
+                        case "donatario":
+                            session.setAttribute("rol", "DONATARIO");
+                            //Usuario
+                            user = (Usuario) session.getAttribute("user");
+                            mUsuario = new ManipulaUsuario();
+                            usuario = mUsuario.encontrarCorreo(conexionDB, user.getCorreoElectronico());
+                            mRol = new ManipulaRol();
+                            r = mRol.encontrarRol(conexionDB, "DONATARIO");
+                            usuario.setRol(r.getIdRol());
+                            mUsuario.changeRol(conexionDB, usuario.getIdUsuario(), r.getIdRol());
+                            session.setAttribute("usuario", usuario);
+                            session.setAttribute("idUser", usuario.getIdUsuario());
+                            response.sendRedirect("estudiante");
 
-                        break;
-                    case "voluntario":
-                        session.setAttribute("rol", "VOLUNTARIO");
-                        user = (Usuario) session.getAttribute("user");
-                        mUsuario = new ManipulaUsuario();
-                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                        mRol = new ManipulaRol();
-                        r = mRol.encontrarRol("VOLUNTARIO");
-                        usuario.setRol(r.getIdRol());
-                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                        session.setAttribute("usuario", usuario);
-                        session.setAttribute("idUser", usuario.getIdUsuario());
-                        response.sendRedirect("voluntario");
+                            break;
+                        case "voluntario":
+                            session.setAttribute("rol", "VOLUNTARIO");
+                            user = (Usuario) session.getAttribute("user");
+                            mUsuario = new ManipulaUsuario();
+                            usuario = mUsuario.encontrarCorreo(conexionDB, user.getCorreoElectronico());
+                            mRol = new ManipulaRol();
+                            r = mRol.encontrarRol(conexionDB, "VOLUNTARIO");
+                            usuario.setRol(r.getIdRol());
+                            mUsuario.changeRol(conexionDB, usuario.getIdUsuario(), r.getIdRol());
+                            session.setAttribute("usuario", usuario);
+                            session.setAttribute("idUser", usuario.getIdUsuario());
+                            response.sendRedirect("voluntario");
 
-                        break;
-                    default:
-                        session.setAttribute("rol", "PENDIENTE");
-                        user = (Usuario) session.getAttribute("user");
-                        mUsuario = new ManipulaUsuario();
-                        usuario = mUsuario.encontrarCorreo(user.getCorreoElectronico());
-                        mRol = new ManipulaRol();
-                        r = mRol.encontrarRol("PENDIENTE");
-                        usuario.setRol(r.getIdRol());
-                        mUsuario.changeRol(usuario.getIdUsuario(), r.getIdRol());
-                        session.setAttribute("usuario", usuario);
-                        session.setAttribute("idUser", usuario.getIdUsuario());
+                            break;
+                        default:
+                            session.setAttribute("rol", "PENDIENTE");
+                            user = (Usuario) session.getAttribute("user");
+                            mUsuario = new ManipulaUsuario();
+                            usuario = mUsuario.encontrarCorreo(conexionDB, user.getCorreoElectronico());
+                            mRol = new ManipulaRol();
+                            r = mRol.encontrarRol(conexionDB, "PENDIENTE");
+                            usuario.setRol(r.getIdRol());
+                            mUsuario.changeRol(conexionDB, usuario.getIdUsuario(), r.getIdRol());
+                            session.setAttribute("usuario", usuario);
+                            session.setAttribute("idUser", usuario.getIdUsuario());
 
-                        redirectView(request, response, "/destino.jsp");
-                        break;
+                            redirectView(request, response, "/destino.jsp");
+                            break;
+                    }
+                    conexionDB.desconectar();
+                } else {
+                    session.setAttribute("rol", "PENDIENTE");
+                    request.setAttribute("respuesta", "Plataforma no dispible, intentelo más tarde...");
+                    redirectView(request, response, "/destino.jsp");
                 }
+
             } else {
                 session.setAttribute("rol", "PENDIENTE");
                 redirectView(request, response, "/destino.jsp");
             }
         }
-        
 
     }
 
@@ -114,69 +124,94 @@ public class Srv_registro extends HttpServlet implements HttpSessionBindingListe
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String s = request.getParameter("terms");
+        String email = request.getParameter("email");
+        String name = request.getParameter("name");
+        String lastname = request.getParameter("lastname");
+        String password = request.getParameter("password");
+        String confirmar_password = request.getParameter("confirmar_password");
+
         if (s != null) {
-            if (s.equals("on")) {
-                String email = request.getParameter("email");
-                String name = request.getParameter("name");
-                String lastname = request.getParameter("lastname");
-                String password = request.getParameter("password");
-                String confirmar_password = request.getParameter("confirmar_password");
+            if (email != null && name != null && lastname != null && password != null && confirmar_password != null) {
+                if (!email.isEmpty() && !name.isEmpty() && !lastname.isEmpty() && !password.isEmpty() && !confirmar_password.isEmpty()) {
+                    if (s.equals("on")) {
 
-                System.out.println(email + " " + name + " " + lastname + " " + password + " " + confirmar_password);
-                if (password.equals(confirmar_password)) {
-                    String passwordCifrado = utils.Hash.sha1(password);
+                        //  System.out.println(email + " " + name + " " + lastname + " " + password + " " + confirmar_password);
+                        if (password.equals(confirmar_password)) {
+                            String passwordCifrado = utils.Hash.sha1(password);
+                            IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+                            if (conexionDB.conectar() == 1) {
+                                Usuario user = new Usuario();
+                                user.setNombre(name);
+                                user.setApellido(lastname);
+                                String username2 = name + " " + lastname.substring(0, 1) + " " + UUID.randomUUID().toString().replace("-", "");
+                                user.setNombreUsuario(username2);
+                                user.setContraseniia(passwordCifrado);
+                                user.setFechaCreacion(utils.Misc.getDateTimeActualSQL());
+                                user.setUltimaConexion(utils.Misc.getDateTimeActualSQL());
+                                user.setEstadoCuenta("C");
+                                user.setEstadoLogico(1);
+                                user.setConectado(0);
+                                user.setCorreoElectronico(email);
+                                user.setCorreoConfirmado(0);
+                                user.setNumeroCelular(-1);
+                                user.setNumeroCelularConfirmado(0);
+                                user.setAutenticacionDosPasos(0);
+                                user.setConteoAccesosFallidos(0);
+                                user.setFoto("");
+                                user.setToken(generarToken());
+                                ManipulaRol mRol = new ManipulaRol();
+                                Rol rol = mRol.encontrarRol(conexionDB, "PENDIENTE");
+                                user.setIdRol(rol.getIdRol());
 
-                    Usuario user = new Usuario();
-                    user.setNombre(name);
-                    user.setApellido(lastname);
-                    String username2 = name + " " + lastname.substring(0, 1) + " " + UUID.randomUUID().toString().replace("-", "");
-                    user.setNombreUsuario(username2);
-                    user.setContraseniia(passwordCifrado);
-                    user.setFechaCreacion(utils.Misc.getDateTimeActualSQL());
-                    user.setUltimaConexion(utils.Misc.getDateTimeActualSQL());
-                    user.setEstadoCuenta("C");
-                    user.setEstadoLogico(1);
-                    user.setConectado(0);
-                    user.setCorreoElectronico(email);
-                    user.setCorreoConfirmado(0);
-                    user.setNumeroCelular(-1);
-                    user.setNumeroCelularConfirmado(0);
-                    user.setAutenticacionDosPasos(0);
-                    user.setConteoAccesosFallidos(0);
-                    user.setFoto("");
-                    user.setToken(generarToken());
-                    ManipulaRol mRol = new ManipulaRol();
-                    Rol rol = mRol.encontrarRol("PENDIENTE");
-                    user.setIdRol(rol.getIdRol());
+                                GenericResponse<Usuario> registrar = ManipulaAutenticacion.registrar(conexionDB, user);
+                                //  System.out.println(registrar.getResponseObject());
+                                if (registrar.getResponseObject() != null) {
+                                    HttpSession session = request.getSession(true);
+                                    session.setAttribute("username", user.getNombre() + " " + user.getApellido());
+                                    session.setAttribute("user", user);
+                                    session.setAttribute("rol", "PENDIENTE");
+                                    redirectView(request, response, "/destino.jsp");
+                                } else {
+                                    //Registro fallido
+                                    //System.out.println("Registro fallido " + registrar.getMensaje());
+                                    HttpSession session = request.getSession();
+                                    session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                                    request.setAttribute("respuesta", "Ups! Hubo un error en el registro");
+                                    redirectView(request, response, "/registrarse.jsp");
+                                }
+                                conexionDB.desconectar();
+                            } else {
+                                HttpSession session = request.getSession();
+                                session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                                request.setAttribute("respuesta", "Plataforma no disponible, intentelo más tarde");
+                                redirectView(request, response, "/registrarse.jsp");
+                            }
 
-                    GenericResponse<Usuario> registrar = ManipulaAutenticacion.registrar(user);
-                    System.out.println(registrar.getResponseObject());
-                    if (registrar.getResponseObject() != null) {
-                        HttpSession session = request.getSession(true);
-                        session.setAttribute("username", user.getNombre() + " " + user.getApellido());
-                        session.setAttribute("user", user);
-                        session.setAttribute("rol", "PENDIENTE");
-                        redirectView(request, response, "/destino.jsp");
+                        } else {
+                            //Las contraseñas no son iguales
+                            HttpSession session = request.getSession();
+                            session.invalidate();//para invalidar manualmente la sessión si hay una creada
+                            request.setAttribute("respuesta", "Las contraseñas no son iguales");
+                            redirectView(request, response, "/registrarse.jsp");
+                        }
                     } else {
-                        //Registro fallido
-                        System.out.println("Registro fallido " + registrar.getMensaje());
+                        //Tiene que aceptar los terminos y condiciones
                         HttpSession session = request.getSession();
                         session.invalidate();//para invalidar manualmente la sessión si hay una creada
-                        request.setAttribute("respuesta", "Ups! Hubo un error en el registro");
+                        request.setAttribute("respuesta", "Tiene que aceptar los terminos y condiciones");
                         redirectView(request, response, "/registrarse.jsp");
                     }
                 } else {
-                    //Las contraseñas no son iguales
                     HttpSession session = request.getSession();
                     session.invalidate();//para invalidar manualmente la sessión si hay una creada
-                    request.setAttribute("respuesta", "Las contraseñas no son iguales");
+                    request.setAttribute("respuesta", "Hay campos vacios");
                     redirectView(request, response, "/registrarse.jsp");
                 }
+
             } else {
-                //Tiene que aceptar los terminos y condiciones
                 HttpSession session = request.getSession();
                 session.invalidate();//para invalidar manualmente la sessión si hay una creada
-                request.setAttribute("respuesta", "Tiene que aceptar los terminos y condiciones");
+                request.setAttribute("respuesta", "Hay campos vacios");
                 redirectView(request, response, "/registrarse.jsp");
             }
         } else {

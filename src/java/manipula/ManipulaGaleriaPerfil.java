@@ -19,10 +19,10 @@ import utils.Logg;
 public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
 
     @Override
-    public GenericResponse<GaleriaPerfil> registrar(GaleriaPerfil obj) {
+    public GenericResponse<GaleriaPerfil> registrar(IConexion conexionDB,GaleriaPerfil obj) {
         GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO GaleriaPerfil ("
                         + "idUsuario, "
@@ -52,7 +52,7 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -63,7 +63,7 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public GenericResponse<GaleriaPerfil> actualizar(int id) {
+    public GenericResponse<GaleriaPerfil> actualizar(IConexion conexionDB,int id) {
         GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -72,11 +72,11 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public GenericResponse<GaleriaPerfil> editar(int id, GaleriaPerfil nvoObj) {
+    public GenericResponse<GaleriaPerfil> editar(IConexion conexionDB,int id, GaleriaPerfil nvoObj) {
         GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            GaleriaPerfil obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            GaleriaPerfil obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "UPDATE GaleriaPerfil SET "
@@ -109,13 +109,13 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -126,11 +126,11 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public GenericResponse<GaleriaPerfil> eliminar(int id) {
+    public GenericResponse<GaleriaPerfil> eliminar(IConexion conexionDB,int id) {
         GenericResponse<GaleriaPerfil> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            GaleriaPerfil obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            GaleriaPerfil obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM GaleriaPerfil "
@@ -152,13 +152,13 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -169,10 +169,10 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public List<GaleriaPerfil> getData() {
+    public List<GaleriaPerfil> getData(IConexion conexionDB) {
         List<GaleriaPerfil> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT idGaleria, "
                         + "idUsuario, "
@@ -190,7 +190,7 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -199,10 +199,10 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public List<GaleriaPerfil> consultar(String... filtros) {
+    public List<GaleriaPerfil> consultar(IConexion conexionDB,String... filtros) {
         List<GaleriaPerfil> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idGaleria, "
@@ -221,7 +221,7 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -230,10 +230,10 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
     }
 
     @Override
-    public GaleriaPerfil encontrarId(int id) {
+    public GaleriaPerfil encontrarId(IConexion conexionDB,int id) {
         GaleriaPerfil response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idGaleria, "
@@ -262,7 +262,7 @@ public class ManipulaGaleriaPerfil implements Manipula<GaleriaPerfil> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

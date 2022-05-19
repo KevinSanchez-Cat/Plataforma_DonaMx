@@ -18,10 +18,10 @@ import utils.Logg;
 public class ManipulaOrganizacion implements Manipula<Organizacion> {
 
     @Override
-    public GenericResponse<Organizacion> registrar(Organizacion obj) {
+    public GenericResponse<Organizacion> registrar(IConexion conexionDB,Organizacion obj) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Organizacion ("
                         + "idUsuario, "
@@ -85,7 +85,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -96,7 +96,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public GenericResponse<Organizacion> actualizar(int id) {
+    public GenericResponse<Organizacion> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -104,11 +104,11 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
         return response;
     }
 
-    public GenericResponse<Organizacion> actualizar(int id, String autorizar) {
+    public GenericResponse<Organizacion> actualizar(IConexion conexionDB,int id, String autorizar) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Organizacion org = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Organizacion org = encontrarId(conexionDB,id);
             if (org != null) {
                 org.setAutorizada(autorizar);
                 try {
@@ -133,13 +133,13 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -150,11 +150,11 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public GenericResponse<Organizacion> editar(int id, Organizacion nvoObj) {
+    public GenericResponse<Organizacion> editar(IConexion conexionDB,int id, Organizacion nvoObj) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Organizacion SET "
                             + "idUsuario=?, "
@@ -220,13 +220,13 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -237,11 +237,11 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public GenericResponse<Organizacion> eliminar(int id) {
+    public GenericResponse<Organizacion> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Organizacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Organizacion obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Organizacion obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Organizacion "
@@ -263,13 +263,13 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -280,10 +280,10 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public List<Organizacion> getData() {
+    public List<Organizacion> getData(IConexion conexionDB) {
         List<Organizacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idOrganizacion, "
@@ -344,7 +344,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -353,10 +353,10 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public List<Organizacion> consultar(String... filtros) {
+    public List<Organizacion> consultar(IConexion conexionDB,String... filtros) {
         List<Organizacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idOrganizacion, "
@@ -416,7 +416,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -425,10 +425,10 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
     }
 
     @Override
-    public Organizacion encontrarId(int id) {
+    public Organizacion encontrarId(IConexion conexionDB,int id) {
         Organizacion response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idOrganizacion, "
@@ -491,7 +491,7 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -499,11 +499,11 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
         return response;
     }
 
-    public boolean changeEstadoLogico(int id, boolean estado) {
+    public boolean changeEstadoLogico(IConexion conexionDB,int id, boolean estado) {
         boolean hecho = false;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Organizacion SET "
                             + "estadoLogico=? "
@@ -521,11 +521,11 @@ public class ManipulaOrganizacion implements Manipula<Organizacion> {
                 } catch (SQLException ex) {
                     Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 Logg.error("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Error de conexión a la base de datos");

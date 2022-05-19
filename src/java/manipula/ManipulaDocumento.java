@@ -20,10 +20,10 @@ import utils.Misc;
 public class ManipulaDocumento implements Manipula<Documento> {
 
     @Override
-    public GenericResponse<Documento> registrar(Documento obj) {
+    public GenericResponse<Documento> registrar(IConexion conexionDB,Documento obj) {
         GenericResponse<Documento> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Documentos ("
                         + "nombreArchivo, "
@@ -59,7 +59,7 @@ public class ManipulaDocumento implements Manipula<Documento> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -70,7 +70,7 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public GenericResponse<Documento> actualizar(int id) {
+    public GenericResponse<Documento> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Documento> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -79,11 +79,11 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public GenericResponse<Documento> editar(int id, Documento nvoObj) {
+    public GenericResponse<Documento> editar(IConexion conexionDB,int id, Documento nvoObj) {
         GenericResponse<Documento> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Documentos SET "
                             + "nombreArchivo=?, "
@@ -121,13 +121,13 @@ public class ManipulaDocumento implements Manipula<Documento> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -138,11 +138,11 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public GenericResponse<Documento> eliminar(int id) {
+    public GenericResponse<Documento> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Documento> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Documento obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Documento obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Documentos "
@@ -164,13 +164,13 @@ public class ManipulaDocumento implements Manipula<Documento> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -181,10 +181,10 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public List<Documento> getData() {
+    public List<Documento> getData(IConexion conexionDB) {
         List<Documento> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idDocumento, "
@@ -216,7 +216,7 @@ public class ManipulaDocumento implements Manipula<Documento> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -225,10 +225,10 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public List<Documento> consultar(String... filtros) {
+    public List<Documento> consultar(IConexion conexionDB,String... filtros) {
         List<Documento> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idDocumento, "
@@ -260,7 +260,7 @@ public class ManipulaDocumento implements Manipula<Documento> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -269,10 +269,10 @@ public class ManipulaDocumento implements Manipula<Documento> {
     }
 
     @Override
-    public Documento encontrarId(int id) {
+    public Documento encontrarId(IConexion conexionDB,int id) {
         Documento response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idDocumento, "
@@ -307,7 +307,7 @@ public class ManipulaDocumento implements Manipula<Documento> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

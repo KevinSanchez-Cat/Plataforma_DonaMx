@@ -20,10 +20,10 @@ import utils.Misc;
 public class ManipulaIntencion implements Manipula<Intencion> {
 
     @Override
-    public GenericResponse<Intencion> registrar(Intencion obj) {
+    public GenericResponse<Intencion> registrar(IConexion conexionDB,Intencion obj) {
         GenericResponse<Intencion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Intencion ("
                         + "idUsuario, "
@@ -51,7 +51,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -62,7 +62,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public GenericResponse<Intencion> actualizar(int id) {
+    public GenericResponse<Intencion> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Intencion> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -70,11 +70,11 @@ public class ManipulaIntencion implements Manipula<Intencion> {
         return response;
     }
 
-    public GenericResponse<Intencion> actualizar(int id, String respuestaIntencion, Timestamp fechaRespuesta, String estado) {
+    public GenericResponse<Intencion> actualizar(IConexion conexionDB,int id, String respuestaIntencion, Timestamp fechaRespuesta, String estado) {
         GenericResponse<Intencion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Intencion inten = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Intencion inten = encontrarId(conexionDB,id);
             if (inten != null) {
                 try {
                     String sql = "UPDATE Intencion SET "
@@ -104,13 +104,13 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -121,11 +121,11 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public GenericResponse<Intencion> editar(int id, Intencion nvoObj) {
+    public GenericResponse<Intencion> editar(IConexion conexionDB,int id, Intencion nvoObj) {
         GenericResponse<Intencion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Intencion SET "
                             + "idUsuario=?, "
@@ -161,13 +161,13 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -178,11 +178,11 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public GenericResponse<Intencion> eliminar(int id) {
+    public GenericResponse<Intencion> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Intencion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Intencion obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Intencion obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Intencion "
@@ -204,13 +204,13 @@ public class ManipulaIntencion implements Manipula<Intencion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -221,10 +221,10 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public List<Intencion> getData() {
+    public List<Intencion> getData(IConexion conexionDB) {
         List<Intencion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idIntencion, "
@@ -254,7 +254,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -263,10 +263,10 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public List<Intencion> consultar(String... filtros) {
+    public List<Intencion> consultar(IConexion conexionDB,String... filtros) {
         List<Intencion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idIntencion, "
@@ -296,7 +296,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -305,10 +305,10 @@ public class ManipulaIntencion implements Manipula<Intencion> {
     }
 
     @Override
-    public Intencion encontrarId(int id) {
+    public Intencion encontrarId(IConexion conexionDB,int id) {
         Intencion response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idIntencion, "
@@ -341,7 +341,7 @@ public class ManipulaIntencion implements Manipula<Intencion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

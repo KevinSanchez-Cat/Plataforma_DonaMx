@@ -19,10 +19,10 @@ import utils.Misc;
 public class ManipulaNotificacion implements Manipula<Notificacion> {
 
     @Override
-    public GenericResponse<Notificacion> registrar(Notificacion obj) {
+    public GenericResponse<Notificacion> registrar(IConexion conexionDB,Notificacion obj) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Notificacion ("
                         + "idUsuarioDestino, "
@@ -52,7 +52,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -63,11 +63,11 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> actualizar(int id) {
+    public GenericResponse<Notificacion> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Notificacion obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Notificacion obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 switch (obj.getEstadoVisualizacion()) {
                     case "Re":
@@ -102,13 +102,13 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -119,11 +119,11 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> editar(int id, Notificacion nvoObj) {
+    public GenericResponse<Notificacion> editar(IConexion conexionDB,int id, Notificacion nvoObj) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Notificacion SET "
                             + "idUsuarioDestino=?, "
@@ -155,13 +155,13 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -172,11 +172,11 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public GenericResponse<Notificacion> eliminar(int id) {
+    public GenericResponse<Notificacion> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Notificacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Notificacion obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Notificacion obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Notificacion "
@@ -198,13 +198,13 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -215,10 +215,10 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public List<Notificacion> getData() {
+    public List<Notificacion> getData(IConexion conexionDB) {
         List<Notificacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idNotificacion, "
@@ -242,7 +242,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -251,10 +251,10 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public List<Notificacion> consultar(String... filtros) {
+    public List<Notificacion> consultar(IConexion conexionDB,String... filtros) {
         List<Notificacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idNotificacion, "
@@ -273,7 +273,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -282,10 +282,10 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
     }
 
     @Override
-    public Notificacion encontrarId(int id) {
+    public Notificacion encontrarId(IConexion conexionDB,int id) {
         Notificacion response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idNotificacion, "
@@ -314,7 +314,7 @@ public class ManipulaNotificacion implements Manipula<Notificacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

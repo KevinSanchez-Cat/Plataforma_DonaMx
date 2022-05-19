@@ -38,34 +38,34 @@ public class Logg {
     public static String loggSubrayadoGris = "\033[47m";
 
     public static void exito(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println(Logg.loggVerdeLimon + "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
 
     }
 
     public static void debug(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println("DEBUG [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
 
     }
 
     public static void info(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println(Logg.loggAzulRey + "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
 
     }
 
     public static void advertencia(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println(Logg.loggRosa + "ADVERTENCIA [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
     }
 
     public static void error(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     }
 
     public static void fatal(String message) {
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println(Logg.loggNegro + "FATAL [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
         System.exit(0);
     }

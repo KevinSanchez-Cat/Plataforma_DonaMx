@@ -15,19 +15,19 @@ import utils.Misc;
  */
 public class ManipulaAutenticacion {
 
-    public static GenericResponse<Usuario> registrar(Usuario usuario) {
+    public static GenericResponse<Usuario> registrar(IConexion conexionDB, Usuario usuario) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             ManipulaUsuario m = new ManipulaUsuario();
-            Usuario respuesta = m.encontrarCorreo(usuario.getCorreoElectronico());
+            Usuario respuesta = m.encontrarCorreo(conexionDB, usuario.getCorreoElectronico());
             if (respuesta != null) {
                 response.setStatus(utils.Constantes.STATUS_NOT_ACCEPTABLE);
                 response.setResponseObject(usuario);
                 response.setMensaje("El correo ya existe registrado");
             } else {
-                response = m.registrar(usuario);
-                conexionDB.desconectar();
+                response = m.registrar(conexionDB, usuario);
+
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -37,18 +37,18 @@ public class ManipulaAutenticacion {
         return response;
     }
 
-    public static GenericResponse<Usuario> iniciarSesionUsuario(String email, String contrasenia) {
+    public static GenericResponse<Usuario> iniciarSesionUsuario(IConexion conexionDB, String email, String contrasenia) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+
+        if (conexionDB.getConexion() != null) {
             ManipulaUsuario m = new ManipulaUsuario();
-            Usuario respuesta = m.encontrarStatus(email, contrasenia);
+            Usuario respuesta = m.encontrarStatus(conexionDB, email, contrasenia);
             if (respuesta != null) {
-                if (respuesta.isConectado()==1) {
+                if (respuesta.isConectado() == 1) {
                     response.setStatus(utils.Constantes.STATUS_ACTUALIZACION_EXITOSA_BD);
                     response.setResponseObject(respuesta);
                     response.setMensaje("Usuario ya conectado");
-                    conexionDB.desconectar();
+
                 } else {
                     respuesta.setConectado(1);
                     respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
@@ -76,7 +76,7 @@ public class ManipulaAutenticacion {
                         response.setResponseObject(null);
                         response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                     } finally {
-                        conexionDB.desconectar();
+
                     }
                 }
             } else {
@@ -92,15 +92,15 @@ public class ManipulaAutenticacion {
         return response;
     }
 
-    public static GenericResponse<Usuario> cerrarSesionUsuario(Usuario usuario) {
+    public static GenericResponse<Usuario> cerrarSesionUsuario(IConexion conexionDB, Usuario usuario) {
         GenericResponse<Usuario> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+
         if (usuario != null) {
-            if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
                 ManipulaUsuario m = new ManipulaUsuario();
-                Usuario respuesta = m.encontrarStatus(usuario.getNombreUsuario());
+                Usuario respuesta = m.encontrarStatus(conexionDB, usuario.getNombreUsuario());
                 if (respuesta != null) {
-                    if (respuesta.isConectado()==1) {
+                    if (respuesta.isConectado() == 1) {
                         respuesta.setConectado(0);
                         respuesta.setUltimaConexion(Misc.getDateTimeActualSQL());
                         try {
@@ -127,19 +127,19 @@ public class ManipulaAutenticacion {
                             response.setResponseObject(usuario);
                             response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                         } finally {
-                            conexionDB.desconectar();
+
                         }
                     } else {
                         response.setStatus(utils.Constantes.STATUS_NO_DATA);
                         response.setResponseObject(respuesta);
                         response.setMensaje("El usuario ya no esta conectado");
-                        conexionDB.desconectar();
+
                     }
                 } else {
                     response.setStatus(utils.Constantes.STATUS_NO_DATA);
                     response.setResponseObject(usuario);
                     response.setMensaje("El registro no existe");
-                    conexionDB.desconectar();
+
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -154,13 +154,13 @@ public class ManipulaAutenticacion {
         return response;
     }
 
-    public static GenericResponse<Usuario> isAutenticado(HttpSession usuario) {
+    public static GenericResponse<Usuario> isAutenticado(IConexion conexionDB, HttpSession usuario) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         String user = usuario.getAttribute("user").toString();
         String password = usuario.getAttribute("password").toString();
         if (user != null) {
             ManipulaUsuario m = new ManipulaUsuario();
-            Usuario respuesta = m.encontrarStatus(user, password);
+            Usuario respuesta = m.encontrarStatus(conexionDB, user, password);
             if (respuesta != null) {
                 response.setStatus(utils.Constantes.STATUS_ACCEPTED);
                 response.setResponseObject(respuesta);
@@ -178,8 +178,8 @@ public class ManipulaAutenticacion {
         return null;
     }
 
-    public static GenericResponse<Usuario> isAutorizado(HttpSession usuario, String rol) {
-        GenericResponse<Usuario> response = isAutenticado(usuario);
+    public static GenericResponse<Usuario> isAutorizado(IConexion conexionDB, HttpSession usuario, String rol) {
+        GenericResponse<Usuario> response = isAutenticado(conexionDB, usuario);
         if (response.getStatus() == utils.Constantes.STATUS_ACCEPTED) {
             String role = usuario.getAttribute("rol").toString();
             if (role != null) {

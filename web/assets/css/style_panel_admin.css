@@ -1240,7 +1240,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #012970;
 }
 
-.subir{
+.subirDonatario{
     display: inline-block;
     padding: 5px 10px;
     background: #003366;
@@ -1261,7 +1261,7 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-.subir:hover{
+.subirDonatario:hover{
     color:#fff;
     background: #002040;
 }

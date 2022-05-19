@@ -20,10 +20,10 @@ import utils.Misc;
 public class ManipulaSolicitud implements Manipula<Solicitud> {
 
     @Override
-    public GenericResponse<Solicitud> registrar(Solicitud obj) {
+    public GenericResponse<Solicitud> registrar(IConexion conexionDB,Solicitud obj) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Solicitud ("
                         + "idUsuario, "
@@ -55,7 +55,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -66,7 +66,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> actualizar(int id) {
+    public GenericResponse<Solicitud> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -74,11 +74,11 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
         return response;
     }
 
-    public GenericResponse<Solicitud> actualizar(int id, Timestamp fechaRespuesta, String estadoSolicitud) {
+    public GenericResponse<Solicitud> actualizar(IConexion conexionDB,int id, Timestamp fechaRespuesta, String estadoSolicitud) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Solicitud sol = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Solicitud sol = encontrarId(conexionDB,id);
             if (sol != null) {
                 //AC->ACEPTADA
                 //RE->RECHAZADA
@@ -112,13 +112,13 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -130,11 +130,11 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> editar(int id, Solicitud nvoObj) {
+    public GenericResponse<Solicitud> editar(IConexion conexionDB,int id, Solicitud nvoObj) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Solicitud SET "
                             + "idUsuario=?, "
@@ -168,13 +168,13 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -185,11 +185,11 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public GenericResponse<Solicitud> eliminar(int id) {
+    public GenericResponse<Solicitud> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Solicitud> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Solicitud obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Solicitud obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Solicitud "
@@ -211,13 +211,13 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -228,10 +228,10 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public List<Solicitud> getData() {
+    public List<Solicitud> getData(IConexion conexionDB) {
         List<Solicitud> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idSolicitud, "
@@ -259,8 +259,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
-                conexionDB.desconectar();
+                 
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -269,10 +269,10 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public List<Solicitud> consultar(String... filtros) {
+    public List<Solicitud> consultar(IConexion conexionDB,String... filtros) {
         List<Solicitud> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idSolicitud, "
@@ -300,8 +300,8 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
-                conexionDB.desconectar();
+                 
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -310,10 +310,10 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
     }
 
     @Override
-    public Solicitud encontrarId(int id) {
+    public Solicitud encontrarId(IConexion conexionDB,int id) {
         Solicitud response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idSolicitud, "
@@ -344,7 +344,7 @@ public class ManipulaSolicitud implements Manipula<Solicitud> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

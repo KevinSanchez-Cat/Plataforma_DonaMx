@@ -19,10 +19,10 @@ import utils.Misc;
 public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> {
 
     @Override
-    public GenericResponse<RecursoTecnologico> registrar(RecursoTecnologico obj) {
+    public GenericResponse<RecursoTecnologico> registrar(IConexion conexionDB,RecursoTecnologico obj) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO RecursoTecnologico ("
                         + "idCategoria, "
@@ -94,7 +94,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -105,7 +105,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> actualizar(int id) {
+    public GenericResponse<RecursoTecnologico> actualizar(IConexion conexionDB,int id) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -114,11 +114,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> editar(int id, RecursoTecnologico nvoObj) {
+    public GenericResponse<RecursoTecnologico> editar(IConexion conexionDB,int id, RecursoTecnologico nvoObj) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE RecursoTecnologico SET "
                             + "idCategoria=?, "
@@ -192,13 +192,13 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -209,11 +209,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public GenericResponse<RecursoTecnologico> eliminar(int id) {
+    public GenericResponse<RecursoTecnologico> eliminar(IConexion conexionDB,int id) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            RecursoTecnologico obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            RecursoTecnologico obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM RecursoTecnologico "
@@ -235,13 +235,13 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -252,10 +252,10 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public List<RecursoTecnologico> getData() {
+    public List<RecursoTecnologico> getData(IConexion conexionDB) {
         List<RecursoTecnologico> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRecursoTecnologico, "
@@ -323,7 +323,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -332,10 +332,10 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public List<RecursoTecnologico> consultar(String... filtros) {
+    public List<RecursoTecnologico> consultar(IConexion conexionDB,String... filtros) {
         List<RecursoTecnologico> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRecursoTecnologico, "
@@ -403,7 +403,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -412,10 +412,10 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
     }
 
     @Override
-    public RecursoTecnologico encontrarId(int id) {
+    public RecursoTecnologico encontrarId(IConexion conexionDB,int id) {
         RecursoTecnologico response = new RecursoTecnologico();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRecursoTecnologico, "
@@ -486,7 +486,7 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -494,12 +494,12 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         return response;
     }
 
-    public GenericResponse<RecursoTecnologico> changeCantidadStock(int id, int cantidad) {
+    public GenericResponse<RecursoTecnologico> changeCantidadStock(IConexion conexionDB,int id, int cantidad) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            RecursoTecnologico nvoObj = encontrarId(id);
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            RecursoTecnologico nvoObj = encontrarId(conexionDB,id);
+            if (encontrarId(conexionDB,id) != null) {
                 nvoObj.setCantidadStock(cantidad);
                 try {
                     String sql = "UPDATE RecursoTecnologico SET "
@@ -524,13 +524,13 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -540,11 +540,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         return response;
     }
 
-    public GenericResponse<RecursoTecnologico> changeAutorizacion(int id, String autorizado) {
+    public GenericResponse<RecursoTecnologico> changeAutorizacion(IConexion conexionDB,int id, String autorizado) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            RecursoTecnologico nvoObj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            RecursoTecnologico nvoObj = encontrarId(conexionDB,id);
             if (nvoObj != null) {
                 if (nvoObj.getAutorizado().equals("--") && autorizado.equals("Si")) {
                     nvoObj.setAutorizado(autorizado);
@@ -615,13 +615,13 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -631,11 +631,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         return response;
     }
 
-    public GenericResponse<RecursoTecnologico> changePublicacion(int id, String publicacion) {
+    public GenericResponse<RecursoTecnologico> changePublicacion(IConexion conexionDB,int id, String publicacion) {
         GenericResponse<RecursoTecnologico> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            RecursoTecnologico nvoObj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            RecursoTecnologico nvoObj = encontrarId(conexionDB,id);
             if (nvoObj != null) {
                 if (nvoObj.getAutorizado().equals("--") && publicacion.equals("Si")) {
                     nvoObj.setEstadoPublicacion("--");
@@ -690,13 +690,13 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -706,11 +706,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         return response;
     }
 
-    public boolean changeEstadoLogico(int id, boolean estado) {
+    public boolean changeEstadoLogico(IConexion conexionDB,int id, boolean estado) {
         boolean hecho = false;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE RecursoTecnologico SET "
                             + "estadoLogico=? "
@@ -728,11 +728,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 } catch (SQLException ex) {
                     Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 Logg.error("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Error de conexión a la base de datos");
@@ -740,11 +740,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
         return hecho;
     }
 
-    public boolean changeEstadoLogico(int id, boolean remunerado, double precioOriginal, double precioEstimado, double precioOfertado) {
+    public boolean changeEstadoLogico(IConexion conexionDB,int id, boolean remunerado, double precioOriginal, double precioEstimado, double precioOfertado) {
         boolean hecho = false;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE RecursoTecnologico SET "
                             + "remunerado=?, "
@@ -768,11 +768,11 @@ public class ManipulaRecursoTecnologico implements Manipula<RecursoTecnologico> 
                 } catch (SQLException ex) {
                     Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 Logg.error("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Error de conexión a la base de datos");

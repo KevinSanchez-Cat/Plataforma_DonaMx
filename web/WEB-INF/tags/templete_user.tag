@@ -30,13 +30,9 @@
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet"/>
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet"/>
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet"/>
-
         <!-- Template Main CSS File -->
         <link href="assets/css/style_panel_admin.css" rel="stylesheet"/>
 
-
-
-      
     </head>
     <body>
 
@@ -47,20 +43,20 @@
             java.util.List<model.Donacion> lstDonaciones = (java.util.List<model.Donacion>) request.getAttribute("lstDonaciones");
             model.Estudiante estudiante = (model.Estudiante) session.getAttribute("estudiante");
             java.util.List<model.Notificacion> lstNotificaciones2 = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
-            System.out.println("lsas" + lstNotificaciones2);
-            System.out.println("as" + lstNotificaciones2.size());
+
             if (estudiante != null) {
                 lstDeseos = (java.util.List<model.Deseo>) request.getAttribute("lstDeseos");
             }
             int numDeseos = lstDeseos.size();
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
+            model.Usuario usuario = (model.Usuario) session.getAttribute("user");
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                    <span class="d-none d-lg-block">DonaMx</span>
+                        <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -126,7 +122,7 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -158,16 +154,17 @@
                 </ul>
             </nav>
         </header>
-    </body>
-    <jsp:invoke fragment="content"></jsp:invoke>
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/js/main_panel_admin.js"></script>
+        <jsp:invoke fragment="content"></jsp:invoke>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/quill/quill.min.js"></script>
+        <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+        <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+        <script src="assets/js/main_panel_admin.js"></script>
+        <script src="assets/js/script_perfil.js"></script>
+        <script src="assets/js/funciones_donatario.js"></script>
 
-    
-</body>
+
+    </body>
 </html>
 

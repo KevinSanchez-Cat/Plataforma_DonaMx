@@ -17,10 +17,10 @@ import utils.Logg;
  */
 public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     @Override
-    public GenericResponse<SistemaOperativo> registrar(SistemaOperativo obj) {
+    public GenericResponse<SistemaOperativo> registrar(IConexion conexionDB,SistemaOperativo obj) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO SistemaOperativo ("
                         + "sistemaOperativo,"
@@ -48,7 +48,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -59,7 +59,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> actualizar(int id) {
+    public GenericResponse<SistemaOperativo> actualizar(IConexion conexionDB,int id) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -68,11 +68,11 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> editar(int id, SistemaOperativo nvoObj) {
+    public GenericResponse<SistemaOperativo> editar(IConexion conexionDB,int id, SistemaOperativo nvoObj) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE SistemaOperativo SET "
                             + "sistemaOperativo=?, "
@@ -102,13 +102,13 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -119,11 +119,11 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public GenericResponse<SistemaOperativo> eliminar(int id) {
+    public GenericResponse<SistemaOperativo> eliminar(IConexion conexionDB,int id) {
         GenericResponse<SistemaOperativo> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            SistemaOperativo obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            SistemaOperativo obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM SistemaOperativo "
@@ -145,13 +145,13 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -162,10 +162,10 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public List<SistemaOperativo> getData() {
+    public List<SistemaOperativo> getData(IConexion conexionDB) {
         List<SistemaOperativo> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idSistemaOperativo, "
@@ -188,7 +188,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -197,10 +197,10 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public List<SistemaOperativo> consultar(String... filtros) {
+    public List<SistemaOperativo> consultar(IConexion conexionDB,String... filtros) {
         List<SistemaOperativo> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT idSistemaOperativo, "
                         + "sistemaOperativo, "
@@ -217,7 +217,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -226,10 +226,10 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
     }
 
     @Override
-    public SistemaOperativo encontrarId(int id) {
+    public SistemaOperativo encontrarId(IConexion conexionDB,int id) {
         SistemaOperativo response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT idSistemaOperativo, "
                         + "sistemaOperativo, "
@@ -255,7 +255,7 @@ public class ManipulaSistemaOperativo implements Manipula<SistemaOperativo> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

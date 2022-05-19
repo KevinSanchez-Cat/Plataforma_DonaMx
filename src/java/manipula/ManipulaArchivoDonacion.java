@@ -2,6 +2,7 @@ package manipula;
 
 import config.conexion.ConexionFactory;
 import config.conexion.IConexion;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,10 +21,10 @@ import utils.Misc;
 public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
 
     @Override
-    public GenericResponse<ArchivoDonacion> registrar(ArchivoDonacion obj) {
+    public GenericResponse<ArchivoDonacion> registrar(IConexion conexionDB, ArchivoDonacion obj) {
         GenericResponse<ArchivoDonacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+     
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO ArchivoDonacion ("
                         + "nombreArchivo, "
@@ -57,7 +58,7 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -68,7 +69,7 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public GenericResponse<ArchivoDonacion> actualizar(int id) {
+    public GenericResponse<ArchivoDonacion> actualizar(IConexion conexionDB,int id) {
         GenericResponse<ArchivoDonacion> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -77,11 +78,11 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public GenericResponse<ArchivoDonacion> editar(int id, ArchivoDonacion nvoObj) {
+    public GenericResponse<ArchivoDonacion> editar(IConexion conexionDB,int id, ArchivoDonacion nvoObj) {
         GenericResponse<ArchivoDonacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            if (encontrarId(id) != null) {
+        
+        if (conexionDB.getConexion()!=null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE ArchivoDonacion SET "
                             + "nombreArchivo=?, "
@@ -117,13 +118,13 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -134,11 +135,11 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public GenericResponse<ArchivoDonacion> eliminar(int id) {
+    public GenericResponse<ArchivoDonacion> eliminar(IConexion conexionDB,int id) {
         GenericResponse<ArchivoDonacion> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            ArchivoDonacion obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            ArchivoDonacion obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM ArchivoDonacion "
@@ -160,13 +161,13 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -177,10 +178,10 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public List<ArchivoDonacion> getData() {
+    public List<ArchivoDonacion> getData(IConexion conexionDB) {
         List<ArchivoDonacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idArchivo, "
@@ -210,7 +211,7 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -219,10 +220,10 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public List<ArchivoDonacion> consultar(String... filtros) {
+    public List<ArchivoDonacion> consultar(IConexion conexionDB,String... filtros) {
         List<ArchivoDonacion> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idArchivo, "
@@ -252,7 +253,7 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -261,10 +262,10 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
     }
 
     @Override
-    public ArchivoDonacion encontrarId(int id) {
+    public ArchivoDonacion encontrarId(IConexion conexionDB,int id) {
         ArchivoDonacion response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idArchivo, "
@@ -297,7 +298,7 @@ public class ManipulaArchivoDonacion implements Manipula<ArchivoDonacion> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

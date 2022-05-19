@@ -37,6 +37,7 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     </head>
     <body>
         <header id="header" class="fixed-top">
@@ -192,7 +193,14 @@
 
                         </div>
                     </section><!-- End Counts Section -->
-                    <section id="doctors" class="doctors">
+                    <br>
+                    <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" 
+                         data-theme="light" data-type="VERTICAL" data-vanity="kevin-ivan-sanchez-valdin-b82a15206" 
+                         data-version="v1"><a class="badge-base__link LI-simple-link"
+                                         href="https://mx.linkedin.com/in/kevin-ivan-sanchez-valdin-b82a15206?trk=profile-badge">
+                          </a></div>
+
+                    <!--<section id="doctors" class="doctors">
                         <div class="container">
                             <div class="section-title">
                                 <h2>
@@ -221,7 +229,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section>--!>
 
                     <!--
                     <div class="col-lg-6 mt-4 mt-lg-0">

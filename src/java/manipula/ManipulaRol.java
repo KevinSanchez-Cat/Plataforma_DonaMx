@@ -17,10 +17,10 @@ import utils.Logg;
  */
 public class ManipulaRol implements Manipula<Rol> {
     @Override
-    public GenericResponse<Rol> registrar(Rol obj) {
+    public GenericResponse<Rol> registrar(IConexion conexionDB,Rol obj) {
         GenericResponse<Rol> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Rol ("
                         + "rol"
@@ -43,7 +43,7 @@ public class ManipulaRol implements Manipula<Rol> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -54,7 +54,7 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public GenericResponse<Rol> actualizar(int id) {
+    public GenericResponse<Rol> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Rol> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -63,11 +63,11 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public GenericResponse<Rol> editar(int id, Rol nvoObj) {
+    public GenericResponse<Rol> editar(IConexion conexionDB,int id, Rol nvoObj) {
         GenericResponse<Rol> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Rol obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Rol obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "UPDATE Rol SET "
@@ -92,13 +92,13 @@ public class ManipulaRol implements Manipula<Rol> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -109,11 +109,11 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public GenericResponse<Rol> eliminar(int id) {
+    public GenericResponse<Rol> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Rol> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Rol obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Rol obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Rol "
@@ -135,13 +135,13 @@ public class ManipulaRol implements Manipula<Rol> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -152,10 +152,10 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public List<Rol> getData() {
+    public List<Rol> getData(IConexion conexionDB) {
         List<Rol> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -170,7 +170,7 @@ public class ManipulaRol implements Manipula<Rol> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -179,10 +179,10 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public List<Rol> consultar(String... filtros) {
+    public List<Rol> consultar(IConexion conexionDB,String... filtros) {
         List<Rol> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -197,7 +197,7 @@ public class ManipulaRol implements Manipula<Rol> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -206,10 +206,10 @@ public class ManipulaRol implements Manipula<Rol> {
     }
 
     @Override
-    public Rol encontrarId(int id) {
+    public Rol encontrarId(IConexion conexionDB,int id) {
         Rol response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -230,17 +230,17 @@ public class ManipulaRol implements Manipula<Rol> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
         }
         return response;
     }
-    public Rol encontrarRol(String rol) {
+    public Rol encontrarRol(IConexion conexionDB,String rol) {
         Rol response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idRol, "
@@ -261,7 +261,7 @@ public class ManipulaRol implements Manipula<Rol> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

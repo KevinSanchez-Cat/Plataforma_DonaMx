@@ -19,10 +19,10 @@ import utils.Logg;
 public class ManipulaPaqueteria implements Manipula<Paqueteria> {
 
     @Override
-    public GenericResponse<Paqueteria> registrar(Paqueteria obj) {
+    public GenericResponse<Paqueteria> registrar(IConexion conexionDB,Paqueteria obj) {
         GenericResponse<Paqueteria> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "INSERT INTO Paqueteria ("
                         + "idDonacion, "
@@ -56,7 +56,7 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
                 response.setResponseObject(null);
                 response.setMensaje("Error de comunicación con la base de datos " + ex.getMessage());
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -67,7 +67,7 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public GenericResponse<Paqueteria> actualizar(int id) {
+    public GenericResponse<Paqueteria> actualizar(IConexion conexionDB,int id) {
         GenericResponse<Paqueteria> response = new GenericResponse<>();
         response.setMensaje("Accion no implementada");
         response.setStatus(utils.Constantes.LOGIC_WARNING);
@@ -76,12 +76,12 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public GenericResponse<Paqueteria> editar(int id, Paqueteria nvoObj) {
+    public GenericResponse<Paqueteria> editar(IConexion conexionDB,int id, Paqueteria nvoObj) {
         GenericResponse<Paqueteria> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
 
-            if (encontrarId(id) != null) {
+            if (encontrarId(conexionDB,id) != null) {
                 try {
                     String sql = "UPDATE Categoria SET "
                             + "idDonacion=?, "
@@ -115,13 +115,13 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -132,11 +132,11 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public GenericResponse<Paqueteria> eliminar(int id) {
+    public GenericResponse<Paqueteria> eliminar(IConexion conexionDB,int id) {
         GenericResponse<Paqueteria> response = new GenericResponse<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            Paqueteria obj = encontrarId(id);
+        
+        if (conexionDB.getConexion()!=null) {
+            Paqueteria obj = encontrarId(conexionDB,id);
             if (obj != null) {
                 try {
                     String sql = "DELETE FROM Paqueteria "
@@ -158,13 +158,13 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
                     response.setResponseObject(null);
                     response.setMensaje("Error de comunicación con la base de datos " + ex.getSQLState());
                 } finally {
-                    conexionDB.desconectar();
+                     
                 }
             } else {
                 response.setStatus(utils.Constantes.STATUS_NO_DATA);
                 response.setResponseObject(null);
                 response.setMensaje("El registro no existe");
-                conexionDB.desconectar();
+                 
             }
         } else {
             response.setStatus(utils.Constantes.STATUS_CONEXION_FALLIDA_BD);
@@ -175,10 +175,10 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public List<Paqueteria> getData() {
+    public List<Paqueteria> getData(IConexion conexionDB) {
         List<Paqueteria> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idPaqueteria, "
@@ -208,7 +208,7 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -217,10 +217,10 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public List<Paqueteria> consultar(String... filtros) {
+    public List<Paqueteria> consultar(IConexion conexionDB,String... filtros) {
         List<Paqueteria> response = new ArrayList<>();
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idPaqueteria, "
@@ -250,7 +250,7 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");
@@ -259,10 +259,10 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
     }
 
     @Override
-    public Paqueteria encontrarId(int id) {
+    public Paqueteria encontrarId(IConexion conexionDB,int id) {
         Paqueteria response = null;
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
+        
+        if (conexionDB.getConexion()!=null) {
             try {
                 String sql = "SELECT "
                         + "idPaqueteria, "
@@ -297,7 +297,7 @@ public class ManipulaPaqueteria implements Manipula<Paqueteria> {
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos");
             } finally {
-                conexionDB.desconectar();
+                 
             }
         } else {
             Logg.error("Conexión fallida con la base de datos");

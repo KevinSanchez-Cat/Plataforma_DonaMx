@@ -617,43 +617,78 @@
                         </div>
                     </div><!-- End Left side columns -->
 
-                    <!-- Right side columns -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 ">
+                        <!-- Right side columns -->
+                        <section>
 
-                        <!-- Recent Activity -->
-                        <div class="card ">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filtrar por</h6>
-                                    </li>
+                            <!-- Recent Activity -->
+                            <div class="card ">
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filtrar por</h6>
+                                        </li>
 
-                                    <li><a class="dropdown-item" href="#">Hoy</a></li>
-                                    <li><a class="dropdown-item" href="#">Esta semana</a></li>
-                                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Actividad reciente<span> | Hoy </span></h5>
-
-                                <div class="activity">
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">1 min</div>
-                                        <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                        <div class="activity-content">
-                                            Se ha hecho una donación de una computadora
-                                            <a href="#" class="fw-bold text-dark">
-                                                se requiere autorización
-                                            </a>
-                                        </div>
-                                    </div><!-- End activity item-->
+                                        <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                        <li><a class="dropdown-item" href="#">Esta semana</a></li>
+                                        <li><a class="dropdown-item" href="#">Este mes</a></li>
+                                    </ul>
                                 </div>
 
-                            </div>
-                        </div><!-- End Recent Activity -->
-                    </div><!-- End Right side columns -->
+                                <div class="card-body">
+                                    <h5 class="card-title">Actividad reciente<span> | Hoy </span></h5>
+
+                                    <div class="activity">
+                                        <div class="activity-item d-flex">
+                                            <div class="activite-label">1 min</div>
+                                            <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                            <div class="activity-content">
+                                                Se ha hecho una donación de una computadora
+                                                <a href="#" class="fw-bold text-dark">
+                                                    se requiere autorización
+                                                </a>
+                                            </div>
+                                        </div><!-- End activity item-->
+                                    </div>
+
+                                </div>
+                            </div><!-- End Recent Activity -->
+                        </section><!-- End Right side columns -->
+                        <section>
+
+                            <!-- Recent Activity -->
+                            <div class="card ">
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filtrar por</h6>
+                                        </li>
+
+                                        <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                        <li><a class="dropdown-item" href="#">Esta semana</a></li>
+                                        <li><a class="dropdown-item" href="#">Este mes</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Noticias<span> | Hoy </span></h5>
+
+                                    <div class="news">
+                                        <div class="post-item clearfix">
+                                            <img src="assets/img/img_principal.jpg" alt="">
+                                            <h4><a href="#">Contaminación tecnologica</a></h4>
+                                            <p>Sit recusandae non aspernatur laborio1am. Quia enim eligendi sed ut harum...</p>
+                                        </div>
+
+                                    </div><!-- End sidebar recent posts-->
+
+                                </div>
+                            </div><!-- End Recent Activity -->
+                        </section><!-- End Right side columns -->
+                    </div>
+
 
                 </div>
             </section>
