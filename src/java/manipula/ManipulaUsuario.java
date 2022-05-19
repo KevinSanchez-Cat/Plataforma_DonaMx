@@ -1557,4 +1557,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         return status;
 
     }
+
+    public boolean changeContrasenia(IConexion conexionDB, int camConIdUser, String camConContraseniaActual, String camConContraseniaNueva) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

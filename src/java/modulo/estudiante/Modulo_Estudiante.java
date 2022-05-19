@@ -285,21 +285,10 @@ public class Modulo_Estudiante extends HttpServlet {
                     String infPerHabilidades = request.getParameter("est-infPerHabilidades");
                     String infPerCurp = request.getParameter("est-infPerCurp");
                     String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
-                    boolean b = formInfoPersonal(infPerIdUser,
-                            infPerNombres,
-                            infPerApellidoPaterno,
-                            infPerApellidoMaterno,
-                            infPerFechaNacimiento,
-                            infPerGenero,
-                            infPerTelMovil,
-                            infPerTelFijo,
-                            infPerLugarNac,
-                            infPerNacionalidad,
-                            infPerIntereses,
-                            infPerHabilidades,
-                            infPerCurp,
-                            infPerEstadoCivil
-                    );
+                    boolean b = formInfoPersonal(infPerIdUser, infPerNombres, infPerApellidoPaterno,
+                            infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
+                            infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
+                            infPerHabilidades, infPerCurp, infPerEstadoCivil);
 
                     if (b) {
                         msg = "Datos actualizados correctamente... ";
@@ -327,20 +316,11 @@ public class Modulo_Estudiante extends HttpServlet {
                     String infEscTotalPeriodos = request.getParameter("est-infEscTotalPeriodos");
                     String infEscActualPeriodo = request.getParameter("est-infEscActualPeriodo");
                     String infEscOcupacion = "Estudiante";
-                    boolean b = formInfoEscolar(infoEscIdUser,
-                            infEscMatriculaEscuela,
-                            infEscNivEduactivo,
-                            infEscTipoEscuela,
-                            infEscPromAnterior,
-                            infEscPromGeneral,
-                            infEscEstatusEscolar,
-                            infEscNombreEscuela,
-                            infEscMatricula,
-                            infEscRegular,
-                            infEscTipoPeriodo,
-                            infEscTotalPeriodos,
-                            infEscActualPeriodo,
-                            infEscOcupacion);
+                    boolean b = formInfoEscolar(infoEscIdUser, infEscMatriculaEscuela,
+                            infEscNivEduactivo, infEscTipoEscuela, infEscPromAnterior,
+                            infEscPromGeneral, infEscEstatusEscolar, infEscNombreEscuela,
+                            infEscMatricula, infEscRegular, infEscTipoPeriodo,
+                            infEscTotalPeriodos, infEscActualPeriodo, infEscOcupacion);
                     if (b) {
                         msg = "Datos actualizados correctamente... ";
                     } else {
@@ -407,13 +387,17 @@ public class Modulo_Estudiante extends HttpServlet {
                     String camConContraseniaActual = request.getParameter("est-camConContraseniaActual");
                     String camConContraseniaNueva = request.getParameter("est-camConContraseniaNueva");
                     String camConContraseniaNuevaConfirmar = request.getParameter("est-camConContraseniaNuevaConfirmar");
-                    boolean b = formCambiarContrasenia(camConIdUser, camConContraseniaActual, camConContraseniaNueva,
-                            camConContraseniaNuevaConfirmar);
-
-                    if (b) {
-                        msg = "Datos actualizados correctamente... ";
+                    boolean b = false;
+                    if (camConContraseniaNueva.equals(camConContraseniaNuevaConfirmar)) {
+                        b = formCambiarContrasenia(camConIdUser, camConContraseniaActual, camConContraseniaNueva);
+                        if (b) {
+                            msg = "Datos actualizados correctamente... ";
+                        } else {
+                            msg = "Datos no actualizados...";
+                        }
                     } else {
-                        msg = "Datos no actualizados...";
+                        msg = "Las contraseñas no son las mismas";
+                        //Las contraseñas no son iguales
                     }
                 } catch (NumberFormatException e) {
                     msg = "Datos no actualizados...";
@@ -611,13 +595,26 @@ public class Modulo_Estudiante extends HttpServlet {
     private boolean formInfoPersonal(int infPerIdUser, String infPerNombres,
             String infPerApellidoPaterno, String infPerApellidoMaterno,
             String infPerFechaNacimiento, String infPerGenero,
-            String infPerTelMovil,
-            String infPerTelFijo, String infPerLugarNac,
+            String infPerTelMovil, String infPerTelFijo, String infPerLugarNac,
             String infPerNacionalidad, String infPerIntereses,
             String infPerHabilidades, String infPerCurp, String infPerEstadoCivil) {
+        ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
         boolean b = false;
-
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                //Registrar o editar
+                b = mEstudiante.changeSeccPersonal(conexionDB, infPerIdUser,
+                        infPerNombres, infPerApellidoPaterno, infPerApellidoMaterno,
+                        infPerFechaNacimiento, infPerGenero, infPerTelMovil,
+                        infPerTelFijo, infPerLugarNac, infPerNacionalidad,
+                        infPerIntereses, infPerHabilidades, infPerCurp, infPerEstadoCivil);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
         return b;
     }
 
@@ -628,8 +625,23 @@ public class Modulo_Estudiante extends HttpServlet {
             String infEscMatricula, String infEscRegular,
             String infEscTipoPeriodo, String infEscTotalPeriodos,
             String infEscActualPeriodo, String infEscOcupacion) {
-        boolean b = false;
+        ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
+        boolean b = false;
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                //Registrar o editar
+                b = mEstudiante.changeSeccEscolar(conexionDB, infoEscIdUser,
+                        infEscMatriculaEscuela, infEscNivEduactivo, infEscTipoEscuela,
+                        infEscPromAnterior, infEscPromGeneral, infEscEstatusEscolar,
+                        infEscNombreEscuela, infEscMatricula, infEscRegular,
+                        infEscTipoPeriodo, infEscTotalPeriodos, infEscActualPeriodo, infEscOcupacion);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
         return b;
     }
 
@@ -638,15 +650,39 @@ public class Modulo_Estudiante extends HttpServlet {
             String infDomCalleInterna, String infDomCalleExterna, String infDomCalleFrontal,
             String infDomCalleTrasera, String infDomCalleIzquierda, String infDomCalleDerecha,
             String infDomCodigoPostal, String infDomNombreAsentamiento, String infDomTipoAsentamiento) {
-        boolean b = false;
+        ManipulaDireccion mDireccion = new ManipulaDireccion();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
+        boolean b = false;
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                //Registrar o editar
+                b = mDireccion.changeDomicilio(conexionDB, infDomIdUser, infDomIdEstado, infDomIdMunicipio,
+                        infDomIdocalidad, infDomReferencias, infDomCalleInterna,
+                        infDomCalleExterna, infDomCalleFrontal, infDomCalleTrasera, infDomCalleIzquierda,
+                        infDomCalleDerecha, infDomCodigoPostal, infDomNombreAsentamiento, infDomTipoAsentamiento);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
         return b;
     }
 
     private boolean formCambiarContrasenia(int camConIdUser, String camConContraseniaActual,
-            String camConContraseniaNueva, String camConContraseniaNuevaConfirmar) {
+            String camConContraseniaNueva) {
         boolean b = false;
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                b = mUsuario.changeContrasenia(conexionDB, camConIdUser, camConContraseniaActual, camConContraseniaNueva);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
         return b;
     }
 

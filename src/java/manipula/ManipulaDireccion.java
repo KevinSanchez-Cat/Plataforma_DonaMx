@@ -373,4 +373,8 @@ public class ManipulaDireccion implements Manipula<Direccion> {
         }
         return response;
     }
+
+    public boolean changeDomicilio(IConexion conexionDB, int infDomIdUser, String infDomIdEstado, String infDomIdMunicipio, String infDomIdocalidad, String infDomReferencias, String infDomCalleInterna, String infDomCalleExterna, String infDomCalleFrontal, String infDomCalleTrasera, String infDomCalleIzquierda, String infDomCalleDerecha, String infDomCodigoPostal, String infDomNombreAsentamiento, String infDomTipoAsentamiento) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

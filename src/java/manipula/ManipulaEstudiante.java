@@ -744,4 +744,12 @@ public class ManipulaEstudiante implements Manipula<Estudiante> {
         }
         return response;
     }
+
+    public boolean changeSeccEscolar(IConexion conexionDB, int infoEscIdUser, String infEscMatriculaEscuela, String infEscNivEduactivo, String infEscTipoEscuela, String infEscPromAnterior, String infEscPromGeneral, String infEscEstatusEscolar, String infEscNombreEscuela, String infEscMatricula, String infEscRegular, String infEscTipoPeriodo, String infEscTotalPeriodos, String infEscActualPeriodo, String infEscOcupacion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean changeSeccPersonal(IConexion conexionDB, int infPerIdUser, String infPerNombres, String infPerApellidoPaterno, String infPerApellidoMaterno, String infPerFechaNacimiento, String infPerGenero, String infPerTelMovil, String infPerTelFijo, String infPerLugarNac, String infPerNacionalidad, String infPerIntereses, String infPerHabilidades, String infPerCurp, String infPerEstadoCivil) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
