@@ -139,7 +139,7 @@
 
         </header>
         <!-- ======= Hero Section ======= -->
-        <section id="hero" class="d-flex align-items-center">
+        <section id="hero" class="d-flex align-items-center" style="margin-top:40px ">
             <div class="container">
                 <h1>Bienvenid@  a  DonaMx</h1>
                 <h2>Una oportunidad en tecnología para el talento mexicano</h2>

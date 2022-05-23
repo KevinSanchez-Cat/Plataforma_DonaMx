@@ -301,7 +301,7 @@
                                 <div class="col col-12 col-sm-12 col-md-8 position-relative">
                                     <form action="estudiante" method="POST" class=" needs-validation" >
                                         <input type="hidden" class="form-control"  name="form" id="est-perForm" value="FORMULARIO-PERFIL" required>
-                                        <input type="hidden" class="form-control"  name="form" id="est-perIdUser" value="<% if (usuario != null) {
+                                        <input type="hidden" class="form-control"  name="est-perIdUser" id="est-perIdUser" value="<% if (usuario != null) {
                                                 out.print(usuario.getIdUsuario());
                                             } else {
                                                 out.print("");

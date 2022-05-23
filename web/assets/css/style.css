@@ -7,7 +7,7 @@ body {
     color: #444444;
 }
 main{
-    margin-top: 45px
+    margin-top: 0px
 }
 .main2{
     margin-top: 3em;
@@ -449,7 +449,7 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-    padding: 60px 0;
+    padding: 60px 0 10px 0;
     overflow: hidden;
 }
 

@@ -4,9 +4,14 @@
     Author     : Kevin Ivan Sanchez Valdin
 --%>
 
+<%@page import="java.util.Random"%>
+<%@page import="java.awt.Color"%>
+<%@page import="java.awt.Color"%>
+<%@page import="java.awt.Font"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.awt.Graphics"%>
+<%@page import="javax.imageio.ImageIO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--@ page import="net.tanesha.recaptcha.ReCaptcha" --%>
-<%--@ page import="net.tanesha.recaptcha.ReCaptchaFactory" --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -133,8 +138,8 @@
                     Registrate</a>
             </div>
         </header>
-        <main>
-            <section class=""><!-- section register d-flex flex-column align-items-center justify-content-center py-4
+        <main style="margin-top:40px ">
+            <section ><!-- section register d-flex flex-column align-items-center justify-content-center py-4
                 -->
 
                 <div class="container">
@@ -154,7 +159,7 @@
                                         <p class="text-center small">Ingrese su usuario y contraseña para iniciar sesión</p>
                                     </div>
                                     <form action="Srv_inicio_sesion" id="form-inicio-sesion" method="post" 
-                                          class="row g-3 needs-validation" novalidate autocomplete="on">
+                                          class="row g-3 needs-validation" autocomplete="on">
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Correo electronico</label>
                                             <div class="input-group has-validation">
@@ -171,10 +176,22 @@
                                                 <div class="invalid-feedback">¡Ingresa tu contraseña!</div>
                                             </div>
                                         </div>
-                                        <%--
-                                             ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW", "6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak", false);
-                                             out.print(c.createRecaptchaHtml(null, null));
-                                        --%>
+                                        <label for="inpCaptcha" style="margin-top: 20px">Código</label>
+                                        <div class="col-12 d-inline-block">
+                                            <img id="img_captcha" src="Captcha" width="80%" class="rounded-2">
+
+                                            <button id="btnCaptcha" type="button" class="btn btn-primary" onclick="window.location.reload(true);" >
+                                                <span class="bx bx-refresh" aria-hidden="true" ></span>
+                                            </button>
+                                        </div>
+
+                                        <input id="captcha"
+                                               name="captcha"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Ingrese el Código"
+                                               required
+                                               autocomplete="off">
                                         <!-- <div class="g-recaptcha" data-sitekey="6LdikOkfAAAAAIM8b3zXMWjcyeOe9iVs1I3D7KvW"></div>
                                         --> <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Ingresar</button>
@@ -190,11 +207,22 @@
                 </div>
             </section>
         </main><!-- End #main -->
-
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
         <div id="preloader"></div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <script>
+            //así con JS normal
+            //accediendo directamente a src
+            function cambiarImagenJS() {
+                document.getElementById("img_captcha").src = 'Captcha';
+            }
 
+            //así con jQuery
+            //haciendo uso de la función attr()
+            function cambiarImagenjQ() {
+                $("#img_captcha").attr("src", "Captcha");
+            }
+        </script>
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

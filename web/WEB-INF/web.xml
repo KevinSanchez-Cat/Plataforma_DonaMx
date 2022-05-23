@@ -4,7 +4,6 @@
         <servlet-name>index</servlet-name>
         <servlet-class>controller.home.index</servlet-class>
     </servlet>
-  
     <servlet>
         <servlet-name>srv_catalogo</servlet-name>
         <servlet-class>controller.catalogo.Srv_catalogo</servlet-class>
@@ -136,6 +135,10 @@
     <servlet>
         <servlet-name>Autenticacion</servlet-name>
         <servlet-class>excepciones.Autenticacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Captcha</servlet-name>
+        <servlet-class>controller.inicio.Captcha</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
@@ -273,6 +276,10 @@
         <servlet-name>Autenticacion</servlet-name>
         <url-pattern>/autenticacion</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Captcha</servlet-name>
+        <url-pattern>/Captcha</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
@@ -284,7 +291,7 @@
     </error-page>
     <listener>
         <listener-class>config.listener.Config</listener-class>
-    </listener> 
+    </listener>
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>

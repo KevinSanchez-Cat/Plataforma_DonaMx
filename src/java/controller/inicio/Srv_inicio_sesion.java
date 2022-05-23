@@ -39,7 +39,6 @@ public class Srv_inicio_sesion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
         //  if (session != null) {
 //            if (request.isRequestedSessionIdValid()) {
 //                if (request.isRequestedSessionIdFromCookie()) {
@@ -50,76 +49,76 @@ public class Srv_inicio_sesion extends HttpServlet {
 //                //registra un error de session
 //            }
         //}
-            
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String password_cifrado = utils.Hash.sha1(password);
-        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
-        if (conexionDB.conectar() == 1) {
-            GenericResponse<Usuario> respuesta = ManipulaAutenticacion.iniciarSesionUsuario(conexionDB, username, password_cifrado);
-            if (respuesta.getResponseObject() != null) {
+        String cadena_ingresada = request.getParameter("captcha");
+        HttpSession session_nueva = request.getSession(false);
+        String key = (String) session_nueva.getAttribute("key");
 
-                HttpSession session = request.getSession();
-                
-                session.setAttribute("username", respuesta.getResponseObject().getNombre() + " " + respuesta.getResponseObject().getApellido());
-                session.setAttribute("user", respuesta.getResponseObject());
-                session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
-                ManipulaRol mRol = new ManipulaRol();
-                Rol rol = mRol.encontrarId(conexionDB, respuesta.getResponseObject().getIdRol());
+        if (cadena_ingresada == null) {
+            request.setAttribute("respuesta", "Tienes que ingresar el código ");
+            redirectView(request, response, "/iniciarSesion.jsp");
+        } else {
+            if (key.equals(cadena_ingresada)) {
+                IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
-                session.setAttribute("rol", rol.getRol());
-                //reCaptcha
-                /*  String remoteAddr = request.getRemoteAddr();
-            ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-            reCaptcha.setPrivateKey("6LdikOkfAAAAABU66Ko5GMxq2_717bi5nEnu9pak");
+                if (conexionDB.conectar() == 1) {
+                    GenericResponse<Usuario> respuesta = ManipulaAutenticacion.iniciarSesionUsuario(conexionDB, username, password_cifrado);
+                    if (respuesta.getResponseObject() != null) {
 
-            String challenge = request.getParameter("recaptcha_challenge_field");
-            String uresponse = request.getParameter("recaptcha_response_field");
-            ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, uresponse);
+                        HttpSession session = request.getSession();
 
-            if (reCaptchaResponse.isValid()) {
-                System.out.print("Answer was entered correctly!");
-            } else {
-                System.out.print("Answer is wrong");
-            }
-                 */
-                switch (rol.getRol()) {
-                    case "DONADOR": {
-                        //redirectServlet(request, response, "donador");
-                        response.sendRedirect("donador");
-                    }
-                    break;
-                    case "DONATARIO": {
-                        //  redirectServlet(request, response, "estudiante");
-                        response.sendRedirect("estudiante");
-                    }
-                    break;
-                    case "VOLUNTARIO": {
-                        //redirectServlet(request, response, "voluntario");
-                        response.sendRedirect("voluntario");
-                    }
-                    break;
-                    case "ADMINISTRADOR": {
-                        //redirectServlet(request, response, "administrador");
-                        response.sendRedirect("administrador");
-                    }
-                    break;
-                    case "PENDIENTE": {
-                        redirectServlet(request, response, "Srv_registro?ser=PENDIENTE");
+                        session.setAttribute("username", respuesta.getResponseObject().getNombre() + " " + respuesta.getResponseObject().getApellido());
+                        session.setAttribute("user", respuesta.getResponseObject());
+                        session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
+                        ManipulaRol mRol = new ManipulaRol();
+                        Rol rol = mRol.encontrarId(conexionDB, respuesta.getResponseObject().getIdRol());
 
+                        session.setAttribute("rol", rol.getRol());
+                        
+                        switch (rol.getRol()) {
+                            case "DONADOR": {
+                                //redirectServlet(request, response, "donador");
+                                response.sendRedirect("donador");
+                            }
+                            break;
+                            case "DONATARIO": {
+                                //  redirectServlet(request, response, "estudiante");
+                                response.sendRedirect("estudiante");
+                            }
+                            break;
+                            case "VOLUNTARIO": {
+                                //redirectServlet(request, response, "voluntario");
+                                response.sendRedirect("voluntario");
+                            }
+                            break;
+                            case "ADMINISTRADOR": {
+                                //redirectServlet(request, response, "administrador");
+                                response.sendRedirect("administrador");
+                            }
+                            break;
+                            case "PENDIENTE": {
+                                redirectServlet(request, response, "Srv_registro?ser=PENDIENTE");
+
+                            }
+                            break;
+                        }
+                        conexionDB.desconectar();
+                    } else {
+                        conexionDB.desconectar();
+                        //no se pudo conectar
+                        request.setAttribute("respuesta", "Datos incorrectos, intentelo de nuevo");
+                        redirectView(request, response, "/iniciarSesion.jsp");
                     }
-                    break;
+                } else {
+                    request.setAttribute("respuesta", "Plataforma no disponible, intentelo más tarde");
+                    redirectView(request, response, "/iniciarSesion.jsp");
                 }
-                conexionDB.desconectar();
             } else {
-                conexionDB.desconectar();
-                //no se pudo conectar
-                request.setAttribute("respuesta", "Datos incorrectos, intentelo de nuevo");
+                request.setAttribute("respuesta", "El código es incorrecto, ingresalo nuevamente ");
                 redirectView(request, response, "/iniciarSesion.jsp");
             }
-        } else {
-            request.setAttribute("respuesta", "Plataforma no disponible, intentelo más tarde");
-            redirectView(request, response, "/iniciarSesion.jsp");
         }
 
     }

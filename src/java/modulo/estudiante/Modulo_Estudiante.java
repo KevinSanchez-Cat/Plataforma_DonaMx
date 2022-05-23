@@ -138,6 +138,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                     break;
                                 case "informacion_personal":
                                     if (estudiante != null) {
+                                        request.setAttribute("persona_id_estudiante", estudiante.getIdEstudiante());
                                         request.setAttribute("persona_nombre", estudiante.getNombres());
                                         request.setAttribute("persona_apellido_paterno", estudiante.getApellidoPaterno());
                                         request.setAttribute("persona_apellido_materno", estudiante.getApellidoMaterno());
@@ -146,7 +147,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                         request.setAttribute("persona_nacionalidad", estudiante.getNacionalidad());
                                         request.setAttribute("persona_telefono_movil", estudiante.getNumeroTelMovil());
                                         request.setAttribute("persona_telefono_fijo", estudiante.getNumeroTelFijo());
-                                        request.setAttribute("persona_estado_civil", "");
+                                        request.setAttribute("persona_estado_civil",  estudiante.getEstadoCivil());
                                         request.setAttribute("persona_genero", estudiante.getGenero());
                                         request.setAttribute("persona_curp", estudiante.getCurp());
                                         request.setAttribute("persona_habilidades", estudiante.getHabilidades());
@@ -259,6 +260,7 @@ public class Modulo_Estudiante extends HttpServlet {
                 case "FORMULARIO-INFORMACION_PERSONAL":
                     try {
                     int infPerIdUser = Integer.parseInt(request.getParameter("est-infPerIdUser"));
+                    int infPerIdEstudiante = Integer.parseInt(request.getParameter("est-infPerIdEstudiante"));
                     String infPerNombres = request.getParameter("est-infPerNombres");
                     String infPerApellidoPaterno = request.getParameter("est-infPerApellidoPaterno");
                     String infPerApellidoMaterno = request.getParameter("est-infPerApellidoMaterno");
@@ -272,7 +274,7 @@ public class Modulo_Estudiante extends HttpServlet {
                     String infPerHabilidades = request.getParameter("est-infPerHabilidades");
                     String infPerCurp = request.getParameter("est-infPerCurp");
                     String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
-                    boolean b = formInfoPersonal(infPerIdUser, infPerNombres, infPerApellidoPaterno,
+                    boolean b = formInfoPersonal(infPerIdUser, infPerIdEstudiante,infPerNombres, infPerApellidoPaterno,
                             infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
                             infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
                             infPerHabilidades, infPerCurp, infPerEstadoCivil);
@@ -302,12 +304,13 @@ public class Modulo_Estudiante extends HttpServlet {
                     String infEscTipoPeriodo = request.getParameter("est-infEscTipoPeriodo");
                     String infEscTotalPeriodos = request.getParameter("est-infEscTotalPeriodos");
                     String infEscActualPeriodo = request.getParameter("est-infEscActualPeriodo");
+                    String infEscPeriodo = request.getParameter("est-infEscPeriodo");
                     String infEscOcupacion = "Estudiante";
                     boolean b = formInfoEscolar(infoEscIdUser, infEscMatriculaEscuela,
                             infEscNivEduactivo, infEscTipoEscuela, infEscPromAnterior,
                             infEscPromGeneral, infEscEstatusEscolar, infEscNombreEscuela,
                             infEscMatricula, infEscRegular, infEscTipoPeriodo,
-                            infEscTotalPeriodos, infEscActualPeriodo, infEscOcupacion);
+                            infEscTotalPeriodos, infEscActualPeriodo,infEscPeriodo, infEscOcupacion);
                     if (b) {
                         msg = "Datos actualizados correctamente... ";
                     } else {
@@ -579,7 +582,7 @@ public class Modulo_Estudiante extends HttpServlet {
         return b;
     }
 
-    private boolean formInfoPersonal(int infPerIdUser, String infPerNombres,
+    private boolean formInfoPersonal(int infPerIdUser, int infPerIdEstudiante,String infPerNombres,
             String infPerApellidoPaterno, String infPerApellidoMaterno,
             String infPerFechaNacimiento, String infPerGenero,
             String infPerTelMovil, String infPerTelFijo, String infPerLugarNac,
@@ -592,7 +595,7 @@ public class Modulo_Estudiante extends HttpServlet {
         if (conexionDB.conectar() == 1) {
             if (conexionDB.getConexion() != null) {
                 //Registrar o editar
-                b = mEstudiante.changeSeccPersonal(conexionDB, infPerIdUser,
+                b = mEstudiante.changeSeccPersonal(conexionDB, infPerIdUser,infPerIdEstudiante,
                         infPerNombres, infPerApellidoPaterno, infPerApellidoMaterno,
                         infPerFechaNacimiento, infPerGenero, infPerTelMovil,
                         infPerTelFijo, infPerLugarNac, infPerNacionalidad,
@@ -611,7 +614,7 @@ public class Modulo_Estudiante extends HttpServlet {
             String infEscEstatusEscolar, String infEscNombreEscuela,
             String infEscMatricula, String infEscRegular,
             String infEscTipoPeriodo, String infEscTotalPeriodos,
-            String infEscActualPeriodo, String infEscOcupacion) {
+            String infEscActualPeriodo, String infEscPeriodo, String infEscOcupacion) {
         ManipulaEstudiante mEstudiante = new ManipulaEstudiante();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
 
@@ -623,7 +626,7 @@ public class Modulo_Estudiante extends HttpServlet {
                         infEscMatriculaEscuela, infEscNivEduactivo, infEscTipoEscuela,
                         infEscPromAnterior, infEscPromGeneral, infEscEstatusEscolar,
                         infEscNombreEscuela, infEscMatricula, infEscRegular,
-                        infEscTipoPeriodo, infEscTotalPeriodos, infEscActualPeriodo, infEscOcupacion);
+                        infEscTipoPeriodo, infEscTotalPeriodos, infEscActualPeriodo, infEscPeriodo,infEscOcupacion);
                 conexionDB.desconectar();
             }
         } else {

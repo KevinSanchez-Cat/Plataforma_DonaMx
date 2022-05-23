@@ -133,7 +133,7 @@
                 <section class=""><!--section register d-flex flex-column align-items-center justify-content-center py-4 -->
                     <div class="container">
                         <div class="row justify-content-center"> <!-- justify-content-center --> <!--para centrar horizontalmente -->
-                            <div class="col col-12 col-sm-12 col-md-8 col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                            <div class="col col-lg-4 col-md-6  d-flex flex-column align-items-center justify-content-center">
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="pt-4 pb-2">

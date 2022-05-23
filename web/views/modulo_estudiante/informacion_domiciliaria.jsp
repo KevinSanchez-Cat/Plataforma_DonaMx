@@ -59,7 +59,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                        <span class="d-none d-lg-block">DonaMx</span>
+                    <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -125,7 +125,7 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -278,11 +278,18 @@
                             <br>
                             <form action="estudiante" method="POST" class=" needs-validation" novalidate>
                                 <input type="hidden" class="form-control"  name="form" id="form" value="FORMULARIO-INFORMACION-DOMICILIARIA" required>
-
+                                <input type="hidden" class="form-control" id="est-infDomIdUser" value="<%if (usuario != null) {
+                                        out.print(usuario.getIdUsuario());
+                                    }%>" required>
+                                <input type="hidden" class="form-control" id="est-infDomIdUser" value="<%if (request.getParameter("direccion_id_direccion") != null) {
+                                        out.print(request.getParameter("direccion_id_direccion"));
+                                    }%>" required>
                                 <div class="col-md-2 position-relative">
-                                    <label for="nombre_usuario" class="form-label">Codigo postal</label>
+                                    <label for="est-infDomCodigoPostal" class="form-label">Codigo postal</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                        <input type="text" class="form-control" id="est-infDomCodigoPostal" value="<%if (request.getParameter("direccion_codigo_postal") != null) {
+                                                out.print(request.getParameter("direccion_codigo_postal"));
+                                            }%>" required>
                                         <div class="valid-tooltip">
                                             Se mira bien!
                                         </div>
@@ -291,27 +298,33 @@
                                 <br/>
                                 <div class="row g-3">
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Estado federativo</label>
+                                        <label for="est-infDomIdEstado" class="form-label">Estado federativo</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infDomIdEstado" value="<%if (request.getParameter("direccion_id_estado") != null) {
+                                                    out.print(request.getParameter("direccion_id_estado"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Municipio</label>
+                                        <label for="est-infDomIdMunicipio" class="form-label">Municipio</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infDomIdMunicipio" value="<%if (request.getParameter("direccion_id_municipio") != null) {
+                                                    out.print(request.getParameter("direccion_id_municipio"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Localidad</label>
+                                        <label for="est-infDomIdocalidad" class="form-label">Localidad</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infDomIdocalidad" value="<%if (request.getParameter("direccion_id_localidad") != null) {
+                                                    out.print(request.getParameter("direccion_id_localidad"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
@@ -320,7 +333,9 @@
                                     <div class="col-md-4 position-relative">
                                         <label for="validationTooltip02" class="form-label">Tipo de asentamiento</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="validationTooltip02" value="<%if (request.getParameter("direccion_tipo_asentamiento") != null) {
+                                                    out.print(request.getParameter("direccion_tipo_asentamiento"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
@@ -329,7 +344,9 @@
                                     <div class="col-md-8 position-relative">
                                         <label for="validationTooltip02" class="form-label">Nombre del asentamiento</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="validationTooltip02" value="<%if (request.getParameter("direccion_nombre_asentamiento") != null) {
+                                                    out.print(request.getParameter("direccion_nombre_asentamiento"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
@@ -338,16 +355,20 @@
                                     <div class="col-md-6 position-relative">
                                         <label for="validationTooltip02" class="form-label">Calle externa y número</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="validationTooltip02" value="<%if (request.getParameter("direccion_calle_exterior") != null) {
+                                                    out.print(request.getParameter("direccion_calle_exterior"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Calle interna y número</label>
+                                        <label for="est-infDomCalleInterna" class="form-label">Calle interna y número</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infDomCalleInterna" value="<%if (request.getParameter("direccion_calle_interior") != null) {
+                                                    out.print(request.getParameter("direccion_calle_interior"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
@@ -355,21 +376,80 @@
                                     </div>
 
                                     <div class="col-md-6 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Calle interna y número</label>
+                                        <label for="est-infDomCalleFrontal" class="form-label">Calle frontal</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infDomCalleFrontal" value="<%if (request.getParameter("direccion_calle_frontal") != null) {
+                                                    out.print(request.getParameter("direccion_calle_frontal"));
+                                                }%>" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="est-infDomCalleTrasera" class="form-label">Calle trasera</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="est-infDomCalleTrasera" value="<%if (request.getParameter("direccion_calle_trasera") != null) {
+                                                    out.print(request.getParameter("direccion_calle_trasera"));
+                                                }%>" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="est-infDomCalleIzquierda" class="form-label">Calle de la izquierda</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="est-infDomCalleIzquierda" value="<%if (request.getParameter("direccion_calle_izquierda") != null) {
+                                                    out.print(request.getParameter("direccion_calle_izquierda"));
+                                                }%>" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="est-infDomCalleDerecha" class="form-label">Calle de la derecha</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="est-infDomCalleDerecha" value="<%if (request.getParameter("direccion_calle_derecha") != null) {
+                                                    out.print(request.getParameter("direccion_calle_derecha"));
+                                                }%>" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="est-infDomTipoAsentamiento" class="form-label">Tipo de asentamiento</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="est-infDomTipoAsentamiento" value="<%if (request.getParameter("direccion_tipo_asentamiento") != null) {
+                                                    out.print(request.getParameter("direccion_tipo_asentamiento"));
+                                                }%>" required>
+                                            <div class="valid-tooltip">
+                                                Se mira bien!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="est-infDomNombreAsentamiento" class="form-label">Nombre del asentamiento</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="est-infDomNombreAsentamiento" value="<%if (request.getParameter("direccion_nombre_asentamiento") != null) {
+                                                    out.print(request.getParameter("direccion_nombre_asentamiento"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 position-relative">
-                                        <label for="validationTooltipUsername" class="form-label">Referencias</label>
+                                        <label for="est-infDomReferencias" class="form-label">Referencias</label>
                                         <div class="input-group">
-                                            <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                            <textarea type="text" class="form-control" id="est-infDomReferencias"
                                                       aria-describedby="validationTooltipUsernamePrepend" 
                                                       class="form-control" id="about" rows="3" cols="1">
-
+                                                <%if (request.getParameter("direccion_referencias") != null) {
+                                                        out.print(request.getParameter("direccion_referencias"));
+                                                    }%>
                                             </textarea>
                                         </div>
                                     </div>
@@ -411,7 +491,7 @@
             </section>
         </main>
 
-       <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/quill/quill.min.js"></script>
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>

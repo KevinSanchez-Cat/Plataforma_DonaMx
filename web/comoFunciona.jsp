@@ -133,7 +133,7 @@
                     Registrate</a>
             </div>
         </header>
-        <main>
+        <main style="margin-top:40px ">
             <!-- ======= Departments Section ======= -->
             <section id="departments" class="departments">
                 <div class="container">

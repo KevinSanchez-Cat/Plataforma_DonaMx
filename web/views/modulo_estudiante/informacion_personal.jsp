@@ -58,7 +58,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                        <span class="d-none d-lg-block">DonaMx</span>
+                    <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -124,7 +124,7 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -276,12 +276,20 @@
                         <div class="card-body">
                             <br>
                             <form action="estudiante" method="POST" class=" needs-validation" novalidate>
-                                 <input type="hidden" class="form-control"  name="form" id="form" value="FORMULARIO-INFORMACION-PERSONAL" required>
-                              
+                                <input type="hidden" class="form-control"  id="form" value="FORMULARIO-INFORMACION-PERSONAL" required>
+                                <input type="hidden" class="form-control" id="est-infPerIdUser" value="<%if (usuario != null) {
+                                        out.print(usuario.getIdUsuario());
+                                    }  %>" required>
+                                <input type="hidden" class="form-control"  id="est-infPerIdUser" value="<%if (request.getParameter("persona_id_estudiante") != null) {
+                                        out.print(request.getParameter("persona_id_estudiante"));
+                                    }%>" required>
+
                                 <div class="col-md-3 position-relative">
-                                    <label for="validationTooltip02" class="form-label">CURP</label>
+                                    <label for="est-infPerCurp" class="form-label">CURP</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                        <input type="text" class="form-control" id="est-infPerCurp" value="<%if (request.getParameter("persona_curp") != null) {
+                                                out.print(request.getParameter("persona_curp"));
+                                            }%>" required>
                                         <div class="valid-tooltip">
                                             Se mira bien!
                                         </div>
@@ -289,45 +297,55 @@
                                 </div>
                                 <div class="row g-3">
                                     <div class="col-md-4 position-relative">
-                                        <label for="nombre_usuario" class="form-label">Nombre(s)</label>
+                                        <label for="est-infPerNombres" class="form-label">Nombre(s)</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerNombres" value="<%if (request.getParameter("persona_nombre") != null) {
+                                                    out.print(request.getParameter("persona_nombre"));
+                                                }%>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Apellido paterno</label>
+                                        <label for="est-infPerApellidoPaterno" class="form-label">Apellido paterno</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerApellidoPaterno" value="<%if (request.getParameter("persona_apellido_paterno") != null) {
+                                                    out.print(request.getParameter("persona_apellido_paterno"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Apellido materno</label>
+                                        <label for="est-infPerApellidoMaterno" class="form-label">Apellido materno</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerApellidoMaterno" value="<%if (request.getParameter("persona_apellido_materno") != null) {
+                                                    out.print(request.getParameter("persona_apellido_materno"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div> 
                                     <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Nacionalidad</label>
+                                        <label for="est-infPerNacionalidad" class="form-label">Nacionalidad</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerNacionalidad" value="<%if (request.getParameter("persona_nacionalidad") != null) {
+                                                    out.print(request.getParameter("persona_nacionalidad"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div> 
                                     <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Lugar de nacimiento</label>
+                                        <label for="est-infPerLugarNac" class="form-label">Lugar de nacimiento</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerLugarNac" value="<%if (request.getParameter("persona_lugar_nacimiento") != null) {
+                                                    out.print(request.getParameter("persona_lugar_nacimiento"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
@@ -335,67 +353,81 @@
                                     </div>
 
                                     <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Fecha de nacimiento</label>
+                                        <label for="est-infPerFechaNacimiento" class="form-label">Fecha de nacimiento</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerFechaNacimiento" value="<%if (request.getParameter("persona_fecha_nacimiento") != null) {
+                                                    out.print(request.getParameter("persona_fecha_nacimiento"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>  
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Genero</label>
+                                        <label for="est-infPerGenero" class="form-label">Genero</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerGenero" value="<%if (request.getParameter("persona_genero") != null) {
+                                                    out.print(request.getParameter("persona_genero"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Estado civil</label>
+                                        <label for="est-infPerEstadoCivil" class="form-label">Estado civil</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerEstadoCivil" value="<%if (request.getParameter("persona_estado_civil") != null) {
+                                                    out.print(request.getParameter("persona_estado_civil"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Telefono movil</label>
+                                        <label for="est-infPerTelMovil" class="form-label">Telefono movil</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerTelMovil" value="<%if (request.getParameter("persona_telefono_movil") != null) {
+                                                    out.print(request.getParameter("persona_telefono_movil"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip02" class="form-label">Telefono fijo</label>
+                                        <label for="est-infPerTelFijo" class="form-label">Telefono fijo</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                            <input type="text" class="form-control" id="est-infPerTelFijo" value="<%if (request.getParameter("persona_telefono_fijo") != null) {
+                                                    out.print(request.getParameter("persona_telefono_fijo"));
+                                                } %>" required>
                                             <div class="valid-tooltip">
                                                 Se mira bien!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 position-relative">
-                                        <label for="validationTooltipUsername" class="form-label">Intereses</label>
+                                        <label for="est-infPerIntereses" class="form-label">Intereses</label>
                                         <div class="input-group">
-                                            <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                            <textarea type="text" class="form-control" id="est-infPerIntereses"
                                                       aria-describedby="validationTooltipUsernamePrepend" 
                                                       class="form-control" id="about" rows="3" cols="1">
-
+                                                <%if (request.getParameter("persona_intereses") != null) {
+                                                        out.print(request.getParameter("persona_intereses"));
+                                                    }%>
                                             </textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6 position-relative">
-                                        <label for="validationTooltipUsername" class="form-label">Habilidades</label>
+                                        <label for="est-infPerHabilidades" class="form-label">Habilidades</label>
                                         <div class="input-group">
-                                            <textarea type="text" class="form-control" id="validationTooltipUsername"
+                                            <textarea type="text" class="form-control" id="est-infPerHabilidades"
                                                       aria-describedby="validationTooltipUsernamePrepend" 
                                                       class="form-control" id="about" rows="3" cols="1">
-
+                                                <%if (request.getParameter("persona_habilidades") != null) {
+                                                        out.print(request.getParameter("persona_habilidades"));
+                                                    }%>
                                             </textarea>
                                         </div>
                                     </div>
@@ -437,7 +469,7 @@
                 </section>
             </section>
         </main>
-       <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/quill/quill.min.js"></script>
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
