@@ -168,7 +168,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link collapsed "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -285,7 +285,7 @@
                                         out.print(request.getParameter("direccion_id_direccion"));
                                     }%>" required>
                                 <div class="col-md-2 position-relative">
-                                    <label for="est-infDomCodigoPostal" class="form-label">Codigo postal</label>
+                                    <label for="est-infDomCodigoPostal" class="form-label">Código postal</label>
                                     <div class="input-group has-validation">
                                         <input type="text" class="form-control" id="est-infDomCodigoPostal" value="<%if (request.getParameter("direccion_codigo_postal") != null) {
                                                 out.print(request.getParameter("direccion_codigo_postal"));

@@ -167,7 +167,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link collapsed "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -283,7 +283,7 @@
                 <section class="section">
                     <c:choose>
                         <c:when test="${not empty lstEquiposDonados}">   
-                            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-6 "> 
+                            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 "> 
                                 <c:forEach var="equipos" items="${lstEquiposDonados}">
                                     <div class="col ">
                                         <div class="card">

@@ -167,7 +167,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -260,7 +260,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
-                            <li class="breadcrumb-item "><a href="estudiante?page=catalogo">Catalogo</a></li>
+                            <li class="breadcrumb-item "><a href="estudiante?page=catalogo">Catálogo</a></li>
                             <li class="breadcrumb-item"><a href="estudiante?page=catalogo&id_categoria=${id_categoria}&nombre_categoria=${nombre_categoria}">${nombre_categoria}</a></li>
                             <li class="breadcrumb-item active">${recurso_tecnologico.getNombreRecursoTecnologico()}</li>
                         </ol>

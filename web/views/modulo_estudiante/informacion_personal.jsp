@@ -167,7 +167,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link collapsed "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -364,7 +364,7 @@
                                         </div>
                                     </div>  
                                     <div class="col-md-3 position-relative">
-                                        <label for="est-infPerGenero" class="form-label">Genero</label>
+                                        <label for="est-infPerGenero" class="form-label">Género</label>
                                         <div class="input-group has-validation">
                                             <input type="text" class="form-control" id="est-infPerGenero" value="<%if (request.getParameter("persona_genero") != null) {
                                                     out.print(request.getParameter("persona_genero"));
@@ -386,7 +386,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="est-infPerTelMovil" class="form-label">Telefono movil</label>
+                                        <label for="est-infPerTelMovil" class="form-label">Teléfono móvil</label>
                                         <div class="input-group has-validation">
                                             <input type="text" class="form-control" id="est-infPerTelMovil" value="<%if (request.getParameter("persona_telefono_movil") != null) {
                                                     out.print(request.getParameter("persona_telefono_movil"));
@@ -397,7 +397,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 position-relative">
-                                        <label for="est-infPerTelFijo" class="form-label">Telefono fijo</label>
+                                        <label for="est-infPerTelFijo" class="form-label">Teléfono fijo</label>
                                         <div class="input-group has-validation">
                                             <input type="text" class="form-control" id="est-infPerTelFijo" value="<%if (request.getParameter("persona_telefono_fijo") != null) {
                                                     out.print(request.getParameter("persona_telefono_fijo"));

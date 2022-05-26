@@ -168,7 +168,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link collapsed "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">

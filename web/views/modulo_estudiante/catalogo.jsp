@@ -13,7 +13,7 @@
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-        <title>Catalogo</title>
+        <title>Catálogo</title>
         <meta content="Plataforma dedicada a unir a fundaciones y estudiantes para donaciones
               de tipo tecnologico, de manera en que los estudiantes de escasos recursos 
               logren continuar con sus estudios, además de ser un lugar en donde se pueda conseguir 
@@ -167,7 +167,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link "  href="estudiante?page=catalogo">
-                        <i class="bi bi-card-list"></i><span>Catalogo</span>
+                        <i class="bi bi-card-list"></i><span>Catálogo</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -260,7 +260,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active"><a href="estudiante">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="estudiante?page=catalogo">Catalogo</a></li>
+                            <li class="breadcrumb-item active"><a href="estudiante?page=catalogo">Catálogo</a></li>
                         </ol>
                     </nav>
                 </div>

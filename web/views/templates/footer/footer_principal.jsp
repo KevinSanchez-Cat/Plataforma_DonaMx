@@ -32,7 +32,7 @@
                 <h5 class="h5-titulo-seccion"> <strong>Nosotros</strong></h5>
                 <ul class="list-unstyled text-small">
 
-                    <li><a class="text-white" href="conocenos.jsp">Conocenos</a></li>
+                    <li><a class="text-white" href="conocenos.jsp">Conócenos</a></li>
                     <li><a class="text-white" href="comoFunciona.jsp">¿Cómo funciona?</a></li>
                     <li><a class="text-white" href="conocenos.jsp">Nuestro equipo</a></li>
                 </ul>

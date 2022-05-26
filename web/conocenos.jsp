@@ -93,7 +93,7 @@
                                     <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                                     </svg>
                                 </i>
-                                Conocenos
+                                Conócenos
                             </a>
                         </li>
                         <li>
@@ -142,7 +142,7 @@
             <section id="doctors" class="doctors">
                 <div class="container">
                     <div class="section-title">
-                        <h2>Conocenos</h2>
+                        <h2>Conócenos</h2>
 
                     </div>
                     <p>Somos una organización sin fines de lucro que brinda tecnología, 
