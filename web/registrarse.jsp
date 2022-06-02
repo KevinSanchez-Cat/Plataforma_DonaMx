@@ -142,7 +142,7 @@
                                         </div>
 
                                         <form action="Srv_registro" id="form-registro" method="post"
-                                              class="row g-3 needs-validation" novalidate>
+                                              class="row g-3 needs-validation">
                                             <div class="col-6">
                                                 <label for="yourName" class="form-label">Nombre</label>
                                                 <input type="text" name="name" class="form-control" id="yourName" required>

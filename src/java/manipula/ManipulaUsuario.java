@@ -1,6 +1,7 @@
 package manipula;
 
 import config.conexion.*;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1560,5 +1561,39 @@ public class ManipulaUsuario implements Manipula<Usuario> {
 
     public boolean changeContrasenia(IConexion conexionDB, int camConIdUser, String camConContraseniaActual, String camConContraseniaNueva) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean changeImagen(IConexion conexionDB, String idUsuario, InputStream inputStream) {
+        boolean status = false;
+        if (conexionDB.getConexion() != null) {
+            int idUser=Integer.parseInt(idUsuario);
+            Usuario obj = encontrarId(conexionDB, idUser);
+            if (obj != null) {
+                try {
+                    String sql = "UPDATE Usuario SET "
+                            + "foto=? "
+                            + "WHERE idUsuario=?";
+                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                    registro.setBlob(1, inputStream);
+                    registro.setInt(2, idUser);
+                    int r = registro.executeUpdate();
+                    if (r > 0) {
+                        status = true;
+                        Logg.exito("Edición exitosa en la base de datos");
+                    } else {
+                        Logg.error("Edición fallido en la base de datos");
+                    }
+                } catch (SQLException ex) {
+                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                } finally {
+
+                }
+            } else {
+                Logg.error("El registro no existe");
+            }
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
     }
 }

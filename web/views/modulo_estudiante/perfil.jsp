@@ -277,25 +277,36 @@
                             <div class="row gap-0 ">
                                 <div class="col col-12 col-sm-12 col-md-4 position-relative">
                                     <label for="profileImage" class="form-label">Imagen de perfil</label>
-                                    <div  >
-                                        <div class="d-flex justify-content-center">
-                                            <img class="" alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacionDonatario" width="50%">
-                                        </div>
-                                        <br>
-                                        <div  id='info-imagen-Donatario'></div>
-                                        <br>
-                                        <div class="d-grid gap-2 d-flex justify-content-center">
-                                            <div >
-                                                <label for="seleccionArchivosDonatario" class="subirDonatario">
-                                                    <i class="bi bi-upload"></i> Subir imagen
-                                                </label>
-                                                <input id="seleccionArchivosDonatario"  type="file" style='display: none;'  accept="image/*" />
+                                    <form action="estudiante" method="POST" class=" needs-validation" enctype="multipart/form-data">
+                                        <input type="hidden" class="form-control"  name="form" id="est-perForm" value="FORMULARIO-PERFIL-IMG" required>
+                                        <input type="hidden" class="form-control"  name="est-perIdUser" id="est-perIdUser" value="<% if (usuario != null) {
+                                                out.print(usuario.getIdUsuario());
+                                            } else {
+                                                out.print("");
+                                            } %>" required>
+                                        <div  >
+                                            <div class="d-flex justify-content-center">
+                                                <img class="" alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacionDonatario" width="50%">
                                             </div>
-                                            <div>
-                                                <button class="btn btn-danger" title="Eliminar imagen de perfil" type="submit"><i class="bi bi-trash"></i> Eliminar imagen</button>
+                                            <br>
+                                            <input  type="text" id='info-imagen-Donatario' name="info-imagen-Donatario" value=""/>
+                                            <br>
+                                            <div class="d-grid gap-2 d-flex justify-content-center">
+                                                <div >
+                                                    <label for="seleccionArchivosDonatario" class="subirDonatario">
+                                                        <i class="bi bi-upload"></i> Subir imagen
+                                                    </label>
+                                                    <input id="seleccionArchivosDonatario"  type="file" name="imagen" value="" style='display: none;'  accept="image/*" />
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-danger" title="Eliminar imagen de perfil" type="submit"><i class="bi bi-trash"></i> Eliminar imagen</button>
+                                                </div>
                                             </div>
+                                            <input type="submit"  name="btn-form-img" id='enviar-imagen-perfil'/>
                                         </div>
-                                    </div>
+
+                                    </form>
+
                                     <br/>
                                 </div>
                                 <div class="col col-12 col-sm-12 col-md-8 position-relative">
@@ -314,7 +325,8 @@
                                                     <input type="text" autofocus="false" disabled="true" readonly="true" class="form-control" id="est-perNombreUser" value="<% if (usuario != null) {
                                                             out.print(usuario.getNombreUsuario());
                                                         } else {
-                                                            out.print("");
+                                                           
+                                                        out.print("");
                                                         } %>" required>
                                                     <div class="valid-tooltip">
                                                         Se mira bien!

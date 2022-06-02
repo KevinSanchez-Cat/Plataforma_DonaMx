@@ -8,14 +8,17 @@ package modulo.estudiante;
 import config.conexion.ConexionFactory;
 import config.conexion.IConexion;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import manipula.*;
 import model.*;
 import utils.Logg;
@@ -24,12 +27,14 @@ import utils.Logg;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
+@MultipartConfig(maxFileSize = 16177215)
 public class Modulo_Estudiante extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("image/png");
+        byte[] b = null;
         HttpSession session = request.getSession(false);
         String page = request.getParameter("page");
 
@@ -147,7 +152,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                         request.setAttribute("persona_nacionalidad", estudiante.getNacionalidad());
                                         request.setAttribute("persona_telefono_movil", estudiante.getNumeroTelMovil());
                                         request.setAttribute("persona_telefono_fijo", estudiante.getNumeroTelFijo());
-                                        request.setAttribute("persona_estado_civil",  estudiante.getEstadoCivil());
+                                        request.setAttribute("persona_estado_civil", estudiante.getEstadoCivil());
                                         request.setAttribute("persona_genero", estudiante.getGenero());
                                         request.setAttribute("persona_curp", estudiante.getCurp());
                                         request.setAttribute("persona_habilidades", estudiante.getHabilidades());
@@ -257,6 +262,30 @@ public class Modulo_Estudiante extends HttpServlet {
         String msg = "";
         if (formulario != null) {
             switch (formulario) {
+                case "FORMULARIO-PERFIL-IMG":
+                    InputStream inputStream = null;
+                    try {
+                        Part filePart = request.getPart("imagen");
+                        String idUsurio = request.getParameter("est-infPerIdUser");
+                        if (filePart.getSize() > 0) {
+                            System.out.println(filePart.getSubmittedFileName());
+                            System.out.println(filePart.getSize());
+                            System.out.println(filePart.getContentType());
+                            inputStream = filePart.getInputStream();
+                        }
+                        boolean b = formImgPerfil(idUsurio, inputStream);
+
+                        if (b) {
+                            msg = "Datos actualizados correctamente... ";
+                        } else {
+                            msg = "Datos no actualizados...";
+                        }
+                    } catch (Exception ex) {
+                        System.out.println("fichero: " + ex.getMessage());
+                    }
+                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/perfil.jsp");
+                    dispatcher.forward(request, response);
+                    break;
                 case "FORMULARIO-INFORMACION_PERSONAL":
                     try {
                     int infPerIdUser = Integer.parseInt(request.getParameter("est-infPerIdUser"));
@@ -274,7 +303,7 @@ public class Modulo_Estudiante extends HttpServlet {
                     String infPerHabilidades = request.getParameter("est-infPerHabilidades");
                     String infPerCurp = request.getParameter("est-infPerCurp");
                     String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
-                    boolean b = formInfoPersonal(infPerIdUser, infPerIdEstudiante,infPerNombres, infPerApellidoPaterno,
+                    boolean b = formInfoPersonal(infPerIdUser, infPerIdEstudiante, infPerNombres, infPerApellidoPaterno,
                             infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
                             infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
                             infPerHabilidades, infPerCurp, infPerEstadoCivil);
@@ -310,7 +339,7 @@ public class Modulo_Estudiante extends HttpServlet {
                             infEscNivEduactivo, infEscTipoEscuela, infEscPromAnterior,
                             infEscPromGeneral, infEscEstatusEscolar, infEscNombreEscuela,
                             infEscMatricula, infEscRegular, infEscTipoPeriodo,
-                            infEscTotalPeriodos, infEscActualPeriodo,infEscPeriodo, infEscOcupacion);
+                            infEscTotalPeriodos, infEscActualPeriodo, infEscPeriodo, infEscOcupacion);
                     if (b) {
                         msg = "Datos actualizados correctamente... ";
                     } else {
@@ -582,7 +611,7 @@ public class Modulo_Estudiante extends HttpServlet {
         return b;
     }
 
-    private boolean formInfoPersonal(int infPerIdUser, int infPerIdEstudiante,String infPerNombres,
+    private boolean formInfoPersonal(int infPerIdUser, int infPerIdEstudiante, String infPerNombres,
             String infPerApellidoPaterno, String infPerApellidoMaterno,
             String infPerFechaNacimiento, String infPerGenero,
             String infPerTelMovil, String infPerTelFijo, String infPerLugarNac,
@@ -595,7 +624,7 @@ public class Modulo_Estudiante extends HttpServlet {
         if (conexionDB.conectar() == 1) {
             if (conexionDB.getConexion() != null) {
                 //Registrar o editar
-                b = mEstudiante.changeSeccPersonal(conexionDB, infPerIdUser,infPerIdEstudiante,
+                b = mEstudiante.changeSeccPersonal(conexionDB, infPerIdUser, infPerIdEstudiante,
                         infPerNombres, infPerApellidoPaterno, infPerApellidoMaterno,
                         infPerFechaNacimiento, infPerGenero, infPerTelMovil,
                         infPerTelFijo, infPerLugarNac, infPerNacionalidad,
@@ -626,7 +655,7 @@ public class Modulo_Estudiante extends HttpServlet {
                         infEscMatriculaEscuela, infEscNivEduactivo, infEscTipoEscuela,
                         infEscPromAnterior, infEscPromGeneral, infEscEstatusEscolar,
                         infEscNombreEscuela, infEscMatricula, infEscRegular,
-                        infEscTipoPeriodo, infEscTotalPeriodos, infEscActualPeriodo, infEscPeriodo,infEscOcupacion);
+                        infEscTipoPeriodo, infEscTotalPeriodos, infEscActualPeriodo, infEscPeriodo, infEscOcupacion);
                 conexionDB.desconectar();
             }
         } else {
@@ -668,6 +697,22 @@ public class Modulo_Estudiante extends HttpServlet {
         if (conexionDB.conectar() == 1) {
             if (conexionDB.getConexion() != null) {
                 b = mUsuario.changeContrasenia(conexionDB, camConIdUser, camConContraseniaActual, camConContraseniaNueva);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return b;
+    }
+
+    private boolean formImgPerfil(String idUsurio, InputStream inputStream) {
+        boolean b = false;
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                b = mUsuario.changeImagen(conexionDB, idUsurio, inputStream);
                 conexionDB.desconectar();
             }
         } else {

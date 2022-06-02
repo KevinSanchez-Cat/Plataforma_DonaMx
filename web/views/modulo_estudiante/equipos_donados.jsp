@@ -234,7 +234,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
-                        <i class="bi bi-bell-fill"></i>
+                        <i class="bi bi-bell"></i>
                         <span>Notificaciones</span>
                     </a>
                 </li> 

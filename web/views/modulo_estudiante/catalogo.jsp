@@ -235,7 +235,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="estudiante?page=notificaciones">
-                        <i class="bi bi-bell-fill"></i>
+                        <i class="bi bi-bell"></i>
                         <span>Notificaciones</span>
                     </a>
                 </li> 
@@ -269,11 +269,11 @@
                         <c:when test="${not empty lstCategorias}">
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 <c:forEach var="categoria" items="${lstCategorias}">
-                                    <div class="col ">
+                                    <div class="col col-auto h-100">
                                         <a href="estudiante?page=catalogo&id_categoria=${categoria.getIdCategoria()}&nombre_categoria=${categoria.getNombreCategoria()}">
-                                            <div class="card text-white text-center">
+                                            <div class="card align-middle text-white text-center">
                                                 <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
+                                                <div class="card-body ">
                                                     <h5 class="card-title">${categoria.getNombreCategoria()}</h5>
                                                 </div>
                                             </div>
