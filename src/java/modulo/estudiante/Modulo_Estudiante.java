@@ -34,7 +34,7 @@ public class Modulo_Estudiante extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("image/png");
-        byte[] b = null;
+        
         HttpSession session = request.getSession(false);
         String page = request.getParameter("page");
 
@@ -66,12 +66,13 @@ public class Modulo_Estudiante extends HttpServlet {
                 } else {
                     if (rol.equals("DONATARIO")) {
                         int idUser = (int) session.getAttribute("idUser");
+
                         infoPrincipal(idUser, lstDonaciones, lstDeseos, lstNotificaciones, estudiante);
                         request.setAttribute("lstDeseos", lstDeseos);
                         request.setAttribute("estudiante", estudiante);
                         request.setAttribute("lstNotificaciones", lstNotificaciones);
                         request.setAttribute("lstDonaciones", lstDonaciones);
-
+                        request.setAttribute("id", idUser);
                         if (page == null) {
                             lstNoticias = processHome(lstNoticias);
                             request.setAttribute("lstNoticias", lstNoticias);
@@ -228,11 +229,17 @@ public class Modulo_Estudiante extends HttpServlet {
                                         manipula.ManipulaAutenticacion.cerrarSesionUsuario(conexionDB, user);
                                         conexionDB.desconectar();
                                         session.invalidate();
+                                    
+                                        
                                         response.sendRedirect("home.do");
+
                                     } else {
                                         session.invalidate();
                                         response.sendRedirect("home.do");
                                     }
+                                    break;
+                                case "inicio":
+                                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
                                     break;
                                 default:
                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/home.jsp");
@@ -260,6 +267,7 @@ public class Modulo_Estudiante extends HttpServlet {
         String formulario = request.getParameter("form");
         RequestDispatcher dispatcher;
         String msg = "";
+        HttpSession session = request.getSession(false);
         if (formulario != null) {
             switch (formulario) {
                 case "FORMULARIO-PERFIL-IMG":
@@ -267,24 +275,28 @@ public class Modulo_Estudiante extends HttpServlet {
                     try {
                         Part filePart = request.getPart("imagen");
                         String idUsurio = request.getParameter("est-infPerIdUser");
-                        if (filePart.getSize() > 0) {
+                        int idUser = (int) session.getAttribute("idUser");
+                        System.out.println(idUser);
+                        if (filePart.getSize() > 0 && filePart.getSize() < 16177215) {
                             System.out.println(filePart.getSubmittedFileName());
                             System.out.println(filePart.getSize());
                             System.out.println(filePart.getContentType());
                             inputStream = filePart.getInputStream();
+                            System.out.println(inputStream.toString());
+                            System.out.println(idUsurio + ":ID");
+                            boolean b = formImgPerfil(idUser, inputStream);
+                            if (b) {
+                                msg = "Datos actualizados correctamente... ";
+                            } else {
+                                msg = "Datos no actualizados...";
+                            }
                         }
-                        boolean b = formImgPerfil(idUsurio, inputStream);
 
-                        if (b) {
-                            msg = "Datos actualizados correctamente... ";
-                        } else {
-                            msg = "Datos no actualizados...";
-                        }
-                    } catch (Exception ex) {
-                        System.out.println("fichero: " + ex.getMessage());
+                        System.out.println(msg);
+                    } catch (IOException | ServletException ex) {
+                        System.out.println("fichero: " + ex.getMessage() + "\n" + ex.getStackTrace());
                     }
-                    dispatcher = getServletContext().getRequestDispatcher("/views/modulo_estudiante/perfil.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("estudiante?page=inicio");
                     break;
                 case "FORMULARIO-INFORMACION_PERSONAL":
                     try {
@@ -705,7 +717,7 @@ public class Modulo_Estudiante extends HttpServlet {
         return b;
     }
 
-    private boolean formImgPerfil(String idUsurio, InputStream inputStream) {
+    private boolean formImgPerfil(int idUsurio, InputStream inputStream) {
         boolean b = false;
         ManipulaUsuario mUsuario = new ManipulaUsuario();
         IConexion conexionDB = ConexionFactory.getConexion("MYSQL");

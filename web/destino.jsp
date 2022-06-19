@@ -43,6 +43,13 @@
         </header>
         <main>
             <%@ page import="controller.inicio.Srv_registro" %>
+            <%
+                response.setHeader("Pragma", "no-cache");
+                response.setHeader("Cache-Control", "no-store");
+                response.setHeader("Expires", "0");
+                response.setDateHeader("Expires", -1);
+
+            %>
             <div class="container">
                 <h1 class="main2">
                     <b> Bienvenid@ a DonaMx</b>
@@ -68,10 +75,10 @@
                                                 <label class="btn btn-outline-success padding-btn" for="btnDar">Dar donaciones</label>
 
                                                 <input type="radio" class="btn-check" name="ser" id="btnRecibir" value="donatario" autocomplete="off">
-                                                <label class="btn btn-outline-secondary padding-btn" for="btnRecibir">Recibir donaciones</label>
+                                                <label class="btn btn-outline-success padding-btn" for="btnRecibir">Recibir donaciones</label>
 
                                                 <input type="radio" class="btn-check" name="ser" id="btnColaborar"  value="voluntario" autocomplete="off">
-                                                <label class="btn btn-outline-danger padding-btn" for="btnColaborar">Colaborar en las donaciones</label>
+                                                <label class="btn btn-outline-success padding-btn" for="btnColaborar">Colaborar en las donaciones</label>
                                             </div>
                                             <div class="col-12">
                                                 <button class="btn btn-primary w-100 padding-btn-fin" type="submit">Continuar</button>

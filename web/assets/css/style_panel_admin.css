@@ -11,7 +11,7 @@ body {
     background: #f6f9ff;
     color: #444444;
 }
-
+/*f6f9ff*/
 a {
     color: #003366;
     text-decoration: none;
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #0019FF;
+    background: #0A3267;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 0;
 }
 .dropdown-menu .dropdown-item:hover {
-    background-color: #f6f9ff;
+    background-color: #B6CCF9;
 }
 
 @media (min-width: 768px) {
@@ -420,7 +420,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .accordion-button:not(.collapsed) {
     color: #003366;
-    background-color: #f6f9ff;
+    
+    background-color: #B6CCF9;
 }
 
 .accordion-flush .accordion-button {
@@ -430,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .accordion-flush .accordion-button:not(.collapsed) {
     box-shadow: none;
-    color: #0019FF;
+    color: #0A3267;
 }
 .accordion-flush .accordion-body {
     padding: 0 0 15px 0;
@@ -620,7 +621,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #919191;
 }
 .header-nav .notifications .notification-item:hover {
-    background-color: #f6f9ff;
+    background-color: #B6CCF9;
 }
 .header-nav .messages .message-item {
     padding: 15px 10px;
@@ -645,7 +646,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #919191;
 }
 .header-nav .messages .message-item:hover {
-    background-color: #f6f9ff;
+    background-color: #B6CCF9;
 }
 .header-nav .profile {
     min-width: 240px;
@@ -671,7 +672,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 0;
 }
 .header-nav .profile .dropdown-item:hover {
-    background-color: #f6f9ff;
+    background-color: #B6CCF9;
 }
 
 /*--------------------------------------------------------------
@@ -750,16 +751,16 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #0019FF;
+    color:#0A3267;
     transition: 0.3;
-    background: #f6f9ff;
+    background: #B6CCF9;
     padding: 10px 15px;
     border-radius: 4px;
 }
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #0019FF;
+    color: #0A3267;
 }
 .sidebar-nav .nav-link.collapsed {
     color: #003366;
@@ -769,11 +770,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #899bbd;
 }
 .sidebar-nav .nav-link:hover {
-    color: #0019FF;
-    background: #f6f9ff;
+    
+    color: #0A3267;
+    
+    background: #B6CCF9;
 }
 .sidebar-nav .nav-link:hover i {
-    color: #0019FF;
+    color: #0A3267;
 }
 .sidebar-nav .nav-link .bi-chevron-down {
     margin-right: 0;
@@ -804,10 +807,10 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
 }
 .sidebar-nav .nav-content a:hover, .sidebar-nav .nav-content a.active {
-    color: #0019FF;
+    color: #0A3267;
 }
 .sidebar-nav .nav-content a.active i {
-    background-color: #0019FF;
+    background-color: #0A3267;
 }
 
 /*--------------------------------------------------------------
@@ -827,7 +830,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
 }
 .dashboard .filter .icon:hover, .dashboard .filter .icon:focus {
-    color: #0019FF;
+    color: #0A3267;
 }
 .dashboard .filter .dropdown-header {
     padding: 8px 15px;
@@ -951,7 +954,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: 0.3s;
 }
 .dashboard .news h4 a:hover {
-    color: #0019FF;
+    color: #0A3267;
 }
 .dashboard .news p {
     font-size: 14px;
@@ -1078,7 +1081,7 @@ h1, h2, h3, h4, h5, h6 {
 .faq .basic h6 {
     font-size: 18px;
     font-weight: 600;
-    color: #0019FF;
+    color: #0A3267;
 }
 .faq .basic p {
     color: #6980aa;
@@ -1093,7 +1096,7 @@ h1, h2, h3, h4, h5, h6 {
 .contact .info-box i {
     font-size: 38px;
     line-height: 0;
-    color: #0019FF;
+    color: #0A3267;
 }
 .contact .info-box h3 {
     font-size: 20px;
@@ -1151,7 +1154,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 0;
 }
 .contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
-    border-color: #0019FF;
+    border-color: #0A3267;
 }
 .contact .php-email-form input {
     padding: 10px 15px;
@@ -1160,7 +1163,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 12px 15px;
 }
 .contact .php-email-form button[type=submit] {
-    background: #0019FF;
+    background: #0A3267;
     border: 0;
     padding: 10px 30px;
     color: #fff;
@@ -1196,7 +1199,7 @@ h1, h2, h3, h4, h5, h6 {
 .error-404 h1 {
     font-size: 180px;
     font-weight: 700;
-    color: #0019FF;
+    color: #0A3267;
     margin-bottom: 0;
     line-height: 150px;
 }

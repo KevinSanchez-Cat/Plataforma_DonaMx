@@ -1,5 +1,6 @@
 package model;
 
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -28,7 +29,8 @@ public class Usuario {
     private String foto;
     private int numeroCelularConfirmado;
     private String token;
-
+    private InputStream imagen;
+    
     public Usuario() {
     }
 
@@ -109,6 +111,14 @@ public class Usuario {
 
     public int isNumeroCelularConfirmado() {
         return numeroCelularConfirmado;
+    }
+
+    public InputStream getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(InputStream imagen) {
+        this.imagen = imagen;
     }
 
     public void setNumeroCelularConfirmado(int numeroCelularConfirmado) {

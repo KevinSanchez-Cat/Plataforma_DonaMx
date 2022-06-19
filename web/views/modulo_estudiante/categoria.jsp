@@ -49,6 +49,12 @@
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
             model.Usuario usuario = (model.Usuario) session.getAttribute("user");
+            
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Expires", "0");
+            response.setDateHeader("Expires", -1);
+
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
@@ -119,7 +125,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
+                            <img src="Srv_usuario?id=${id}" alt="Profile" width="50%" class="rounded-circle">
                             <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

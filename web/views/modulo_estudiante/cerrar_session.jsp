@@ -49,6 +49,12 @@
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
             model.Usuario usuario = (model.Usuario) session.getAttribute("user");
+            
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Expires", "0");
+            response.setDateHeader("Expires", -1);
+
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">

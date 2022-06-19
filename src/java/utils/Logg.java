@@ -30,7 +30,8 @@ public class Logg {
 
     public static void exito(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println(Logg.loggVerdeLimon + "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        //System.out.println(Logg.loggVerdeLimon + "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        System.out.println( "EXITO [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
 
     }
 
@@ -42,13 +43,15 @@ public class Logg {
 
     public static void info(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println(Logg.loggAzulRey + "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        //System.out.println(Logg.loggAzulRey + "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        System.out.println( "INFO [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
 
     }
 
     public static void advertencia(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println(Logg.loggRosa + "ADVERTENCIA [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        //System.out.println(Logg.loggRosa + "ADVERTENCIA [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        System.out.println("ADVERTENCIA [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
     }
 
     public static void error(String message) {
@@ -57,7 +60,8 @@ public class Logg {
 
     public static void fatal(String message) {
         DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println(Logg.loggNegro + "FATAL [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        //System.out.println(Logg.loggNegro + "FATAL [" + dtf3.format(LocalDateTime.now()) + "]: " + message + Logg.loggReset);
+        System.out.println( "FATAL [" + dtf3.format(LocalDateTime.now()) + "]: " + message);
         System.exit(0);
     }
 

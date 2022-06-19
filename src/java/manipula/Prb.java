@@ -1,5 +1,6 @@
 package manipula;
 
+import controller.inicio.MailSender;
 import java.util.List;
 import model.Notificacion;
 import model.Rol;
@@ -23,9 +24,7 @@ public class Prb {
         Rol role7 = new Rol(0, "DONADOR");
         Rol role8 = new Rol(0, "DONATARIO");
 
-      
-      //  lst.forEach(System.out::println);
-        
+        //  lst.forEach(System.out::println);
         /*ManipulaNotificacion manipula=new ManipulaNotificacion();
         Notificacion notificacion=new Notificacion();
         notificacion.setEstadoVisualizacion("0");
@@ -33,11 +32,13 @@ public class Prb {
         notificacion.setIdUsuarioDestino(4);
         notificacion.setMensaje("Tu registro fue exitoso!");
         notificacion.setPrioridad("0");*/
-       // GenericResponse<Notificacion> resouesta=manipula.registrar(notificacion);
-       
+        // GenericResponse<Notificacion> resouesta=manipula.registrar(notificacion);
         //System.out.println(resouesta.getMensaje());
-         ManipulaUsuario manipula2=new ManipulaUsuario();
+        ManipulaUsuario manipula2 = new ManipulaUsuario();
         // List<Notificacion> lstNot=manipula2.getNotificacion(4);
         // lstNot.forEach(System.out::println);
+        MailSender mail = new MailSender();
+        mail.send("ksanchezv2@Toluca.tecnm.mx", "Esto es una prueba", "Este correo fue enviado usando JavaMail");
+        //mail.send("ksanchezv2@Toluca.tecnm.mx", "Esto es una prueba", "Este correo fue enviado usando JavaMail", "adjunto.pdf", "C:\\ruta\\archivo.pdf");
     }
 }

@@ -1563,37 +1563,71 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public boolean changeImagen(IConexion conexionDB, String idUsuario, InputStream inputStream) {
+    public boolean changeImagen(IConexion conexionDB, int idUsuario, InputStream inputStream) {
         boolean status = false;
         if (conexionDB.getConexion() != null) {
-            int idUser=Integer.parseInt(idUsuario);
-            Usuario obj = encontrarId(conexionDB, idUser);
-            if (obj != null) {
-                try {
-                    String sql = "UPDATE Usuario SET "
-                            + "foto=? "
-                            + "WHERE idUsuario=?";
-                    PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
-                    registro.setBlob(1, inputStream);
-                    registro.setInt(2, idUser);
-                    int r = registro.executeUpdate();
-                    if (r > 0) {
-                        status = true;
-                        Logg.exito("Edición exitosa en la base de datos");
-                    } else {
-                        Logg.error("Edición fallido en la base de datos");
-                    }
-                } catch (SQLException ex) {
-                    Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
-                } finally {
+            try {
+                Usuario obj = encontrarId(conexionDB, idUsuario);
+                if (obj != null) {
+                    try {
+                        String sql = "UPDATE Usuario SET "
+                                + "foto=? "
+                                + "WHERE idUsuario=?";
+                        PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                        registro.setBlob(1, inputStream);
+                        registro.setInt(2, idUsuario);
+                        int r = registro.executeUpdate();
+                        if (r > 0) {
+                            status = true;
+                            Logg.exito("Edición exitosa en la base de datos");
+                        } else {
+                            Logg.error("Edición fallido en la base de datos");
+                        }
+                    } catch (SQLException ex) {
+                        Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                    } finally {
 
+                    }
+                } else {
+                    Logg.error("El registro no existe");
                 }
-            } else {
-                Logg.error("El registro no existe");
+            } catch (NumberFormatException e) {
+                Logg.error("Error ID numerico");
             }
+
         } else {
             Logg.error("Error de conexión a la base de datos");
         }
         return status;
+    }
+
+    public InputStream getFotoPerfilUser(IConexion conexionDB, int id) {
+        InputStream inputStream = null;
+
+        if (conexionDB.getConexion() != null) {
+            try {
+                String sql = "SELECT "
+                        + "foto "
+                        + "FROM Usuario "
+                        + "WHERE idUsuario=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    inputStream = rs.getBinaryStream("foto");
+                }else{
+                   Logg.error("No se encontro la foto"); 
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
+            } finally {
+
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return inputStream;
+
     }
 }

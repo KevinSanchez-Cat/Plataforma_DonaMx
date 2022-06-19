@@ -15,7 +15,9 @@ $seleccionArchivosDonatario.addEventListener("change", () => {
     // Si no hay archivos salimos de la función y quitamos la imagen
     if (!archivos || !archivos.length) {
         $imagenPrevisualizacionDonatario.src = "assets/img/user_default.png";
-        document.getElementById('info-imagen-Donatario').value = "";
+        // document.getElementById('info-imagen-Donatario').value = "";
+
+        document.getElementById('enviar-imagen-perfil').hidden = true;
         return;
     }
     // Ahora tomamos el primer archivo, el cual vamos a previsualizar
@@ -26,5 +28,6 @@ $seleccionArchivosDonatario.addEventListener("change", () => {
     $imagenPrevisualizacionDonatario.src = objectURL;
 
     var pdrs = document.getElementById('seleccionArchivosDonatario').files[0].name;
-    document.getElementById('info-imagen-Donatario').value = pdrs;
+    //  document.getElementById('info-imagen-Donatario').value = pdrs;
+    document.getElementById('enviar-imagen-perfil').hidden = false;
 });

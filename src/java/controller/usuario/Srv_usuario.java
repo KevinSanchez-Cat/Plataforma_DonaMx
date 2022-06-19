@@ -1,12 +1,18 @@
 package controller.usuario;
 
+import config.conexion.ConexionFactory;
+import config.conexion.IConexion;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import manipula.ManipulaUsuario;
+import utils.Logg;
 
 /**
  *
@@ -19,125 +25,53 @@ public class Srv_usuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("page");
-        if (action != null) {
-            switch (action) {
-                case "create":
-                    vCreate(request, response);
-                    break;
-                case "edit":
-                    vEdit(request, response);
-                    break;
-                case "find":
-                    vFind(request, response);
-                    break;
-                case "details":
-                    vDetails(request, response);
-                    break;
-                default:
-                    index(request, response);
-                    break;
-            }
-        } else {
-            index(request, response);
-        }
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        listarImagen(id, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action != null) {
-            switch (action) {
-                case "registrar":
-                    registrar(request, response);
-                    break;
-                case "editar":
-                    editar(request, response);
-                    break;
-                case "actualizar":
-                    actualizar(request, response);
-                    break;
-                case "eliminar":
-                    eliminar(request, response);
-                    break;
-                default:
-                    index(request, response);
+    }
+
+    private void listarImagen(int id, HttpServletResponse response) {
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        BufferedInputStream bufferedInputStream = null;
+        BufferedOutputStream bufferedOutputStream = null;
+        response.setContentType("image/*"); 
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+       
+       
+        if (conexionDB.conectar() == 1) {
+
+            if (conexionDB.getConexion() != null) {
+                
+                inputStream = mUsuario.getFotoPerfilUser(conexionDB, id);
+                if(inputStream!=null){
+                    try {
+                        outputStream = response.getOutputStream();
+                        bufferedInputStream = new BufferedInputStream(inputStream);
+                        bufferedOutputStream = new BufferedOutputStream(outputStream);
+                        int i = 0;
+                        while ((i = bufferedInputStream.read()) != -1) {
+                            bufferedOutputStream.write(i);
+                        }
+                    } catch (Exception e) {
+                    }
+                }else{
+                    
+                }
+                if (conexionDB.getConexion() != null) {
+                    conexionDB.desconectar();
+                }
+            } else {
+                Logg.error("Conexión fallida con la base de datos");
             }
-        } else {
-            index(request, response);
+
         }
-    }
-
-    private void index(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //  String paginaJsp = "/views/usuario/index.jsp";
-        String paginaJsp = "/views/dashboard/index.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void registrar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void editar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void actualizar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void eliminar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        //req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void info(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        //req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void vCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void vEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void vFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
-    }
-
-    private void vDetails(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String paginaJsp = "/vista/lista-estudiantes.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaJsp);
-        // req.setAttribute("listaEstudiantes", listaEstudiantes);
-        dispatcher.forward(req, resp);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

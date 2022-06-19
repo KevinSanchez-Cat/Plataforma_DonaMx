@@ -54,6 +54,12 @@
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
             model.Usuario usuario = (model.Usuario) session.getAttribute("user");
+            
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Expires", "0");
+            response.setDateHeader("Expires", -1);
+
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
@@ -124,7 +130,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
+                            <img src="Srv_usuario?id=${id}" alt="Profile" width="50%" class="rounded-circle">
                             <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -333,77 +339,10 @@
                         </c:when>
                         <c:otherwise>
                             <br>
-                           <!-- <div class="alert alert-primary">Aún no tiene solicitudes...</div>-->
+                           <div class="alert alert-primary">Aún no tiene solicitudes...</div>
                         </c:otherwise>
                     </c:choose>
-                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 "> <!--   row-cols-1 row-cols-md-4 g-4 row-cols-xl-4-->
-                        <div class="col ">
-                            <div class="card">
-                                <div class="card-header bg-azul">
-                                    Folio:
-                                    <strong>
-                                        2453204
-                                    </strong>
-                                </div>
-                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Equipo Dell, core i3, 4GB RAM...</h6>
-                                    <p class="card-text">
-                                        <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                           Windows 10 Home Proffesional
-                                        </span> 
-                                    </p>
-                                    <b style="color: #18bc9c">Pendiente</b>
-                                    <p><b>Fecha de solicitud:</b> 17/05/2022</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                        <a href="#" class=" btn btn-primary-flaty rounded-pill ">
-                                            <i class="bx bx-show"></i>
-                                            Ver recurso
-                                        </a>
-                                        <a href="#" class="btn btn-outline-primary-flaty rounded-pill">
-                                            <i class="bx bx-info-circle"></i>
-                                            Ver detalle
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col ">
-                            <div class="card">
-                                <div class="card-header bg-azul">
-                                    Folio:
-                                    <strong>
-                                        2453204
-                                    </strong>
-                                </div>
-                                <img src="assets/img/dona_hero.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Equipo HP, core i3, 4GB RAM...</h6>
-                                    <p class="card-text">
-                                        <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                           Windows 10 Home single ...
-                                        </span> 
-                                    </p>
-                                    <b style="color: #18bc9c">Pendiente</b>
-                                    <p><b>Fecha de solicitud:</b> 18/05/2022</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                        <a href="#" class=" btn btn-primary-flaty rounded-pill ">
-                                            <i class="bx bx-show"></i>
-                                            Ver recurso
-                                        </a>
-                                        <a href="#" class="btn btn-outline-primary-flaty rounded-pill">
-                                            <i class="bx bx-info-circle"></i>
-                                            Ver detalle
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </section>
             </section>
         </main>

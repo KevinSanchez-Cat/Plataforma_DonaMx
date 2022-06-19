@@ -140,6 +140,10 @@
         <servlet-name>Captcha</servlet-name>
         <servlet-class>controller.inicio.Captcha</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubirArchivoFTP</servlet-name>
+        <servlet-class>controller.archivosFTP.SubirArchivoFTP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -279,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>Captcha</servlet-name>
         <url-pattern>/Captcha</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubirArchivoFTP</servlet-name>
+        <url-pattern>/SubirArchivoFTP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

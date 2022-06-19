@@ -51,6 +51,12 @@
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
             model.Usuario usuario = (model.Usuario) session.getAttribute("user");
+
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Expires", "0");
+            response.setDateHeader("Expires", -1);
+
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
@@ -119,7 +125,7 @@
                     </li>
                     <li class="nav-item dropdown pe-3">
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/user_default.png" alt="Profile" width="50%" class="rounded-circle">
+                            <img src="Srv_usuario?id=${id}" alt="Profile" width="50%" class="rounded-circle">
                             <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -281,15 +287,24 @@
                                         <input type="hidden" class="form-control"  name="form" id="est-perForm" value="FORMULARIO-PERFIL-IMG" required>
                                         <input type="hidden" class="form-control"  name="est-perIdUser" id="est-perIdUser" value="<% if (usuario != null) {
                                                 out.print(usuario.getIdUsuario());
+                                                System.out.println(usuario.getIdUsuario());
                                             } else {
                                                 out.print("");
                                             } %>" required>
                                         <div  >
                                             <div class="d-flex justify-content-center">
-                                                <img class="" alt="Profile" src="assets/img/user_default.png" id="imagenPrevisualizacionDonatario" width="50%">
+                                                <img class="" alt="Profile" 
+                                                     src="<%
+                                                         if (8 == 0) {
+                                                             out.print("Srv_usuario?id=${id}");
+                                                         } else {
+                                                             out.print("assets/img/user_default.png");
+                                                         }%>" 
+                                                     id="imagenPrevisualizacionDonatario" 
+                                                     width="80%">
                                             </div>
                                             <br>
-                                            <input  type="text" id='info-imagen-Donatario' name="info-imagen-Donatario" value=""/>
+                                            <!-- <div id='info-imagen-Donatario' name="info-imagen-Donatario"></div>-->
                                             <br>
                                             <div class="d-grid gap-2 d-flex justify-content-center">
                                                 <div >
@@ -302,7 +317,11 @@
                                                     <button class="btn btn-danger" title="Eliminar imagen de perfil" type="submit"><i class="bi bi-trash"></i> Eliminar imagen</button>
                                                 </div>
                                             </div>
-                                            <input type="submit"  name="btn-form-img" id='enviar-imagen-perfil'/>
+                                            <br>
+                                            <div class="d-grid d-flex justify-content-center">
+                                                <button class="btn btn-success" hidden="true"  name="btn-form-img" id='enviar-imagen-perfil' type="submit"><i class="bx bx-save"></i> Guardar imagen</button>
+                                            </div>
+
                                         </div>
 
                                     </form>
@@ -317,25 +336,9 @@
                                             } else {
                                                 out.print("");
                                             } %>" required>
+                                        <br>
                                         <div class="row g-3">
-                                            <div class="col-sm-8 col-md-8 position-relative">
-                                                <label for="est-perNombreUser" class="form-label">Identificador de usuario * </label>
-                                                <div class="input-group has-validation">
-                                                    <span class="input-group-text" ><i class="bx bx-id-card"></i></span>
-                                                    <input type="text" autofocus="false" disabled="true" readonly="true" class="form-control" id="est-perNombreUser" value="<% if (usuario != null) {
-                                                            out.print(usuario.getNombreUsuario());
-                                                        } else {
-                                                           
-                                                        out.print("");
-                                                        } %>" required>
-                                                    <div class="valid-tooltip">
-                                                        Se mira bien!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row g-3">
-                                            <div class="col-md-4 position-relative">
+                                            <div class="col-md-6 position-relative">
                                                 <label for="est-perNombre" class="form-label">Nombre * </label>
                                                 <div class="input-group has-validation">
                                                     <span class="input-group-text" ><i class="bx bx-user"></i></span>
@@ -349,7 +352,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 position-relative">
+                                            <div class="col-md-6 position-relative">
                                                 <label for="est-perApellido" class="form-label">Apellido * </label>
                                                 <div class="input-group has-validation">
                                                     <span class="input-group-text" ><i class="bx bx-user-check"></i></span>
@@ -364,6 +367,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="col-md-12 position-relative">
                                             <label for="est-perEmail" class="form-label">Dirección de correo eléctronico *</label>
                                             <div class="input-group has-validation">

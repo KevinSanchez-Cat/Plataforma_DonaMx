@@ -7,14 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import manipula.ManipulaEstudiante;
 import model.Deseo;
 import model.Donacion;
 import model.Estudiante;
 import model.Notificacion;
-import model.Solicitud;
 import utils.Logg;
-import utils.Misc;
 
 /**
  *
