@@ -510,11 +510,41 @@
             <section class="section dashboard">
                 <div class="card ">
                     <div class="card-header hstack gap-3 bg-flaty-blue text-white">
-                         Categoría
+                        Categoría
                     </div>
                     <div class="card-body">
                         <br>
-                        <form action="" method="POST" class=" needs-validation" novalidate>
+
+                        <label for="profileImage" class="form-label">Imagen de perfil</label>
+                        <form action="estudiante" method="POST" class=" needs-validation" enctype="multipart/form-data">
+                            <input type="hidden" class="form-control"  name="form" id="est-perForm" value="FORMULARIO-PERFIL-IMG" required>
+                            <input type="hidden" class="form-control"  name="est-perIdUser" id="est-perIdUser" value="" required>
+                            <div  >
+                                <div class="d-flex justify-content-center">
+                                    <img class="" alt="Profile" 
+                                         src="assets/img/user_default.png" 
+                                         id="imagenPrevisualizacionDonatario" 
+                                         width="50%">
+                                </div>
+                                <br>
+                                <!-- <div id='info-imagen-Donatario' name="info-imagen-Donatario"></div>-->
+                                <br>
+                                <div class="d-grid gap-2 d-flex justify-content-center">
+                                    <div >
+                                        <label for="seleccionArchivosDonatario" class="subirDonatario">
+                                            <i class="bi bi-upload"></i> Subir imagen
+                                        </label>
+                                        <input id="seleccionArchivosDonatario"  type="file" name="imagen" value="" style='display: none;'  accept="image/*" />
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-danger" title="Eliminar imagen de perfil" type="submit"><i class="bi bi-trash"></i> Eliminar imagen</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="d-grid d-flex justify-content-center">
+                                    <button class="btn btn-success" hidden="true"  name="btn-form-img" id='enviar-imagen-perfil' type="submit"><i class="bx bx-save"></i> Guardar imagen</button>
+                                </div>
+                            </div>
                             <div class="col-md-3 position-relative">
                                 <label for="validationTooltip02" class="form-label">Nombre de la categoría</label>
                                 <div class="input-group has-validation">
@@ -533,16 +563,15 @@
                                     </textarea>
                                 </div>
                             </div>
-
                             <br/>
                             <div class="col-12 text-end">
                                 <button class="btn btn-secondary" type="submit">Aceptar</button>
                             </div>
                         </form>
+                        <br/>
                     </div>
                 </div>
             </section>
         </main>
-
     </jsp:attribute>
 </template:templete_administrador>

@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
 <template:templete_administrador title="Roles">
@@ -191,7 +192,7 @@
                     <ul id="localidades-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="administrador?page=localidades&accion=agregar>
-                                <i class="bi bi-circle"></i><span>Agregar</span>
+                               <i class="bi bi-circle"></i><span>Agregar</span>
                             </a>
                         </li>
                         <li>
@@ -508,29 +509,40 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
-               <div class="card recent-sales overflow-auto">
+                <div class="card recent-sales overflow-auto">
                     <div class="card-body">
                         <h5 class="card-title">Roles</h5>
-                        <table class="table table-responsive table-bordered table-hover datatable">
-                            <thead >
-                                <tr class="table-primary "> 
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nombre del rol</th>
-                                    <th scope="col">Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr> 
-                                    <th>#1213</th>
-                                    <td>Licencias</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
-                                        <button type="button" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <c:choose>
+                            <c:when test="${not empty lstRoles}">
+                                <table class="table table-responsive table-bordered table-hover datatable">
+                                    <thead >
+                                        <tr class="table-primary "> 
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre del rol</th>
+                                            <th scope="col">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="rol" items="${lstRoles}">
+                                        <tr> 
+                                            <th>${rol.getIdRol()}</th>
+                                            <td>${rol.getRol()}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>
+                                                <button type="button" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i></button>
+                                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <br>
+                                <div class="alert alert-primary">No hay roles</div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </section>

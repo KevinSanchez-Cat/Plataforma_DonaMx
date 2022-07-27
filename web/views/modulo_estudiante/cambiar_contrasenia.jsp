@@ -274,31 +274,32 @@ response.setHeader("Pragma", "no-cache");
                             <br>
                             <form action="estudiante" method="POST" class=" needs-validation" novalidate>
                                 <input type="hidden" class="form-control"  name="form" id="form" value="FORMULARIO-CAMBIAR-CONTRASENIA" required>
+                                <input type="hidden" class="form-control"  name="est-camConIdUser" id="est-camConIdUser" value="${id}" required>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row g-3">
                                              <div class="col-md-4 position-relative">
-                                                <label for="nombre_usuario" class="form-label">Ingresa tu contraseña actual</label>
+                                                <label for="est-camConContraseniaActual" class="form-label">Ingresa tu contraseña actual</label>
                                                 <div class="input-group has-validation">
-                                                    <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                                    <input type="password" class="form-control" id="est-camConContraseniaActual" value="" required>
                                                     <div class="valid-tooltip">
                                                         Se mira bien!
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 position-relative">
-                                                <label for="nombre_usuario" class="form-label">Ingresa tu nueva contraseña</label>
+                                                <label for="est-camConContraseniaNueva" class="form-label">Ingresa tu nueva contraseña</label>
                                                 <div class="input-group has-validation">
-                                                    <input type="text" class="form-control" id="nombre_usuario" value="" required>
+                                                    <input type="password" class="form-control" id="est-camConContraseniaNueva" value="" required>
                                                     <div class="valid-tooltip">
                                                         Se mira bien!
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 position-relative">
-                                                <label for="validationTooltip02" class="form-label">Confirma tu nueva contraseña</label>
+                                                <label for="est-camConContraseniaNuevaConfirmar" class="form-label">Confirma tu nueva contraseña</label>
                                                 <div class="input-group has-validation">
-                                                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                                                    <input type="password" class="form-control" id="est-camConContraseniaNuevaConfirmar" value="" required>
                                                     <div class="valid-tooltip">
                                                         Se mira bien!
                                                     </div>

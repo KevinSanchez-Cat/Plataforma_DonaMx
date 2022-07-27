@@ -46,26 +46,33 @@
             java.util.List<model.Donacion> lstDonaciones = (java.util.List<model.Donacion>) request.getAttribute("lstDonaciones");
             model.Estudiante estudiante = (model.Estudiante) session.getAttribute("estudiante");
             java.util.List<model.Notificacion> lstNotificaciones2 = (java.util.ArrayList<model.Notificacion>) request.getAttribute("lstNotificaciones");
-
+            int numDonaciones = 0;
+            int numDeseos = 0;
+            int numNotificaciones = 0;
             if (estudiante != null) {
                 lstDeseos = (java.util.List<model.Deseo>) request.getAttribute("lstDeseos");
             }
-            int numDeseos = lstDeseos.size();
-            int numDonaciones = lstDonaciones.size();
-            int numNotificaciones = lstNotificaciones2.size();
+            if (lstDonaciones != null) {
+                numDonaciones = lstDonaciones.size();
+            }
+            if (lstDeseos != null) {
+                numDeseos = lstDeseos.size();
+            }
+            if (lstNotificaciones2 != null) {
+                numNotificaciones = lstNotificaciones2.size();
+            }
+
             model.Usuario usuario = (model.Usuario) session.getAttribute("user");
-            
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Cache-Control", "no-store");
-            response.setHeader("Expires", "0");
-            response.setDateHeader("Expires", -1);
+            System.out.println(usuario.getApellido());
+            System.out.println(session.getAttribute("saludo"));
+
 
         %>
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="estudiante" class="logo d-flex align-items-center">
                     <img src="assets/img/imagenes/Logo_1.png" alt="">
-                        <span class="d-none d-lg-block">DonaMx</span>
+                    <span class="d-none d-lg-block">DonaMx</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>
@@ -131,7 +138,7 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="Srv_usuario?id=${id}" alt="Profile" width="50%" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">  <%= session.getAttribute("username")%></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
@@ -338,7 +345,7 @@
                 </section>
             </section>
         </main>
-       <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/quill/quill.min.js"></script>
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>

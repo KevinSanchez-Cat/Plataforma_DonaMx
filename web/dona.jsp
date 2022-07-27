@@ -47,65 +47,22 @@
                     <ul>
                         <li>
                             <a class="nav-link scrollto " href="index.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
-                                    </svg>
+                                <i class="bi bi-house-door">
                                 </i>Inicio
                             </a>
                         </li>
                         <li><a class="nav-link scrollto active" href="dona.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-heading"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                    <path fill-rule="evenodd"
-                                          d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
-                                    <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
-                                    </svg>
+                                <i class="bi bi-heart">
                                 </i>
-                                Dona
+                                ¡Dona!
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link scrollto" href="comoFunciona.jsp"> 
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-3x3-gap"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M4 2H2v2h2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2H7v2h2V2zm5 0h-2v2h2V2zM4 7H2v2h2V7zm5 0H7v2h2V7zm5 0h-2v2h2V7zM4 12H2v2h2v-2zm5 0H7v2h2v-2zm5 0h-2v2h2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z" />
-                                    </svg>
-                                </i>
-                                ¿Cómo funciona?
-                            </a>
-                        </li>
+
                         <li>
                             <a class="nav-link scrollto" href="conocenos.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                                    <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                                    </svg>
+                                <i class="bi bi-building">
                                 </i>
                                 Conócenos
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="contacto.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                                    <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                                    </svg>
-                                </i>
-                                Contacto
                             </a>
                         </li>
                     </ul>
@@ -139,65 +96,209 @@
 
 
         <main style="margin-top:40px ">
-            <!-- ======= Services Section ======= -->
             <section id="services" class="services" >
                 <div class="container">
 
                     <div class="section-title">
-                        <h2>Dona tecnología</h2>
-                        <p>¡Haga una donación para brindar a los niños y jóvenes mejores oportunidades!<br>
-                            Este es el catalogo de recursos tecnologicos dispoibles para donar. Da clic sobre uno para ver los requerimientos mínimos.
+                        <h2>Dona un equipo computacional</h2>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="assets/img/device-gd99aae8f7_1280.jpg"  width="90%" alt=""/>
+                        </div>
+                        <div class="col-6">
+                            <p style="text-align: justify ">
+                                ¡Hoy es un buen día para hacer el bien! 
+                                Tu donación ayudará a equipar a los niños y 
+                                adolescentes necesitados con los recursos tecnológicos 
+                                que difícilmente pueden abordar con su presupuesto límitado. 
+                                A través de nuestra campaña de recolección de equipos, podemos 
+                                brindarles nuevas oportunidades educativas, la promesa de un futuro mejor. 
+                                <br/><br/>
+                                Para donar un equipo computacional, o cualquier otro recurso, primero hay que registrarse en la plataforma, 
+                                elegir la opción de Donar, en seguida registrar el recurso en la plataforma como nuevo así como ingresar las 
+                                características además de escoger una de las dos modalidades de 
+                                donación: Convocatoria, o por Solicitud. En la plataforma se le indica en que consiste cada una.
+                                Una vez validada la donación, se autoriza la publicación en la plataforma.
+                                Nosotros gestionaremos el envió y entrega de la donación.
+                                
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section id="departments" class="departments">
+                <div class="container">
+
+                    <div class="section-title">
+                        <h2>Dona un equipo computacional usado</h2>
+                        <p>Las donaciones de equipos computacionales usados son las más preciadas, ¡Ayudas a todos! A un estudiante, al medio ambiente y
+                            a ti. Es una acción de altruismo pero también de consientización por la disminución de la basura e impacto en la salud.
+                            <br/>
+                            Todo los aparatos tecnologícos se reciben en DonaMx, ¿Cómo identificarlos? Aquí te decimos cómo... 
                         </p>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-laptop-house"></i></div>
-                                <h4><a href="">Computadoras de escritorio</a></h4>
+                    <br>
+                    <div class="row gy-4">
+                        <div class="col-lg-3">
+                            <ul class="nav nav-tabs flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Busca un aparato electrónico</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Revisa sus condiciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Registralo en la plataforma DonaMx</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Entregalo al personal indicado</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Dónalo</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active show" id="tab-1">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Busca un aparato electrónico que ya no uses</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Un aparato electronico, puede ser una computadora personal, computadora de escritorio,
+                                                una impresora, cámara fotográfica, celular, teclado, mouse, monitores, tabletas electronicas, bocinas.
+                                                <br/>
+                                                Seguramente tienes una computadora que ya usaste porque te compraste una nueva,
+                                                pero que aun sirve. Tómala y revisa sus condiciones físicas. 
+                                                Si esta en buenas condiciones, la puedes registrar para una donación.
+                                                Si no lo esta, la puedes registrar para el proceso de reciclaje.
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/gallery/galeria_1.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-2">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Revisa sus condiciones</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que decidiste donarla, revisa por segunda vez si funciona.
+                                                Revisa si tiene un golpe, rasguño, en el caso de una computadora revisa si le falta una tecla o el mouse,
+                                                anota todos sus detalles físicos.
+                                                Revisa si prende y se visualiza su sistema operativo.
+                                                Si encendió, procede a recurperar toda tu información personal y después borrarla definitivamente 
+                                                del equipo.<br/>
+                                                Si no, trata de recuperar tu disco duro del equipo computacional. En este punto, 
+                                                puedes decidir si conservar tu disco duro como unidad de almacenamiento exterior
+                                                o mandarlo a reciclar.
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/gallery/galeria_2.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-3">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Registra el aparato en la plataforma</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez revisado, ingresa a la plataforma, registrate como donador, y registra el equipo computacional, 
+                                                escribe detalles de la condición física y lógica. 
+                                                Selecciona si la vas a donar o reciclar.
+                                                Nosotros nos encargaremos de evaluarlo y tomar una desición, 
+                                                si se reacondiciona para una donación o si se envia a uno
+                                                de nuestros centros de reciclaje.
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/gallery/galeria_3.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-4">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Entregalo al personal indicado</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que se registre, se te informará sobre el proceso de entrega, por ejemplo,
+                                                llegará a tu puerta de tu casa el personal que recogerá el equipo, también esta la 
+                                                posibilidad de dejarlo en uno de los centros de acopio registrados en la plataforma, o enviarlo por 
+                                                paqueteria a una de nuestras oficinas.
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/gallery/galeria_4.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-5">
+                                    <div class="row gy-4">
+                                        <div class="col-lg-8 details order-2 order-lg-1">
+                                            <h3>Dónalo</h3>
+                                            <p class="fst-italic"></p>
+                                            <p>
+                                                Una vez que lo entregaste, se enviará una confirmación de entrega.
+                                                ¡Te avisaremos cuando el equipo sea donado!
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                                            <img src="assets/img/gallery/galeria_5.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-laptop"></i></div>
-                                <h4><a href="">Computadoras portatiles</a></h4>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-tablet-alt"></i></div>
-                                <h4><a href="">Tablets</a></h4>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-link"></i></div>
-                                <h4><a href="">Licencias de software</a></h4>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-print"></i></div>
-                                <h4><a href="">Impresoras</a></h4>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-desktop"></i></div>
-                                <h4><a href="">Monitores</a></h4>
-                            </div>
-                        </div>
-
                     </div>
-
                 </div>
-            </section><!-- End Services Section -->
+            </section>
+            <section class="container">
+                <div class="section-title">
+                    <h2>  ¿Cuáles son los beneficios para los donadores?</h2>
+                    
+                </div>
+                 <div class="row">
+                        <div class="col-6">
+                            <img src="assets/img/laptop-g9057edf24_1280.png"  width="90%" alt=""/>
+                        </div>
+                     <div class="col-6">
+                         <p >
+                    <ul style="text-align: justify">
+                        <li>
+                            Un reconocimiento y certificado de donación del equipo computacional.
+                        </li>
+                        <li>
+                            Reconocimiento público a través de nuestras redes sociales. 
+                        </li>
+                        <li>
+                            Uso del nombre y logo de la empresa o nombre y foto de la persona en nuestro sitio web.
+                        </li>
+                        <li>
+                            Evitar impactos ambientales negativos por cuenta de la disposición inadecuada de desechos
+                            tecnológicos y la contaminación con residuos peligrosos.
+                        </li>
+                        <li>
+                            Contribuir a la formación de niños y jóvenes mejor capacitados y más competitivos, 
+                            que en un futuro será el motor del desarrollo empresarial del país.
+                        </li>
+                    </ul>
+                    </p>
+                     </div>
+                 </div>
+            </section>
+
+            
         </main>
+
         <%@include  file="views/templates/footer/footer_principal.jsp" %>
         <div id="preloader"></div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -207,7 +308,6 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>

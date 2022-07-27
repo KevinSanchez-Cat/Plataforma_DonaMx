@@ -160,7 +160,8 @@ public class ManipulaRol implements Manipula<Rol> {
                 String sql = "SELECT "
                         + "idRol, "
                         + "rol "
-                        + "FROM Rol";
+                        + "FROM Rol "
+                        + "ORDER BY idRol";
                 PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
                 ResultSet rs;
                 rs = ps.executeQuery();

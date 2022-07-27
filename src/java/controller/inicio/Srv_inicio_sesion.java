@@ -66,36 +66,42 @@ public class Srv_inicio_sesion extends HttpServlet {
                 if (conexionDB.conectar() == 1) {
                     GenericResponse<Usuario> respuesta = ManipulaAutenticacion.iniciarSesionUsuario(conexionDB, username, password_cifrado);
                     if (respuesta.getResponseObject() != null) {
-
+                        Usuario usuario = respuesta.getResponseObject();
+                        if (usuario == null) {
+                            System.out.println("Nulo?");
+                        }else{
+                         
+                        }
                         HttpSession session = request.getSession();
-
-                        session.setAttribute("username", respuesta.getResponseObject().getNombre() + " " + respuesta.getResponseObject().getApellido());
-                        session.setAttribute("user", respuesta.getResponseObject());
-                        session.setAttribute("idUser", respuesta.getResponseObject().getIdUsuario());
+                        String username2= usuario.getNombre() + " " + usuario.getApellido();
+                        session.setAttribute("username",username2);
+                        session.setAttribute("user", usuario);
+                        session.setAttribute("idUser", usuario.getIdUsuario());
                         ManipulaRol mRol = new ManipulaRol();
-                        Rol rol = mRol.encontrarId(conexionDB, respuesta.getResponseObject().getIdRol());
+                        Rol rol = mRol.encontrarId(conexionDB, usuario.getIdRol());
 
                         session.setAttribute("rol", rol.getRol());
-                        
+                        session.setAttribute("saludo", "Hola" + usuario.getNombre());
+
                         switch (rol.getRol()) {
                             case "DONADOR": {
-                                //redirectServlet(request, response, "donador");
-                                response.sendRedirect("donador");
+                                redirectServlet(request, response, "donador");
+                                //response.sendRedirect("donador");
                             }
                             break;
                             case "DONATARIO": {
-                                //  redirectServlet(request, response, "estudiante");
-                                response.sendRedirect("estudiante");
+                                redirectServlet(request, response, "estudiante");
+                                //response.sendRedirect("estudiante");
                             }
                             break;
                             case "VOLUNTARIO": {
-                                //redirectServlet(request, response, "voluntario");
-                                response.sendRedirect("voluntario");
+                                redirectServlet(request, response, "voluntario");
+                                //response.sendRedirect("voluntario");
                             }
                             break;
                             case "ADMINISTRADOR": {
-                                //redirectServlet(request, response, "administrador");
-                                response.sendRedirect("administrador");
+                                redirectServlet(request, response, "administrador");
+                                //response.sendRedirect("administrador");
                             }
                             break;
                             case "PENDIENTE": {

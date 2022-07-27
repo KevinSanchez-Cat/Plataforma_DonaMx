@@ -48,7 +48,6 @@
             int numDeseos = lstDeseos.size();
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
-            model.Usuario usuario = (model.Usuario) session.getAttribute("user");
             
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Cache-Control", "no-store");
@@ -286,141 +285,10 @@
                         </c:when>
                         <c:otherwise>
                             <br>
-                            <!--<div class="alert alert-primary">Aún no hay recursos tecnologicos asociados a esta categoría</div>-->
+                            <div class="alert alert-primary">Aún no hay recursos tecnologicos asociados a esta categoría</div>
                         </c:otherwise>
                     </c:choose>
-                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/pc-escritorio.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/pc-escritorio.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/pc-escritorio.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/pc-escritorio.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/laptop.webp" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/dell.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Dell, Home office, core i3, 2GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/lap.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lenovo IdeaPad S340, core i5, 8GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/laptop.webp" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/dell.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Dell, Home office, core i3, 2GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/lap.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lenovo IdeaPad S340, core i5, 8GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/laptop.webp" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HP pavilon G6, celeron, 4GB RAM..</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/dell.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Dell, Home office, core i3, 2GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col ">
-                            <a href="estudiante?page=catalogo&categoria=2">
-                                <div class="card text-white bg-azul text-center">
-                                    <img src="assets/img/lap.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Lenovo IdeaPad S340, core i5, 8GB RAM...</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+ 
                 </section>
 
             </section>

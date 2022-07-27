@@ -282,8 +282,8 @@
                         <div class="card-body">
                             <br>
                             <form action="estudiante" method="POST" class=" needs-validation" novalidate>
-                                <input type="hidden" class="form-control"  id="form" value="FORMULARIO-INFORMACION-PERSONAL" required>
-                                <input type="hidden" class="form-control" id="est-infPerIdUser" value="<%if (usuario != null) {
+                                <input type="hidden" class="form-control"  name="form"  value="FORMULARIO-INFORMACION-PERSONAL" required>
+                                <input type="hidden" class="form-control" name="est-infPerIdUser" id="est-infPerIdUser" value="<%if (usuario != null) {
                                         out.print(usuario.getIdUsuario());
                                     }  %>" required>
                                 <input type="hidden" class="form-control"  id="est-infPerIdUser" value="<%if (request.getParameter("persona_id_estudiante") != null) {

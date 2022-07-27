@@ -8,6 +8,7 @@ package modulo.administrador;
 import config.conexion.ConexionFactory;
 import config.conexion.IConexion;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import manipula.*;
 import model.*;
 import utils.Logg;
@@ -27,7 +29,7 @@ import utils.Logg;
  *
  * @author Kevin Ivan Sanchez Valdin
  */
-public class Modulo_Administrador extends HttpServlet{
+public class Modulo_Administrador extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +41,7 @@ public class Modulo_Administrador extends HttpServlet{
         if (session != null) {
             if (!session.isNew()) {
                 String username = (String) session.getAttribute("username");
-               //  session.setMaxInactiveInterval(60);//session timeout in seconds 
+                //  session.setMaxInactiveInterval(60);//session timeout in seconds 
                 if (username != null) {
                     String rol = (String) session.getAttribute("rol");
                     if (rol != null) {
@@ -66,6 +68,10 @@ public class Modulo_Administrador extends HttpServlet{
                                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/roles_buscar.jsp");
                                                     break;
                                                 case "consultar":
+                                                    List<Rol> lstRoles = null;
+                                                    lstRoles = processRoles(lstRoles);
+                                                    request.setAttribute("lstRoles", lstRoles);
+
                                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/roles_consultar.jsp");
                                                     break;
                                                 default:
@@ -93,6 +99,10 @@ public class Modulo_Administrador extends HttpServlet{
                                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_bloquear_desbloquear.jsp");
                                                     break;
                                                 case "consultar":
+                                                    List<Usuario> lstDonadores = null;
+                                                    lstDonadores = processDonadores(lstDonadores);
+                                                    request.setAttribute("lstDonadores", lstDonadores);
+
                                                     dispatcher = getServletContext().getRequestDispatcher("/views/modulo_administrador/donadores_consultar.jsp");
                                                     break;
                                                 case "lista_negra":
@@ -516,7 +526,26 @@ public class Modulo_Administrador extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String formulario = request.getParameter("form");
+        RequestDispatcher dispatcher;
+        String msg = "";
+        HttpSession session = request.getSession(false);
+        if (formulario != null) {
+            switch (formulario) {
+                case "FORMULARIO-PERFIL-IMG":
+                    String idUsurio = request.getParameter("est-infPerIdUser");
+                    int idUser = (int) session.getAttribute("idUser");
+                    boolean b = formImgPerfil(idUser, "");
+                    if (b) {
+                        msg = "Datos actualizados correctamente... ";
+                    } else {
+                        msg = "Datos no actualizados...";
+                    }
+                    response.sendRedirect("estudiante?page=inicio");
+                    break;
 
+            }
+        }
     }
 
     private void infoPrincipal(int idUser, List<Notificacion> lstNotificaciones) {
@@ -563,5 +592,268 @@ public class Modulo_Administrador extends HttpServlet{
 
     }
 
-  
+    private boolean formImgPerfil(int idUsurio, String dato) {
+        boolean b = false;
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                //b = mUsuario.changeImagen(conexionDB, idUsurio, inputStream);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return b;
+    }
+
+    private List<Rol> processRoles(List<Rol> lstRoles) {
+        ManipulaRol mRol = new ManipulaRol();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstRoles = mRol.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstRoles;
+    }
+
+    private List<Usuario> processDonadores(List<Usuario> lstDonadores) {
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstDonadores = mUsuario.getDonadores(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstDonadores;
+    }
+
+    private List<Usuario> processVoluntarios(List<Usuario> lstVoluntarios) {
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstVoluntarios = mUsuario.getDonadores(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstVoluntarios;
+    }
+
+    private List<Usuario> processDonadoresListaNegra(List<Usuario> lstDonadores) {
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstDonadores = mUsuario.getDonadoresListaNegra(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstDonadores;
+    }
+
+    private List<Usuario> processVoluntariosListaNegra(List<Usuario> lstVoluntarios) {
+        ManipulaUsuario mUsuario = new ManipulaUsuario();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstVoluntarios = mUsuario.getDonadoresListaNegra(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstVoluntarios;
+    }
+
+    private List<Estado> processEstados(List<Estado> lstEstados) {
+        ManipulaEstado mEstado = new ManipulaEstado();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstEstados = mEstado.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstEstados;
+    }
+
+    private List<Municipio> processMunicipios(List<Municipio> lstMunicipios) {
+        ManipulaMunicipio mMunicipio = new ManipulaMunicipio();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstMunicipios = mMunicipio.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstMunicipios;
+    }
+
+    private List<Localidad> processLocalidades(List<Localidad> lstLocalidades) {
+        ManipulaLocalidad mLocalidad = new ManipulaLocalidad();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstLocalidades = mLocalidad.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstLocalidades;
+    }
+
+    private List<Categoria> processCategorias(List<Categoria> lstCategorias) {
+        ManipulaCategoria mCategoria = new ManipulaCategoria();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstCategorias = mCategoria.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstCategorias;
+    }
+
+    private List<SistemaOperativo> processSistemasOperativos(List<SistemaOperativo> lstSistemasOperativos) {
+        ManipulaSistemaOperativo mSistemaOperativo = new ManipulaSistemaOperativo();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstSistemasOperativos = mSistemaOperativo.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstSistemasOperativos;
+    }
+
+    private List<RecursoTecnologico> processRecursosTecnologicosDonador(List<RecursoTecnologico> lstRecursosTecnologicos) {
+        ManipulaRecursoTecnologico mRecursoTecnologico = new ManipulaRecursoTecnologico();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstRecursosTecnologicos = mRecursoTecnologico.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstRecursosTecnologicos;
+    }
+
+    private List<RecursoTecnologico> processRecursosTecnologicosCategoria(List<RecursoTecnologico> lstRecursosTecnologicos) {
+        ManipulaRecursoTecnologico mRecursoTecnologico = new ManipulaRecursoTecnologico();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstRecursosTecnologicos = mRecursoTecnologico.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstRecursosTecnologicos;
+    }
+
+    private List<RecursoTecnologico> processRecursosTecnologicos(List<RecursoTecnologico> lstRecursosTecnologicos) {
+        ManipulaRecursoTecnologico mRecursoTecnologico = new ManipulaRecursoTecnologico();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstRecursosTecnologicos = mRecursoTecnologico.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstRecursosTecnologicos;
+    }
+
+    private List<EquipoComputacional> processEquiposComputacionalesDonados(List<EquipoComputacional> lstEquipoComputacionales) {
+        ManipulaEquipoComputacional mEquipoComputacional = new ManipulaEquipoComputacional();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstEquipoComputacionales = mEquipoComputacional.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstEquipoComputacionales;
+    }
+
+    private List<EquipoComputacional> processEquiposComputacionalesRemunerados(List<EquipoComputacional> lstEquipoComputacionales) {
+        ManipulaEquipoComputacional mEquipoComputacional = new ManipulaEquipoComputacional();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstEquipoComputacionales = mEquipoComputacional.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstEquipoComputacionales;
+    }
+    private List<Solicitud> processSolicitudesDonador(List<Solicitud> lstSolicitud) {
+        ManipulaSolicitud mSolicitud = new ManipulaSolicitud();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstSolicitud = mSolicitud.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstSolicitud;
+    }
+    private List<Solicitud> processSolicitudesDonatario(List<Solicitud> lstSolicitud) {
+        ManipulaSolicitud mSolicitud = new ManipulaSolicitud();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstSolicitud = mSolicitud.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstSolicitud;
+    }
+     private List<Donacion> processDonacionesDonatario(List<Donacion> lstDonacion) {
+        ManipulaDonacion mDonacion = new ManipulaDonacion();
+        IConexion conexionDB = ConexionFactory.getConexion("MYSQL");
+        if (conexionDB.conectar() == 1) {
+            if (conexionDB.getConexion() != null) {
+                lstDonacion = mDonacion.getData(conexionDB);
+                conexionDB.desconectar();
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return lstDonacion;
+    }
 }

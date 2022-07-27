@@ -19,22 +19,24 @@
         </div>
     </div>
     <div class="container-fluid footer-links-seccion" >
-        <div class="row">
-            <div class="col-4">
+        <div style="margin-right: 0px !important;" class="row" >
+           <div class="col-4">
                 <h5 class="h5-titulo-seccion"><strong>¡Dona!</strong></h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-white" href="dona.jsp">Dona equipos computacionales</a></li>
+                    <li><a class="text-white" href="dona.jsp">Dona equipos computacionales nuevos</a></li>
+                    <li><a class="text-white" href="dona.jsp">Dona equipos computacionales usados</a></li>
                     <li><a class="text-white" href="dona.jsp">Apoya nuestra causa</a></li>
                     <li><a class="text-white" href="registrarse.jsp">Crea una cuenta</a></li>
                 </ul>
             </div>
+           
             <div class="col-4">
                 <h5 class="h5-titulo-seccion"> <strong>Nosotros</strong></h5>
                 <ul class="list-unstyled text-small">
 
                     <li><a class="text-white" href="conocenos.jsp">Conócenos</a></li>
-                    <li><a class="text-white" href="comoFunciona.jsp">¿Cómo funciona?</a></li>
                     <li><a class="text-white" href="conocenos.jsp">Nuestro equipo</a></li>
+                    <li><a class="text-white" href="conocenos.jsp">Contáctanos</a></li>
                 </ul>
             </div>
             <div class="col-4">

@@ -37,10 +37,8 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
-
     </head>
     <body>
-        
         <header id="header" class="fixed-top">
             <div class="container-fluid d-flex align-items-lg-start">
                 <a href="index.jsp" class="logo me-auto"><img src="assets/img/imagenes/logotipodonamx_1.png" alt="" class="img-fluid"></a>
@@ -58,62 +56,24 @@
                             </a>
                         </li>
                         <li><a class="nav-link scrollto" href="dona.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-heading"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                    <path fill-rule="evenodd"
-                                          d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
-                                    <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
-                                    </svg>
+                                <i class="bi bi-heart">
                                 </i>
                                 Dona
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link scrollto" href="comoFunciona.jsp"> 
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-3x3-gap"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M4 2H2v2h2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2H7v2h2V2zm5 0h-2v2h2V2zM4 7H2v2h2V7zm5 0H7v2h2V7zm5 0h-2v2h2V7zM4 12H2v2h2v-2zm5 0H7v2h2v-2zm5 0h-2v2h2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z" />
-                                    </svg>
-                                </i>
-                                ¿Cómo funciona?
-                            </a>
-                        </li>
+                       
                         <li>
                             <a class="nav-link scrollto" href="conocenos.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                                    <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                                    </svg>
+                                <i class="bi bi-building">
                                 </i>
                                 Conócenos
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link scrollto" href="contacto.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                                    <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                                    </svg>
-                                </i>
-                                Contacto
-                            </a>
-                        </li>
+                      
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav
                 <a class="appointment-btn scrollto" href="#appointment" ></a>
-
                 <a class="appointment-btn scrollto d-flex align-items-center" href="iniciarSesion.jsp" >
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -134,21 +94,15 @@
                     </i>
                     Registrate
                 </a>
-
             </div>
-
         </header>
-        <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex align-items-center" style="margin-top:40px ">
             <div class="container">
                 <h1>Bienvenid@  a  DonaMx</h1>
                 <h2>Una oportunidad en tecnología para el talento mexicano</h2>
             </div>
-        </section><!-- End Hero -->
-
+        </section>
         <main id="main">
-
-            <!-- ======= Why Us Section ======= -->
             <section id="why-us" class="why-us">
                 <div class="container">
                     <div class="row">
@@ -163,10 +117,9 @@
                                     vulnerables en mente, este proyecto busca ayudar a 
                                     avanzar a las personas que arriesgan su futuro para 
                                     mejorar su propia vida y la de su comunidad.
-
                                 </p>
                                 <div class="text-center">
-                                    <a href="dona.jsp" class="more-btn">¡Contamos contigo! <i class="bx bx-chevron-right"></i></a>
+                                    <a href="dona.jsp" class="more-btn">¿Contamos contigo? <i class="bx bx-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -180,8 +133,10 @@
                                             <p>Unasé al grupo de agentes de cambio, 
                                                 una red lo suficientemente fuerte como para impactar un 
                                                 cambio positivo en la vida de los niños y jovenes. 
-                                                Registese ahora!
                                             </p>
+                                            <div class="text-center">
+                                                <a href="registrarse.jsp" class="more-btn"> Registrese ahora!</a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 d-flex align-items-stretch">
@@ -201,7 +156,7 @@
                                             <h4>Brecha tecnologica</h4>
                                             <p>
                                                 La tecnología ha evolucionado en todo el mundo y 
-                                                la globalización ha animado a todos a aprender, 
+                                                la globalización ha animado a todos a aprender y
                                                 desarrollar nuevas tecnologías de la información. 
                                                 Es hora de que México reduzca esa brecha tecnológica 
                                                 con el resto del mundo.
@@ -209,35 +164,29 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End .content-->
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </section><!-- End Why Us Section -->
-            <!-- ======= About Section ======= -->
+            </section>
             <section id="about" class="about">
                 <div class="container-fluid">
-
                     <div class="row">
                         <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
                             <a href="https://youtu.be/Y_A8fOufDKI" class="glightbox play-btn mb-4"></a>
                         </div>
-
                         <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
                             <h3>Recicla, Reusa, Dona</h3>
-                            <p>En atención a la contaminación del medio ambiente por desechos electronicos y electricos, 
-                                se enfatizan 3 posibles soluciones, para reducir su impacto y así reducir la brecha tecnologica que existe en México.
+                            <p>En atención a la contaminación del medio ambiente por desechos electrónicos y eléctricos, 
+                                se enfatizan 3 posibles soluciones, para reducir su impacto y así reducir la brecha tecnológica que existe en México.
                             </p>
-
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-recycle"></i></div>
                                 <h4 class="title"><a href="">Recicla</a></h4>
-                                <p class="description">Los desechos electronicos y electricos causan una 
+                                <p class="description">Los desechos electrónicos y eléctricos causan una 
                                     contaminación severa tanto en el medio ambiente como en los seres vivos,
-                                    un uso correcto del fin del ciclo de vida util de un aparato electronico puede evitar enfermedades.</p>
+                                    un uso correcto del fin del ciclo de vida útil de un aparato electrónico puede evitar enfermedades.</p>
                             </div>
-
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-reset"></i></div>
                                 <h4 class="title"><a href="">Reacondiciona</a></h4>
@@ -245,29 +194,20 @@
                                     se les puede alargar su vida útil añadiendo nuevas características o adaptándolos a las nuevas tecnologías.
                                 </p>
                             </div>
-
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-devices"></i></div>
                                 <h4 class="title"><a href="">Dona</a></h4>
                                 <p class="description">Usted también puede donar un computador que ya no use,
                                     y nosotros prometemos que este equipo será adecuadamente seleccionado para 
-                                    cumplir con sus expectativas. Su colaboración será muy apreciada.</p>
+                                    cumplir con la misión. Su colaboración será muy apreciada.</p>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-            </section><!-- End About Section -->
-
-            <!-- ======= Counts Section ======= -->
+            </section>
             <section id="counts" class="counts">
                 <div class="container">
-                    <div class="section-title">
-                        <h2>Nuestra meta para cada mes</h2>
-                    </div>
                     <div class="row">
-
                         <div class="col-lg-3 col-md-6">
                             <div class="count-box">
                                 <i class="fas fa-user-circle"></i>
@@ -303,8 +243,65 @@
                     </div>
 
                 </div>
-            </section><!-- End Counts Section -->
-            <!-- ======= Frequently Asked Questions Section ======= -->
+            </section>
+            <section id="services" class="services" >
+                <div class="container">
+
+                    <div class="section-title">
+                        <h2>Dona tecnología</h2>
+                        <p>¡Haga una donación para brindar a los niños y jóvenes mejores oportunidades!<br>
+                            Este es el catálogo de recursos tecnológicos dispoibles para donar. Da clic sobre uno para ver los requerimientos mínimos.
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0" id="Cat01" data-bs-toggle="modal" data-bs-target="#modalComputadorasEscritorio">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-laptop-house"></i></div>
+                                <h4>Computadoras de escritorio</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-md-0" id="Cat02" data-bs-toggle="modal" data-bs-target="#modalComputadorasPortatiles">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-laptop"></i></div>
+                                <h4>Computadoras portátiles</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4 mt-lg-0" id="Cat03" data-bs-toggle="modal" data-bs-target="#modalTablets">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-tablet-alt"></i></div>
+                                <h4>Tablets</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4" id="Cat04" data-bs-toggle="modal" data-bs-target="#modalLicencias">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-link"></i></div>
+                                <h4>Licencias de software</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4" id="Cat05" data-bs-toggle="modal" data-bs-target="#modalImpresoras">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-print"></i></div>
+                                <h4>Impresoras</h4>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 align-items-stretch mt-4" id="Cat06" data-bs-toggle="modal" data-bs-target="#modalMonitores">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-desktop"></i></div>
+                                <h4>Monitores</h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
             <section id="faq" class="faq section-bg">
                 <div class="container">
 
@@ -324,9 +321,10 @@
                                 </a>
                                 <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        En efecto, se puede donar una computadora simpre y cuando la máquina se encuentre en buenas
-                                        condiones.
-                                        De otro modo, esta se puede recibir para darle un tratamiento de desechos adecuado.
+                                        Totalmente, gracias a nuestro control de calidad, toda computadora es sometida a una inspección 
+                                        cuidadosa para validar su condición, de seminueva, usada u obsoleta, con el fin de que el usuario 
+                                        beneficiado tenga todas las posibilidades de usarla sin complicación alguna. 
+                                        Por ello se accede a reacondicionar si hace falta, o reciclarla.
                                     </p>
                                 </div>
                             </li>
@@ -340,7 +338,7 @@
                                 </a>
                                 <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                     <p>
-                                        Por supuesto!, Una de la gran ventaja de donar es la deducción de impuestos por donaciones.
+                                        Por supuesto!, Una de la gran ventaja de donar es la deducción de impuestos por donación.
                                         Las donaciones en especie como los equipos computacionales, 
                                         tabletas, celulares cuentan como donaciones, y son deducibles solo con el valor estimado.
                                         Acercate con nosotros, con gusto te atenderemos.
@@ -358,7 +356,8 @@
                                 <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                     <p>
                                         Nosotros la recibimos y verificamos el estado de la computadora, si ya no tiene reparación se
-                                        envia a uno de nuestros centros de reciclaje.
+                                        envía a uno de nuestros centros de reciclaje, o si hay alguna pieza recuperable se almacena para un
+                                        posterior uso.
                                     </p>
                                 </div>
                             </li>
@@ -373,7 +372,6 @@
                                 <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                     <p>
                                         Solo hay que pagar una pequeña cuota que dependerá de la distancia del lugar en donde se recoga y se envié.
-                                        <!--Recuerda que la intención de ayudar al medio ambiente también tiene un valor.-->
                                     </p>
                                 </div>
                             </li>
@@ -392,16 +390,13 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
-            </section><!-- End Frequently Asked Questions Section -->
-            <!-- ======= Testimonials Section ======= -->
+            </section>
             <section id="testimonials" class="testimonials">
                 <div class="container">
-
                     <div class="section-title">
-                        <h2>Historias increibles</h2>
-                        <p></p>
+                        <h2>Comentarios valiosos</h2>
+                        <p>Sabemos cuan es importante su experiencia del proyecto, por eso la compartimos al mundo. ¡Gracias por confiar en nosotros!</p>
                     </div>
                     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                         <div class="swiper-wrapper">
@@ -419,8 +414,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div><!-- End testimonial item -->
-
+                            </div>
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
@@ -434,8 +428,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div><!-- End testimonial item -->
-
+                            </div>
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
@@ -449,8 +442,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div><!-- End testimonial item -->
-
+                            </div>
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
@@ -465,8 +457,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div><!-- End testimonial item -->
-
+                            </div>
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
@@ -482,22 +473,19 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div><!-- End testimonial item -->
-
+                            </div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
 
                 </div>
-            </section><!-- End Testimonials Section -->
-
-            <!-- ======= Gallery Section ======= -->
-            <section id="gallery" class="gallery">
+            </section>
+            <section id="gallery" class="gallery section-bg">
                 <div class="container">
 
                     <div class="section-title">
                         <h2>Galeria</h2>
-                        <p></p>
+                        <p>Conoce nuestra galería, donde encontrarás algunas fotos de sorpresa de los beneficiarios.</p>
                     </div>
                 </div>
 
@@ -571,10 +559,159 @@
                     </div>
 
                 </div>
-            </section><!-- End Gallery Section -->
-
-            
-
+            </section>
+            <div class="modal fade" id="modalComputadorasEscritorio">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos mínimos para computadoras de escritorio</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>Procesador: Intel Core Duo o superior, AMD </li>
+                            <li>Memoria RAM: 2GB</li>
+                            <li>Disco duro: 160GB </li>
+                            <li>Multimedia: DVD-ROM o DVD-RW o superior </li>
+                            <li>Entradas para USB, VGA o HDMI </li>
+                            <li>(Recomendable)Entrada para Mouse, Teclado, audifonos y bocinas</li>
+                            <li>Red: Tarjeta de red 10/100 ó tarjeta inalámbrica de 54 Mbps</li>   
+                            </ul>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalComputadorasPortatiles">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos mínimos para computadoras portátiles</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>Procesador: Intel Core 2 duo o superior, o sus equivalentes en otras tecnologías</li>
+                            <li>Memoria RAM: 4 GB</li>
+                            <li>Disco duro: 160 GB</li>
+                            <li>Fuente de energía: Cargador y bateria funcional</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalImpresoras">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos mínimos para impresoras</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>
+                                    Chorros de tinta
+                                </li>
+                                <li>
+                                   Sencilla (Solo para imprimir) 
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalMonitores">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos mínimos para monitores</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>
+                                    Tamaño: 14 o 15 pulgadas
+                                </li>
+                                <li>
+                                    Resolución: 1024 x 768 pixeles
+                                </li>
+                                <li>
+                                    De LED o LCD
+                                </li>
+                                <li>
+                                    Conectividad: VGA, HDMI
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalLicencias">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos mínimos para licencias de software</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li> Licencias válidas</li>
+                                <li>Duración por 6 meis meses</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalTablets">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Requisitos para tablets</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>
+                                   Tamaño de pantalla: 10 pulgadas o más  
+                                </li>
+                                <li>
+                                     Pantalla: HD, HD+ o superiores
+                                </li>
+                                <li>
+                                     Almacenamiento: 64GB
+                                </li>
+                                <li>
+                                    Memoria RAM: 3GB
+                                </li>
+                                <li>
+                                    Conectividad: Wifi, Bluetooth, USB
+                                </li>
+                                <li>
+                                    Bateria: 7.000 mAh
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <%@include  file="views/templates/footer/footer_principal.jsp" %>
 
             <div id="preloader"></div>
@@ -587,7 +724,6 @@
             <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
             <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-            <script src="assets/vendor/php-email-form/validate.js"></script>
 
             <!-- Template Main JS File -->
             <script src="assets/js/main.js"></script>

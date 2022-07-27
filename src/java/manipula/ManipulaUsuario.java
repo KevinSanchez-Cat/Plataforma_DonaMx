@@ -514,6 +514,36 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         return response;
     }
 
+    public boolean validarContrasenia(IConexion conexionDB, int idUser, String contrasenia) {
+        String contrasenia_cifrada = utils.Hash.sha1(contrasenia);
+        if (conexionDB.getConexion() != null) {
+            try {
+                String sql = "SELECT "
+                        + "idUsuario, "
+                        + "correoElectronico "
+                        + "FROM Usuario "
+                        + "WHERE idUsuario=? AND contrasenia=?";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ps.setInt(1, idUser);
+                ps.setString(2, contrasenia_cifrada);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    return true;
+                } else {
+                    Logg.error("No se encontro ningun registro");
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
+            } finally {
+
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return false;
+    }
+
     public Usuario encontrarStatus(IConexion conexionDB, String nombre) {
         Usuario response = null;
 
@@ -1559,8 +1589,43 @@ public class ManipulaUsuario implements Manipula<Usuario> {
 
     }
 
-    public boolean changeContrasenia(IConexion conexionDB, int camConIdUser, String camConContraseniaActual, String camConContraseniaNueva) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean changeContrasenia(IConexion conexionDB, int camConIdUser, String camConContraseniaNueva) {
+        boolean status = false;
+        if (conexionDB.getConexion() != null) {
+            try {
+                Usuario obj = encontrarId(conexionDB, camConIdUser);
+                if (obj != null) {
+                    String contraseniaCifrada = utils.Hash.sha1(camConContraseniaNueva);
+                    try {
+                        String sql = "UPDATE Usuario SET "
+                                + "contrasenia=? "
+                                + "WHERE idUsuario=?";
+                        PreparedStatement registro = conexionDB.getConexion().prepareStatement(sql);
+                        registro.setString(1, contraseniaCifrada);
+                        registro.setInt(2, camConIdUser);
+                        int r = registro.executeUpdate();
+                        if (r > 0) {
+                            status = true;
+                            Logg.exito("Edición exitosa en la base de datos");
+                        } else {
+                            Logg.error("Edición fallido en la base de datos");
+                        }
+                    } catch (SQLException ex) {
+                        Logg.error("Error de comunicación con la base de datos " + ex.getSQLState());
+                    } finally {
+
+                    }
+                } else {
+                    Logg.error("El registro no existe");
+                }
+            } catch (NumberFormatException e) {
+                Logg.error("Error ID numerico");
+            }
+
+        } else {
+            Logg.error("Error de conexión a la base de datos");
+        }
+        return status;
     }
 
     public boolean changeImagen(IConexion conexionDB, int idUsuario, InputStream inputStream) {
@@ -1616,8 +1681,8 @@ public class ManipulaUsuario implements Manipula<Usuario> {
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     inputStream = rs.getBinaryStream("foto");
-                }else{
-                   Logg.error("No se encontro la foto"); 
+                } else {
+                    Logg.error("No se encontro la foto");
                 }
             } catch (SQLException ex) {
                 Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
@@ -1629,5 +1694,67 @@ public class ManipulaUsuario implements Manipula<Usuario> {
         }
         return inputStream;
 
+    }
+
+    public List<Usuario> getDonadores(IConexion conexionDB) {
+        List<Usuario> response = new ArrayList<>();
+
+        if (conexionDB.getConexion() != null) {
+            try {
+                String sql = "SELECT "
+                        + "idUsuario, "
+                        + "nombreUsuario, "
+                        + "fechaCreacion, "
+                        + "ultimaConexion, "
+                        + "estadoCuenta, "
+                        + "estadoLogico, "
+                        + "conectado, "
+                        + "correoElectronico, "
+                        + "correoConfirmado, "
+                        + "numeroCelular, "
+                        + "numeroCelularConfirmado, "
+                        + "autenticacionDosPasos, "
+                        + "conteoAccesosFallidos, "
+                        + "foto, "
+                        + "idRol, "
+                        + "token "
+                        + "FROM Usuario"
+                        + "WHERE idRol=7";
+                PreparedStatement ps = conexionDB.getConexion().prepareStatement(sql);
+                ResultSet rs;
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    Usuario user = new Usuario();
+                    user.setIdUsuario(rs.getInt(1));
+                    user.setNombreUsuario(rs.getString(2));
+                    user.setFechaCreacion(rs.getTimestamp(3));
+                    user.setUltimaConexion(rs.getTimestamp(4));
+                    user.setEstadoCuenta(rs.getString(5));
+                    user.setEstadoLogico(rs.getInt(6));
+                    user.setConectado(rs.getInt(7));
+                    user.setCorreoElectronico(rs.getString(8));
+                    user.setCorreoConfirmado(rs.getInt(9));
+                    user.setNumeroCelular(rs.getInt(10));
+                    user.setNumeroCelularConfirmado(rs.getInt(11));
+                    user.setAutenticacionDosPasos(rs.getInt(12));
+                    user.setConteoAccesosFallidos(rs.getInt(13));
+                    user.setFoto(rs.getString(14));
+                    user.setIdRol(rs.getInt(15));
+                    user.setToken(rs.getString(16));
+                    response.add(user);
+                }
+            } catch (SQLException ex) {
+                Logg.error("Comunicación fallida con la base de datos " + ex.getMessage());
+            } finally {
+
+            }
+        } else {
+            Logg.error("Conexión fallida con la base de datos");
+        }
+        return response;
+    }
+
+    public List<Usuario> getDonadoresListaNegra(IConexion conexionDB) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

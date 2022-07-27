@@ -34,7 +34,7 @@ public class Modulo_Estudiante extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("image/png");
-        
+
         HttpSession session = request.getSession(false);
         String page = request.getParameter("page");
 
@@ -44,7 +44,7 @@ public class Modulo_Estudiante extends HttpServlet {
             // long hora = utils.Misc.getDateTimeActualJava().getTime();
             // long milisegundos = hora - (session.getLastAccessedTime());
             //int timepoInactividad = (int) (milisegundos / 1000 / 60);
-
+            System.out.println(username);
             RequestDispatcher dispatcher = null;
             List<RecursoTecnologico> lstRecursosTecnologicos = null;
             List<Categoria> lstCategorias = null;
@@ -229,8 +229,7 @@ public class Modulo_Estudiante extends HttpServlet {
                                         manipula.ManipulaAutenticacion.cerrarSesionUsuario(conexionDB, user);
                                         conexionDB.desconectar();
                                         session.invalidate();
-                                    
-                                        
+
                                         response.sendRedirect("home.do");
 
                                     } else {
@@ -298,37 +297,57 @@ public class Modulo_Estudiante extends HttpServlet {
                     }
                     response.sendRedirect("estudiante?page=inicio");
                     break;
-                case "FORMULARIO-INFORMACION_PERSONAL":
+                case "FORMULARIO-INFORMACION-PERSONAL":
                     try {
-                    int infPerIdUser = Integer.parseInt(request.getParameter("est-infPerIdUser"));
-                    int infPerIdEstudiante = Integer.parseInt(request.getParameter("est-infPerIdEstudiante"));
-                    String infPerNombres = request.getParameter("est-infPerNombres");
-                    String infPerApellidoPaterno = request.getParameter("est-infPerApellidoPaterno");
-                    String infPerApellidoMaterno = request.getParameter("est-infPerApellidoMaterno");
-                    String infPerFechaNacimiento = request.getParameter("est-infPerFechaNacimiento");
-                    String infPerGenero = request.getParameter("est-infPerGenero");
-                    String infPerTelMovil = request.getParameter("est-infPerTelMovil");
-                    String infPerTelFijo = request.getParameter("est-infPerTelFijo");
-                    String infPerLugarNac = request.getParameter("est-infPerLugarNac");
-                    String infPerNacionalidad = request.getParameter("est-infPerNacionalidad");
-                    String infPerIntereses = request.getParameter("est-infPerIntereses");
-                    String infPerHabilidades = request.getParameter("est-infPerHabilidades");
-                    String infPerCurp = request.getParameter("est-infPerCurp");
-                    String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
-                    boolean b = formInfoPersonal(infPerIdUser, infPerIdEstudiante, infPerNombres, infPerApellidoPaterno,
-                            infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
-                            infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
-                            infPerHabilidades, infPerCurp, infPerEstadoCivil);
-
-                    if (b) {
-                        msg = "Datos actualizados correctamente... ";
+                    String infPerIdUserS = request.getParameter("est-infPerIdUser");
+                    String infPerIdEstudianteS = request.getParameter("est-infPerIdEstudiante");
+                    if (infPerIdUserS == null) {
+                        System.out.println("");
                     } else {
-                        msg = "Datos no actualizados...";
+                        int infPerIdUser = Integer.parseInt(infPerIdUserS);
+                        int infPerIdEstudiante = Integer.parseInt(infPerIdEstudianteS);
+                        String infPerNombres = request.getParameter("est-infPerNombres");
+                        String infPerApellidoPaterno = request.getParameter("est-infPerApellidoPaterno");
+                        String infPerApellidoMaterno = request.getParameter("est-infPerApellidoMaterno");
+                        String infPerFechaNacimiento = request.getParameter("est-infPerFechaNacimiento");
+                        String infPerGenero = request.getParameter("est-infPerGenero");
+                        String infPerTelMovil = request.getParameter("est-infPerTelMovil");
+                        String infPerTelFijo = request.getParameter("est-infPerTelFijo");
+                        String infPerLugarNac = request.getParameter("est-infPerLugarNac");
+                        String infPerNacionalidad = request.getParameter("est-infPerNacionalidad");
+                        String infPerIntereses = request.getParameter("est-infPerIntereses");
+                        String infPerHabilidades = request.getParameter("est-infPerHabilidades");
+                        String infPerCurp = request.getParameter("est-infPerCurp");
+                        String infPerEstadoCivil = request.getParameter("est-infPerEstadoCivil");
+                        boolean b = false;
+                        if (infPerIdEstudianteS == null) {
+                            System.out.println("Registrar");
+                            b = formInfoPersonal(infPerIdUser, infPerNombres, infPerApellidoPaterno,
+                                    infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
+                                    infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
+                                    infPerHabilidades, infPerCurp, infPerEstadoCivil);
+
+                        } else {
+                            System.out.println("actualizar");
+                            b = formInfoPersonal(infPerIdUser, infPerIdEstudiante, infPerNombres, infPerApellidoPaterno,
+                                    infPerApellidoMaterno, infPerFechaNacimiento, infPerGenero, infPerTelMovil,
+                                    infPerTelFijo, infPerLugarNac, infPerNacionalidad, infPerIntereses,
+                                    infPerHabilidades, infPerCurp, infPerEstadoCivil);
+
+                        }
+                        if (b) {
+                            msg = "Datos actualizados correctamente... ";
+                        } else {
+                            msg = "Datos no actualizados...";
+                        }
                     }
+
                 } catch (NumberFormatException e) {
                     msg = "Datos no actualizados...";
                 }
-                response.sendRedirect("estudiante?page=informacion_personal");
+                System.out.println(msg);
+                //response.sendRedirect("estudiante?page=informacion_personal");
+                response.sendRedirect("estudiante?page=inicio");
                 break;
                 case "FORMULARIO-INFORMACION_ESCOLAR":
                     try {
@@ -433,6 +452,7 @@ public class Modulo_Estudiante extends HttpServlet {
                 } catch (NumberFormatException e) {
                     msg = "Datos no actualizados...";
                 }
+                System.out.println(msg);
                 response.sendRedirect("estudiante?page=cambiar_contrasenia");
                 break;
                 case "FORMULARIO-SOLICITAR":
@@ -708,7 +728,10 @@ public class Modulo_Estudiante extends HttpServlet {
 
         if (conexionDB.conectar() == 1) {
             if (conexionDB.getConexion() != null) {
-                b = mUsuario.changeContrasenia(conexionDB, camConIdUser, camConContraseniaActual, camConContraseniaNueva);
+                b = mUsuario.validarContrasenia(conexionDB, camConIdUser, camConContraseniaActual);
+                if (b) {
+                    b = mUsuario.changeContrasenia(conexionDB, camConIdUser, camConContraseniaNueva);
+                }
                 conexionDB.desconectar();
             }
         } else {
@@ -731,6 +754,10 @@ public class Modulo_Estudiante extends HttpServlet {
             Logg.error("Conexión fallida con la base de datos");
         }
         return b;
+    }
+
+    private boolean formInfoPersonal(int infPerIdUser, String infPerNombres, String infPerApellidoPaterno, String infPerApellidoMaterno, String infPerFechaNacimiento, String infPerGenero, String infPerTelMovil, String infPerTelFijo, String infPerLugarNac, String infPerNacionalidad, String infPerIntereses, String infPerHabilidades, String infPerCurp, String infPerEstadoCivil) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -49,8 +49,7 @@
             int numDeseos = lstDeseos.size();
             int numDonaciones = lstDonaciones.size();
             int numNotificaciones = lstNotificaciones2.size();
-            model.Usuario usuario = (model.Usuario) session.getAttribute("user");
-            
+           
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Cache-Control", "no-store");
             response.setHeader("Expires", "0");

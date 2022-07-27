@@ -79,19 +79,7 @@
                                     <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
                                     </svg>
                                 </i>
-                                Dona
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="comoFunciona.jsp"> 
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-3x3-gap"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M4 2H2v2h2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2H7v2h2V2zm5 0h-2v2h2V2zM4 7H2v2h2V7zm5 0H7v2h2V7zm5 0h-2v2h2V7zM4 12H2v2h2v-2zm5 0H7v2h2v-2zm5 0h-2v2h2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z" />
-                                    </svg>
-                                </i>
-                                ¿Cómo funciona?
+                                ¡Dona!
                             </a>
                         </li>
                         <li>
@@ -105,19 +93,6 @@
                                     </svg>
                                 </i>
                                 Conócenos
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="contacto.jsp">
-                                <i>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
-                                    <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
-                                    </svg>
-                                </i>
-                                Contacto
                             </a>
                         </li>
                     </ul>
@@ -138,8 +113,9 @@
                     Registrate</a>
             </div>
         </header>
-        <main style="margin-top:40px ">
-            <section ><!-- section register d-flex flex-column align-items-center justify-content-center py-4
+        <main style="margin-top:40px; background-image: url('assets/img/laptop-g3492e56fe_1920.jpg');background-size: cover; " >
+            <section  class="contact" ><!-- section register d-flex flex-column align-items-center justify-content-center py-4
+                
                 -->
 
                 <div class="container">
@@ -151,28 +127,29 @@
                         </div>
                     </c:if>
                     <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <div class="col-lg-5 col-md-5 d-flex flex-column align-items-center justify-content-center">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Ingrese a su cuenta</h5>
                                         <p class="text-center small">Ingrese su usuario y contraseña para iniciar sesión</p>
                                     </div>
+                                    
                                     <form action="Srv_inicio_sesion" id="form-inicio-sesion" method="post" 
-                                          class="row g-3 needs-validation" autocomplete="on">
+                                          class="row php-email-form g-3 needs-validation"  role="form" autocomplete="on">
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Correo electronico</label>
+                                           <!-- <label for="yourUsername" class="form-label">Correo electronico</label>-->
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-envelope-fill"></i></span>
-                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                                <input type="text" name="username" class="form-control" id="yourUsername" placeholder="Correo eléctronico"  required>
                                                 <div class="invalid-feedback">¡Ingresa tu correo electronico!</div>
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Contraseña</label>
+                                            <!--<label for="yourPassword" class="form-label">Contraseña</label>-->
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
-                                                <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                                <input type="password" name="password" class="form-control" placeholder="Contraseña" id="yourPassword" required>
                                                 <div class="invalid-feedback">¡Ingresa tu contraseña!</div>
                                             </div>
                                         </div>
@@ -228,7 +205,6 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>

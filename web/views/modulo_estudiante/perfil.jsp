@@ -295,7 +295,7 @@
                                             <div class="d-flex justify-content-center">
                                                 <img class="" alt="Profile" 
                                                      src="<%
-                                                         if (8 == 0) {
+                                                         if (usuario.getFoto()!=null) {
                                                              out.print("Srv_usuario?id=${id}");
                                                          } else {
                                                              out.print("assets/img/user_default.png");
